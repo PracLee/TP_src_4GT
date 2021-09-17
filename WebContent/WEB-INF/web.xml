@@ -12,4 +12,20 @@
     <error-code>404</error-code>
     <location>/error/error404.jsp</location>
   </error-page>
+  <servlet>
+    <servlet-name>fc</servlet-name>
+    <servlet-class>controller.common.Post_ctrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pfc</servlet-name>
+    <url-pattern>*.pdo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ucfc</servlet-name>
+    <servlet-class>controller.common.UserComment_ctrl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fc</servlet-name>
+    <url-pattern>*.ucdo</url-pattern>
+  </servlet-mapping>
 </web-app>

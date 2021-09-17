@@ -12,15 +12,15 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class EncodingFilter
  */
-@WebFilter("*.jsp")
+@WebFilter({"*.jsp","*.pdo","*.ucdo"})
 public class EncodingFilter implements Filter {
 	String encoding;
-    /**
-     * Default constructor. 
-     */
-    public EncodingFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor. 
+	 */
+	public EncodingFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
