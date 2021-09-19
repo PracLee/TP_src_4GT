@@ -2,6 +2,7 @@ package controller.post_ctrl;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,10 +44,38 @@ public class Post_ctrl extends HttpServlet {
 		String uri=request.getRequestURI();
 		String cp=request.getContextPath();
 		String action=uri.substring(cp.length());
-		
-		
 		ActionForward forward = null;
+		if(action.equals("/main.pdo")) {
+			forward = new MainAction().execute(request, response);
+		}else if(action.equals("/post.pdo")) {
+			forward = new PostAction().execute(request, response);
+		}else if(action.equals("/selectOne.pdo")) {
+			forward = new SelectOneAction().execute(request, response);
+		}else if(action.equals("/insertPostDB.pdo")) {
+			forward = new InsertPostDB().execute(request, response);
+		}else if(action.equals("/editPost.pdo")) {
+			forward = new EditPostAction().execute(request, response);
+		}else if(action.equals("/editPostDB.pdo")) {
+			forward = new EditPostDB().execute(request, response);
+		}else if(action.equals("/deletePostDB.pdo")) {
+			forward = new DeleteAction().execute(request, response);
+		}else if(action.equals("/likeUp.pdo")) {
+			forward = new LikeUpAction().execute(request, response);
+		}else if(action.equals("/likeDown.pdo")) {
+			forward = new LikeDownAciton().execute(request, response);
+		}else {
+			forward.setPath("error/error404.jsp");	// 404페이지로 보냄
+			forward.setRedirect(false);
+		}
 		
+		if(forward.isRedirect()) {
+			response.sendRedirect(forward.getPath());
+		}
+		else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+			dispatcher.forward(request, response);
+		}
+
 
 	}
 }
