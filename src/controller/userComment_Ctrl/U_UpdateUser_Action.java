@@ -42,6 +42,7 @@ public class U_UpdateUser_Action implements Action{
 				throw new Exception("UpdateUser_Action DB 오류 발생!");
 			} catch (Exception e) {
 				e.printStackTrace();
+				return null;
 			}
 		}
 		

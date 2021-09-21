@@ -37,6 +37,7 @@ public class C_DeleteComment_Action implements Action{
 				throw new Exception("C_DeleteComment_Action 오류 발생!");
 			} catch (Exception e) {
 				e.printStackTrace();
+				return null;
 			}
 	    }
 	    
