@@ -37,6 +37,7 @@ public class U_DeleteUser_Action implements Action{
 				throw new Exception("DeleteUser_Action DB 오류 발생!");
 			} catch (Exception e) {
 				e.printStackTrace();
+				return null;
 			}
 		}
 		
