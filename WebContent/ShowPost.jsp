@@ -119,8 +119,8 @@
                             <hr class="tm-hr-primary tm-mb-45">
                             <div class="tm-comment tm-mb-45">
                                 <figure class="tm-comment-figure">
-                                    <img src="img/comment-1.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                                    <figcaption class="tm-color-primary text-center">Mark Sonny</figcaption>
+                                    <img src="img/comment-1.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">                                    
+                                    <figcaption class="tm-color-primary text-center">${cl.c_user}</figcaption>
                                 </figure>
                                 <div>
                                     <p>
@@ -138,10 +138,9 @@
                             
                             <form action="insertComment.ucdo" method="post"class="mb-5 tm-comment-form">
                             <input type="hidden" name="c_post" value="${singlePost.pnum}">
+                            <input type="hidden" name="c_user" value="${userInfoData.id}">
                                 <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
-                                <div class="mb-4">
-                                    <input class="form-control" name="c_user" type="text">
-                                </div>                              
+                                                          
                                 <div class="mb-4">
                                     <textarea class="form-control" name="cment" rows="6"></textarea>
                                 </div>
