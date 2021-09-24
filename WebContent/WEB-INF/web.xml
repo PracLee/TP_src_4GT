@@ -14,7 +14,7 @@
   </error-page>
   <servlet>
     <servlet-name>fc</servlet-name>
-    <servlet-class>controller.Post_ctrl</servlet-class>
+    <servlet-class>controller.post_ctrl.Post_ctrl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>fc</servlet-name>
@@ -22,7 +22,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ucfc</servlet-name>
-    <servlet-class>controller.UserComment_ctrl</servlet-class>
+    <servlet-class>controller.userComment_Ctrl.UserComment_ctrl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ucfc</servlet-name>
