@@ -1,4 +1,4 @@
-package team;
+package controller.userComment_Ctrl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Action;
+import controller.ActionForward;
 import model.comments.CommentsDAO;
 import model.comments.CommentsVO;
 
