@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +112,9 @@
                         </div>
                         
                         <!-- Comments -->
+                        
                         <div>
+                        <c:forEach var="cl" items="${postOne_comments}">
                             <h2 class="tm-color-primary tm-post-title">Comments</h2>
                             <hr class="tm-hr-primary tm-mb-45">
                             <div class="tm-comment tm-mb-45">
@@ -121,16 +124,17 @@
                                 </figure>
                                 <div>
                                     <p>
-										${postOne_comments[0].cment}
+                                        ${cl.cment}										
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="tm-color-primary">답글</a>
                                         <a href="#" class="tm-color-primary">수정</a>
                                         <a href="#" class="tm-color-primary">삭제</a>
-                                        <span class="tm-color-primary">June 14, 2020</span>
+                                        <span class="tm-color-primary"> ${cl.cdate}</span>
                                     </div>                                                                               
-                                </div>                                
+                                </div>                                                               
                             </div>
+                            </c:forEach>
                             
                             <form action="insertComment.ucdo" method="post"class="mb-5 tm-comment-form">
                             <input type="hidden" name="c_post" value="${singlePost.pnum}">
