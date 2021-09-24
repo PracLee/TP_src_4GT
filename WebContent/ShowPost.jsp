@@ -5,18 +5,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Xtra Blog</title>
+	<title>Post</title>
 	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+	
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
-<!--
-    
-TemplateMo 553 Xtra Blog
+    <!-- 파비콘 -->
+<link rel="shortcut icon" href="img/favicon2.ico">
+<style type="text/css">
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
-https://templatemo.com/tm-553-xtra-blog
-
--->
+.mlogo {
+	width: 220px;
+}
+</style>
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -25,22 +34,21 @@ https://templatemo.com/tm-553-xtra-blog
                 <i class="fas fa-bars"></i>
             </button>
             <div class="tm-site-header">
-                <div class="mb-3 mx-auto tm-site-logo"><i class="fas fa-times fa-2x"></i></div>            
-                <h1 class="text-center">Xtra Blog</h1>
+                <div class="mb-3 mx-auto"><img alt="4TeamLogo" src="img/logo.png" class="mlogo"></div>  
             </div>
             <nav class="tm-nav" id="tm-nav">            
                 <ul>
-                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="main.ucdo" class="tm-nav-link">
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
-                    <li class="tm-nav-item active"><a href="post.html" class="tm-nav-link">
+                    <li class="tm-nav-item active"><a href="InsertPost.jsp" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
-                        Single Post
+                         Posting
                     </a></li>
-                    <li class="tm-nav-item"><a href="about.html" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
-                        About Xtra
+                         Login / Sign-up
                     </a></li>
                     <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
                         <i class="far fa-comments"></i>
@@ -119,15 +127,11 @@ https://templatemo.com/tm-553-xtra-blog
                                         sapien vel, euismod turpis.
                                     </p>
                                     <div class="d-flex justify-content-between">
-                                        <a href="#" class="tm-color-primary">REPLY</a>
+                                        <a href="#" class="tm-color-primary">답글</a>
+                                        <a href="#" class="tm-color-primary">수정</a>
+                                        <a href="#" class="tm-color-primary">삭제</a>
                                         <span class="tm-color-primary">June 14, 2020</span>
-                                    </div>
-                                    <form action="" method="post">
-                                    	<input type="submit" value="수정">
-                                    </form>
-                                    <form action="" method="post">
-                                    	<input type="submit" value="삭제">
-                                    </form>                                                 
+                                    </div>                                                                               
                                 </div>                                
                             </div>
                             
