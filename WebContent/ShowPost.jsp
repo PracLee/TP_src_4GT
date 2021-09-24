@@ -135,7 +135,7 @@
                                 </div>                                
                             </div>
                             
-                            <form action="userComment_Ctrl.jsp?action=" method="post"class="mb-5 tm-comment-form">
+                            <form action="insertComment.ucdo" method="post"class="mb-5 tm-comment-form">
                             <input type="hidden" name="c_post" value="${singlePost.pnum}">
                                 <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
                                 <div class="mb-4">

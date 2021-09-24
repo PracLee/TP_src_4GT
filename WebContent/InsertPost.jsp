@@ -86,7 +86,7 @@
                 <div class="col-12">                    
                     <div class="mb-4">
                         <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title" class="lmargin">포스팅하기</h2>
-                        <form action="post_ctrl.jsp?action=insertPostDB" method="post" style="display:block; width:1000px;" class="mb-5 ctext" >
+                        <form action="insertPostDB.pdo" method="post" style="display:block; width:1000px;" class="mb-5 ctext" >
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">						
