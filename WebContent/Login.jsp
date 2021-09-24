@@ -94,7 +94,7 @@ text-align-last: justify;
 				<hr class="tm-hr-primary tm-mb-55">
 				<!-- login form -->
 								
-					<form action="userComment_Ctrl.jsp?action=joinUs" method="post" style="display:inline-block;" class="mb-5 tm-comment-form" >
+					<form action="joinUs.ucdo" method="post" style="display:inline-block;" class="mb-5 tm-comment-form" >
 						<div class="mb-4">
 							<input class="form-control lwidth" style="width:360px" name="id" type="text" placeholder="ID">
 						</div>

@@ -136,7 +136,7 @@
 				<h2 style="color:#D25A53;">회원가입</h2>
 				<br>
 				<!-- signUp form -->
-				<form action="userComment_Ctrl.jsp?action=signUp" method="post" style="display: inline-block;"
+				<form action="signUp.ucdo" method="post" style="display: inline-block;"
 					class="mb-5 tm-comment-form">
 					<div class="mb-4">
 						<span class="signupt">아이디</span> <input class="form-control" style="width: 360px"
