@@ -17,14 +17,14 @@ import controller.ActionForward;
 @WebServlet("/Post_ctrl")
 public class Post_ctrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Post_ctrl() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Post_ctrl() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -67,15 +67,15 @@ public class Post_ctrl extends HttpServlet {
 			forward.setPath("error/error404.jsp");	// 404페이지로 보냄
 			forward.setRedirect(false);
 		}
-		
-		if(forward.isRedirect()) {
-			response.sendRedirect(forward.getPath());
+		if(forward != null) {
+			if(forward.isRedirect()) {
+				response.sendRedirect(forward.getPath());
+			}
+			else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+				dispatcher.forward(request, response);
+			}
 		}
-		else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-			dispatcher.forward(request, response);
-		}
-
 
 	}
 }
