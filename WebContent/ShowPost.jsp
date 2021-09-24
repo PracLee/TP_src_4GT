@@ -121,10 +121,7 @@
                                 </figure>
                                 <div>
                                     <p>
-                                        Praesent aliquam ex vel lectus ornare tritique. Nunc et eros
-                                        quis enim feugiat tincidunt et vitae dui. Nullam consectetur
-                                        justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus 
-                                        sapien vel, euismod turpis.
+										${postOne_comments[0].cment}
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="tm-color-primary">답글</a>

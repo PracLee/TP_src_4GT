@@ -18,7 +18,8 @@ public class C_SelectOne_Action implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
+		System.out.println("C_SelectOne_Action 들어옴");
 		// view에게 3가지 데이터 모두 전달
         // ① 단일 post  ② 좋아요 수  ③ 1의 댓글목록  ---- ①, ②는 post컨트롤 에게서 받음
 
@@ -26,9 +27,10 @@ public class C_SelectOne_Action implements Action{
 
 		// ① singlePost
 		request.setAttribute("singlePost", request.getAttribute("singlePost"));
-
+		System.out.println("singlePost : "+request.getAttribute("singlePost"));
 		// ② like
 	      request.setAttribute("likeInfo", request.getAttribute("likeInfo"));
+	      System.out.println("likeInfo : "+request.getAttribute("likeInfo"));
 
 	      
 	    // ③ postOne_comments
@@ -41,13 +43,14 @@ public class C_SelectOne_Action implements Action{
 	    
 	      // DAO수행 필요데이터 SET
 	    commentVO.setC_post(((PostVO)request.getAttribute("singlePost")).getPnum());
-
+	    System.out.println(commentVO.getC_post());
 		  // DAO수행
 	    ArrayList<CommentsVO> postOne_comments = commentDAO.SelectPost(commentVO);
 	      
 	      // ③ request 전달
 	    request.setAttribute("postOne_comments", postOne_comments);
-		
+	    System.out.println("-----------------------------------------------------------");
+		System.out.println("postOne_comments : "+postOne_comments);
 	    
 		// 페이지 전송설정
 		forward.setRedirect(false); // forward
