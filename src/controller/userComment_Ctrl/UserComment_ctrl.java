@@ -41,18 +41,18 @@ public class UserComment_ctrl extends HttpServlet {
 		String cp=request.getContextPath();
 		String action=uri.substring(cp.length()+1); // +1 ==  "/"까지 sub하기 위함
 		
-		
+		System.out.println("UCC : "+action);
 	// [요청 수행]
 		ActionForward forward = null;
 		
 	 ////////////////////////////////////comments전달 ////////////////////////////////////
 		
 		// [단일카테고리 목록] showList
-		if(action.equals("post")) {
+		if(action.equals("post.ucdo")) {
 			forward = new Post_Action().execute(request, response);
 		}
 		// [메인페이지] post_ctrl -> main
-		else if(action.equals("main")) {
+		else if(action.equals("main.ucdo")) {
 			forward = new Main_Action().execute(request, response);
 		}
 		
@@ -60,12 +60,12 @@ public class UserComment_ctrl extends HttpServlet {
 	////////////////////////////////////userInfo////////////////////////////////////
 		
 		// [회원가입] --- view에서 → param (id,pw) 받아야 함 
-		else if(action.equals("signUp")) {
+		else if(action.equals("signUp.ucdo")) {
 			new U_SignUp_Action().execute(request, response);
 			return; //가입 이후 이동페이지 없으므로 종료
 		}
 		// [로그인] 로그인시 session설정 → userInfoData
-		else if(action.equals("joinUs")) {
+		else if(action.equals("joinUs.ucdo")) {
 			forward = new U_JoinUs_Action().execute(request, response);
 			
 			// 로그인 실패시 종료
@@ -77,7 +77,7 @@ public class UserComment_ctrl extends HttpServlet {
 		   // VIEW parameter 받아야할 것 
 		   //     type → "id" 또는 "pw"
 		   //     id = "pw" + "name"    ||   pw = "id"
-		else if(action.equals("infoHelp")) {
+		else if(action.equals("infoHelp.ucdo")) {
 			forward = new U_InfoHelp_Action().execute(request, response);
 		}
 		
@@ -87,7 +87,7 @@ public class UserComment_ctrl extends HttpServlet {
 
 		
 		//[마이페이지 → 정보수정] --- view에서 → param (id,pw,name) 모두 받아야 함
-		else if(action.equals("updateUser")) {
+		else if(action.equals("updateUser.ucdo")) {
 			forward = new U_UpdateUser_Action().execute(request, response);
 			
 			// 반영 실패시 종료
@@ -96,7 +96,7 @@ public class UserComment_ctrl extends HttpServlet {
 			}
 		}
 		//[마이페이지 → 회원탈퇴] session 초기화
-		else if (action.equals("deleteUser")) {
+		else if (action.equals("deleteUser.ucdo")) {
 			forward = new U_DeleteUser_Action().execute(request, response);
 			
 			// 반영 실패시 종료
@@ -110,11 +110,11 @@ public class UserComment_ctrl extends HttpServlet {
 		
 		// [댓글 읽기 R]
 		// [단일 게시물---showOne] 구성 (게시물+좋아요+댓글) 
-		else if (action.equals("selectOne")) {
+		else if (action.equals("selectOne.ucdo")) {
 			forward = new C_SelectOne_Action().execute(request, response);
 		}
 		// [댓글  생성 C]
-		else if (action.equals("insertComment")) {
+		else if (action.equals("insertComment.ucdo")) {
 			forward = new C_InsertComment_Action().execute(request, response);
 			
 			// 반영 실패시 종료
@@ -123,7 +123,7 @@ public class UserComment_ctrl extends HttpServlet {
 			}
 		}
 		//[댓글  수정 U]
-		else if (action.equals("editComment")) {
+		else if (action.equals("editComment.ucdo")) {
 			forward = new C_EditComment_Action().execute(request, response);
 			
 			// 반영 실패시 종료
@@ -132,7 +132,7 @@ public class UserComment_ctrl extends HttpServlet {
 			}
 		}
 		//[댓글 삭제 D]
-		else if (action.equals("deleteComment")) {
+		else if (action.equals("deleteComment.ucdo")) {
 			forward = new C_DeleteComment_Action().execute(request, response);
 			
 			// 반영 실패시 종료

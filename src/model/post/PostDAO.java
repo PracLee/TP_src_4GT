@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -74,42 +75,58 @@ public class PostDAO {
 
 	// SELECT ONE -> 글 보기
 	public PostVO SelectOne(PostVO vo) {
-		Connection conn=DBCP.connect();
-		PostVO data=null;
-		PreparedStatement pstmt=null;
-		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateOrigin;
-		String dateToStr;
-		try{
-			pstmt=conn.prepareStatement(sql_SELECT_ONE);
-			pstmt.setInt(1, vo.getPnum());
-			ResultSet rs=pstmt.executeQuery();
-			if(rs.next()){
-				data=new PostVO();
-				data.setPnum(rs.getInt("pnum"));
-				data.setViews(rs.getInt("views"));
-				data.setPlike(rs.getInt("plike"));
-				data.setCategory(rs.getString("category"));
-				data.setTitle(rs.getString("title"));
-				data.setContent(rs.getString("content"));
-				data.setWriter(rs.getString("writer"));
-				dateOrigin = rs.getDate("pdate");
-				dateToStr = dateFix.format(dateOrigin);
-				data.setPdate(dateToStr);
-				data.setP_user(rs.getString("p_user"));
-				data.setPath(rs.getString("path"));
-			}	
-			rs.close();
-		}
-		catch(Exception e){
-			System.out.println("PostDAO SelectOne()에서 출력");
-			e.printStackTrace();
-		}
-		finally {
-			DBCP.disconnect(pstmt,conn);
-		}
-		return data;
-	}
+	      Connection conn=DBCP.connect();
+	      PostVO data=null;
+	      PreparedStatement pstmt=null;
+	      SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+	      Date dateOrigin;
+	      String dateToStr;
+	      try{
+	         conn.setAutoCommit(false);
+	         
+	         //글보기
+	         pstmt=conn.prepareStatement(sql_SELECT_ONE);
+	         pstmt.setInt(1, vo.getPnum());
+	         ResultSet rs=pstmt.executeQuery();
+	         if(rs.next()){
+	            data=new PostVO();
+	            data.setPnum(rs.getInt("pnum"));
+	            data.setViews(rs.getInt("views"));
+	            data.setPlike(rs.getInt("plike"));
+	            data.setCategory(rs.getString("category"));
+	            data.setTitle(rs.getString("title"));
+	            data.setContent(rs.getString("content"));
+	            data.setWriter(rs.getString("writer"));
+	            dateOrigin = rs.getDate("pdate");
+	            dateToStr = dateFix.format(dateOrigin);
+	            data.setPdate(dateToStr);
+	            data.setP_user(rs.getString("p_user"));
+	            data.setPath(rs.getString("path"));
+	         }   
+	         rs.close();
+	         
+	         //조회수 업
+	         pstmt=conn.prepareStatement(sql_ViewsUp); //
+	         pstmt.setInt(1, vo.getPnum());
+	         pstmt.executeUpdate();
+	         
+	         conn.commit(); // commit;
+	         
+	      }
+	      catch(Exception e){
+	         System.out.println("PostDAO SelectOne()에서 출력");
+	         e.printStackTrace();
+	         try {
+	            conn.rollback();
+	         } catch (SQLException e1) {
+	            e1.printStackTrace();
+	         }
+	      }
+	      finally {
+	         DBCP.disconnect(pstmt,conn);
+	      }
+	      return data;
+	   }
 	
 	// INSERT -> pnum, pdate, views, plike는 자동입력
 	public boolean InsertDB(PostVO vo) {

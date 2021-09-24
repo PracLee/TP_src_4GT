@@ -124,7 +124,7 @@
                                 </figure>
                                 <div>
                                     <p>
-                                        ${cl.cment}
+                                        ${cl.cment}										
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="tm-color-primary">답글</a>

@@ -14,18 +14,18 @@
   </error-page>
   <servlet>
     <servlet-name>fc</servlet-name>
-    <servlet-class>controller.common.Post_ctrl</servlet-class>
+    <servlet-class>controller.post_ctrl.Post_ctrl</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>pfc</servlet-name>
+    <servlet-name>fc</servlet-name>
     <url-pattern>*.pdo</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ucfc</servlet-name>
-    <servlet-class>controller.common.UserComment_ctrl</servlet-class>
+    <servlet-class>controller.userComment_Ctrl.UserComment_ctrl</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>fc</servlet-name>
+    <servlet-name>ucfc</servlet-name>
     <url-pattern>*.ucdo</url-pattern>
   </servlet-mapping>
 </web-app>
