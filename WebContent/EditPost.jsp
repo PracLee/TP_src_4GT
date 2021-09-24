@@ -5,18 +5,26 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Xtra Blog</title>
+	<title>EditPost</title>
 	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="img/favicon2.ico">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
-<!--
-    
-TemplateMo 553 Xtra Blog
+<style type="text/css">
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
-https://templatemo.com/tm-553-xtra-blog
-
--->
+.mlogo {
+	width: 220px;
+}
+</style>
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -30,7 +38,7 @@ https://templatemo.com/tm-553-xtra-blog
             </div>
             <nav class="tm-nav" id="tm-nav">            
                 <ul>
-                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="main.ucdo" class="tm-nav-link">
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
@@ -38,7 +46,7 @@ https://templatemo.com/tm-553-xtra-blog
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
-                    <li class="tm-nav-item"><a href="login.html" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Login /	Sign-up
                     </a></li>

@@ -4,21 +4,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Xtra Blog</title>
+	<title>main</title>
 	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+	
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon2.ico">
-<!--
-    
-TemplateMo 553 Xtra Blog
+<style type="text/css">
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
-https://templatemo.com/tm-553-xtra-blog
+.mlogo {
+	width: 220px;
+}
+	
+</style>
 
--->
+
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -27,15 +38,27 @@ https://templatemo.com/tm-553-xtra-blog
                 <i class="fas fa-bars"></i>
             </button>
             <div class="tm-site-header">
-                <div class="mb-3 mx-auto"><img alt="4TeamLogo" src="img/logo.png" style="width:220px;"></div>            
+                <div class="mb-3 mx-auto"><img alt="4TeamLogo" src="img/logo.png" class="mlogo"></div>            
                 
             </div>
             <nav class="tm-nav" id="tm-nav">            
                 <ul>
-                    <li class="tm-nav-item active"><a href="userComment_Ctrl.jsp?action=main" class="tm-nav-link">
+                    <li class="tm-nav-item active subCmenu">
+                    <a href="main.ucdo" class="tm-nav-link">
                         <i class="fas fa-home"></i>
                         Blog Home
-                    </a></li>
+                    </a>
+                    <!--  
+                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>인기글</a>
+                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>치킨</a>
+                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>피자</a>
+                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>햄버거</a>
+                   	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>한식</a>
+                   	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>중식</a>
+                   	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>일식</a>
+                    -->
+                    </li>
+                                       
                     <li class="tm-nav-item"><a href="InsertPost.jsp" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
                         Posting
@@ -43,7 +66,13 @@ https://templatemo.com/tm-553-xtra-blog
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Login / Sign-up
-                    </a></li>
+                    </a>
+                    <div class="con">
+                    	<a href="#">로그인</a><br>
+                    	<a href="#">회원가입</a><br>
+                    	<a href="#">id/pw찾기</a><br>                    	
+                    </div>
+                    </li>
                     <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
                         <i class="far fa-comments"></i>
                         Category / 임시
@@ -105,6 +134,7 @@ https://templatemo.com/tm-553-xtra-blog
                     </div>
                 </article>
                 </c:forEach>
+                
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
@@ -211,6 +241,7 @@ https://templatemo.com/tm-553-xtra-blog
             </footer>
         </main>
     </div>
+    
     <script src="js/jquery.min.js"></script>
     <script src="js/templatemo-script.js"></script>
 </body>
