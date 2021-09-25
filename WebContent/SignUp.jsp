@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,13 +129,28 @@
 						class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
 					</a></li>
 					<li class="tm-nav-item active"><a href="about.html"
+					
+					<c:choose>		
+						<c:when test="${userInfoData==null}">
+					<li class="tm-nav-item active"><a href="Login.jsp"
 						class="tm-nav-link"> <i class="fas fa-users"></i> Login /
 							Sign-up
 					</a></li>
-					<li class="tm-nav-item"><a href="contact.html"
-						class="tm-nav-link"> <i class="far fa-comments"></i> Contact
-							Us
-					</a></li>
+					</c:when>
+					</c:choose>
+					
+          <c:choose>		
+						<c:when test="${userInfoData!=null}">
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Logout
+                    </a></li>
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        MyPage
+                    </a></li>
+                    </c:when>
+					</c:choose>
 				</ul>
 			</nav>
 			<div class="tm-mb-65">
@@ -148,9 +164,7 @@
 					class="fab fa-linkedin tm-social-icon"></i>
 				</a>
 			</div>
-			<p class="tm-mb-80 pr-5 text-white">Xtra Blog is a multi-purpose
-				HTML template from TemplateMo website. Left side is a sticky menu
-				bar. Right side content will scroll up and down.</p>
+			
 		</div>
 	</header>
 	<div class="container-fluid">

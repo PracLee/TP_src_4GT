@@ -47,14 +47,28 @@
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
+                    
+                    <c:choose>		
+						<c:when test="${userInfoData==null}">
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Login / Sign-up
                     </a></li>
-                    <li class="tm-nav-item active"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
-                        <i class="far fa-comments"></i>
-                        Category / 임시
+                    </c:when>
+					</c:choose>
+                    
+                    <c:choose>		
+						<c:when test="${userInfoData!=null}">
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Logout
                     </a></li>
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        MyPage
+                    </a></li>
+                    </c:when>
+					</c:choose>
                 </ul>
             </nav>
             <div class="tm-mb-65">
