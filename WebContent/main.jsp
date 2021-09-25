@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
 	<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 	<meta charset="UTF-8">
@@ -22,12 +22,25 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 .mlogo {
 	width: 220px;
 }
 	
 </style>
+<script type="text/javascript">
+function forbid() {
+	alert('로그인을 해야 이용가능한 서비스입니다!');
+}
+function logout(){
+	result=confirm("로그아웃 하시겠습니까??");
+	if(result==true){
+		location.href="logOut.ucdo";
+	}
+	else{
+		return;
+	}
+}
+</script>
 
 
 </head>
@@ -58,11 +71,27 @@
                    	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>일식</a>
                     -->
                     </li>
-                                       
+                      <c:choose>		
+						<c:when test="${userInfoData!=null}">                 
+
                     <li class="tm-nav-item"><a href="InsertPost.jsp" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
+
+                    </c:when>
+					</c:choose>
+					
+					<c:choose>		
+						<c:when test="${userInfoData==null}">                 
+                    <li class="tm-nav-item"><a href="#" onClick="forbid()" class="tm-nav-link">
+                        <i class="fas fa-pen"></i>
+                        Posting
+                    </a></li>
+                    </c:when>
+					</c:choose>
+					
+
                     <c:choose>		
 						<c:when test="${userInfoData==null}">
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
@@ -70,8 +99,9 @@
                         Login / Sign-up
                     </a>
 
-                    <!--                     
-                    <div class="con">
+                    <!-- 
+                    <div>
+
                     	<a href="#">로그인</a><br>
                     	<a href="#">회원가입</a><br>
                     	<a href="#">id/pw찾기</a><br>                    	
@@ -83,14 +113,13 @@
 					
 					 <c:choose>		
 						<c:when test="${userInfoData!=null}">
-                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+
+                    <li class="tm-nav-item"><a href="#" onclick="logout()" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Logout
                     </a></li>
-                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="MyPage.jsp" class="tm-nav-link">
 
-                    </li>
-                    <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
                         <i class="far fa-comments"></i>
                         MyPage
                     </a></li>
@@ -133,8 +162,8 @@
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
 
-                    <a href="selectOne.pdo" class="effect-lily tm-post-link tm-pt-60">
                     <a href="selectOne.pdo?pnum=${pl.pnum}" class="effect-lily tm-post-link tm-pt-60">
+
                         <div class="tm-post-link-inner">
                             <img src="img/img-05.jpg" alt="Image" class="img-fluid">                            
                         </div>

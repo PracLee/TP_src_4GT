@@ -1,22 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="kor">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EditPost</title>
+<title>UpdateUser</title>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
-<!-- https://fontawesome.com/ -->
+
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="img/favicon2.ico">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
-
 <style type="text/css">
+#ftsw {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.signupt {
+	text-align: left;
+	display: block;
+	margin-left: 10px;
+}
+
 @font-face {
 	font-family: 'NanumSquareRound';
 	src:
@@ -53,10 +61,10 @@ function logout(){
 				<i class="fas fa-bars"></i>
 			</button>
 			<div class="tm-site-header">
-				<div class="mb-3 mx-auto tm-site-logo">
-					<i class="fas fa-times fa-2x"></i>
+				<div class="mb-3 mx-auto">
+					<img alt="4TeamLogo" src="img/logo.png" class="mlogo">
 				</div>
-				<h1 class="text-center">Xtra Blog</h1>
+
 			</div>
 			<nav class="tm-nav" id="tm-nav">
 				<ul>
@@ -64,13 +72,25 @@ function logout(){
 						class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
 					</a></li>
 
-					<li class="tm-nav-item active"><a href="InsertPost.jsp"
-						class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-					</a></li>
+					<c:choose>
+						<c:when test="${userInfoData!=null}">
+							<li class="tm-nav-item"><a href="InsertPost.jsp"
+								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
+							</a></li>
+						</c:when>
+					</c:choose>
 
 					<c:choose>
 						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item"><a href="#" onclick="logout()"
+							<li class="tm-nav-item"><a href="#" onClick="forbid()"
+								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
+							</a></li>
+						</c:when>
+					</c:choose>
+
+					<c:choose>
+						<c:when test="${userInfoData==null}">
+							<li class="tm-nav-item "><a href="Login.jsp"
 								class="tm-nav-link"> <i class="fas fa-users"></i> Login /
 									Sign-up
 							</a></li>
@@ -79,10 +99,10 @@ function logout(){
 
 					<c:choose>
 						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="logOut.ucdo"
+							<li class="tm-nav-item"><a href="#" onclick="logout()"
 								class="tm-nav-link"> <i class="fas fa-users"></i> Logout
 							</a></li>
-							<li class="tm-nav-item"><a href="MyPage.jsp"
+							<li class="tm-nav-item active"><a href="MyPage.jsp"
 								class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
 							</a></li>
 						</c:when>
@@ -116,64 +136,35 @@ function logout(){
 				</form>
 			</div>
 		</div>
-		<div class="row tm-row tm-mb-45">
-			<div class="col-12">
+		<div class="row tm-row">
+			<div style="text-align: center;" class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
-
-
+				<h2 style="color: #D25A53;">회원정보변경</h2>
+				<br>
+				<!-- signUp form -->
+				<form action="updateUser.ucdo" method="post"
+					style="display: inline-block;" class="mb-5 tm-comment-form">
+					<div class="mb-4">
+						<span class="signupt">아이디</span> <input class="form-control"
+							style="width: 360px" name="id" type="text" placeholder="ID">
+					</div>
+					<div class="mb-4">
+						<span class="signupt">비밀번호</span> <input class="form-control"
+							name="pw" type="password" placeholder="PW">
+					</div>
+					<div class="mb-4">
+						<span class="signupt">비밀번호 확인</span> <input class="form-control"
+							name="pw" type="password" placeholder="PW">
+					</div>
+					<div class="mb-4">
+						<span class="signupt">이&nbsp;름</span> <input class="form-control"
+							name="name" type="text" placeholder="NAME">
+					</div>
+					<div class="text-right">
+						<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">정보수정</button>
+					</div>
+				</form>
 			</div>
-
-		</div>
-		<div class="row tm-row tm-mb-40">
-			<div class="col-12">
-				<div class="mb-4">
-					<h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title"
-						class="lmargin">포스팅 수정</h2>
-					<form action="editPostDB.pdo" method="post"
-						style="display: block; width: 1000px;" class="mb-5 ctext">
-
-						<input type="hidden" name="writer" value="${userInfoData.name}">
-						<input type="hidden" name="p_user" value="${userInfoData.id}">
-						<div class="mb-4">
-							<input class="form-control"
-								style="width: 100%; border-color: white; font-size: 25px;"
-								name="title" type="text" placeholder="제목을 입력하세요"
-								value="${PostVO.title}">
-
-						</div>
-						<hr class="tm-hr-mycss">
-						<div class="mb-4">
-							<label class="col-sm-3 col-form-label tm-color-primary">내용</label>
-							<textarea class="form-control mr-0 ml-auto" name="content"
-								id="message" rows="8" required style="height: 800px;">${PostVO.content}</textarea>
-						</div>
-						<div class="mb-4">
-							<label class=" col-form-label tm-color-primary"
-								style="font-size: 28px;">category</label> <select
-								name="category">
-								<option ${PostVO.category=='치킨' ? 'selected':'' }>치킨</option>
-								<option ${PostVO.category=='피자' ? 'selected':'' }>피자</option>
-								<option ${PostVO.category=='햄버거' ? 'selected':'' }>햄버거</option>
-								<option ${PostVO.category=='한식' ? 'selected':'' }>한식</option>
-								<option ${PostVO.category=='중식' ? 'selected':'' }>중식</option>
-								<option ${PostVO.category=='일식' ? 'selected':'' }>일식</option>
-							</select>
-						</div>
-						<div class="text-right">
-							<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">글
-								수정하기</button>
-						</div>
-					</form>
-
-				</div>
-			</div>
-		</div>
-
-		<div class="row tm-row tm-mb-60">
-			<div class="col-12">
-				<hr class="tm-hr-primary  tm-mb-55">
-			</div>
-
 
 		</div>
 		<footer class="row tm-row">
@@ -185,6 +176,9 @@ function logout(){
 				Copyright 2020 Xtra Blog Company Co. Ltd.</div>
 		</footer> </main>
 	</div>
+
+
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
 </body>
