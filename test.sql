@@ -39,6 +39,7 @@ CREATE TABLE likeInfo(
 );
 
 /* SELECT ALL */
+select * from all_tables;
 select * from userInfo;
 select * from post;
 select * from comments;

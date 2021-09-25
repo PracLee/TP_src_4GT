@@ -54,13 +54,18 @@
                          Login / Sign-up
                     </a></li>
                     </c:when>
-					</c:choose>
+					  </c:choose>
                     
                     <c:choose>		
 						<c:when test="${userInfoData!=null}">
                     <li class="tm-nav-item"><a href="" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Logout
+
+                    </a></li>
+                    <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                         Login / Sign-up
                     </a></li>
                     <li class="tm-nav-item"><a href="" class="tm-nav-link">
                         <i class="far fa-comments"></i>
@@ -135,7 +140,7 @@
                                 </figure>
                                 <div>
                                     <p>
-                                        ${cl.cment}
+                                        ${cl.cment}                                       									
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="tm-color-primary">답글</a>

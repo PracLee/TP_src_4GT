@@ -47,9 +47,10 @@
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
-                    
+                  
                     <c:choose>		
 						<c:when test="${userInfoData==null}">                   
+
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Login /	Sign-up
