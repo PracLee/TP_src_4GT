@@ -132,7 +132,8 @@ public class CommentsDAO {
       PreparedStatement pstmt=null;
       try{
          pstmt=conn.prepareStatement(sql_UPDATE);
-         pstmt.setString(1, vo.getCment());;
+         pstmt.setString(1, vo.getCment());
+         pstmt.setInt(2, vo.getCnum()); // 9/25 수정(이예나)
          pstmt.executeUpdate();
          res=true;
       }
@@ -164,7 +165,7 @@ public class CommentsDAO {
             data.setCdate(rs.getDate("cdate"));
             data.setC_user(rs.getString("c_user"));
             data.setC_post(rs.getInt("c_post"));
-            datas.add(vo);
+            datas.add(data); // 9/25 수정(이예나)
          }
          rs.close();
       }

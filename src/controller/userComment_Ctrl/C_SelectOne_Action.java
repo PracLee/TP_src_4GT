@@ -44,6 +44,7 @@ public class C_SelectOne_Action implements Action{
 	      // DAO수행 필요데이터 SET
 	    commentVO.setC_post(((PostVO)request.getAttribute("singlePost")).getPnum());
 	    System.out.println(commentVO.getC_post());
+	    
 		  // DAO수행
 	    ArrayList<CommentsVO> postOne_comments = commentDAO.SelectPost(commentVO);
 	      
