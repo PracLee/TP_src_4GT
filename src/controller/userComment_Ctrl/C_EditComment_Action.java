@@ -33,9 +33,10 @@ public class C_EditComment_Action implements Action{
 	    //DAO 수행
 	    // 댓글 수정 완료 --> showPost이동
 	    if (commentDAO.UpdateDB(commentVO)) {
-	    	String parameter = "?pnum="+request.getParameter("c_post");
-	    	forward.setRedirect(false); // sendRedirect
-	    	forward.setPath("selectOne.pdo"+parameter); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)페이지로 이동하기 위해)
+	    	//selectOne.pdo 수행하기 위한, 데이터 set
+	    	request.setAttribute("pnum", request.getParameter("c_post"));
+	    	forward.setRedirect(false);
+	    	forward.setPath("selectOne.pdo");
 	    	
 	    	
 	    }
