@@ -44,7 +44,7 @@ public class U_DeleteUser_Action implements Action{
 		}
 		
 		// 페이지 전송설정
-		forward.setRedirect(true); // forward
+		forward.setRedirect(true); // sendRedirect
 		forward.setPath("Index.jsp");
 
 
