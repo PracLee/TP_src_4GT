@@ -6,14 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
+<title>MyPage</title>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="img/favicon2.ico">
-
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+<link rel="shortcut icon" href="img/favicon2.ico">
 <style type="text/css">
 @font-face {
 	font-family: 'NanumSquareRound';
@@ -28,23 +26,42 @@
 	width: 220px;
 }
 
-.btw {
-	text-align-last: justify;
+#ftsw {
+	font-size: 20px;
+	font-weight: bold;
 }
 
-.fset {
-	display: inline-block;
-	width: 360px;
+.signupt {
+	text-align: left;
+	display: block;
+	margin-left: 10px;
 }
 </style>
 <script type="text/javascript">
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
-function infoHelp(){
-	window.open("infoHelp.jsp","id/pw찾기","width=800px,height=600px");
+function logout(){
+	result=confirm("로그아웃 하시겠습니까??");
+	if(result==true){
+		location.href="logOut.ucdo";
+	}
+	else{
+		return;
+	}
+}
+function delUser(){
+	result=confirm("회원탈퇴 하시겠습니까?");
+	if(result==true){
+		document.form4.action.value="deleteUser.ucdo";
+		document.form4.submit();
+	}
+	else{
+		return;
+	}
 }
 </script>
+
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -57,11 +74,10 @@ function infoHelp(){
 				<div class="mb-3 mx-auto">
 					<img alt="4TeamLogo" src="img/logo.png" class="mlogo">
 				</div>
-
 			</div>
 			<nav class="tm-nav" id="tm-nav">
 				<ul>
-					<li class="tm-nav-item"><a href="main.ucdo"
+					<li class="tm-nav-item "><a href="main.ucdo"
 						class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
 					</a></li>
 
@@ -92,10 +108,10 @@ function infoHelp(){
 
 					<c:choose>
 						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="logOut.ucdo"
+							<li class="tm-nav-item"><a href="#" onclick="logout()"
 								class="tm-nav-link"> <i class="fas fa-users"></i> Logout
 							</a></li>
-							<li class="tm-nav-item"><a href="MyPage.jsp"
+							<li class="tm-nav-item active"><a href="MyPage.jsp"
 								class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
 							</a></li>
 						</c:when>
@@ -130,32 +146,82 @@ function infoHelp(){
 			</div>
 		</div>
 		<div class="row tm-row">
-			<div style="text-align: center;" class="col-12">
+			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
-				<!-- login form -->
 
-				<form action="joinUs.ucdo" method="post"
-					class="fset mb-5 tm-comment-form">
-					<div class="mb-4">
-						<input class="form-control" name="id" type="text" placeholder="ID">
-					</div>
-					<div class="mb-4">
-						<input class="form-control" name="pw" type="password"
-							placeholder="PW">
-					</div>
-					<div class="text-right">
-						<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">login</button>
-					</div>
-					<div class="mb-4 btw">
-						<a style="text-align: left;" href="#" onclick="infoHelp()">id/pw찾기</a>
-						<a class="text-right" href="SignUp.jsp">회원가입</a>
-					</div>
-				</form>
 			</div>
 		</div>
+		<div class="row tm-row">
+			<div class="col-lg-8 tm-post-col">
+				<div class="tm-post-full">
+					<div style="text-align: center;" class="col-12">
 
-		<footer class="row tm-row"
-			style="position: fixed; bottom: 0; width: 80%;">
+						<h2 style="color: #D25A53;">내 정보</h2>
+						<br>
+						<!-- MyPage -->
+						<div style="display: inline-block;" class="mb-5 tm-comment-form">
+							<div class="mb-4">
+								<span class="signupt">아이디</span> <input class="form-control"
+									style="width: 360px" name="id" type="text" placeholder="ID"
+									value="${userInfoData.id}" readonly>
+							</div>
+							<div class="mb-4">
+								<span class="signupt">비밀번호</span> <input class="form-control"
+									name="pw" type="password" placeholder="PW"
+									value="${userInfoData.pw}" readonly>
+							</div>
+							<div class="mb-4">
+								<span class="signupt">이&nbsp;름</span> <input
+									class="form-control" name="name" type="text" placeholder="NAME"
+									value="${userInfoData.name}" readonly>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<aside class="col-lg-4 tm-aside-col">
+				<div class="tm-post-sidebar">
+					<hr class="mb-3 tm-hr-primary">
+					<h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
+					<ul class="tm-mb-75 pl-5 tm-category-list">
+						<li><a href="#" class="tm-color-primary">내 게시글보기</a></li>
+						<li><a href="UdateUser.jsp" class="tm-color-primary">회원정보
+								변경</a></li>
+						<li>
+							<form method="post" name="form4">
+								<input type="hidden" name="id" value="${userInfoData.id}">
+								<a href="#" onclick="delUser()" class="tm-color-primary">회원탈퇴</a>
+							</form>
+						</li>
+
+					</ul>
+					<hr class="mb-3 tm-hr-primary">
+					<h2 class="tm-mb-40 tm-post-title tm-color-primary">좋아요 누른 게시글</h2>
+					<a href="#" class="d-block tm-mb-40">
+						<figure>
+							<img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
+							<figcaption class="tm-color-primary">Duis mollis
+								diam nec ex viverra scelerisque a sit</figcaption>
+						</figure>
+					</a> <a href="#" class="d-block tm-mb-40">
+						<figure>
+							<img src="img/img-05.jpg" alt="Image" class="mb-3 img-fluid">
+							<figcaption class="tm-color-primary">Integer quis
+								lectus eget justo ullamcorper ullamcorper</figcaption>
+						</figure>
+					</a> <a href="#" class="d-block tm-mb-40">
+						<figure>
+							<img src="img/img-06.jpg" alt="Image" class="mb-3 img-fluid">
+							<figcaption class="tm-color-primary">Nam lobortis
+								nunc sed faucibus commodo</figcaption>
+						</figure>
+					</a>
+				</div>
+			</aside>
+		</div>
+		<footer class="row tm-row">
 			<div class="col-md-6 col-12 tm-color-gray">
 				Design: <a rel="nofollow" target="_parent"
 					href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
