@@ -30,7 +30,7 @@ public class C_DeleteComment_Action implements Action{
 	    //DAO 수행
 	    // 댓글 삭제 완료
 	    if (commentDAO.DeleteDB(commentVO)) {
-	    	String parameter = "?pnum="+request.getParameter("c_post");
+	    	String parameter = "?pnum="+request.getParameter("c_post"); // parameter 추가
 	    	forward.setRedirect(false); // sendRedirect
 	    	forward.setPath("selectOne.pdo"+parameter); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)페이지로 이동하기 위해)
 	    }
