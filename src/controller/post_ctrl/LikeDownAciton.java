@@ -22,7 +22,8 @@ public class LikeDownAciton implements Action{
 		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
 		if(PDAO.LikesDown(PVO)){
 			int pnum = Integer.parseInt(request.getParameter("pnum"));
-			action.setPath("selectOne.pdo?pnum"+pnum);
+			request.setAttribute("pnum", pnum);
+			action.setPath("selectOne.pdo");
 			action.setRedirect(true);
 		}else{
 			try {

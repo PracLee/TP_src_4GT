@@ -27,7 +27,9 @@ public class SelectOneAction implements Action{
 		UserInfoVO UVO = new UserInfoVO();
 		LikeInfoVO LVO = new LikeInfoVO();
 		LikeInfoDAO LDAO = new LikeInfoDAO();
-		PVO.setPnum(Integer.parseInt(request.getParameter("pnum"))); // pnum값으로 찾는거니 Pnum만 세팅 후 넘겨줌
+		if(request.getParameter("pnum")!=null) {
+			PVO.setPnum(Integer.parseInt(request.getParameter("pnum"))); // pnum값으로 찾는거니 Pnum만 세팅 후 넘겨줌
+		}
 		/*if (PDAO.ViewsUp(PVO)) { // 포스트를 볼때 view 업 -> Model 트랜잭션 처리
 			request.setAttribute("singlePost", PDAO.SelectOne(PVO));
 		} else {
@@ -50,5 +52,5 @@ public class SelectOneAction implements Action{
 		System.out.println("넘어가는 action : " + action);
 		return action;
 	}
-	
+
 }
