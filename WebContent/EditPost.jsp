@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EditPost</title>
@@ -13,6 +15,7 @@
 <link rel="shortcut icon" href="img/favicon2.ico">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+
 <style type="text/css">
 @font-face {
 	font-family: 'NanumSquareRound';
@@ -128,6 +131,7 @@ function logout(){
 						class="lmargin">포스팅 수정</h2>
 					<form action="editPostDB.pdo" method="post"
 						style="display: block; width: 1000px;" class="mb-5 ctext">
+
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">
@@ -169,7 +173,6 @@ function logout(){
 			<div class="col-12">
 				<hr class="tm-hr-primary  tm-mb-55">
 			</div>
-
 
 
 		</div>

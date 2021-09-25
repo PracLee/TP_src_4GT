@@ -1,14 +1,13 @@
-package team;
+package controller.userComment_Ctrl;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.comments.CommentsDAO;
-import model.comments.CommentsVO;
+import controller.Action;
+import controller.ActionForward;
 import model.userInfo.UserInfoDAO;
 import model.userInfo.UserInfoVO;
 
@@ -33,6 +32,9 @@ public class U_InfoHelp_Action implements Action{
 			
 			// DAO수행
 			userInfoVO = userInfoDAO.FindID(userInfoVO);
+			
+			// informID 페이지 전송
+			forward.setPath("informID.jsp");
 		}
 		// PW찾기 --> view 반환 == 객체 userInfo
 		else if (request.getParameter("type").equals("pw")) {
@@ -41,6 +43,9 @@ public class U_InfoHelp_Action implements Action{
 			
 			// DAO수행
 			userInfoVO = userInfoDAO.FindPW(userInfoVO);
+			
+			// informPW 페이지 전송
+			forward.setPath("informPW.jsp");
 		}
 		
 		
@@ -50,7 +55,7 @@ public class U_InfoHelp_Action implements Action{
 		
 		// 페이지 전송설정
 		forward.setRedirect(false); // forward
-		forward.setPath("FindHelp.jsp");
+
 
 
 		return forward;

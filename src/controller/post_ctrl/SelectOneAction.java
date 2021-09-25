@@ -20,19 +20,23 @@ public class SelectOneAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("SelectOneAction 들어옴");
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		PostVO PVO = new PostVO();
 		UserInfoVO UVO = new UserInfoVO();
 		LikeInfoVO LVO = new LikeInfoVO();
 		LikeInfoDAO LDAO = new LikeInfoDAO();
-		PVO.setPnum(Integer.parseInt(request.getParameter("pnum"))); // pnum값으로 찾는거니 Pnum만 세팅 후 넘겨줌
+		if(request.getParameter("pnum")!=null) {
+			PVO.setPnum(Integer.parseInt(request.getParameter("pnum"))); // pnum값으로 찾는거니 Pnum만 세팅 후 넘겨줌
+		}
 		/*if (PDAO.ViewsUp(PVO)) { // 포스트를 볼때 view 업 -> Model 트랜잭션 처리
 			request.setAttribute("singlePost", PDAO.SelectOne(PVO));
 		} else {
 			throw new Exception("ViewUp 오류 발생!");
 		}*/
 		request.setAttribute("singlePost", PDAO.SelectOne(PVO));
+		System.out.println("PDAO.SelectOne(PVO) : "+PDAO.SelectOne(PVO));
 		request.setAttribute("likeInfo", false); // 사용자가 지금 보는글에 좋아요를 눌렀는지 확인하는 값 디폴트 false
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userInfoData") != null) {
@@ -43,10 +47,10 @@ public class SelectOneAction implements Action{
 			LVO.setL_user(ID);
 			request.setAttribute("likeInfo", LDAO.SelectOne(LVO)); // 좋아요 정보
 		}
-		action.setPath("UserComment_ctrl.ucdo?action=selectOne");
+		action.setPath("selectOne.ucdo");
 		action.setRedirect(false);
-		
+		System.out.println("넘어가는 action : " + action);
 		return action;
 	}
-	
+
 }

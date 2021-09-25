@@ -1,4 +1,4 @@
-package team;
+package controller.userComment_Ctrl;
 
 import java.io.IOException;
 
@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Action;
+import controller.ActionForward;
 import model.comments.CommentsDAO;
 import model.comments.CommentsVO;
 
@@ -34,8 +36,9 @@ public class C_InsertComment_Action implements Action{
 	    //DAO 수행
 	    // 댓글 추가 완료
 	    if (commentDAO.InsertDB(commentVO)) {
-	    	forward.setRedirect(true); // sendRedirect
-	    	forward.setPath("selectOne.pdo"); // post 컨트롤러에게 페이지 요청
+	    	String parameter = "?pnum="+request.getParameter("c_post"); // parameter 추가
+	    	forward.setRedirect(false); // sendRedirect
+	    	forward.setPath("selectOne.pdo"+parameter); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)이동)
 	    }
 	    // 반영 실패 -> 오류 수행
 	    else {

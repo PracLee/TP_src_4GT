@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Post</title>
@@ -13,6 +16,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <!-- 파비콘 -->
+
 <link rel="shortcut icon" href="img/favicon2.ico">
 <style type="text/css">
 @font-face {
@@ -27,7 +31,6 @@
 .mlogo {
 	width: 220px;
 }
-
 .feeling_div {
 	display: flex;
 	justify-content: center;
@@ -352,5 +355,6 @@ $(function(){ //좋아요 active효과 추가제거효과
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
+
 </body>
 </html>

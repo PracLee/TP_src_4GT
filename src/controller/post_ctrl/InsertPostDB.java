@@ -26,7 +26,7 @@ public class InsertPostDB implements Action{
 		PVO.setCategory(request.getParameter("category"));
 		PVO.setContent(request.getParameter("content"));
 		UVO = (UserInfoVO) session.getAttribute("userInfoData"); // 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
-		PVO.setWriter(UVO.getName()); // Name
+		PVO.setWriter(UVO.getName()); // Name 현재 여기와 이 아래에서 nullpointer뜨는데 이유는 로그인이 안되서 세션에 userInfo가 없음!
 		PVO.setP_user(UVO.getId()); // ID
 		PVO.setTitle(request.getParameter("title"));
 		if (PDAO.InsertDB(PVO)) {

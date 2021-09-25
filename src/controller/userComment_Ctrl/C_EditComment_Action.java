@@ -1,11 +1,14 @@
-package team;
+package controller.userComment_Ctrl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.Action;
+import controller.ActionForward;
 import model.comments.CommentsDAO;
 import model.comments.CommentsVO;
 
@@ -14,6 +17,7 @@ public class C_EditComment_Action implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		ActionForward forward = new ActionForward();
 		
 		// VO DAO 인스턴스화
@@ -27,10 +31,13 @@ public class C_EditComment_Action implements Action{
 	    
 	    
 	    //DAO 수행
-	    // 댓글 수정 완료
+	    // 댓글 수정 완료 --> showPost이동
 	    if (commentDAO.UpdateDB(commentVO)) {
-	    	forward.setRedirect(true); // sendRedirect
-	    	forward.setPath("selectOne.pdo"); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)페이지로 이동하기 위해)
+	    	String parameter = "?pnum="+request.getParameter("c_post"); // parameter 추가
+	    	forward.setRedirect(false); // sendRedirect
+	    	forward.setPath("selectOne.pdo"+parameter); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)이동)
+	    	
+	    	
 	    }
 	    // 반영 실패 -> 오류 수행
 	    else {

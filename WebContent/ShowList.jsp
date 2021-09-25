@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShowList</title>
@@ -27,6 +28,7 @@
 	width: 220px;
 }
 </style>
+
 <script type="text/javascript">
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
@@ -257,5 +259,6 @@ function logout(){
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
+
 </body>
 </html>
