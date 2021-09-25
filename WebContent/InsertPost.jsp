@@ -1,22 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Xtra Blog</title>
+	<title>Posting</title>
 	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
-<!--
-    
-TemplateMo 553 Xtra Blog
-
-https://templatemo.com/tm-553-xtra-blog
-
--->
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="img/favicon2.ico">
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -25,12 +21,11 @@ https://templatemo.com/tm-553-xtra-blog
                 <i class="fas fa-bars"></i>
             </button>
             <div class="tm-site-header">
-                <div class="mb-3 mx-auto tm-site-logo"><i class="fas fa-times fa-2x"></i></div>            
-                <h1 class="text-center">Xtra Blog</h1>
+                <div class="mb-3 mx-auto"><img alt="4TeamLogo" src="img/logo.png" class="mlogo"></div>
             </div>
             <nav class="tm-nav" id="tm-nav">            
                 <ul>
-                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="main.ucdo" class="tm-nav-link">
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
@@ -38,14 +33,27 @@ https://templatemo.com/tm-553-xtra-blog
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
-                    <li class="tm-nav-item"><a href="login.html" class="tm-nav-link">
+                    <c:choose>		
+						<c:when test="${userInfoData==null}">                   
+                    <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Login /	Sign-up
                     </a></li>
-                    <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
-                        <i class="far fa-comments"></i>
-                        Category / 임시
+                    </c:when>
+					</c:choose>
+					
+					<c:choose>		
+						<c:when test="${userInfoData!=null}">
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Logout
                     </a></li>
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        MyPage
+                    </a></li>
+                    </c:when>
+					</c:choose>
                 </ul>
             </nav>
             <div class="tm-mb-65">
@@ -62,9 +70,7 @@ https://templatemo.com/tm-553-xtra-blog
                     <i class="fab fa-linkedin tm-social-icon"></i>
                 </a>
             </div>
-            <p class="tm-mb-80 pr-5 text-white">
-                Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar. Right side content will scroll up and down.
-            </p>
+            
         </div>
     </header>
     <div class="container-fluid">
@@ -92,7 +98,7 @@ https://templatemo.com/tm-553-xtra-blog
                 <div class="col-12">                    
                     <div class="mb-4">
                         <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title" class="lmargin">포스팅하기</h2>
-                        <form action="post_ctrl.jsp?action=insertPostDB" method="post" style="display:block; width:1000px;" class="mb-5 ctext" >
+                        <form action="insertPostDB.pdo" method="post" style="display:block; width:1000px;" class="mb-5 ctext" >
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">						
