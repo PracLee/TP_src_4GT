@@ -63,20 +63,39 @@
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
+                    <c:choose>		
+						<c:when test="${userInfoData==null}">
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Login / Sign-up
                     </a>
+
+                    <!--                     
                     <div class="con">
                     	<a href="#">로그인</a><br>
                     	<a href="#">회원가입</a><br>
                     	<a href="#">id/pw찾기</a><br>                    	
                     </div>
+                     -->
+                    </li>
+                    	</c:when>
+					</c:choose>
+					
+					 <c:choose>		
+						<c:when test="${userInfoData!=null}">
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Logout
+                    </a></li>
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+
                     </li>
                     <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
                         <i class="far fa-comments"></i>
-                        Category / 임시
+                        MyPage
                     </a></li>
+                    </c:when>
+					</c:choose>
                 </ul>
             </nav>
             <div class="tm-mb-65">
@@ -113,6 +132,8 @@
             <c:forEach var="pl" items="${PostList}">
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
+
+                    <a href="selectOne.pdo" class="effect-lily tm-post-link tm-pt-60">
                     <a href="selectOne.pdo?pnum=${pl.pnum}" class="effect-lily tm-post-link tm-pt-60">
                         <div class="tm-post-link-inner">
                             <img src="img/img-05.jpg" alt="Image" class="img-fluid">                            

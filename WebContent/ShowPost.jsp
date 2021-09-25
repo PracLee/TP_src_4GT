@@ -47,14 +47,32 @@
                         <i class="fas fa-pen"></i>
                          Posting
                     </a></li>
+                     <c:choose>		
+						<c:when test="${userInfoData==null}">
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                          Login / Sign-up
                     </a></li>
-                    <li class="tm-nav-item"><a href="post_ctrl.jsp?action=post" class="tm-nav-link">
-                        <i class="far fa-comments"></i>
-                        Category / 임시
+                    </c:when>
+					  </c:choose>
+                    
+                    <c:choose>		
+						<c:when test="${userInfoData!=null}">
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Logout
+
                     </a></li>
+                    <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                         Login / Sign-up
+                    </a></li>
+                    <li class="tm-nav-item"><a href="" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        MyPage
+                    </a></li>
+                    </c:when>
+					</c:choose>
                 </ul>
             </nav>
             <div class="tm-mb-65">
@@ -71,9 +89,7 @@
                     <i class="fab fa-linkedin tm-social-icon"></i>
                 </a>
             </div>
-            <p class="tm-mb-80 pr-5 text-white">
-                Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar. Right side content will scroll up and down.
-            </p>
+           
         </div>
     </header>
     <div class="container-fluid">
@@ -124,7 +140,7 @@
                                 </figure>
                                 <div>
                                     <p>
-                                        ${cl.cment}										
+                                        ${cl.cment}                                       									
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="tm-color-primary">답글</a>
