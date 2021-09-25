@@ -32,7 +32,7 @@ public class C_DeleteComment_Action implements Action{
 	    if (commentDAO.DeleteDB(commentVO)) {
 	    	String parameter = "?pnum="+request.getParameter("c_post"); // parameter 추가
 	    	forward.setRedirect(false); // sendRedirect
-	    	forward.setPath("selectOne.pdo"+parameter); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)페이지로 이동하기 위해)
+	    	forward.setPath("selectOne.pdo"+parameter); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)이동)
 	    }
 	    // 반영 실패 -> 오류 수행
 	    else {
