@@ -40,7 +40,7 @@
 <body>
 	<div class="outer">
 		<div class="inner">
- 					<form action="infoHelp.ucdo" method="post" class="fset mb-5 tm-comment-form" >						
+ 					<form action="infoHelp.ucdo?type=pw" method="post" class="fset mb-5 tm-comment-form" >						
 						<div class="mb-4">
 							<input class="form-control" name="id" type="text" placeholder="ID를 입력하세요.">
 						</div>
