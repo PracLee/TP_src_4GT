@@ -70,6 +70,7 @@ public class Post_ctrl extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		if(forward != null) {
+			System.out.println(forward);
 			if(forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
 			}
