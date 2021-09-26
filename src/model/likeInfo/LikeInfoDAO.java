@@ -19,7 +19,7 @@ public class LikeInfoDAO {
    // private static String sql_UPDATE = "UPDATE likeInfo SET l_user=?, l_post=? WHERE l_post=?";
    // UPDATE 쓸 일 없을거같아서 일단 보류
    
-   // SELECT ALL -> 전체 좋아요 정보 추출
+   // SELECT ALL -> 전체 좋아요 정보 추출 
    public ArrayList<LikeInfoVO> SelectAll(){
       Connection conn = DBCP.connect();
       ArrayList<LikeInfoVO> datas = new ArrayList();
