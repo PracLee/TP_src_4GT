@@ -13,7 +13,7 @@ import model.common.DBCP;
 public class PostDAO {
 	
 	// ±âº» CRUD
-	private static String sql_SELECT_ALL = "SELECT * FROM post";
+	private static String sql_SELECT_ALL = "SELECT * FROM post ORDER BY pnum DESC";
 	private static String sql_SELECT_ONE = "SELECT * FROM post WHERE pnum=?";
 	private static String sql_INSERT = 
 			"INSERT INTO post (pnum, category, title, content, writer, p_user, path)"
