@@ -158,7 +158,7 @@ function logout(){
                 </div>                
             </div>            
             <div class="row tm-row">
-            <c:forEach var="pl" items="${PostList}">
+            <c:forEach var="pl" items="${PostList}" varStatus="i">
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
 
@@ -179,7 +179,7 @@ function logout(){
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between">
-                        <span>${commentsCnt.get(pl.pnum-1)} comments</span>
+                        <span>${commentsCnt.get(i.index)} comments</span>
                         <span>by ${pl.writer}</span>
                     </div>
                 </article>
