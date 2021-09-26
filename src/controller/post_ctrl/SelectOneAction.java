@@ -20,7 +20,6 @@ public class SelectOneAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("SelectOneAction 들어옴");
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		PostVO PVO = new PostVO();
@@ -36,7 +35,6 @@ public class SelectOneAction implements Action{
 			throw new Exception("ViewUp 오류 발생!");
 		}*/
 		request.setAttribute("singlePost", PDAO.SelectOne(PVO));
-		System.out.println("PDAO.SelectOne(PVO) : "+PDAO.SelectOne(PVO));
 		request.setAttribute("likeInfo", false); // 사용자가 지금 보는글에 좋아요를 눌렀는지 확인하는 값 디폴트 false
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userInfoData") != null) {
@@ -49,7 +47,6 @@ public class SelectOneAction implements Action{
 		}
 		action.setPath("selectOne.ucdo");
 		action.setRedirect(false);
-		System.out.println("넘어가는 action : " + action);
 		return action;
 	}
 

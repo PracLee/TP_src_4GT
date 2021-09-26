@@ -30,7 +30,7 @@ public class InsertPostDB implements Action{
 		PVO.setP_user(UVO.getId()); // ID
 		PVO.setTitle(request.getParameter("title"));
 		if (PDAO.InsertDB(PVO)) {
-			action.setPath("index.jsp");
+			action.setPath("main.ucdo");
 			action.setRedirect(false);
 		} else {
 			try {

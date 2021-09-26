@@ -40,7 +40,7 @@ public class UserComment_ctrl extends HttpServlet {
 		String uri=request.getRequestURI();
 		String cp=request.getContextPath();
 		String action=uri.substring(cp.length()+1); // +1 ==  "/"까지 sub하기 위함
-
+		System.out.println("----------------------------------------------------");
 		System.out.println("UCC : "+action);
 		// [요청 수행]
 		ActionForward forward = null;

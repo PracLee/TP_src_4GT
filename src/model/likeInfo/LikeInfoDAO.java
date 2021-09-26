@@ -37,7 +37,6 @@ public class LikeInfoDAO {
          rs.close();
       }
       catch(Exception e) {
-         System.out.println("LikeInfoDAO SelectAll()에서 출력");
          e.printStackTrace();
       }
       finally {
@@ -62,7 +61,6 @@ public class LikeInfoDAO {
          rs.close();
       }
       catch(Exception e){
-         System.out.println("LikeInfoDAO SelectOne()에서 출력");
          e.printStackTrace();
       }
       finally {
@@ -84,7 +82,6 @@ public class LikeInfoDAO {
          res=true;
       }
       catch(Exception e){
-         System.out.println("LikeInfoDAO InsertDB()에서 출력");
          e.printStackTrace();
          //res=false;
       }
@@ -107,7 +104,6 @@ public class LikeInfoDAO {
          res=true;
       }
       catch(Exception e){
-         System.out.println("LikeInfoDAO DeleteDB()에서 출력");
          e.printStackTrace();
          //res=false;
       }

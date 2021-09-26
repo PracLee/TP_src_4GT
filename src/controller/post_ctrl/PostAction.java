@@ -27,7 +27,7 @@ public class PostAction implements Action {
 		for (int i = 0; i < commentsCnt.size(); i++) { // 댓글수 AL 0으로 초기화
 			commentsCnt.set(i, 0);
 		}
-		for (int i = 0; i < datas.size(); i++) {
+		for (int i = 0; i < CommentDatas.size(); i++) {
 			int index = (CommentDatas.get(i).getC_post() - 1);
 			commentsCnt.add(index, (commentsCnt.get(index) + 1)); // commentsCnt index = postnum - 1
 		}
