@@ -44,6 +44,8 @@ public class Post_ctrl extends HttpServlet {
 		String uri=request.getRequestURI();
 		String cp=request.getContextPath();
 		String action=uri.substring(cp.length());
+		System.out.println("---------------------------");
+		System.out.println("PC action : "+action);
 		ActionForward forward = null;
 		if(action.equals("/main.pdo")) {
 			forward = new MainAction().execute(request, response);
