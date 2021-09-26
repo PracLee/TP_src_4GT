@@ -12,7 +12,7 @@ public class LikeInfoDAO {
    
    // 기본 CRUD
    private static String sql_SELECT_ALL = "SELECT * FROM likeInfo"; // 추후 content, condition 나눠서 진행
-   private static String sql_SELECT_ONE = "SELECT * FROM likeInfo WHERE l_user=? l_post=?";
+   private static String sql_SELECT_ONE = "SELECT * FROM likeInfo WHERE l_user=? AND l_post=?";
    private static String sql_INSERT = "INSERT INTO likeInfo (l_user, l_post) VALUES(?, ?)";
    private static String sql_DELETE = "DELETE FROM likeInfo WHERE l_user=? l_post=?";
    
