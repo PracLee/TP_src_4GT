@@ -50,7 +50,7 @@ public class U_UpdateUser_Action implements Action{
 		
 		// 페이지 전송설정
 		forward.setRedirect(true); // forward
-		forward.setPath("Mypage.jsp");
+		forward.setPath("MyPage.jsp");
 
 
 		return forward;
