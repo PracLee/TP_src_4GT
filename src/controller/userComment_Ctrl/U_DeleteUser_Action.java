@@ -1,4 +1,4 @@
-package team;
+package controller.userComment_Ctrl;
 
 import java.io.IOException;
 
@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.Action;
+import controller.ActionForward;
 import model.userInfo.UserInfoDAO;
 import model.userInfo.UserInfoVO;
 
@@ -42,7 +44,7 @@ public class U_DeleteUser_Action implements Action{
 		}
 		
 		// 페이지 전송설정
-		forward.setRedirect(true); // forward
+		forward.setRedirect(true); // sendRedirect
 		forward.setPath("Index.jsp");
 
 

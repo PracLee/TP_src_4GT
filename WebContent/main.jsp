@@ -22,7 +22,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 .mlogo {
 	width: 220px;
 }
@@ -42,6 +41,7 @@ function logout(){
 	}
 }
 </script>
+
 
 </head>
 <body>
@@ -73,10 +73,12 @@ function logout(){
                     </li>
                       <c:choose>		
 						<c:when test="${userInfoData!=null}">                 
+
                     <li class="tm-nav-item"><a href="InsertPost.jsp" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
+
                     </c:when>
 					</c:choose>
 					
@@ -89,14 +91,17 @@ function logout(){
                     </c:when>
 					</c:choose>
 					
+
                     <c:choose>		
 						<c:when test="${userInfoData==null}">
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Login / Sign-up
                     </a>
+
                     <!-- 
                     <div>
+
                     	<a href="#">로그인</a><br>
                     	<a href="#">회원가입</a><br>
                     	<a href="#">id/pw찾기</a><br>                    	
@@ -108,11 +113,13 @@ function logout(){
 					
 					 <c:choose>		
 						<c:when test="${userInfoData!=null}">
+
                     <li class="tm-nav-item"><a href="#" onclick="logout()" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Logout
                     </a></li>
                     <li class="tm-nav-item"><a href="MyPage.jsp" class="tm-nav-link">
+
                         <i class="far fa-comments"></i>
                         MyPage
                     </a></li>
@@ -154,7 +161,9 @@ function logout(){
             <c:forEach var="pl" items="${PostList}">
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
+
                      <a href="selectOne.pdo?pnum=${pl.pnum}" class="effect-lily tm-post-link tm-pt-60">
+
                         <div class="tm-post-link-inner">
                             <img src="img/img-05.jpg" alt="Image" class="img-fluid">                            
                         </div>

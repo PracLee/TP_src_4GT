@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -24,6 +26,7 @@
 	font-style: normal;
 }
 
+
 .mlogo {
 	width: 220px;
 }
@@ -45,6 +48,7 @@ function infoHelp(){
 	window.open("infoHelp.jsp","id/pw찾기","width=800px,height=600px");
 }
 </script>
+
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -54,12 +58,14 @@ function infoHelp(){
 				<i class="fas fa-bars"></i>
 			</button>
 			<div class="tm-site-header">
+
 				<div class="mb-3 mx-auto">
 					<img alt="4TeamLogo" src="img/logo.png" class="mlogo">
 				</div>
 
 			</div>
 			<nav class="tm-nav" id="tm-nav">
+
 				<ul>
 					<li class="tm-nav-item"><a href="main.ucdo"
 						class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
@@ -99,6 +105,7 @@ function infoHelp(){
 								class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
 							</a></li>
 						</c:when>
+
 					</c:choose>
 				</ul>
 			</nav>
@@ -151,6 +158,7 @@ function infoHelp(){
 						<a class="text-right" href="SignUp.jsp">회원가입</a>
 					</div>
 				</form>
+
 			</div>
 		</div>
 

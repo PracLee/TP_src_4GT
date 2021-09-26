@@ -13,6 +13,7 @@
     <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="img/favicon2.ico">
+
 <style type="text/css">
 #PostingBox{
 	display:block; 
@@ -41,6 +42,7 @@ function logout(){
 	}
 }
 </script>
+
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -61,6 +63,7 @@ function logout(){
                         <i class="fas fa-pen"></i>
                         Posting
                     </a></li>
+
                     <c:choose>		
 						<c:when test="${userInfoData==null}">                   
                     <li class="tm-nav-item"><a href="Login.jsp" class="tm-nav-link">
@@ -72,11 +75,13 @@ function logout(){
 					
 					<c:choose>		
 						<c:when test="${userInfoData!=null}">
+
                     <li class="tm-nav-item"><a href="#" onclick="logout()" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Logout
                     </a></li>
                     <li class="tm-nav-item"><a href="MyPage.jsp" class="tm-nav-link">
+
                         <i class="far fa-comments"></i>
                         MyPage
                     </a></li>
@@ -127,6 +132,7 @@ function logout(){
                     <div class="mb-4">
                         <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title" class="lmargin">포스팅하기</h2>
                         <form action="insertPostDB.pdo" method="post" id="PostingBox" class="mb-5 ctext" >
+
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">						

@@ -15,6 +15,50 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <style type="text/css">
+#noneCheck{
+   margin-left : 30px;
+}
+#checkBox{
+   font-size : 15px;
+   color: dimgrey;
+}
+#Header{
+   color:#D25A53;
+   font-weight : bold;
+   margin-bottom : 60px;
+}
+#consentHeader{
+   font-weight : bold;
+   color: dimgrey;
+}
+#signUpBtn{
+   margin-top : 80px;
+   margin-bottom : 80px;
+}
+#consent{
+   margin-top : 100px;
+}
+#pwHeader{
+   width : 500px;
+}
+#consentError{
+   display : block;
+   color : red;
+   text-align : right;
+   font-size : 11px;
+   font-weight: normal;
+   margin-bottom : -10px;
+   margin-right : 15px;
+}
+#idError, #pwError, #pwCheckError, #nameError{
+   width:0px auto;
+   display : inline-block;
+   color : red;
+   font-size : 11px;
+   font-weight: normal;
+   margin-left : 10px;
+
+}
 #consentBox {
     margin: 0px auto;
     display: block;
@@ -53,9 +97,11 @@
 	font-weight:bold;
 }
 .signupt{
+	margin-bottom : 0px;
 	text-align: left;
     display: block;
-    margin-left: 10px;
+    margin-left: 5px;
+    font-size : 15px;
 }
 @font-face {
 	font-family: 'NanumSquareRound';
@@ -74,12 +120,16 @@
 	width: 360px;
 }
 </style>
+
 <script type="text/javascript">
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
-
 </script>
+  
+<!-- 스크립트 불러오기 -->
+<script src="SignUp.js"></script>
+
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -105,6 +155,7 @@ function forbid() {
 					<li class="tm-nav-item"><a href="InsertPost.jsp"
 						class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
 					</a></li>
+
 					</c:when>
 					</c:choose>
 					
@@ -116,6 +167,7 @@ function forbid() {
                     </a></li>
                     </c:when>
 					</c:choose>
+
 					
 					<c:choose>		
 						<c:when test="${userInfoData==null}">
@@ -126,6 +178,7 @@ function forbid() {
 					</c:when>
 					</c:choose>
 					
+
 					<c:choose>		
 						<c:when test="${userInfoData!=null}">
                     <li class="tm-nav-item"><a href="logOut.ucdo" class="tm-nav-link">
@@ -133,6 +186,7 @@ function forbid() {
                         Logout
                     </a></li>
                     <li class="tm-nav-item"><a href="MyPage.jsp" class="tm-nav-link">
+
                         <i class="far fa-comments"></i>
                         MyPage
                     </a></li>
@@ -170,28 +224,35 @@ function forbid() {
 		<div class="row tm-row">
 			<div style="text-align: center;" class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
-				<h2 style="color:#D25A53;">회원가입</h2>
+				<h2 id="Header">회원가입</h2>
 				<br>
-				<!-- signUp form -->
-				<form action="signUp.ucdo" method="post" class="fset mb-5 tm-comment-form">
-					<div class="mb-4">
-						<span class="signupt">아이디</span> <input class="form-control"
-							name="id" type="text" placeholder="ID">
+
+				<!-- signUp form action='userComment_Ctrl.jsp?action=signUp'-->
+				<form action="signUp.ucdo" method="post"
+					class="fset mb-5 tm-comment-form" name="join">
+					<div class="mb-4">						<!-- 이예나: error추가, class check -->
+						<p class="signupt">아이디 <span id="idError"></span></p>
+						<input class="form-control check" style="width: 360px"
+							name="id" id="id" type="text" placeholder="ID" maxlength=15>
+
 					</div>
-					<div class="mb-4">
-						<span class="signupt">비밀번호</span> <input class="form-control" name="pw"
-							type="password" placeholder="PW">
+					<div class="mb-4">                      <!-- 이예나: error추가 class check -->
+						<p class="signupt" id="pwHeader">비밀번호 <span id="pwError"></span> </p>
+						<input class="form-control check" name="pw" id="pw"
+							type="password" placeholder="PW" maxlength=20>
 					</div>
-					<div class="mb-4">
-						<span class="signupt">비밀번호 확인</span> <input class="form-control" name="pw"
-							type="password" placeholder="PW">
+					<div class="mb-4">						<!-- 이예나: error추가  class check-->
+						<p class="signupt">비밀번호 확인<span id="pwCheckError"></span> </p>
+						<input class="form-control check" name="pwCheck" id="pwCheck" 
+							type="password" placeholder="PW" maxlength=20>
 					</div>
-					<div class="mb-4">
-						<span class="signupt">이&nbsp;름</span> <input class="form-control"
-							name="name" type="text" placeholder="NAME">
+					<div class="mb-4">						<!-- 이예나: error추가  class check-->
+						<p class="signupt">이&nbsp;름<span id="nameError"></span> </p>
+						<input class="form-control check"
+							name="name" id="name" type="text" placeholder="NAME" maxlength=20>
 					</div>
-					<div class="mb-4">						
-							개인정보 수집/이용동의<span></span>						
+					<div class="mb-4" id="consent">						
+							<p><span id="consentHeader">개인정보 수집/이용동의</span><span id="consentError"></span></p>					
 						<div>
 							<span id="consentBox">
 								
@@ -210,12 +271,15 @@ function forbid() {
 								‘동의’ 문구를 선택한 경우에는 개인정보 수집에 동의한 것으로 봅니다.
 							</span>
 						</div>
+						<span id="checkBox">
 						<label><input type="radio" id="check" name="check"
-							value="동의">동의</label> <label><input type="radio"
+							value="동의">동의</label> 
+						<label><input type="radio"
 							id="noneCheck" name="check" value="비동의" checked="checked">비동의</label>
+						</span>
 					</div>
 					<div class="text-right">					
-				<button type="submit"  class="tm-btn tm-btn-primary tm-btn-small">sign-up</button>				
+				<button type="submit" id="signUpBtn" class="tm-btn tm-btn-primary tm-btn-small">sign-up</button>				
 			</div>
 			</form>
 			</div>			
@@ -233,8 +297,6 @@ function forbid() {
 	</main>
 	</div>
 	
-
-	 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
 </body>
