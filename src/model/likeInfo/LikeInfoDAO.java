@@ -12,14 +12,14 @@ public class LikeInfoDAO {
    
    // 기본 CRUD
    private static String sql_SELECT_ALL = "SELECT * FROM likeInfo"; // 추후 content, condition 나눠서 진행
-   private static String sql_SELECT_ONE = "SELECT * FROM likeInfo WHERE l_user=? l_post=?";
+   private static String sql_SELECT_ONE = "SELECT * FROM likeInfo WHERE l_user=? AND l_post=?";
    private static String sql_INSERT = "INSERT INTO likeInfo (l_user, l_post) VALUES(?, ?)";
    private static String sql_DELETE = "DELETE FROM likeInfo WHERE l_user=? l_post=?";
    
    // private static String sql_UPDATE = "UPDATE likeInfo SET l_user=?, l_post=? WHERE l_post=?";
    // UPDATE 쓸 일 없을거같아서 일단 보류
    
-   // SELECT ALL -> 전체 좋아요 정보 추출
+   // SELECT ALL -> 전체 좋아요 정보 추출 
    public ArrayList<LikeInfoVO> SelectAll(){
       Connection conn = DBCP.connect();
       ArrayList<LikeInfoVO> datas = new ArrayList();
