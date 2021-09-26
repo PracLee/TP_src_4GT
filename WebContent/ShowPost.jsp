@@ -71,7 +71,6 @@ function delPost(){
 function delComment(){
 	result=confirm("댓글을 정말로 삭제하시겠습니까?");
 	if(result==true){
-		console.log("췣ㄱ췍");
 		document.form2.action="deleteComment.ucdo";
 		document.form2.submit();
 	}
