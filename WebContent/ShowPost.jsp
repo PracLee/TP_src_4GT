@@ -269,7 +269,7 @@ $(function(){ //좋아요 active효과 추가제거효과
 												<form method="post" name="form2">
 													<input type="hidden" name="cnum" value="${cl.cnum}">
 													<input type="hidden" name="c_post" value="${singlePost.pnum}">
-													<a href="#" onclick="delComment()" class="tm-color-primary">삭제</a>
+													<a href="deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}" class="tm-color-primary">삭제</a>
 												</form>
 
 											</c:when>

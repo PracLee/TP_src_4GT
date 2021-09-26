@@ -162,7 +162,7 @@ function logout(){
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
 
-                    <a href="selectOne.pdo?pnum=${pl.pnum}" class="effect-lily tm-post-link tm-pt-60">
+                     <a href="selectOne.pdo?pnum=${pl.pnum}" class="effect-lily tm-post-link tm-pt-60">
 
                         <div class="tm-post-link-inner">
                             <img src="img/img-05.jpg" alt="Image" class="img-fluid">                            
