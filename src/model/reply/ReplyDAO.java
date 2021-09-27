@@ -23,7 +23,7 @@ public class ReplyDAO {
 		ArrayList<ReplyVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
 
-		try {
+		try { 
 			pstmt = conn.prepareStatement(sql_SELECT_ALL);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
