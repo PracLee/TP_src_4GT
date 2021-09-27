@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -31,6 +30,7 @@
 .mlogo {
 	width: 220px;
 }
+
 .feeling_div {
 	display: flex;
 	justify-content: center;
@@ -217,7 +217,7 @@ $(function(){ //좋아요 active효과 추가제거효과
 						<p>${singlePost.content}</p>
 						<span class="d-block text-right tm-color-primary">Category
 							. ${singlePost.category}</span> <br> <br>
-						
+
 						<!-- 좋아요버튼 -->
 						<div class="feeling_div">
 							<div class="button-like">
@@ -229,15 +229,15 @@ $(function(){ //좋아요 active효과 추가제거효과
 						<br> <br>
 						<c:choose>
 							<c:when test="${userInfoData.id==singlePost.p_user}">
-						<div class="text-right">
-							<form method="post" name="form1">
-								<input type="hidden" name="pnum" value="${singlePost.pnum}">
-								<button  onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}'"
-									class="tm-btn tm-btn-primary tm-btn-small">글 수정</button>
-								<button onclick="delPost()"
-									class="tm-btn tm-btn-primary tm-btn-small">글 삭제</button>
-							</form>
-						</div>
+								<div class="text-right">
+									<form method="post" name="form1">
+										<a
+											onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}'"
+											class="tm-btn tm-btn-primary tm-btn-small">글 수정</a> <a
+											onclick="delPost()"
+											class="tm-btn tm-btn-primary tm-btn-small">글 삭제</a>
+									</form>
+								</div>
 							</c:when>
 						</c:choose>
 					</div>
@@ -258,16 +258,19 @@ $(function(){ //좋아요 active효과 추가제거효과
 									<p>${cl.cment}</p>
 									<div class="d-flex justify-content-between">
 										<a href="#" class="tm-color-primary">답글</a>
-										
+
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
-																								
-												<a href="#" class="tm-color-primary">수정</a>
+												<a href="#" onclick="msgEdit(${index})"
+													class="tm-color-primary">수정</a>
+
 												<form method="post" name="form2">
 													<input type="hidden" name="cnum" value="${cl.cnum}">
-													<input type="hidden" name="c_post" value="${singlePost.pnum}">
-													<a href="deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}" class="tm-color-primary">삭제</a>
+													<input type="hidden" name="c_post"
+														value="${singlePost.pnum}"> <a
+														href="deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}"
+														class="tm-color-primary">삭제</a>
 												</form>
 
 											</c:when>
@@ -277,29 +280,32 @@ $(function(){ //좋아요 active효과 추가제거효과
 								</div>
 							</div>
 						</c:forEach>
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-						<form action="insertComment.ucdo" method="post"
-							class="mb-5 tm-comment-form">
-							<input type="hidden" name="c_post" value="${singlePost.pnum}">
-							<input type="hidden" name="c_user" value="${userInfoData.id}">
-							<h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+						<c:choose>
+							<c:when test="${userInfoData!=null}">
+								<form action="insertComment.ucdo" method="post"
+									class="mb-5 tm-comment-form">
+									<input type="hidden" name="c_post" value="${singlePost.pnum}">
+									<input type="hidden" name="c_user" value="${userInfoData.id}">
+									<h2 class="tm-color-primary tm-post-title mb-4">Your
+										comment</h2>
 
-							<div class="mb-4">
-								<textarea class="form-control" name="cment" rows="6"></textarea>
-							</div>
-							
-							<div class="text-right">
-								<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
-							</div>
-						</form>
-						</c:when>
-							</c:choose>
-								<button onclick="signUpRef()" class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
-							<c:choose>
-						<c:when test="${userInfoData==null}">
-						
-						</c:when>
+									<div class="mb-4">
+										<textarea class="form-control" name="cment" rows="6"></textarea>
+									</div>
+
+									<div class="text-right">
+										<button type="submit"
+											class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
+									</div>
+								</form>
+							</c:when>
+						</c:choose>
+						<button onclick="signUpRef()"
+							class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
+						<c:choose>
+							<c:when test="${userInfoData==null}">
+
+							</c:when>
 						</c:choose>
 					</div>
 				</div>

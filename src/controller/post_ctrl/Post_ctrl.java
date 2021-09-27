@@ -44,8 +44,8 @@ public class Post_ctrl extends HttpServlet {
 		String uri=request.getRequestURI();
 		String cp=request.getContextPath();
 		String action=uri.substring(cp.length());
-		System.out.println("---------------------------");
-		System.out.println("PC action : "+action);
+		//System.out.println("---------------------------");
+		//System.out.println("PC action : "+action);
 		ActionForward forward = null;
 		if(action.equals("/main.pdo")) {
 			forward = new MainAction().execute(request, response);
@@ -56,7 +56,9 @@ public class Post_ctrl extends HttpServlet {
 		}else if(action.equals("/insertPostDB.pdo")) {
 			forward = new InsertPostDB().execute(request, response);
 		}else if(action.equals("/editPost.pdo")) {
+			// System.out.println("/editPost.pdo 들어왔다");
 			forward = new EditPostAction().execute(request, response);
+			// System.out.println("EditPostAction 종료");
 		}else if(action.equals("/editPostDB.pdo")) {
 			forward = new EditPostDB().execute(request, response);
 		}else if(action.equals("/deletePostDB.pdo")) {
@@ -70,7 +72,7 @@ public class Post_ctrl extends HttpServlet {
 			forward.setRedirect(false);
 		}
 		if(forward != null) {
-			System.out.println(forward);
+			//System.out.println(forward);
 			if(forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
 			}
