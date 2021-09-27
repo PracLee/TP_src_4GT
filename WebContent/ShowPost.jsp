@@ -61,7 +61,7 @@ function forbid() {
 function delPost(){
 	result=confirm("게시글을 정말로 삭제하시겠습니까?");
 	if(result==true){
-		document.form1.action.value="deletePostDB.pdo";
+		document.form1.action="deletePostDB.pdo";
 		document.form1.submit();
 	}
 	else{
@@ -71,7 +71,6 @@ function delPost(){
 function delComment(){
 	result=confirm("댓글을 정말로 삭제하시겠습니까?");
 	if(result==true){
-		console.log("췣ㄱ췍");
 		document.form2.action="deleteComment.ucdo";
 		document.form2.submit();
 	}
@@ -233,7 +232,7 @@ $(function(){ //좋아요 active효과 추가제거효과
 						<div class="text-right">
 							<form method="post" name="form1">
 								<input type="hidden" name="pnum" value="${singlePost.pnum}">
-								<button onclick="location.href='EditPost.jsp'"
+								<button  onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}'"
 									class="tm-btn tm-btn-primary tm-btn-small">글 수정</button>
 								<button onclick="delPost()"
 									class="tm-btn tm-btn-primary tm-btn-small">글 삭제</button>
@@ -263,10 +262,8 @@ $(function(){ //좋아요 active효과 추가제거효과
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
-												
-													
-														<a href="#" onclick="msgEdit(${index})" class="tm-color-primary">수정</a>
-												
+																								
+												<a href="#" class="tm-color-primary">수정</a>
 												<form method="post" name="form2">
 													<input type="hidden" name="cnum" value="${cl.cnum}">
 													<input type="hidden" name="c_post" value="${singlePost.pnum}">

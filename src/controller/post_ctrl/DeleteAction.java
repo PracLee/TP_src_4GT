@@ -21,11 +21,11 @@ public class DeleteAction implements Action{
 		PostVO PVO = new PostVO();
 		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
 		if (PDAO.DeleteDB(PVO)) {
-			action.setPath("main.jsp");
+			action.setPath("main.ucdo");
 			action.setRedirect(false);
 		} else {
 			try {
-				throw new Exception("UpdateDB 오류발생!");
+				throw new Exception("DeleteDB 오류발생!");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
