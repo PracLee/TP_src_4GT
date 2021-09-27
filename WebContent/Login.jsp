@@ -143,6 +143,7 @@ function infoHelp(){
 
 				<form action="joinUs.ucdo" method="post"
 					class="fset mb-5 tm-comment-form">
+					<input type="hidden" name = "pnum" value="${param.pnum}">
 					<div class="mb-4">
 						<input class="form-control" name="id" type="text" placeholder="ID">
 					</div>
