@@ -20,7 +20,15 @@ public class U_JoinUs_Action implements Action{
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
-		
+		String ppnum=request.getParameter("pnum");
+		System.out.println("pnum = "+ppnum);
+		String path = null;
+		if(ppnum!=null){
+			int pnum=Integer.parseInt(ppnum);
+			path = "selectOne.pdo?pnum="+pnum;
+		}else {
+			path = "Index.jsp";
+		}
 		
 		// VO DAO 인스턴스화
 		UserInfoVO userInfoVO = new UserInfoVO();
@@ -46,7 +54,8 @@ public class U_JoinUs_Action implements Action{
 		session.setAttribute("userInfoData", userInfoData);
 	    // 페이지 전송설정
 	    forward.setRedirect(false); // forward
-	    forward.setPath("Index.jsp"); // post Control에게 전달
+	    
+	    forward.setPath(path); // post Control에게 전달
 		
 		
 		return forward;

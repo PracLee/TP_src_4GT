@@ -17,12 +17,20 @@ public class U_logOut_Action implements Action{
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
-		
+		String ppnum=request.getParameter("pnum");
+		System.out.println("pnum = "+ppnum);
+		String path = null;
+		if(ppnum!=null){
+			int pnum=Integer.parseInt(ppnum);
+			path = "selectOne.pdo?pnum="+pnum;
+		}else {
+			path = "Index.jsp";
+		}
 		HttpSession session = request.getSession();
 		session.removeAttribute("userInfoData"); // 회원 정보 session remove처리
 		
 		// 메인페이지 이동(나에게 보냄)
-		forward.setPath("main.ucdo");
+		forward.setPath(path);
 		forward.setRedirect(true);
 		
 		

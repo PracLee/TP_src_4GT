@@ -151,7 +151,7 @@ $(function(){ //좋아요 active효과 추가제거효과
 
 					<c:choose>
 						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item"><a href="Login.jsp"
+							<li class="tm-nav-item"><a href="Login.jsp?pnum=${singlePost.pnum}"
 								class="tm-nav-link"> <i class="fas fa-users"></i> Login /
 									Sign-up
 							</a></li>
