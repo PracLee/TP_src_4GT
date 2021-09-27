@@ -14,6 +14,7 @@ public class PostVO {
 	private String pdate;
 	private String p_user;
 	private String path;
+	private int comCnt;
 	
 	public String getWriter() {
 		return writer;
@@ -76,10 +77,19 @@ public class PostVO {
 	public void setPath(String path) {
 		this.path = path;
 	}
+	public int getComCnt() {
+		return comCnt;
+	}
+	public void setComCnt(int comCnt) {
+		this.comCnt = comCnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "PostVO [pnum=" + pnum + ", views=" + views + ", plike=" + plike + ", category=" + category + ", title="
 				+ title + ", content=" + content + ", writer=" + writer + ", pdate=" + pdate + ", p_user=" + p_user
-				+ "]";
+				+ ", path=" + path + ", comCnt=" + comCnt + "]";
 	}
+	
+	
 }
