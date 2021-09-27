@@ -59,6 +59,7 @@ public class PostDAO {
 				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
 				vo.setPath(rs.getString("path"));
+				vo.setComCnt(rs.getInt("comCnt"));
 				datas.add(vo);
 			}
 			rs.close();
@@ -102,6 +103,7 @@ public class PostDAO {
 	            data.setPdate(dateToStr);
 	            data.setP_user(rs.getString("p_user"));
 	            data.setPath(rs.getString("path"));
+	            data.setComCnt(rs.getInt("comCnt"));
 	         }   
 	         rs.close();
 	         
