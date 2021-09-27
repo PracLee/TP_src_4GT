@@ -26,6 +26,7 @@ CREATE TABLE comments(
 	cment varchar(300),
 	cdate date default sysdate,
 	cwriter varchar(30),
+	replyCnt int default 0,
 	c_user varchar(30),
 	c_post int,
 	foreign key (c_user) references userInfo(id) on delete cascade,
@@ -47,8 +48,10 @@ CREATE TABLE reply(
 	rwriter varchar(30),
 	r_user varchar(30),
 	r_post int,
+	r_comments int,
 	foreign key (r_user) references userInfo(id) on delete cascade,
-	foreign key (r_post) references post(pnum) on delete cascade
+	foreign key (r_post) references post(pnum) on delete cascade,
+	foreign key (r_comments) references comments(cnum) on delete cascade
 );
 
 /* SELECT ALL */

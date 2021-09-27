@@ -8,6 +8,7 @@ public class CommentsVO {
 	private Date cdate;
 	private String c_user;
 	private String cwriter;
+	private int replyCnt;
 	private int c_post;
 	public int getCnum() {
 		return cnum;
@@ -45,6 +46,13 @@ public class CommentsVO {
 	}
 	public void setCwriter(String cwriter) {
 		this.cwriter = cwriter;
+	}
+	
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
 	}
 	@Override
 	public String toString() {

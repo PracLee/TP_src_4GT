@@ -13,36 +13,34 @@ public class ReplyDAO {
 	// 기본 CRUD
 	private static String sql_SELECT_ALL = "SELECT * FROM reply";
 	private static String sql_SELECT_ONE = "SELECT * FROM reply WHERE rnum=?";
-	private static String sql_INSERT = "INSERT INTO reply (cnum, cment, cdate, cwriter, c_user, c_post) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM comments), ?, sysdate, ?, ?, ?)";
-	private static String sql_DELETE = "DELETE FROM comments WHERE cnum=?";
-	private static String sql_UPDATE = "UPDATE comments SET cment=?, cdate=sysdate WHERE cnum=?";
-
-	// 사용자 정의 함수
-	private static String sql_SELECT_POST = "SELECT * FROM comments WHERE c_post=?"; // c_post를 받아서 그 글의 댓글들을 리턴
+	private static String sql_INSERT = "INSERT INTO reply (rnum, rment, rdate, rwriter, r_user, r_post, r_comments) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM reply), ?, sysdate, ?, ?, ?, ?)";
+	private static String sql_DELETE = "DELETE FROM reply WHERE rnum=?";
+	private static String sql_UPDATE = "UPDATE comments SET rment=?, cdate=sysdate WHERE rnum=?";
 
 	// SELECT ALL -> 전체 DB정보 추출
-	public ArrayList<CommentsVO> SelectAll(){
+	public ArrayList<ReplyVO> SelectAll(){
 		Connection conn = DBCP.connect();
-		ArrayList<CommentsVO> datas = new ArrayList();
+		ArrayList<ReplyVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql_SELECT_ALL);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				CommentsVO vo = new CommentsVO();
-				vo.setCnum(rs.getInt("cnum"));
-				vo.setCment(rs.getString("cment"));
-				vo.setCdate(rs.getDate("cdate"));
-				vo.setCwriter(rs.getString("cwriter"));
-				vo.setC_user(rs.getString("c_user"));
-				vo.setC_post(rs.getInt("c_post"));
+				ReplyVO vo = new ReplyVO();
+				vo.setRnum(rs.getInt("rnum"));
+				vo.setRment(rs.getString("rment"));
+				vo.setRdate(rs.getDate("rdate"));
+				vo.setRwriter(rs.getString("rwriter"));
+				vo.setR_user(rs.getString("r_user"));
+				vo.setR_post(rs.getInt("r_post"));
+				vo.setR_comments(rs.getInt("r_comments"));
 				datas.add(vo);
 			}
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("CommentsDAO SelectAll()에서 출력");
+			System.out.println("ReplyDAO SelectAll()에서 출력");
 			e.printStackTrace();
 		}
 		finally {
@@ -51,28 +49,29 @@ public class ReplyDAO {
 		return datas;
 	}
 
-	// SELECT ONE -> 로그인 
-	public CommentsVO SelectOne(CommentsVO vo) {
+	// SELECT ONE 
+	public ReplyVO SelectOne(ReplyVO vo) {
 		Connection conn=DBCP.connect();
-		CommentsVO data=null;
+		ReplyVO data=null;
 		PreparedStatement pstmt=null;
 		try{
 			pstmt=conn.prepareStatement(sql_SELECT_ONE);
-			pstmt.setInt(1, vo.getCnum());
+			pstmt.setInt(1, vo.getRnum());
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()){
-				data=new CommentsVO();
-				data.setCnum(rs.getInt("cnum"));
-				data.setCment(rs.getString("cment"));
-				data.setCdate(rs.getDate("cdate"));
-				data.setCwriter(rs.getString("cwriter"));
-				data.setC_user(rs.getString("c_user"));
-				data.setC_post(rs.getInt("c_post"));
+				data=new ReplyVO();
+				data.setRnum(rs.getInt("rnum"));
+				data.setRment(rs.getString("rment"));
+				data.setRdate(rs.getDate("rdate"));
+				data.setRwriter(rs.getString("rwriter"));
+				data.setR_user(rs.getString("r_user"));
+				data.setR_post(rs.getInt("r_post"));
+				data.setR_comments(rs.getInt("r_comments"));
 			}   
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("CommentsDAO SelectOne()에서 출력");
+			System.out.println("ReplyDAO SelectOne()에서 출력");
 			e.printStackTrace();
 		}
 		finally {
@@ -81,32 +80,40 @@ public class ReplyDAO {
 		return data;
 	}
 
-	// INSERT -> 댓글 DB 등록 --> POST 테이블 댓글 수 증가 트랜잭션
-	public boolean InsertDB(CommentsVO vo) {
+	// INSERT -> 답글 DB 등록 --> POST 테이블 댓글 수 ++ 트랜잭션처리
+	public boolean InsertDB(ReplyVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res = false;
 		PreparedStatement pstmt=null;
 		try{
-			// 댓글 INSERT
+			// 답글 INSERT
 			conn.setAutoCommit(false);
 			pstmt=conn.prepareStatement(sql_INSERT);
-			pstmt.setString(1, vo.getCment());
-			pstmt.setString(2, vo.getCwriter());
-			pstmt.setString(3, vo.getC_user());
-			pstmt.setInt(4, vo.getC_post());
+			pstmt.setString(1, vo.getRment());
+			pstmt.setString(2, vo.getRwriter());
+			pstmt.setString(3, vo.getR_user());
+			pstmt.setInt(4, vo.getR_post());
+			pstmt.setInt(5, vo.getR_comments());
 			pstmt.executeUpdate();
-			pstmt.close();
 
 			// POST 댓글 수 ++
 			String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
 			pstmt=conn.prepareStatement(sql_comCntUp);
-			pstmt.setInt(1, vo.getC_post());
+			pstmt.setInt(1, vo.getR_post());
 			pstmt.executeUpdate();
+			
+			// Comment 테이블 답글 수 ++
+			String sql_replyCntUp = "UPDATE comments SET replyCnt=replyCnt+1 WHERE cnum=?";
+			pstmt=conn.prepareStatement(sql_replyCntUp);
+			pstmt.setInt(1, vo.getR_comments());
+			pstmt.executeUpdate();
+			
+			conn.commit();
 			conn.setAutoCommit(true);
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("CommentsDAO InsertDB()에서 출력");
+			System.out.println("ReplyDAO InsertDB()에서 출력");
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {
@@ -122,20 +129,43 @@ public class ReplyDAO {
 		return res;
 	}
 
-	// DELETE -> 댓글 삭제
-	public boolean DeleteDB(CommentsVO vo) {
+	// DELETE -> 답글 삭제 --> POST 댓글 수 --, Comments 답글 수 -- 트랜잭션 처리
+	public boolean DeleteDB(ReplyVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
+			// 답글삭제
+			conn.setAutoCommit(false);
 			pstmt=conn.prepareStatement(sql_DELETE);
-			pstmt.setInt(1, vo.getCnum());
+			pstmt.setInt(1, vo.getRnum());
 			pstmt.executeUpdate();
+			
+			// POST 테이블 댓글 수 --
+			String sql_comCntDown = "UPDATE post SET comCnt=comCnt-1 WHERE pnum=?";
+			pstmt=conn.prepareStatement(sql_comCntDown);
+			pstmt.setInt(1, vo.getR_post());
+			pstmt.executeUpdate();
+			
+			// Comments 테이블 답글 수 --
+			String sql_replyCntDown = "UPDATE comments SET replyCnt=replyCnt-1 WHERE cnum=?";
+			pstmt=conn.prepareStatement(sql_replyCntDown);
+			pstmt.setInt(1, vo.getR_comments());
+			pstmt.executeUpdate();
+			
+			conn.commit();
+			conn.setAutoCommit(true);
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("CommentsDAO DeleteDB()에서 출력");
+			System.out.println("ReplyDAO DeleteDB()에서 출력");
 			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			//res=false;
 		}
 		finally {
@@ -144,20 +174,20 @@ public class ReplyDAO {
 		return res;
 	}
 
-	// UPDATE -> 댓글 cment 수정
-	public boolean UpdateDB(CommentsVO vo) {
+	// UPDATE -> 답글 rment 수정
+	public boolean UpdateDB(ReplyVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
 			pstmt=conn.prepareStatement(sql_UPDATE);
-			pstmt.setString(1, vo.getCment());
-			pstmt.setInt(2, vo.getCnum()); // 9/25 수정(이예나)
+			pstmt.setString(1, vo.getRment());
+			pstmt.setInt(2, vo.getRnum()); // 9/25 수정(이예나)
 			pstmt.executeUpdate();
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("CommentsDAO UpdateDB()에서 출력");
+			System.out.println("ReplyDAO UpdateDB()에서 출력");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -167,35 +197,4 @@ public class ReplyDAO {
 		return res;
 	}
 
-	// 입력 vo 안에는 c_post만 존재하면 됩니다. 리턴은 그 글에 달린 댓글들만 뽑아줍니다. 
-	public ArrayList<CommentsVO> SelectPost(CommentsVO vo){
-		Connection conn = DBCP.connect();
-		ArrayList<CommentsVO> datas = new ArrayList();
-		PreparedStatement pstmt = null;
-
-		try {
-			pstmt = conn.prepareStatement(sql_SELECT_POST);
-			pstmt.setInt(1,vo.getC_post());
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				CommentsVO data = new CommentsVO();
-				data.setCnum(rs.getInt("cnum"));
-				data.setCment(rs.getString("cment"));
-				data.setCdate(rs.getDate("cdate"));
-				data.setCwriter(rs.getString("cwriter"));
-				data.setC_user(rs.getString("c_user"));
-				data.setC_post(rs.getInt("c_post"));
-				datas.add(data); // 9/25 수정(이예나)
-			}
-			rs.close();
-		}
-		catch(Exception e) {
-			System.out.println("CommentsDAO SelectPost()에서 출력");
-			e.printStackTrace();
-		}
-		finally {
-			DBCP.disconnect(pstmt, conn);
-		}
-		return datas;
-	}
 }

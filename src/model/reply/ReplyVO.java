@@ -1,12 +1,15 @@
 package model.reply;
 
+import java.sql.Date;
+
 public class ReplyVO {
 	private int rnum;
 	private String rment;
-	private String rdate;
+	private Date rdate;
 	private String rwriter;
 	private String r_user;
 	private int r_post;
+	private int r_comments;
 	public int getRnum() {
 		return rnum;
 	}
@@ -19,10 +22,10 @@ public class ReplyVO {
 	public void setRment(String rment) {
 		this.rment = rment;
 	}
-	public String getRdate() {
+	public Date getRdate() {
 		return rdate;
 	}
-	public void setRdate(String rdate) {
+	public void setRdate(Date rdate) {
 		this.rdate = rdate;
 	}
 	public String getRwriter() {
@@ -42,6 +45,12 @@ public class ReplyVO {
 	}
 	public void setR_post(int r_post) {
 		this.r_post = r_post;
+	}
+	public int getR_comments() {
+		return r_comments;
+	}
+	public void setR_comments(int r_comments) {
+		this.r_comments = r_comments;
 	}
 	@Override
 	public String toString() {
