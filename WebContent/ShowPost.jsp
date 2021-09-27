@@ -58,23 +58,21 @@
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
-function delPost(){
+function delPost(uri){
 	result=confirm("게시글을 정말로 삭제하시겠습니까?");
 	if(result==true){
-		document.form1.action="deletePostDB.pdo";
-		document.form1.submit();
+		location.href=uri;
 	}
 	else{
 		return;
 	}
 }
-function delComment(){
-	result=confirm("댓글을 정말로 삭제하시겠습니까?");
-	if(result==true){
-		document.form2.action="deleteComment.ucdo";
-		document.form2.submit();
-	}
-	else{
+function delComment(uri) {
+	
+	result = confirm("댓글을 정말로 삭제하시겠습니까?");
+	if (result == true) {
+		location.href=uri;
+	} else {
 		return;
 	}
 }
@@ -230,13 +228,11 @@ $(function(){ //좋아요 active효과 추가제거효과
 						<c:choose>
 							<c:when test="${userInfoData.id==singlePost.p_user}">
 								<div class="text-right">
-									<form method="post" name="form1">
-										<a
-											onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}'"
-											class="tm-btn tm-btn-primary tm-btn-small">글 수정</a> <a
-											onclick="delPost()"
-											class="tm-btn tm-btn-primary tm-btn-small">글 삭제</a>
-									</form>
+									
+										<button onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}'"
+											class="tm-btn tm-btn-primary tm-btn-small">글 수정</button> 
+										<button onclick="delPost('deletePostDB.pdo?pnum=${singlePost.pnum}')" class="tm-btn tm-btn-primary tm-btn-small">글 삭제</button>
+									
 								</div>
 							</c:when>
 						</c:choose>
@@ -268,9 +264,8 @@ $(function(){ //좋아요 active효과 추가제거효과
 												<form method="post" name="form2">
 													<input type="hidden" name="cnum" value="${cl.cnum}">
 													<input type="hidden" name="c_post"
-														value="${singlePost.pnum}"> <a
-														href="deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}"
-														class="tm-color-primary">삭제</a>
+														value="${singlePost.pnum}">
+												<a href="#" onclick="delComment('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}')"class="tm-color-primary">삭제</a>		
 												</form>
 
 											</c:when>
