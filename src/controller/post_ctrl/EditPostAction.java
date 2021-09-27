@@ -31,6 +31,7 @@ public class EditPostAction implements Action{
 		request.setAttribute("PostVO", PVO); // 수정 정보를 담은 PostVO 를 PostVO로 넘겨줌
 		action.setPath("EditPost.jsp");
 		action.setRedirect(false);
+		System.out.println(action);
 		return action;
 	}
 
