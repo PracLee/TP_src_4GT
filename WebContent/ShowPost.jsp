@@ -262,10 +262,8 @@ $(function(){ //좋아요 active효과 추가제거효과
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
-												
-													
-														<a href="#" onclick="msgEdit(${index})" class="tm-color-primary">수정</a>
-												
+																								
+												<a href="#" class="tm-color-primary">수정</a>
 												<form method="post" name="form2">
 													<input type="hidden" name="cnum" value="${cl.cnum}">
 													<input type="hidden" name="c_post" value="${singlePost.pnum}">

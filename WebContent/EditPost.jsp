@@ -131,7 +131,7 @@ function logout(){
 						class="lmargin">포스팅 수정</h2>
 					<form action="editPostDB.pdo" method="post"
 						style="display: block; width: 1000px;" class="mb-5 ctext">
-
+						<input type="hidden" name="pnum" value="${PostVO.pnum}">
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">
