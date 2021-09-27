@@ -18,13 +18,13 @@ public class EditPostAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("EditPostAction 왔당!");
+		//System.out.println("EditPostAction 왔당!");
 		ActionForward action = new ActionForward();
 		PostVO PVO = new PostVO();
 		PostDAO PDAO = new PostDAO();
 		UserInfoVO UVO = new UserInfoVO();
 		HttpSession session = request.getSession();
-		System.out.println("pnum == "+request.getParameter("pnum"));
+		//System.out.println("pnum == "+request.getParameter("pnum"));
 		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
 		PVO = PDAO.SelectOne(PVO);
 		UVO = (UserInfoVO) session.getAttribute("userInfoData"); // 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
