@@ -3,6 +3,7 @@ package model.comments;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.comments.CommentsVO;
@@ -13,7 +14,7 @@ public class CommentsDAO {
    // 기본 CRUD
    private static String sql_SELECT_ALL = "SELECT * FROM comments";
    private static String sql_SELECT_ONE = "SELECT * FROM comments WHERE cnum=?";
-   private static String sql_INSERT = "INSERT INTO comments (cnum, cment, cdate, c_user, c_post) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM comments), ?, sysdate, ?, ?)";
+   private static String sql_INSERT = "INSERT INTO comments (cnum, cment, cdate, cwriter, c_user, c_post) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM comments), ?, sysdate, ?, ?, ?)";
    private static String sql_DELETE = "DELETE FROM comments WHERE cnum=?";
    private static String sql_UPDATE = "UPDATE comments SET cment=?, cdate=sysdate WHERE cnum=?";
    
@@ -34,6 +35,7 @@ public class CommentsDAO {
             vo.setCnum(rs.getInt("cnum"));
             vo.setCment(rs.getString("cment"));
             vo.setCdate(rs.getDate("cdate"));
+            vo.setCwriter(rs.getString("cwriter"));
             vo.setC_user(rs.getString("c_user"));
             vo.setC_post(rs.getInt("c_post"));
             datas.add(vo);
@@ -64,6 +66,7 @@ public class CommentsDAO {
             data.setCnum(rs.getInt("cnum"));
             data.setCment(rs.getString("cment"));
             data.setCdate(rs.getDate("cdate"));
+            data.setCwriter(rs.getString("cwriter"));
             data.setC_user(rs.getString("c_user"));
             data.setC_post(rs.getInt("c_post"));
          }   
@@ -79,21 +82,38 @@ public class CommentsDAO {
       return data;
    }
    
-   // INSERT -> 댓글 DB 등록
+   // INSERT -> 댓글 DB 등록 --> POST 테이블 댓글 수 증가 트랜잭션
    public boolean InsertDB(CommentsVO vo) {
       Connection conn=DBCP.connect();
       boolean res = false;
       PreparedStatement pstmt=null;
       try{
+    	 // 댓글 INSERT
+    	 conn.setAutoCommit(false);
          pstmt=conn.prepareStatement(sql_INSERT);
          pstmt.setString(1, vo.getCment());
-         pstmt.setString(2, vo.getC_user());
-         pstmt.setInt(3, vo.getC_post());
+         pstmt.setString(2, vo.getCwriter());
+         pstmt.setString(3, vo.getC_user());
+         pstmt.setInt(4, vo.getC_post());
          pstmt.executeUpdate();
+         pstmt.close();
+         
+         // POST 댓글 수 ++
+         String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
+         pstmt=conn.prepareStatement(sql_comCntUp);
+         pstmt.setInt(1, vo.getC_post());
+         pstmt.executeUpdate();
+         conn.setAutoCommit(true);
          res=true;
       }
       catch(Exception e){
          System.out.println("CommentsDAO InsertDB()에서 출력");
+         try {
+			conn.rollback();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
          e.printStackTrace();
          //res=false;
       }
@@ -163,6 +183,7 @@ public class CommentsDAO {
             data.setCnum(rs.getInt("cnum"));
             data.setCment(rs.getString("cment"));
             data.setCdate(rs.getDate("cdate"));
+            data.setCwriter(rs.getString("cwriter"));
             data.setC_user(rs.getString("c_user"));
             data.setC_post(rs.getInt("c_post"));
             datas.add(data); // 9/25 수정(이예나)
