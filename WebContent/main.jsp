@@ -31,10 +31,11 @@
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
-function logout(){
-	result=confirm("로그아웃 하시겠습니까??");
+
+function checkAlert(uri,text){
+	result=confirm(text);
 	if(result==true){
-		location.href="logOut.ucdo";
+		location.href=uri;
 	}
 	else{
 		return;
@@ -114,7 +115,7 @@ function logout(){
 					 <c:choose>		
 						<c:when test="${userInfoData!=null}">
 
-                    <li class="tm-nav-item"><a href="#" onclick="logout()" class="tm-nav-link">
+                    <li class="tm-nav-item"><a href="#" onclick="checkAlert('logOut.ucdo','로그아웃하시겠어요???')" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         Logout
                     </a></li>
