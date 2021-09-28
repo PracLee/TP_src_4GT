@@ -235,8 +235,7 @@ function checkAlert(uri,text){
 				<hr class="tm-hr-primary tm-mb-55">
 				<h2 id="Header">회원가입</h2>
 				<br>
-
-				<!-- signUp form action='userComment_Ctrl.jsp?action=signUp'-->
+				
 				<form action="signUp.ucdo" method="post"
 					class="fset mb-5 tm-comment-form" name="join">
 					<div class="mb-4">						<!-- 이예나: error추가, class check -->
