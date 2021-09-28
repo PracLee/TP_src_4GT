@@ -347,7 +347,7 @@ video {
     border-radius: 0;
 }
 
-.tm-comment-form { max-width: 360px; left-margin:100px;}
+.tm-comment-form { max-width: 460px; left-margin:100px;}
 .tm-category-list { list-style-type: none; }
 figure { margin: 0; }
 figcaption { line-height: 1.4; }

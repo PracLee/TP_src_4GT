@@ -50,11 +50,10 @@ function logout(){
 		return;
 	}
 }
-function delUser(){
+function delUser(uri){
 	result=confirm("회원탈퇴 하시겠습니까?");
 	if(result==true){
-		document.form4.action.value="deleteUser.ucdo";
-		document.form4.submit();
+		location.href=uri;
 	}
 	else{
 		return;
@@ -189,11 +188,8 @@ function delUser(){
 						<li><a href="#" class="tm-color-primary">내 게시글보기</a></li>
 						<li><a href="UpdateUser.jsp" class="tm-color-primary">회원정보
 								변경</a></li>
-						<li>
-							<form method="post" name="form4">
-								<input type="hidden" name="id" value="${userInfoData.id}">
-								<a href="#" onclick="delUser()" class="tm-color-primary">회원탈퇴</a>
-							</form>
+						<li>							
+							<a href="#" onclick="delUser('deleteUser.ucdo?id=${userInfoData.id}')" class="tm-color-primary">회원탈퇴</a>						
 						</li>
 
 					</ul>
