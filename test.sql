@@ -60,12 +60,14 @@ select * from userInfo;
 select * from post;
 select * from comments;
 select * from likeInfo;
+select * from reply;
 
 /* 테이블 삭제 */
 drop table userInfo;
 drop table post CASCADE CONSTRAINTS;
 drop table comments;
 drop table likeInfo;
+drop table reply;
 
 delete from post WHERE PNUM=2;
 
