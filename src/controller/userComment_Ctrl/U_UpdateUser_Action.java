@@ -19,8 +19,13 @@ public class U_UpdateUser_Action implements Action{
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 
+		
+		// 기존 세션 - 유저 데이터 업데이트(session set)
+		HttpSession session = request.getSession();
+		
 		// VO DAO 인스턴스화
-		UserInfoVO userInfoVO = new UserInfoVO();
+		UserInfoVO userInfoVO = (UserInfoVO)session.getAttribute("userInfoData");
+		
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		
 		// DAO수행 필요데이터 SET
@@ -29,24 +34,19 @@ public class U_UpdateUser_Action implements Action{
 		userInfoVO.setName(request.getParameter("name"));
 		
 		// DAO수행
-		  // 정보수정 완료 -> mypage 이동
-		if(userInfoDAO.UpdateDB(userInfoVO)) {
-			
-			// 기존 세션 - 유저 데이터 업데이트(session set)
-			HttpSession session = request.getSession();
-			session.setAttribute("userInfoData", 
-					userInfoDAO.SelectOne((UserInfoVO) session.getAttribute("userInfoData")));
-			
-		}
-		  // 실패시 - 오류 수행
-		else {
+		// 실패시 - 오류 수행
+		if(!userInfoDAO.UpdateDB(userInfoVO)) {
+
 			try {
 				throw new Exception("UpdateUser_Action DB 오류 발생!");
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
+			
 		}
+		
+		// 성공시 - 페이지 이동
 		
 		// 페이지 전송설정
 		forward.setRedirect(true); // forward
