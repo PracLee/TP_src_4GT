@@ -20,18 +20,22 @@ public class CommentsDAO {
 
 	// 사용자 정의 함수
 	private static String sql_SELECT_POST = "SELECT * FROM comments WHERE c_post=?"; // c_post를 받아서 그 글의 댓글들을 리턴
-
+	
+	// 다른 테이블 접근 쿼리
+	private static String sql_SELECT_ALL_REPLY = "SELECT * FROM reply WHERE r_comments=?";
+	private static String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
 	public ArrayList<CommentsSet> getSetData(CommentsVO vo) {
 		Connection conn = DBCP.connect();
 		ArrayList<CommentsSet> result = new ArrayList<CommentsSet>();
 		PreparedStatement pstmt = null;
 
 		try{
-			String sql1 = "SELECT * FROM comments WHERE pnum=?";
-			pstmt = conn.prepareStatement(sql1);
+			// c_post(글 번호)에 맞는 댓글들을 출력
+			pstmt = conn.prepareStatement(sql_SELECT_POST);
 			pstmt.setInt(1, vo.getC_post());
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
+				// 글 하나당 CommentsSet 한개이므로 새로 생성
 				CommentsSet cs = new CommentsSet(); 
 				CommentsVO cvo = new CommentsVO();
 				cvo.setCnum(rs.getInt("cnum"));
@@ -41,12 +45,14 @@ public class CommentsDAO {
 				cvo.setReplyCnt(rs.getInt("replyCnt"));
 				cvo.setC_user(rs.getString("c_user"));
 				cvo.setC_post(rs.getInt("c_post"));
+				// CommentsSet에 댓글을 set
 				cs.setComment(cvo);
-
-				String sql2 = "SELECT * FROM reply WHERE r_comments=?";
-				pstmt = conn.prepareStatement(sql2);
+				
+				// 2번째 쿼리 -> 댓글에 있는 답글들을 출력
+				pstmt = conn.prepareStatement(sql_SELECT_ALL_REPLY);
 				pstmt.setInt(1, vo.getCnum());
 				ResultSet rrs = pstmt.executeQuery();
+				// rlist에 쿼리 결과(답글) 추가
 				ArrayList<ReplyVO> rlist = new ArrayList<ReplyVO>();
 				while(rrs.next()) {
 					ReplyVO rvo = new ReplyVO();
@@ -60,7 +66,9 @@ public class CommentsDAO {
 					rlist.add(rvo);
 				}
 				rrs.close();
+				// CommentsSet에 답글 리스트 set
 				cs.setRlist(rlist);
+				// result에 CommentsSet 추가
 				result.add(cs);
 			}
 			rs.close();
@@ -156,7 +164,6 @@ public class CommentsDAO {
 			pstmt.close();
 
 			// POST 댓글 수 ++
-			String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
 			pstmt=conn.prepareStatement(sql_comCntUp);
 			pstmt.setInt(1, vo.getC_post());
 			pstmt.executeUpdate();
@@ -227,7 +234,7 @@ public class CommentsDAO {
 		try{
 			pstmt=conn.prepareStatement(sql_UPDATE);
 			pstmt.setString(1, vo.getCment());
-			pstmt.setInt(2, vo.getCnum()); // 9/25 수정(이예나)
+			pstmt.setInt(2, vo.getCnum());
 			pstmt.executeUpdate();
 			res=true;
 		}
@@ -260,7 +267,7 @@ public class CommentsDAO {
 				data.setCwriter(rs.getString("cwriter"));
 				data.setC_user(rs.getString("c_user"));
 				data.setC_post(rs.getInt("c_post"));
-				datas.add(data); // 9/25 수정(이예나)
+				datas.add(data);
 			}
 			rs.close();
 		}

@@ -10,6 +10,7 @@ public class ReplyVO {
 	private String r_user;
 	private int r_post;
 	private int r_comments;
+	
 	public int getRnum() {
 		return rnum;
 	}
@@ -57,7 +58,4 @@ public class ReplyVO {
 		return "ReplyVO [rnum=" + rnum + ", rment=" + rment + ", rdate=" + rdate + ", rwriter=" + rwriter + ", r_user="
 				+ r_user + ", r_post=" + r_post + "]";
 	}
-	
-	
-	
 }
