@@ -53,6 +53,18 @@
 	background-color: #D25A53;
 	color: white;
 }
+.crset{
+	resize: none;
+	width: 460px;
+	height: 152px;
+	
+}
+.cwidth{
+	width: 460px;
+}
+.dnone{
+	display:none;
+}
 </style>
 <script type="text/javascript">
 function forbid() {
@@ -109,7 +121,12 @@ $(function(){ //좋아요 active효과 추가제거효과
 		  }
 		})
 	 })	
-	 
+function msgEdit(index){
+	$('#pcmsg'+index).css('display','none');
+	$('#cOption'+index).css('visibility','hidden');
+	$('#ucmsg'+index).removeClass('dnone');
+	$('#uButton'+index).removeClass('dnone');
+}	 
  
 </script>
 </head>
@@ -241,39 +258,50 @@ $(function(){ //좋아요 active효과 추가제거효과
 					<!-- Comments -->
 
 					<div>
-						<c:forEach var="cl" items="${postOne_comments}">
-							<h2 class="tm-color-primary tm-post-title">Comments</h2>
+					<c:set var="index" value="0" />
+					<h2 class="tm-color-primary tm-post-title">Comments</h2>
 							<hr class="tm-hr-primary tm-mb-45">
+						<c:forEach var="cl" items="${postOne_comments}">							
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
 									<img src="img/comment-1.jpg" alt="Image"
 										class="mb-2 rounded-circle img-thumbnail">
 									<figcaption class="tm-color-primary text-center">${cl.c_user}</figcaption>
 								</figure>
-								<div>
-									<p>${cl.cment}</p>
-									<div class="d-flex justify-content-between">
+								<div class="cwidth">
+								
+								<!-- 평상시 코멘트내용 -->
+									<p id="pcmsg${index}">${cl.cment}</p>
+									
+									<!-- 수정시 textarea나오게 설정 -->
+									<form action="editComment.ucdo" method="post" class="mb-5 tm-comment-form">
+									<input type="hidden" name="c_post" value="${singlePost.pnum}">
+									<input type="hidden" name="c_user" value="${userInfoData.id}">
+									<input type="hidden" name="cwriter" value="${userInfoData.name}">
+									<input type="hidden" name="cnum" value="${cl.cnum}">									
+									<textarea id="ucmsg${index}" class="crset dnone form-control" name="cment" rows="6" >${cl.cment}</textarea>
+									<div class="text-right">
+										<button type="submit" id="uButton${index}" class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
+									</div>
+									</form>
+									
+									<div id="cOption${index}" class="d-flex justify-content-between">
 										<a href="#" class="tm-color-primary">답글</a>
 
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
-												<a href="#" onclick="msgEdit(${index})"
-													class="tm-color-primary">수정</a>
-
-												<form method="post" name="form2">
-													<input type="hidden" name="cnum" value="${cl.cnum}">
-													<input type="hidden" name="c_post"
-														value="${singlePost.pnum}">
-												<a href="#" onclick="delComment('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}')"class="tm-color-primary">삭제</a>		
-												</form>
-
+												<a href="#" onclick="msgEdit(${index})"class="tm-color-primary">수정</a>										
+												<a href="#" onclick="delComment('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}')"class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
 										<span class="tm-color-primary"> ${cl.cdate}</span>
 									</div>
+									
 								</div>
+								<hr>  
 							</div>
+							<c:set var="index" value="${index+1}" />
 						</c:forEach>
 						<c:choose>
 							<c:when test="${userInfoData!=null}">
@@ -285,7 +313,7 @@ $(function(){ //좋아요 active효과 추가제거효과
 										comment</h2>
 
 									<div class="mb-4">
-										<textarea class="form-control" name="cment" rows="6"></textarea>
+										<textarea class="crset form-control" name="cment" rows="6" ></textarea>
 									</div>
 
 									<div class="text-right">
@@ -295,11 +323,11 @@ $(function(){ //좋아요 active효과 추가제거효과
 								</form>
 							</c:when>
 						</c:choose>
-						<button onclick="signUpRef()"
-							class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
+						
 						<c:choose>
 							<c:when test="${userInfoData==null}">
-
+								<button onclick="signUpRef()"
+							class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
 							</c:when>
 						</c:choose>
 					</div>

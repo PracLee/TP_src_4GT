@@ -146,19 +146,15 @@ function logout(){
 					style="display: inline-block;" class="mb-5 tm-comment-form">
 					<div class="mb-4">
 						<span class="signupt">아이디</span> <input class="form-control"
-							style="width: 360px" name="id" type="text" placeholder="ID">
+							style="width: 360px" name="id" type="text" placeholder="ID" value="${userInfoData.id}" readonly>
 					</div>
 					<div class="mb-4">
 						<span class="signupt">비밀번호</span> <input class="form-control"
-							name="pw" type="password" placeholder="PW">
-					</div>
-					<div class="mb-4">
-						<span class="signupt">비밀번호 확인</span> <input class="form-control"
-							name="pw" type="password" placeholder="PW">
-					</div>
+							name="pw" type="text" placeholder="PW" value="${userInfoData.pw}">
+					</div>					
 					<div class="mb-4">
 						<span class="signupt">이&nbsp;름</span> <input class="form-control"
-							name="name" type="text" placeholder="NAME">
+							name="name" type="text" placeholder="NAME" value="${userInfoData.name}">
 					</div>
 					<div class="text-right">
 						<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">정보수정</button>

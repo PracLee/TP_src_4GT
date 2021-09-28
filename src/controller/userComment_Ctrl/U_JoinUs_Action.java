@@ -21,12 +21,13 @@ public class U_JoinUs_Action implements Action{
 		
 		ActionForward forward = new ActionForward();
 		String ppnum=request.getParameter("pnum");
-		System.out.println("pnum = "+ppnum);
+		System.out.println("pnum = "+ !(ppnum.length()==0));
 		String path = null;
-		if(ppnum!=null){
+		if(!(ppnum.length()==0)){ // 값이 받아와졌다면 -> selectOne 이동
 			int pnum=Integer.parseInt(ppnum);
 			path = "selectOne.pdo?pnum="+pnum;
 		}else {
+			System.out.println("들림");
 			path = "Index.jsp";
 		}
 		
