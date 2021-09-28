@@ -125,6 +125,15 @@
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
+function checkAlert(uri,text){
+	result=confirm("text");
+	if(result==true){
+		location.href=uri;
+	}
+	else{
+		return;
+	}
+}
 </script>
   
 <!-- 스크립트 불러오기 -->
@@ -226,8 +235,7 @@ function forbid() {
 				<hr class="tm-hr-primary tm-mb-55">
 				<h2 id="Header">회원가입</h2>
 				<br>
-
-				<!-- signUp form action='userComment_Ctrl.jsp?action=signUp'-->
+				
 				<form action="signUp.ucdo" method="post"
 					class="fset mb-5 tm-comment-form" name="join">
 					<div class="mb-4">						<!-- 이예나: error추가, class check -->

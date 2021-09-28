@@ -2,6 +2,7 @@
 
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
 
 <!DOCTYPE html>
 <html lang="kor">
@@ -47,82 +48,20 @@ function forbid() {
 function infoHelp(){
 	window.open("infoHelp.jsp","id/pw찾기","width=800px,height=600px");
 }
+function checkAlert(uri,text){
+	result=confirm("text");
+	if(result==true){
+		location.href=uri;
+	}
+	else{
+		return;
+	}
+}
 </script>
 
 </head>
 <body>
-	<header class="tm-header" id="tm-header">
-		<div class="tm-header-wrapper">
-			<button class="navbar-toggler" type="button"
-				aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
-			</button>
-			<div class="tm-site-header">
-
-				<div class="mb-3 mx-auto">
-					<img alt="4TeamLogo" src="img/logo.png" class="mlogo">
-				</div>
-
-			</div>
-			<nav class="tm-nav" id="tm-nav">
-
-				<ul>
-					<li class="tm-nav-item"><a href="main.ucdo"
-						class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
-					</a></li>
-
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="InsertPost.jsp"
-								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-							</a></li>
-						</c:when>
-					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item"><a href="#" onClick="forbid()"
-								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-							</a></li>
-						</c:when>
-					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item active"><a href="Login.jsp"
-								class="tm-nav-link"> <i class="fas fa-users"></i> Login /
-									Sign-up
-							</a></li>
-						</c:when>
-					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="logOut.ucdo"
-								class="tm-nav-link"> <i class="fas fa-users"></i> Logout
-							</a></li>
-							<li class="tm-nav-item"><a href="MyPage.jsp"
-								class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
-							</a></li>
-						</c:when>
-
-					</c:choose>
-				</ul>
-			</nav>
-			<div class="tm-mb-65">
-				<a href="https://facebook.com" class="tm-social-link"> <i
-					class="fab fa-facebook tm-social-icon"></i>
-				</a> <a href="https://twitter.com" class="tm-social-link"> <i
-					class="fab fa-twitter tm-social-icon"></i>
-				</a> <a href="https://instagram.com" class="tm-social-link"> <i
-					class="fab fa-instagram tm-social-icon"></i>
-				</a> <a href="https://linkedin.com" class="tm-social-link"> <i
-					class="fab fa-linkedin tm-social-icon"></i>
-				</a>
-			</div>
-
-		</div>
-	</header>
+	<mytag:nonClientSidebar/>
 	<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
 		<div class="row tm-row">

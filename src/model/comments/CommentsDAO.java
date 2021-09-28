@@ -162,7 +162,8 @@ public class CommentsDAO {
 			pstmt.setInt(4, vo.getC_post());
 			pstmt.executeUpdate();
 			pstmt.close();
-
+			
+			// "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?"
 			// POST ´ñ±Û ¼ö ++
 			pstmt=conn.prepareStatement(sql_comCntUp);
 			pstmt.setInt(1, vo.getC_post());
@@ -198,10 +199,9 @@ public class CommentsDAO {
 			pstmt=conn.prepareStatement(sql_DELETE);
 			pstmt.setInt(1, vo.getCnum());
 			pstmt.executeUpdate();
-			pstmt.close();
-
 			String sql_comCntDown = "UPDATE post SET comCnt=comCnt-? WHERE pnum=?";
 			pstmt=conn.prepareStatement(sql_comCntDown);
+			// pstmt.setInt(1, 1);
 			pstmt.setInt(1, vo.getReplyCnt() + 1);
 			pstmt.setInt(2, vo.getC_post());
 			pstmt.executeUpdate();

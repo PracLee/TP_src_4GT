@@ -382,7 +382,8 @@ a.tm-color-gray:hover { color: #CA3D36; }
 button:focus { outline: none; }
 a:hover { 
    text-decoration: none; 
-    color: #D22800;
+    color: #F71B02;
+    font-weight:bold;
 }
 
 a:hover figcaption { color: #77231F; }
