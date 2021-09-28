@@ -97,7 +97,13 @@ public class UserComment_ctrl extends HttpServlet {
 			forward = new U_DeleteUser_Action().execute(request, response);
 
 		}
+		//[이메일 인증] - 회원가입 및 ID/PW찾기
+		//	필요 Parameter : 인증번호("codeNum"), 사용자 이메일("receiver")
+		//	전달 response : 인증번호("codeNum")
+		else if (action.equals("codeSend.ucdo")) {
+			forward = new M_codeSend_Action().execute(request, response);
 
+		}
 
 		/////////////////////////////////////comment/////////////////////////////////////
 
