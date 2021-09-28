@@ -20,7 +20,7 @@ public class U_logOut_Action implements Action{
 		String ppnum=request.getParameter("pnum");
 		System.out.println("pnum = "+ppnum);
 		String path = null;
-		if(!(ppnum.length()==0)){ // 값이 받아와졌다면 -> selectOne 이동
+		if(ppnum!=null && !(ppnum.length()==0)){ // 값이 받아와졌다면 -> selectOne 이동
 			int pnum=Integer.parseInt(ppnum);
 			path = "selectOne.pdo?pnum="+pnum;
 		}else {
