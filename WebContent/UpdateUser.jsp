@@ -51,6 +51,15 @@ function logout(){
 		return;
 	}
 }
+function checkAlert(uri,text){
+	result=confirm(text);
+	if(result==true){
+		location.href=uri;
+	}
+	else{
+		return;
+	}
+}
 </script>
 </head>
 <body>
@@ -99,7 +108,7 @@ function logout(){
 
 					<c:choose>
 						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="#" onclick="logout()"
+							<li class="tm-nav-item"><a href="#" onclick="checkAlert('logOut.ucdo','로그아웃하시겠어요???')"
 								class="tm-nav-link"> <i class="fas fa-users"></i> Logout
 							</a></li>
 							<li class="tm-nav-item active"><a href="MyPage.jsp"

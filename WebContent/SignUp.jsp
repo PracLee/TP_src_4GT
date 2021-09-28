@@ -125,6 +125,15 @@
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
+function checkAlert(uri,text){
+	result=confirm("text");
+	if(result==true){
+		location.href=uri;
+	}
+	else{
+		return;
+	}
+}
 </script>
   
 <!-- 스크립트 불러오기 -->

@@ -47,6 +47,15 @@ function forbid() {
 function infoHelp(){
 	window.open("infoHelp.jsp","id/pw찾기","width=800px,height=600px");
 }
+function checkAlert(uri,text){
+	result=confirm("text");
+	if(result==true){
+		location.href=uri;
+	}
+	else{
+		return;
+	}
+}
 </script>
 
 </head>
@@ -95,18 +104,7 @@ function infoHelp(){
 							</a></li>
 						</c:when>
 					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="logOut.ucdo"
-								class="tm-nav-link"> <i class="fas fa-users"></i> Logout
-							</a></li>
-							<li class="tm-nav-item"><a href="MyPage.jsp"
-								class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
-							</a></li>
-						</c:when>
-
-					</c:choose>
+				
 				</ul>
 			</nav>
 			<div class="tm-mb-65">
