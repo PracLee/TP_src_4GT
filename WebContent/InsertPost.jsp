@@ -32,15 +32,7 @@
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
-function logout(){
-	result=confirm("로그아웃 하시겠습니까??");
-	if(result==true){
-		location.href="logOut.ucdo";
-	}
-	else{
-		return;
-	}
-}
+
 function checkAlert(uri,text){
 	result=confirm(text);
 	if(result==true){

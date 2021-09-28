@@ -70,42 +70,7 @@
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
-function delPost(uri){
-	result=confirm("게시글을 정말로 삭제하시겠습니까?");
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
-}
-function delComment(uri) {
-	
-	result = confirm("댓글을 정말로 삭제하시겠습니까?");
-	if (result == true) {
-		location.href=uri;
-	} else {
-		return;
-	}
-}
-function logout(){
-	result=confirm("로그아웃 하시겠습니까??");
-	if(result==true){
-		location.href="logOut.ucdo";
-	}
-	else{
-		return;
-	}
-} 
-function signUpRef(){
-	result=confirm("댓글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?");
-	if(result==true){
-		location.href="SignUp.jsp";
-	}
-	else{
-		return;
-	}
-}
+// 로그아웃, 삭제시 삭제여부를 묻는 기능
 function checkAlert(uri,text){
 	result=confirm(text);
 	if(result==true){
@@ -130,11 +95,13 @@ $(function(){ //좋아요 active효과 추가제거효과
 		  }
 		})
 	 })	
-function msgEdit(index){
+function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
+	
 	$('#pcmsg'+index).css('display','none');
 	$('#cOption'+index).css('visibility','hidden');
 	$('#ucmsg'+index).removeClass('dnone');
 	$('#uButton'+index).removeClass('dnone');
+	
 }	 
  
 </script>
@@ -257,7 +224,7 @@ function msgEdit(index){
 									
 										<button onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}'"
 											class="tm-btn tm-btn-primary tm-btn-small">글 수정</button> 
-										<button onclick="delPost('deletePostDB.pdo?pnum=${singlePost.pnum}')" class="tm-btn tm-btn-primary tm-btn-small">글 삭제</button>
+										<button onclick="checkAlert('deletePostDB.pdo?pnum=${singlePost.pnum}','게시글을 삭제하시겠어요?')" class="tm-btn tm-btn-primary tm-btn-small">글 삭제</button>
 									
 								</div>
 							</c:when>
@@ -288,7 +255,7 @@ function msgEdit(index){
 									<input type="hidden" name="c_user" value="${userInfoData.id}">
 									<input type="hidden" name="cwriter" value="${userInfoData.name}">
 									<input type="hidden" name="cnum" value="${cl.cnum}">									
-									<textarea id="ucmsg${index}" class="crset dnone form-control" name="cment" rows="6" >${cl.cment}</textarea>
+									<textarea id="ucmsg${index}" class="crset dnone form-control" name="cment" rows="6" required>${cl.cment}</textarea>
 									<div class="text-right">
 										<button type="submit" id="uButton${index}" class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
 									</div>
@@ -300,8 +267,8 @@ function msgEdit(index){
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
-												<a href="#" onclick="msgEdit(${index})"class="tm-color-primary">수정</a>										
-												<a href="#" onclick="delComment('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}')"class="tm-color-primary">삭제</a>
+												<a href="javascript:void(0);" onclick="msgEdit(${index})"class="tm-color-primary">수정</a>										
+												<a href="#" onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}','댓글을 삭제하시겠어요?')"class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
 										<span class="tm-color-primary"> ${cl.cdate}</span>
@@ -322,7 +289,7 @@ function msgEdit(index){
 										comment</h2>
 
 									<div class="mb-4">
-										<textarea class="crset form-control" name="cment" rows="6" ></textarea>
+										<textarea class="crset form-control" name="cment" rows="6" required></textarea>
 									</div>
 
 									<div class="text-right">
@@ -335,7 +302,7 @@ function msgEdit(index){
 						
 						<c:choose>
 							<c:when test="${userInfoData==null}">
-								<button onclick="signUpRef()"
+								<button onclick="checkAlert('Login.jsp','댓글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')"
 							class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
 							</c:when>
 						</c:choose>
