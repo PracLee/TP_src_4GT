@@ -15,8 +15,13 @@ public class ReplyDAO {
 	private static String sql_SELECT_ONE = "SELECT * FROM reply WHERE rnum=?";
 	private static String sql_INSERT = "INSERT INTO reply (rnum, rment, rdate, rwriter, r_user, r_post, r_comments) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM reply), ?, sysdate, ?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM reply WHERE rnum=?";
-	private static String sql_UPDATE = "UPDATE comments SET rment=?, cdate=sysdate WHERE rnum=?";
+	private static String sql_UPDATE = "UPDATE reply SET rment=?, rdate=sysdate WHERE rnum=?";
 
+	private static String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
+	private static String sql_comCntDown = "UPDATE post SET comCnt=comCnt-1 WHERE pnum=?";
+	private static String sql_replyCntUp = "UPDATE comments SET replyCnt=replyCnt+1 WHERE cnum=?";
+	private static String sql_replyCntDown = "UPDATE comments SET replyCnt=replyCnt-1 WHERE cnum=?";
+	
 	// SELECT ALL -> 전체 DB정보 추출
 	public ArrayList<ReplyVO> SelectAll(){
 		Connection conn = DBCP.connect();
@@ -97,13 +102,11 @@ public class ReplyDAO {
 			pstmt.executeUpdate();
 
 			// POST 댓글 수 ++
-			String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
 			pstmt=conn.prepareStatement(sql_comCntUp);
 			pstmt.setInt(1, vo.getR_post());
 			pstmt.executeUpdate();
 			
 			// Comment 테이블 답글 수 ++
-			String sql_replyCntUp = "UPDATE comments SET replyCnt=replyCnt+1 WHERE cnum=?";
 			pstmt=conn.prepareStatement(sql_replyCntUp);
 			pstmt.setInt(1, vo.getR_comments());
 			pstmt.executeUpdate();
@@ -142,13 +145,11 @@ public class ReplyDAO {
 			pstmt.executeUpdate();
 			
 			// POST 테이블 댓글 수 --
-			String sql_comCntDown = "UPDATE post SET comCnt=comCnt-1 WHERE pnum=?";
 			pstmt=conn.prepareStatement(sql_comCntDown);
 			pstmt.setInt(1, vo.getR_post());
 			pstmt.executeUpdate();
 			
 			// Comments 테이블 답글 수 --
-			String sql_replyCntDown = "UPDATE comments SET replyCnt=replyCnt-1 WHERE cnum=?";
 			pstmt=conn.prepareStatement(sql_replyCntDown);
 			pstmt.setInt(1, vo.getR_comments());
 			pstmt.executeUpdate();
@@ -182,7 +183,7 @@ public class ReplyDAO {
 		try{
 			pstmt=conn.prepareStatement(sql_UPDATE);
 			pstmt.setString(1, vo.getRment());
-			pstmt.setInt(2, vo.getRnum()); // 9/25 수정(이예나)
+			pstmt.setInt(2, vo.getRnum());
 			pstmt.executeUpdate();
 			res=true;
 		}
