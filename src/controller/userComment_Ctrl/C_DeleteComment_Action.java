@@ -24,7 +24,7 @@ public class C_DeleteComment_Action implements Action{
 	    
 	    // DAO수행 필요데이터 SET
 	    commentVO.setCnum(Integer.parseInt(request.getParameter("cnum")));
-	    
+	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post")));
 	    
 	    //DAO 수행
 	    // 댓글 삭제 완료
