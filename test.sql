@@ -60,7 +60,7 @@ select * from userInfo;
 select * from post;
 select * from comments;
 select * from likeInfo;
-
+UPDATE post SET comCnt=comCnt-1 WHERE pnum=3;
 /* Å×ÀÌºí »èÁ¦ */
 drop table userInfo;
 drop table post CASCADE CONSTRAINTS;
@@ -73,7 +73,7 @@ insert into userInfo values('1111','1111','¸ù');
 insert into post (pnum, views, plike, category, title, content, writer, p_user, path)
 values(1,0,0, 'Ä¡Å²', '³ä³ä', 'Çª¶ó´ß Â¯¸À', '¸ù', '1111', '??');
 
-insert into comments (cnum, cment, c_user, c_post)
-values(1, '1111','1111', 1);
+insert into comments (cnum, cwriter, cment, c_user, c_post)
+values(1, '¸ù', '1111','1111', 1);
 
 insert into likeInfo (l_user,l_post)values ('1111', 1);
