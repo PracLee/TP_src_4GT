@@ -303,6 +303,6 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
-
+ 
 </body>
 </html>
