@@ -21,39 +21,34 @@ public class U_SignUp_Action implements Action {
 		
 		ActionForward forward = new ActionForward();
 		
-		// VO DAO ÀÎ½ºÅÏ½ºÈ­
+		// VO DAO ì¸ìŠ¤í„´ìŠ¤í™”
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		UserInfoVO userInfoVO = new UserInfoVO();
 		
-		// DAO¼öÇà ÇÊ¿äµ¥ÀÌÅÍ SET
+		// DAOìˆ˜í–‰ í•„ìš”ë°ì´í„° SET
 		userInfoVO.setId(request.getParameter("id"));
 		userInfoVO.setPw(request.getParameter("pw"));
 		userInfoVO.setName(request.getParameter("name"));
 		
-		// DAO¼öÇà		
-	     // °¡ÀÔ ¼º°ø - ½ºÅ©¸³Æ® ¼öÇà(¾È³»Ã¢ Ãâ·Â ¹× ÆäÀÌÁö ÀÌµ¿)
+		// DAOìˆ˜í–‰		
+	     // ê°€ì… ì„±ê³µ - ìŠ¤í¬ë¦½íŠ¸ ìˆ˜í–‰(ì•ˆë‚´ì°½ ì¶œë ¥ ë° í˜ì´ì§€ ì´ë™)
 		if(userInfoDAO.InsertDB(userInfoVO)) {
 			response.setContentType("text/html; charset=UTF-8"); 
 			PrintWriter out = response.getWriter();
-			// ÀÚ¹Ù½ºÅ©¸³Æ®¸¦ ÀÌ¿ëÇÏ¿© ¾Ë¸²Ã¢ µÚ, Login.jsp ÆäÀÌÁö ÀÌµ¿
-			out.println("<script>alert('È¸¿ø°¡ÀÔÀÌ Á¤»óÀûÀ¸·Î ¹İ¿µµÇ¾ú½À´Ï´Ù.');  location.href='Login.jsp'; </script>");
+			// ìë°”ìŠ¤í¬ë¦½íŠ¸ë¥¼ ì´ìš©í•˜ì—¬ ì•Œë¦¼ì°½ ë’¤, Login.jsp í˜ì´ì§€ ì´ë™
+			out.println("<script>alert('íšŒì›ê°€ì…ì´ ì •ìƒì ìœ¼ë¡œ ë°˜ì˜ë˜ì—ˆìŠµë‹ˆë‹¤.');  location.href='Login.jsp'; </script>");
 		}
-		 // °¡ÀÔ ½ÇÆĞ½Ã - ¿À·ù ¼öÇà
+		 // ê°€ì… ì‹¤íŒ¨ì‹œ - ì˜¤ë¥˜ ìˆ˜í–‰
 		else {
 			try {
-				throw new Exception("SignUp_Action DB ¿À·ù ¹ß»ı!");
+				throw new Exception("SignUp_Action DB ì˜¤ë¥˜ ë°œìƒ!");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} 
 		
 	    
-	    // Àü¼ÛÆäÀÌÁö°¡ ¾øÀ¸¹Ç·Î, null¹İÈ¯ Ã³¸®
+	    // ì „ì†¡í˜ì´ì§€ê°€ ì—†ìœ¼ë¯€ë¡œ, nullë°˜í™˜ ì²˜ë¦¬
 		return null;
 	}
-	
-
-	
-	
-	
 }
