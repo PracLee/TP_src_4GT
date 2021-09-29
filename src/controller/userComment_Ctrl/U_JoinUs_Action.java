@@ -21,36 +21,36 @@ public class U_JoinUs_Action implements Action{
 		
 		ActionForward forward = new ActionForward();
 
-		// ÆäÀÌÂ¡Ã³¸® ¸Ş¼­µå È£Ãâ(uri ¹İÈ¯)
+		// í˜ì´ì§•ì²˜ë¦¬ ë©”ì„œë“œ í˜¸ì¶œ(uri ë°˜í™˜)
 		String path = new Post_Action().paging(request.getParameter("pnum"));
 		
-		// VO DAO ÀÎ½ºÅÏ½ºÈ­
+		// VO DAO ì¸ìŠ¤í„´ìŠ¤í™”
 		UserInfoVO userInfoVO = new UserInfoVO();
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		
-		// DAO¼öÇà ÇÊ¿äµ¥ÀÌÅÍ SET
+		// DAOìˆ˜í–‰ í•„ìš”ë°ì´í„° SET
 		userInfoVO.setId(request.getParameter("id"));
 		userInfoVO.setPw(request.getParameter("pw"));
 		
-		// À¯ÀúÁ¤º¸ ¹Ş¾Æ¿À±â
+		// ìœ ì €ì •ë³´ ë°›ì•„ì˜¤ê¸°
 	    UserInfoVO userInfoData = userInfoDAO.SelectOne(userInfoVO);
 		
-	    // ·Î±×ÀÎ ½ÇÆĞ - ½ºÅ©¸³Æ® ¼öÇà(¾È³»Ã¢ Ãâ·Â ¹× µÚ·Î°¡±â)
+	    // ë¡œê·¸ì¸ ì‹¤íŒ¨ - ìŠ¤í¬ë¦½íŠ¸ ìˆ˜í–‰(ì•ˆë‚´ì°½ ì¶œë ¥ ë° ë’¤ë¡œê°€ê¸°)
 	    if(userInfoData == null) {
 	    	response.setContentType("text/html; charset=UTF-8"); 
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('·Î±×ÀÎ¿¡ ½ÇÆĞÇÏ¼Ì½À´Ï´Ù. ¾ÆÀÌµğ È¤Àº ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä.');  history.go(-1); </script>");
-			return null; // Àü¼ÛÆäÀÌÁö°¡ ¾øÀ¸¹Ç·Î, nullÃ³¸®
+			out.println("<script>alert('ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì…¨ìŠµë‹ˆë‹¤. ì•„ì´ë”” í˜¹ì€ ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.');  history.go(-1); </script>");
+			return null; // ì „ì†¡í˜ì´ì§€ê°€ ì—†ìœ¼ë¯€ë¡œ, nullì²˜ë¦¬
 	    }
 	    
-	    // ·Î±×ÀÎ ¼º°ø - session µî·Ï
+	    // ë¡œê·¸ì¸ ì„±ê³µ - session ë“±ë¡
 	    HttpSession session = request.getSession();
 		session.setAttribute("userInfoData", userInfoData);
 		
 		
-	    // ÆäÀÌÁö Àü¼Û¼³Á¤
+	    // í˜ì´ì§€ ì „ì†¡ì„¤ì •
 	    forward.setRedirect(false); // forward
-	    forward.setPath(path); // post Control¿¡°Ô Àü´Ş
+	    forward.setPath(path); // post Controlì—ê²Œ ì „ë‹¬
 		
 		
 		return forward;
