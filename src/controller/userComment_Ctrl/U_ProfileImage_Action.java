@@ -34,17 +34,17 @@ public class U_ProfileImage_Action implements Action{
 		UDAO.SelectOne(UVO);
 		String realFolder = "";
 		String filename1 = "";
-		// íŒŒì¼ í¬ê¸° 3MBë¡œ ì œí•œ
+		// ÆÄÀÏ Å©±â 3MB·Î Á¦ÇÑ
 		int maxSize = 1024*1024*3;
 		String encType = "utf-8";
 		String savefile = "userProfile";
 
-		// íŒŒì¼ì´ ì €ì¥ë  ì„œë²„ì˜ ê²½ë¡œ
+		// ÆÄÀÏÀÌ ÀúÀåµÉ ¼­¹öÀÇ °æ·Î
 		ServletContext scontext = request.getSession().getServletContext();
 		realFolder = scontext.getRealPath(savefile);
 
 		try{
-			// íŒŒì¼ ì—…ë¡œë“œ
+			// ÆÄÀÏ ¾÷·Îµå
 			MultipartRequest multi=new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 			Enumeration<?> files = multi.getFileNames(); 
 			String file1 = (String)files.nextElement();
@@ -65,15 +65,15 @@ public class U_ProfileImage_Action implements Action{
 
 
 		if(UDAO.UpdateDB(UVO)){
-			// ê°™ì€ í˜ì´ì§€ì˜ ë‹¤ë¥¸ ê³³ìœ¼ë¡œ ì´ë™í•  ë•ŒëŠ” ì£¼ë¡œ redirect ë°©ì‹ì„ ì´ìš©í•¨ -> springì—ì„œ ìì„¸íˆ
+			// °°Àº ÆäÀÌÁöÀÇ ´Ù¸¥ °÷À¸·Î ÀÌµ¿ÇÒ ¶§´Â ÁÖ·Î redirect ¹æ½ÄÀ» ÀÌ¿ëÇÔ -> spring¿¡¼­ ÀÚ¼¼È÷
 			forward.setRedirect(true);
 			forward.setPath("main.do");	
 			return forward;
 		}
 		else{
-			// ì˜ˆì™¸ë¥¼ ë°œìƒì‹œì¼œ ì—ëŸ¬í˜ì´ì§€ë¡œ ì´ë™
+			// ¿¹¿Ü¸¦ ¹ß»ı½ÃÄÑ ¿¡·¯ÆäÀÌÁö·Î ÀÌµ¿
 			try {
-				throw new Exception("DB ë³€ê²½ ì˜¤ë¥˜ ë°œìƒ!");
+				throw new Exception("DB º¯°æ ¿À·ù ¹ß»ı!");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -87,5 +87,4 @@ public class U_ProfileImage_Action implements Action{
 
 
 }
-
 
