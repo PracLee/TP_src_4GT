@@ -2,7 +2,7 @@ CREATE TABLE userInfo(
 	id varchar(200) primary key,
 	pw varchar(30),
 	name varchar(30),
-	profilepath varchar(300)
+	profile varchar(300) default 'userProfile/defaultImage.jpg'
 );
 
 CREATE TABLE post(
