@@ -56,9 +56,9 @@ public class Post_ctrl extends HttpServlet {
 		}else if(action.equals("/insertPostDB.pdo")) {
 			forward = new InsertPostDB().execute(request, response);
 		}else if(action.equals("/editPost.pdo")) {
-			// System.out.println("/editPost.pdo ë“¤ì–´ì™”ë‹¤");
+			// System.out.println("/editPost.pdo µé¾î¿Ô´Ù");
 			forward = new EditPostAction().execute(request, response);
-			// System.out.println("EditPostAction ì¢…ë£Œ");
+			// System.out.println("EditPostAction Á¾·á");
 		}else if(action.equals("/editPostDB.pdo")) {
 			forward = new EditPostDB().execute(request, response);
 		}else if(action.equals("/deletePostDB.pdo")) {
@@ -68,7 +68,7 @@ public class Post_ctrl extends HttpServlet {
 		}else if(action.equals("/likeDown.pdo")) {
 			forward = new LikeDownAciton().execute(request, response);
 		}else {
-			forward.setPath("error/error404.jsp");	// 404í˜ì´ì§€ë¡œ ë³´ëƒ„
+			forward.setPath("error/error404.jsp");	// 404ÆäÀÌÁö·Î º¸³¿
 			forward.setRedirect(false);
 		}
 		if(forward != null) {
