@@ -197,7 +197,8 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 									<input type="hidden" name="c_post" value="${singlePost.pnum}">
 									<input type="hidden" name="c_user" value="${userInfoData.id}">
 									<input type="hidden" name="cwriter" value="${userInfoData.name}">
-									<input type="hidden" name="cnum" value="${cl.cnum}">									
+									<input type="hidden" name="cnum" value="${cl.cnum}">
+									<input type="hidden" name="index" value="${index}">									
 									<textarea id="ucmsg${index}" class="crset dnone form-control" name="cment" rows="6" required>${cl.cment}</textarea>
 									<div class="text-right">
 										<button type="submit" id="uButton${index}" class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
@@ -211,7 +212,7 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
 												<a href="javascript:void(0);" onclick="msgEdit(${index})"class="tm-color-primary">수정</a>										
-												<a href="#" onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}','댓글을 삭제하시겠어요?')"class="tm-color-primary">삭제</a>
+												<a href="#" onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
 										<span class="tm-color-primary"> ${cl.cdate}</span>
@@ -228,6 +229,7 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 									class="mb-5 tm-comment-form">
 									<input type="hidden" name="c_post" value="${singlePost.pnum}">
 									<input type="hidden" name="c_user" value="${userInfoData.id}">
+									<input type="hidden" name="index" value="${index}">
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>
 
