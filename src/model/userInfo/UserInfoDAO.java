@@ -13,7 +13,7 @@ public class UserInfoDAO {
 	// 비즈니스 메서드
 	private static String sql_SELECT_ALL = "SELECT * FROM userInfo";
 	private static String sql_SELECT_ONE = "SELECT * FROM userInfo WHERE id=? AND pw=?";
-	private static String sql_INSERT = "INSERT INTO userInfo VALUES(?, ?, ?)";
+	private static String sql_INSERT = "INSERT INTO userInfo VALUES(?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM userInfo WHERE id=?";
 	private static String sql_UPDATE = "UPDATE userInfo SET name=?, pw=? WHERE id=?";
 	
@@ -35,6 +35,7 @@ public class UserInfoDAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
+				vo.setProfile(rs.getString("profile"));
 				datas.add(vo);
 			}
 			rs.close();
@@ -64,6 +65,7 @@ public class UserInfoDAO {
 				data.setId(rs.getString("id"));
 				data.setPw(rs.getString("pw"));
 				data.setName(rs.getString("name"));
+				data.setProfile(rs.getString("profile"));
 			}	
 			rs.close();
 		}
@@ -87,6 +89,7 @@ public class UserInfoDAO {
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPw());
 			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getProfile());
 			pstmt.executeUpdate();
 			res=true;
 		}
