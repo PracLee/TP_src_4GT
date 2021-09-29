@@ -17,15 +17,10 @@ public class U_logOut_Action implements Action{
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
-		String ppnum=request.getParameter("pnum");
-		System.out.println("pnum = "+ppnum);
-		String path = null;
-		if(ppnum!=null && !(ppnum.length()==0)){ // 값이 받아와졌다면 -> selectOne 이동
-			int pnum=Integer.parseInt(ppnum);
-			path = "selectOne.pdo?pnum="+pnum;
-		}else {
-			path = "Index.jsp";
-		}
+		
+		// 페이징처리 메서드 호출(uri 반환)
+		String path = new Post_Action().paging(request.getParameter("pnum"));
+
 		HttpSession session = request.getSession();
 		session.removeAttribute("userInfoData"); // 회원 정보 session remove처리
 		
