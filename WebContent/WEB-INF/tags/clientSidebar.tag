@@ -10,7 +10,9 @@
 		</button>
 		<div class="tm-site-header">
 			<div class="mb-3 mx-auto">
-				<img alt="4TeamLogo" src="img/logo.png" class="mlogo">
+				<a href="main.pdo"> <img alt="4TeamLogo" src="img/logo.png"
+					class="mlogo">
+				</a>
 			</div>
 
 		</div>
