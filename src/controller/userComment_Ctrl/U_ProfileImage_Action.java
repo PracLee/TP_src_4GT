@@ -1,5 +1,6 @@
 package controller.userComment_Ctrl;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
@@ -7,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -24,27 +26,36 @@ public class U_ProfileImage_Action implements Action{
 
 		ActionForward forward = new ActionForward();
 
-
-		String realFolder = "";
-		String filename1 = "";
-		// ÆÄÀÏ Å©±â 15MB·Î Á¦ÇÑ
-		int maxSize = 1024*1024*15;
-		String encType = "utf-8";
-		String savefile = "img";
-
-		// ÆÄÀÏÀÌ ÀúÀåµÉ ¼­¹öÀÇ °æ·Î
-		ServletContext scontext = request.getSession().getServletContext();
-		realFolder = scontext.getRealPath(savefile);
 		UserInfoDAO UDAO = new UserInfoDAO();
 		UserInfoVO UVO = new UserInfoVO();
+		HttpSession session = request.getSession();
+		UVO.setId((String)session.getAttribute("id"));
+
+		UDAO.SelectOne(UVO);
+		String realFolder = "";
+		String filename1 = "";
+		// íŒŒì¼ í¬ê¸° 3MBë¡œ ì œí•œ
+		int maxSize = 1024*1024*3;
+		String encType = "utf-8";
+		String savefile = "userProfile";
+
+		// íŒŒì¼ì´ ì €ì¥ë  ì„œë²„ì˜ ê²½ë¡œ
+		ServletContext scontext = request.getSession().getServletContext();
+		realFolder = scontext.getRealPath(savefile);
 
 		try{
-			// ÆÄÀÏ ¾÷·Îµå
+			// íŒŒì¼ ì—…ë¡œë“œ
 			MultipartRequest multi=new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 			Enumeration<?> files = multi.getFileNames(); 
 			String file1 = (String)files.nextElement();
 			filename1 = multi.getFilesystemName(file1);
-
+			UVO.setId(multi.getParameter("id"));
+			UVO.setName(multi.getParameter("name"));
+			UVO.setPw(multi.getParameter("pw"));
+			session.setAttribute("userInfo", UVO);
+			File oldFile = new File(realFolder +"/" +filename1);
+			File newFile = new File(realFolder +"/" +UVO.getId()+"_profile");
+			oldFile.renameTo(newFile);
 
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -53,16 +64,16 @@ public class U_ProfileImage_Action implements Action{
 		String fullpath = realFolder + "/" + filename1;
 
 
-		if(true/*mDAO.insertDB(mVO)*/){
-			// °°Àº ÆäÀÌÁöÀÇ ´Ù¸¥ °÷À¸·Î ÀÌµ¿ÇÒ ¶§´Â ÁÖ·Î redirect ¹æ½ÄÀ» ÀÌ¿ëÇÔ -> spring¿¡¼­ ÀÚ¼¼È÷
+		if(UDAO.UpdateDB(UVO)){
+			// ê°™ì€ í˜ì´ì§€ì˜ ë‹¤ë¥¸ ê³³ìœ¼ë¡œ ì´ë™í•  ë•ŒëŠ” ì£¼ë¡œ redirect ë°©ì‹ì„ ì´ìš©í•¨ -> springì—ì„œ ìì„¸íˆ
 			forward.setRedirect(true);
 			forward.setPath("main.do");	
 			return forward;
 		}
 		else{
-			// ¿¹¿Ü¸¦ ¹ß»ı½ÃÄÑ ¿¡·¯ÆäÀÌÁö·Î ÀÌµ¿
+			// ì˜ˆì™¸ë¥¼ ë°œìƒì‹œì¼œ ì—ëŸ¬í˜ì´ì§€ë¡œ ì´ë™
 			try {
-				throw new Exception("DB º¯°æ ¿À·ù ¹ß»ı!");
+				throw new Exception("DB ë³€ê²½ ì˜¤ë¥˜ ë°œìƒ!");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

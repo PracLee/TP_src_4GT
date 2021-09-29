@@ -10,20 +10,25 @@ import model.userInfo.UserInfoVO;
 
 public class UserInfoDAO {
 	
-	// ºñÁî´Ï½º ¸Ş¼­µå
+	// ë¹„ì¦ˆë‹ˆìŠ¤ ë©”ì„œë“œ
 	private static String sql_SELECT_ALL = "SELECT * FROM userInfo";
 	private static String sql_SELECT_ONE = "SELECT * FROM userInfo WHERE id=? AND pw=?";
 	private static String sql_INSERT = "INSERT INTO userInfo VALUES(?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM userInfo WHERE id=?";
 	private static String sql_UPDATE = "UPDATE userInfo SET name=?, pw=? WHERE id=?";
 	
-	// »ç¿ëÀÚ Á¤ÀÇ ÇÔ¼ö (¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ Ã£±â)
+	// ì‚¬ìš©ì ì •ì˜ í•¨ìˆ˜ (ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°)
 	private static String sql_FindID = "SELECT * FROM userInfo WHERE pw=? AND name=?";
 	private static String sql_FindPW = "SELECT * FROM userInfo WHERE id=?";
 	
+
 	private static String sql_updateProfile = "UPDATE userinfo SET profile=? WHERE id=?";
+
+	// ì‚¬ìš©ì ì •ì˜ í•¨ìˆ˜ (íšŒì›ê°€ì…ì‹œ ì•„ì´ë”” ì¤‘ë³µì²´í¬)
+	private static String sql_CheckID = "SELECT * FROM userInfo WHERE id=?";
+
 	
-	// SELECT ALL -> ÀüÃ¼ DBÁ¤º¸ ÃßÃâ
+	// SELECT ALL -> ì „ì²´ DBì •ë³´ ì¶”ì¶œ
 	public ArrayList<UserInfoVO> SelectAll(){
 		Connection conn = DBCP.connect();
 		ArrayList<UserInfoVO> datas = new ArrayList();
@@ -43,7 +48,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("UserDAO SelectAll()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO SelectAll()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -52,7 +57,7 @@ public class UserInfoDAO {
 		return datas;
 	}
 
-	// SELECT ONE -> ·Î±×ÀÎ 
+	// SELECT ONE -> ë¡œê·¸ì¸ 
 	public UserInfoVO SelectOne(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
@@ -72,7 +77,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO SelectOne()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO SelectOne()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -81,7 +86,7 @@ public class UserInfoDAO {
 		return data;
 	}
 	
-	// INSERT -> È¸¿ø°¡ÀÔ
+	// INSERT -> íšŒì›ê°€ì…
 	public boolean InsertDB(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res = false;
@@ -95,7 +100,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO InsertDB()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO InsertDB()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -105,7 +110,7 @@ public class UserInfoDAO {
 		return res;
 	}
 	
-	// DELETE -> È¸¿ø Å»Åğ
+	// DELETE -> íšŒì› íƒˆí‡´
 	public boolean DeleteDB(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -117,7 +122,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO DeleteDB()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO DeleteDB()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -127,7 +132,7 @@ public class UserInfoDAO {
 		return res;
 	}
 
-	// UPDATE -> Name, Pw º¯°æ
+	// UPDATE -> Name, Pw ë³€ê²½
 	public boolean UpdateDB(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -141,7 +146,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO UpdateDB()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO UpdateDB()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -151,7 +156,7 @@ public class UserInfoDAO {
 		return res;
 	}
 	
-	// ¾ÆÀÌµğ Ã£±â
+	// ì•„ì´ë”” ì°¾ê¸°
 	public UserInfoVO FindID(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
@@ -170,7 +175,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO FindID()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO FindID()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -179,7 +184,7 @@ public class UserInfoDAO {
 		return data;
 	}
 	
-	// ºñ¹Ğ¹øÈ£ Ã£±â
+	// ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
 	public UserInfoVO FindPW(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
@@ -197,7 +202,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO FindPW()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO FindPW()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -206,6 +211,7 @@ public class UserInfoDAO {
 		return data;
 	}
 	
+
 	public boolean UpdateProfile(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -218,13 +224,37 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO UpdateProfile()¿¡¼­ Ãâ·Â");
+			System.out.println("UserDAO UpdateProfile()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
+
+	//íšŒì›ê°€ì…ì‹œ ì•„ì´ë”” ì¤‘ë³µì²´í¬
+	public boolean CheckID(String id) {
+		Connection conn=DBCP.connect();
+		PreparedStatement pstmt=null;
+		boolean exist=false;
+		
+		try{
+			pstmt=conn.prepareStatement(sql_CheckID);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				exist=true;
+			}
+			
+			rs.close();
+		}
+		catch(Exception e){
+			System.out.println("UserInfoDAO CheckID()ì—ì„œ ì¶œë ¥");
+			e.printStackTrace();
 		}
 		finally {
 			DBCP.disconnect(pstmt,conn);
-		}
-		return res;
+		}		
+		return exist;
 	}
+	
+	
+
 }
