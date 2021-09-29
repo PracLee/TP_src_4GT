@@ -13,7 +13,7 @@ public class ReplyDAO {
 	// ±âº» CRUD
 	private static String sql_SELECT_ALL = "SELECT * FROM reply";
 	private static String sql_SELECT_ONE = "SELECT * FROM reply WHERE rnum=?";
-	private static String sql_INSERT = "INSERT INTO reply (rnum, rment, rdate, rwriter, r_user, r_post, r_comments) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM reply), ?, sysdate, ?, ?, ?, ?)";
+	private static String sql_INSERT = "INSERT INTO reply (rnum, rment, rdate, rwriter, r_user, r_post, r_comments) VALUES((SELECT NVL(MAX(rnum),0) + 1 FROM reply), ?, sysdate, ?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM reply WHERE rnum=?";
 	private static String sql_UPDATE = "UPDATE reply SET rment=?, rdate=sysdate WHERE rnum=?";
 
