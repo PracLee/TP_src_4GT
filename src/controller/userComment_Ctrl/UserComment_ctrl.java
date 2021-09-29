@@ -126,6 +126,21 @@ public class UserComment_ctrl extends HttpServlet {
 		else if (action.equals("deleteComment.ucdo")) {
 			forward = new C_DeleteComment_Action().execute(request, response);
 
+		}
+		
+		/////////////////////////////////////reply/////////////////////////////////////
+		
+		else if (action.equals("insertReply.ucdo")) {
+			forward = new R_InsertReply_Action().execute(request, response);
+
+		}
+		else if (action.equals("editReply.ucdo")) {
+			forward = new R_UpdateReply_Action().execute(request, response);
+
+		}
+		else if (action.equals("deleteReply.ucdo")) {
+			forward = new R_DeleteReply_Action().execute(request, response);
+
 		}else {// 미지정된 경로 -> 404
 			forward.setPath("error/error404.jsp");
 			forward.setRedirect(false);
