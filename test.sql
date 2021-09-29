@@ -1,5 +1,3 @@
-
-
 CREATE TABLE userInfo(
 	id varchar(200) primary key,
 	pw varchar(30),
