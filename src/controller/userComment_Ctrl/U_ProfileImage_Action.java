@@ -1,5 +1,6 @@
 package controller.userComment_Ctrl;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
@@ -29,19 +30,19 @@ public class U_ProfileImage_Action implements Action{
 		UserInfoVO UVO = new UserInfoVO();
 		HttpSession session = request.getSession();
 		UVO.setId((String)session.getAttribute("id"));
-		
+
 		UDAO.SelectOne(UVO);
 		String realFolder = "";
 		String filename1 = "";
-		// 파일 크기 5MB로 제한
-		int maxSize = 1024*1024*5;
+		// 파일 크기 3MB로 제한
+		int maxSize = 1024*1024*3;
 		String encType = "utf-8";
-		String savefile = "img";
+		String savefile = "userProfile";
 
 		// 파일이 저장될 서버의 경로
 		ServletContext scontext = request.getSession().getServletContext();
 		realFolder = scontext.getRealPath(savefile);
-		
+
 		try{
 			// 파일 업로드
 			MultipartRequest multi=new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
@@ -51,15 +52,19 @@ public class U_ProfileImage_Action implements Action{
 			UVO.setId(multi.getParameter("id"));
 			UVO.setName(multi.getParameter("name"));
 			UVO.setPw(multi.getParameter("pw"));
-			
+			session.setAttribute("userInfo", UVO);
+			File oldFile = new File(realFolder +"/" +filename1);
+			File newFile = new File(realFolder +"/" +UVO.getId()+"_profile");
+			oldFile.renameTo(newFile);
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		realFolder = "img";
 		String fullpath = realFolder + "/" + filename1;
-		
 
-		if(true/*mDAO.insertDB(mVO)*/){
+
+		if(UDAO.UpdateDB(UVO)){
 			// 같은 페이지의 다른 곳으로 이동할 때는 주로 redirect 방식을 이용함 -> spring에서 자세히
 			forward.setRedirect(true);
 			forward.setPath("main.do");	
