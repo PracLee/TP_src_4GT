@@ -10,25 +10,21 @@ import model.userInfo.UserInfoVO;
 
 public class UserInfoDAO {
 
-	// 鍮꾩쫰�땲�뒪 硫붿꽌�뱶
+	// 기본 CRUD 비즈니스 메서드
 	private static String sql_SELECT_ALL = "SELECT * FROM userInfo";
 	private static String sql_SELECT_ONE = "SELECT * FROM userInfo WHERE id=? AND pw=?";
 	private static String sql_INSERT = "INSERT INTO userInfo VALUES(?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM userInfo WHERE id=?";
 	private static String sql_UPDATE = "UPDATE userInfo SET name=?, pw=? WHERE id=?";
 
-	// �궗�슜�옄 �젙�쓽 �븿�닔 (�븘�씠�뵒/鍮꾨�踰덊샇 李얘린)
+	// 사용자 정의 비즈니스 메서드
 	private static String sql_FindID = "SELECT * FROM userInfo WHERE pw=? AND name=?";
 	private static String sql_FindPW = "SELECT * FROM userInfo WHERE id=?";
-
-
 	private static String sql_updateProfile = "UPDATE userinfo SET profile=? WHERE id=?";
-
-	// �궗�슜�옄 �젙�쓽 �븿�닔 (�쉶�썝媛��엯�떆 �븘�씠�뵒 以묐났泥댄겕)
 	private static String sql_CheckID = "SELECT * FROM userInfo WHERE id=?";
 
 
-	// SELECT ALL -> �쟾泥� DB�젙蹂� 異붿텧
+	// SELECT ALL
 	public ArrayList<UserInfoVO> SelectAll(){
 		Connection conn = DBCP.connect();
 		ArrayList<UserInfoVO> datas = new ArrayList();
@@ -48,7 +44,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("UserDAO SelectAll()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO SelectAll() 에서 문제 발생!");
 			e.printStackTrace();
 		}
 		finally {
@@ -57,7 +53,7 @@ public class UserInfoDAO {
 		return datas;
 	}
 
-	// SELECT ONE -> 濡쒓렇�씤 
+	// SELECT ONE
 	public UserInfoVO SelectOne(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
@@ -77,7 +73,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO SelectOne()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO SelectOne() 에서 문제 발생!");
 			e.printStackTrace();
 		}
 		finally {
@@ -86,7 +82,7 @@ public class UserInfoDAO {
 		return data;
 	}
 
-	// INSERT -> �쉶�썝媛��엯
+	// INSERT 
 	public boolean InsertDB(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res = false;
@@ -100,7 +96,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO InsertDB()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO InsertDB() 에서 문제 발생!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -110,7 +106,7 @@ public class UserInfoDAO {
 		return res;
 	}
 
-	// DELETE -> �쉶�썝 �깉�눜
+	// DELETE
 	public boolean DeleteDB(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -122,7 +118,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO DeleteDB()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO DeleteDB() 에서 문제 발생!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -132,7 +128,7 @@ public class UserInfoDAO {
 		return res;
 	}
 
-	// UPDATE -> Name, Pw 蹂�寃�
+	// UPDATE
 	public boolean UpdateDB(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -146,7 +142,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO UpdateDB()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO UpdateDB() 에서 문제 발생!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -156,7 +152,7 @@ public class UserInfoDAO {
 		return res;
 	}
 
-	// �븘�씠�뵒 李얘린
+	// 아이디 찾기
 	public UserInfoVO FindID(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
@@ -175,7 +171,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO FindID()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO FindID() 에서 문제 발생!");
 			e.printStackTrace();
 		}
 		finally {
@@ -184,7 +180,7 @@ public class UserInfoDAO {
 		return data;
 	}
 
-	// 鍮꾨�踰덊샇 李얘린
+	// 비밀번호 찾기
 	public UserInfoVO FindPW(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
@@ -202,7 +198,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO FindPW()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO FindPW() 에서 문제 발생!");
 			e.printStackTrace();
 		}
 		finally {
@@ -224,13 +220,13 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO UpdateProfile()�뿉�꽌 異쒕젰");
+			System.out.println("UserDAO UpdateProfile() 에서 문제 발생!");
 			e.printStackTrace();
 			//res=false;
 		}
 		return res;
 	}
-	//�쉶�썝媛��엯�떆 �븘�씠�뵒 以묐났泥댄겕
+	// ID 중복 확인 비즈니스 로직 -> 중복있으면 true 아니면 false
 	public boolean CheckID(String id) {
 		Connection conn=DBCP.connect();
 		PreparedStatement pstmt=null;
@@ -244,11 +240,10 @@ public class UserInfoDAO {
 			while(rs.next()) {
 				exist=true;
 			}
-
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserInfoDAO CheckID()�뿉�꽌 異쒕젰");
+			System.out.println("UserInfoDAO CheckID() 에서 문제 발생!");
 			e.printStackTrace();
 		}
 		finally {
@@ -256,7 +251,4 @@ public class UserInfoDAO {
 		}		
 		return exist;
 	}
-
-
-
 }
