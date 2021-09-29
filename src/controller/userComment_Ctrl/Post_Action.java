@@ -40,5 +40,22 @@ public class Post_Action implements Action{
 		
 		return forward;
 	}
+	// 페이징 처리 메서드
+	public String paging(String postNum) {
+		String uri = null;
 
+		String ppnum = postNum; // == request.getParameter("pnum");
+				
+		// 값이 받아와졌다면 -> selectOne(showPost) 이동
+		if(ppnum!=null && !(ppnum.length()==0)){ 
+			
+			uri = "selectOne.pdo?pnum="+Integer.parseInt(ppnum);
+			
+		}else { // 아니라면 main 이동
+			uri = "main.ucdo"; 
+		}
+		
+		return uri;
+		
+	}
 }
