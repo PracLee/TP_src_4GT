@@ -50,7 +50,7 @@ public class CommentsDAO {
 				
 				// 2번째 쿼리 -> 댓글에 있는 답글들을 출력
 				pstmt = conn.prepareStatement(sql_SELECT_ALL_REPLY);
-				pstmt.setInt(1, vo.getCnum());
+				pstmt.setInt(1, cvo.getCnum()); // 댓글 PK가져오기 
 				ResultSet rrs = pstmt.executeQuery();
 				// rlist에 쿼리 결과(답글) 추가
 				ArrayList<ReplyVO> rlist = new ArrayList<ReplyVO>();
