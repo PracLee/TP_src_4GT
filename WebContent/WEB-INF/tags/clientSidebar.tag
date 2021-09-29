@@ -32,7 +32,7 @@
 				</a></li>
 
 				<li class="tm-nav-item"><a href="#"
-					onclick="checkAlert('logOut.ucdo','로그아웃하시겠어요???')"
+					onclick="checkAlert('logOut.ucdo?pnum=${param.pnum}','로그아웃하시겠어요???')"
 					class="tm-nav-link"> <i class="fas fa-users"></i> Logout
 				</a></li>
 				<li class="tm-nav-item"><a href="MyPage.jsp"
