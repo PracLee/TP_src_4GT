@@ -18,31 +18,37 @@ public class C_DeleteComment_Action implements Action{
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		
-		// VO DAO ì¸ìŠ¤í„´ìŠ¤í™”
+		// VO DAO ÀÎ½ºÅÏ½ºÈ­
 	    CommentsVO commentVO = new CommentsVO();
 	    CommentsDAO commentDAO = new CommentsDAO();
 	    
 	    
-	    // DAOìˆ˜í–‰ í•„ìš”ë°ì´í„° SET
+	    // DAO¼öÇà ÇÊ¿äµ¥ÀÌÅÍ SET
 	    commentVO.setCnum(Integer.parseInt(request.getParameter("cnum")));
-	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post"))); // íŠ¸ëœì­ì…˜ ì¿¼ë¦¬ë¬¸ ìˆ˜í–‰ ìœ„í•¨
+	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post"))); // Æ®·£Àè¼Ç Äõ¸®¹® ¼öÇà À§ÇÔ
 	    
-	    //DAO ìˆ˜í–‰
-	    // ëŒ“ê¸€ ì‚­ì œ ì™„ë£Œ
+	    
+		String path = null; // uriº¯¼ö ÃÊ±âÈ­
+		
+	    //DAO ¼öÇà
+	    // ´ñ±Û »èÁ¦Ã³¸®
 	    if (commentDAO.DeleteDB(commentVO)) {
-	    	String parameter = "?pnum="+request.getParameter("c_post"); // parameter ì¶”ê°€
-	    	forward.setRedirect(false); // forward
-	    	forward.setPath("selectOne.pdo"+parameter); // post ì»¨íŠ¸ë¡¤ëŸ¬ì—ê²Œ í˜ì´ì§€ ìš”ì²­(ShowList(ë‹¨ì¼ ê²Œì‹œë¬¼)ì´ë™)
+			// [ÆäÀÌÂ¡Ã³¸® ¸Ş¼­µå] È£Ãâ (uri ¹İÈ¯)
+	    	path = new Post_Action().paging(request.getParameter("c_post"));
 	    }
-	    // ë°˜ì˜ ì‹¤íŒ¨ -> ì˜¤ë¥˜ ìˆ˜í–‰
+	    // ¹İ¿µ½ÇÆĞ -> ¿À·ù¼öÇà
 	    else {
 	    	try {
-				throw new Exception("C_DeleteComment_Action ì˜¤ë¥˜ ë°œìƒ!");
+				throw new Exception("C_DeleteComment_Action ¿À·ù¹ß»ı!");
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
 	    }
+	    
+	    // Àü¼Û ¼³Á¤
+	    forward.setRedirect(false); // sendRedirect
+	    forward.setPath(path);
 	    
 	    return forward;
 	}
