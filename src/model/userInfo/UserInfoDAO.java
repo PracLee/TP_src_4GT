@@ -21,6 +21,9 @@ public class UserInfoDAO {
 	private static String sql_FindID = "SELECT * FROM userInfo WHERE pw=? AND name=?";
 	private static String sql_FindPW = "SELECT * FROM userInfo WHERE id=?";
 	
+	// 사용자 정의 함수 (회원가입시 아이디 중복체크)
+	private static String sql_CheckID = "SELECT * FROM userInfo WHERE id=?";
+	
 	// SELECT ALL -> 전체 DB정보 추출
 	public ArrayList<UserInfoVO> SelectAll(){
 		Connection conn = DBCP.connect();
@@ -204,4 +207,35 @@ public class UserInfoDAO {
 		}
 		return data;
 	}
+	
+	//회원가입시 아이디 중복체크
+	public boolean CheckID(String id) {
+		Connection conn=DBCP.connect();
+		PreparedStatement pstmt=null;
+		boolean exist=false;
+		
+		try{
+			pstmt=conn.prepareStatement(sql_CheckID);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				exist=true;
+			}
+			
+			rs.close();
+		}
+		catch(Exception e){
+			System.out.println("UserInfoDAO CheckID()에서 출력");
+			e.printStackTrace();
+		}
+		finally {
+			DBCP.disconnect(pstmt,conn);
+		}
+		
+		return exist;
+	}
+	
+	
+	
 }
