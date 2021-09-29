@@ -25,7 +25,7 @@ public class EditPostDB implements Action{
 		PVO.setPlike(Integer.parseInt(request.getParameter("plike")));
 		PVO.setContent(request.getParameter("content"));
 		if (PDAO.UpdateDB(PVO)) {
-			action.setPath("index.jsp");
+			action.setPath("selectOne.pdo?pnum="+PVO.getPnum());
 			action.setRedirect(false);
 		} else {
 			try {
