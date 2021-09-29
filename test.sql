@@ -1,9 +1,10 @@
 
 
 CREATE TABLE userInfo(
-	id varchar(30) primary key,
+	id varchar(200) primary key,
 	pw varchar(30),
-	name varchar(30)
+	name varchar(30),
+	profilepath varchar(300)
 );
 
 CREATE TABLE post(
@@ -64,9 +65,9 @@ select * from likeInfo;
 select * from reply;
 
 /* 테이블 삭제 */
-drop table userInfo;
+drop table userInfo CASCADE CONSTRAINTS;
 drop table post CASCADE CONSTRAINTS;
-drop table comments;
+drop table comments CASCADE CONSTRAINTS;
 drop table likeInfo;
 drop table reply;
 
