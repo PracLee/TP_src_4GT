@@ -1,4 +1,3 @@
-
 package controller.userComment_Ctrl;
 
 import java.io.IOException;
@@ -9,48 +8,54 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Action;
 import controller.ActionForward;
-import model.comments.CommentsDAO;
-import model.comments.CommentsVO;
+import model.reply.ReplyDAO;
+import model.reply.ReplyVO;
 
-public class C_DeleteComment_Action implements Action{
+public class R_InsertReply_Action implements Action{
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		
 		// VO DAO 인스턴스화
-	    CommentsVO commentVO = new CommentsVO();
-	    CommentsDAO commentDAO = new CommentsDAO();
-	    
-	    
+		ReplyDAO replyDAO = new ReplyDAO();
+		ReplyVO replyVO = new ReplyVO();
+		
 	    // DAO수행 필요데이터 SET
-	    commentVO.setCnum(Integer.parseInt(request.getParameter("cnum")));
-	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post"))); // 트랜잭션 쿼리문 수행 위함
-	    
-	    
+		replyVO.setRment(request.getParameter("rment")); // 리플내용
+		replyVO.setRwriter(request.getParameter("rwriter")); // 작성자
+		replyVO.setR_user(request.getParameter("r_user")); // id
+		replyVO.setR_post(Integer.parseInt(request.getParameter("r_post"))); // postPK 	
+		replyVO.setR_comments(Integer.parseInt(request.getParameter("r_comments")));  //commentPK
+		
+		
 		String path = null; // uri변수 초기화
 		
 	    //DAO 수행
-	    // 댓글 삭제처리
-	    if (commentDAO.DeleteDB(commentVO)) {
+		if(replyDAO.InsertDB(replyVO)) {
 			// [페이징처리 메서드] 호출 (uri 반환)
-	    	path = new Post_Action().paging(request.getParameter("c_post"));
+	    	path = new Post_Action().paging(request.getParameter("r_post"));
 			path += "#pcmsg"+request.getParameter("index");
-	    }
-	    // 반영실패 -> 오류수행
-	    else {
-	    	try {
-				throw new Exception("C_DeleteComment_Action 오류발생!");
+		}
+		// 반영 실패 -> 오류 수행
+		else {
+		 	try {
+				throw new Exception("R_InsertReply_Action 오류 발생!");
 			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
-	    }
-	    
+		}
+		
+		
 	    // 전송 설정
 	    forward.setRedirect(false); // sendRedirect
 	    forward.setPath(path);
 	    
-	    return forward;
+	    
+	    
+		return forward;
 	}
+
 }
