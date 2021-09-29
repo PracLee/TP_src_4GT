@@ -37,6 +37,7 @@ public class C_EditComment_Action implements Action{
 	    if (commentDAO.UpdateDB(commentVO)) {
 			// [페이징처리 메서드] 호출 (uri 반환)
 	    	path = new Post_Action().paging(request.getParameter("c_post"));
+			path += "#pcmsg"+request.getParameter("index");
 	    	
 	    }
 	    // 반영 실패 -> 오류 수행
