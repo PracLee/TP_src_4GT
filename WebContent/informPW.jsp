@@ -45,7 +45,7 @@
 		<div class="inner">
  											
 						<div class="mb-4">
-							<span>비밀번호</span><input class="form-control" type="text" value="${findUser.pw}1234" readonly>
+							<span>비밀번호</span><input class="form-control" type="text" value="${findUser.pw}" readonly>
 						</div>												
 						<div class="mb-4 btw">
 							<a class="txtleft" href="findID.jsp">ID찾기</a>							

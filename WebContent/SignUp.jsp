@@ -134,8 +134,73 @@ function checkAlert(uri,text){
 		return;
 	}
 }
+
 </script>
-  
+<!-- 아이디중복 -->
+<script type="text/javascript">
+//아이디 유효성 검사(1 = 중복 / 0 != 중복)
+$("#id").blur(function() {
+	// id = "id_reg" / name = "Id"
+	var id = $('#id').val();
+	$.ajax({
+		url : "checkID.ucdo?id="+ id,
+		type : 'get',
+		success : function(data) {
+			console.log("1 = 중복o / 0 = 중복x : "+ data);							
+			
+			if (data == 1) {
+					// 1 : 아이디가 중복되는 문구
+					$("#id_check").text("사용중인 아이디입니다 :p");
+					$("#id_check").css("color", "red");
+					$("#reg_submit").attr("disabled", true);
+				} else {
+					
+					if(idJ.test(user_id)){
+						// 0 : 아이디 길이 / 문자열 검사
+						$("#id_check").text("");
+						$("#reg_submit").attr("disabled", false);
+			
+					} else if(user_id == ""){
+						
+						$('#id_check').text('아이디를 입력해주세요 :)');
+						$('#id_check').css('color', 'red');
+						$("#reg_submit").attr("disabled", true);				
+						
+					} else {
+						
+						$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+						$('#id_check').css('color', 'red');
+						$("#reg_submit").attr("disabled", true);
+					}
+					
+				}
+			}, error : function() {
+					console.log("실패");
+			}
+		});
+	});
+	
+	function checkID() { // 회원 가입 시 ID 중복 체크하는 함수
+		$.ajax({ 
+			type: "GET", // 단순 정보 조회 시에는 GET, 정보가 너무 많거나 insert/update를 할때는 POST
+			,data: {				
+				id : $("#id").val() // $().val() : 값 가져오기
+			}
+			,url: "checkID.ucdo?id="+ id,
+			success: function(data) { 
+				if (data.trim()=="false") { // 중복 데이터가 없을 때, trim():문자열 공백제거
+					alert("사용 가능한 ID입니다.");
+				} else {
+					alert("ID가 이미 존재합니다. 다시 입력하세요.");
+				}
+			},
+			error: function(xhr) {
+				console.log(xhr.status + " : " + xhr.errorText);
+				alert("에러발생!");
+			}
+		});
+	}
+</script>  
 <!-- 스크립트 불러오기 -->
 <script src="SignUp.js"></script>
 
@@ -240,9 +305,13 @@ function checkAlert(uri,text){
 					class="fset mb-5 tm-comment-form" name="join">
 					<div class="mb-4">						<!-- 이예나: error추가, class check -->
 						<p class="signupt">아이디 <span id="idError"></span></p>
-						<input class="form-control check" style="width: 360px"
-							name="id" id="id" type="text" placeholder="ID" maxlength=15>
-
+						<input class="form-control check" style="width: 200px"
+							name="id" id="id" type="text" placeholder="ID" maxlength=15><select name="category">
+								<option selected>@google.com</option>
+								<option>@daum.net</option>
+								<option>@naver.com</option>
+							</select>
+						<!-- <button onclick="" class="tm-btn tm-btn-primary tm-btn-small">중복확인</button> --> 
 					</div>
 					<div class="mb-4">                      <!-- 이예나: error추가 class check -->
 						<p class="signupt" id="pwHeader">비밀번호 <span id="pwError"></span> </p>

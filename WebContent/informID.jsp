@@ -42,7 +42,7 @@
 		<div class="inner">
  											
 						<div class="mb-4">
-							<span>아이디 </span><input class="form-control" type="text" value="${findUser.id}qkfzlfl00" readonly>
+							<span>아이디 </span><input class="form-control" type="text" value="${findUser.id}" readonly>
 						</div>												
 						<div class="mb-4 btw">
 							<a class="txtleft" href="findPW.jsp">PW찾기</a>							

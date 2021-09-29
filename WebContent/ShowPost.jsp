@@ -197,7 +197,8 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 									<input type="hidden" name="c_post" value="${singlePost.pnum}">
 									<input type="hidden" name="c_user" value="${userInfoData.id}">
 									<input type="hidden" name="cwriter" value="${userInfoData.name}">
-									<input type="hidden" name="cnum" value="${cl.cnum}">									
+									<input type="hidden" name="cnum" value="${cl.cnum}">
+									<input type="hidden" name="index" value="${index}">									
 									<textarea id="ucmsg${index}" class="crset dnone form-control" name="cment" rows="6" required>${cl.cment}</textarea>
 									<div class="text-right">
 										<button type="submit" id="uButton${index}" class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
