@@ -60,9 +60,10 @@ select * from userInfo;
 select * from post;
 select * from comments;
 select * from likeInfo;
+
 select * from reply;
 
-/* Å×ÀÌºí »èÁ¦ */
+/* í…Œì´ë¸” ì‚­ì œ */
 drop table userInfo;
 drop table post CASCADE CONSTRAINTS;
 drop table comments;
@@ -71,11 +72,11 @@ drop table reply;
 
 delete from post WHERE PNUM=2;
 
-insert into userInfo values('1111','1111','¸ù');
+insert into userInfo values('1111','1111','ëª½');
 insert into post (pnum, views, plike, category, title, content, writer, p_user, path)
-values(1,0,0, 'Ä¡Å²', '³ä³ä', 'Çª¶ó´ß Â¯¸À', '¸ù', '1111', '??');
+values(1,0,0, 'ì¹˜í‚¨', 'ë…ë…', 'í‘¸ë¼ë‹­ ì§±ë§›', 'ëª½', '1111', '??');
 
-insert into comments (cnum, cment, c_user, c_post)
-values(1, '1111','1111', 1);
+insert into comments (cnum, cwriter, cment, c_user, c_post)
+values(1, 'ëª½', '1111','1111', 1);
 
 insert into likeInfo (l_user,l_post)values ('1111', 1);
