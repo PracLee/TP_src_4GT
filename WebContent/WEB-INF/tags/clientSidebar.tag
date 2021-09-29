@@ -16,7 +16,7 @@
 		</div>
 		<nav class="tm-nav" id="tm-nav">
 			<ul>
-				<li class="tm-nav-item active subCmenu"><a href="main.ucdo"
+				<li class="tm-nav-item active subCmenu"><a href="main.pdo"
 					class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
 				</a> <!--  
                     <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>인기글</a>
