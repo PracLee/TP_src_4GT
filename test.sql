@@ -1,9 +1,8 @@
-
-
 CREATE TABLE userInfo(
-	id varchar(30) primary key,
+	id varchar(200) primary key,
 	pw varchar(30),
-	name varchar(30)
+	name varchar(30),
+	profilepath varchar(300)
 );
 
 CREATE TABLE post(
@@ -63,20 +62,20 @@ select * from likeInfo;
 
 select * from reply;
 
-/* í…Œì´ë¸” ì‚­ì œ */
-drop table userInfo;
+/* Å×ÀÌºí »èÁ¦ */
+drop table userInfo CASCADE CONSTRAINTS;
 drop table post CASCADE CONSTRAINTS;
-drop table comments;
+drop table comments CASCADE CONSTRAINTS;
 drop table likeInfo;
 drop table reply;
 
 delete from post WHERE PNUM=2;
 
-insert into userInfo values('1111','1111','ëª½');
+insert into userInfo values('1111','1111','¸ù');
 insert into post (pnum, views, plike, category, title, content, writer, p_user, path)
-values(1,0,0, 'ì¹˜í‚¨', 'ë…ë…', 'í‘¸ë¼ë‹­ ì§±ë§›', 'ëª½', '1111', '??');
+values(1,0,0, 'Ä¡Å²', '³ä³ä', 'Çª¶ó´ß Â¯¸À', '¸ù', '1111', '??');
 
 insert into comments (cnum, cwriter, cment, c_user, c_post)
-values(1, 'ëª½', '1111','1111', 1);
+values(1, '¸ù', '1111','1111', 1);
 
 insert into likeInfo (l_user,l_post)values ('1111', 1);
