@@ -58,7 +58,11 @@ public class UserComment_ctrl extends HttpServlet {
 
 
 		////////////////////////////////////userInfo////////////////////////////////////
-
+		// [ID중복체크] --- 회원가입시 ID중복여부 체크 
+		else if(action.equals("checkID.ucdo")) {
+			new U_CheckID_Action().execute(request, response);
+			return; // 이동페이지 없으므로 종료
+		}
 		// [회원가입] --- view에서 → param (id,pw) 받아야 함 
 		else if(action.equals("signUp.ucdo")) {
 			new U_SignUp_Action().execute(request, response);
