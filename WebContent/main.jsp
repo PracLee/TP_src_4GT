@@ -93,7 +93,7 @@
 					</div>
 					<hr>
 					<div class="d-flex justify-content-between">
-						<span>${commentsCnt.get(i.index)} comments</span> <span>by
+						<span>${pl.comCnt} comments</span> <span>by
 							${pl.writer}</span>
 					</div>
 				</article>

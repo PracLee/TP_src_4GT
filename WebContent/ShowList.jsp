@@ -90,7 +90,7 @@ function checkAlert(uri,text){
 					</div>
 					<hr>
 					<div class="d-flex justify-content-between">
-						<span>${commentsCnt.get(pl.pnum-1)} comments</span> <span>by
+						<span>${pl.comCnt} comments</span> <span>by
 							${pl.writer}</span>
 					</div>
 				</article>
