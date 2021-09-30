@@ -1,4 +1,5 @@
-<%@ tag language="java" pageEncoding="UTF-8"%>
+<%@ tag language="java" pageEncoding="UTF-8" body-content="empty"%>
+<%@ attribute name="code" required="true"%>
 <script type="text/javascript">
 	function checkCode() {
 		var v1 = document.getElementById('checkEmail').code_check.value;

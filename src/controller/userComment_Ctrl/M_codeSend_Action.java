@@ -30,7 +30,7 @@ public class M_codeSend_Action implements Action{
 		ActionForward forward = new ActionForward();
 		
 		Properties prop = System.getProperties();
-	      prop.put("mail.smtp.user", "bjlee.spsbsc@gamil.com");   // 서버 아이디만 쓰기
+	      prop.put("mail.smtp.user", "4grouptuna@gamil.com");   // 서버 아이디만 쓰기
 	      prop.put("mail.smtp.host", "smtp.gmail.com");   // 구글 SMTP
 	      prop.put("mail.smtp.auth", "true");
 	      prop.put("mail.smtp.port", "587");
@@ -49,7 +49,7 @@ public class M_codeSend_Action implements Action{
 	         msg.setSentDate(new Date());   
 
 	         // 보내는 사람, 이름
-	         msg.setFrom(new InternetAddress("lyena8958@gmail.com", "4GT_Admin"));   
+	         msg.setFrom(new InternetAddress("4grouptuna@gamil.com", "4GT_Admin"));   
 
 	         // 수신자
 	         String email = request.getParameter("receiver");   // 사용자가 입력한 값을 받아옴
@@ -59,7 +59,7 @@ public class M_codeSend_Action implements Action{
 	         msg.setSubject("[4GT Blog] 이메일 인증", "UTF-8");
 
 	         // 메일 내용
-	         String code = request.getParameter("codeNum");
+	         String code = request.getParameter("code_check");
 	         msg.setText("4GT 이메일 주소 인증 안내\n인증번호 [ "+code+" ]\n"
 	         		+ "해당 계정 및 사이트 보안을 안전하게 유지할 수 있도록 본인의 이메일 주소를 인증해주세요. "
 	         		+ "이메일 주소 인증이 완료되면 작업을 시작할 수 있습니다.", "UTF-8");
