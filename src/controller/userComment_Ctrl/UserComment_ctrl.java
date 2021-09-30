@@ -63,10 +63,6 @@ public class UserComment_ctrl extends HttpServlet {
 			new U_ProfileImage_Action().execute(request, response);
 		}
 		// [ID중복체크] --- 회원가입시 ID중복여부 체크 
-		else if(action.equals("ProfileImage.ucdo")) {
-			new U_ProfileImage_Action().execute(request, response);
-		}
-		// [ID중복체크] --- 회원가입시 ID중복여부 체크 
 		else if(action.equals("checkID.ucdo")) {
 			new U_CheckID_Action().execute(request, response);
 			return; // 이동페이지 없으므로 종료
@@ -118,7 +114,10 @@ public class UserComment_ctrl extends HttpServlet {
 		}
 
 		/////////////////////////////////////comment/////////////////////////////////////
-
+		// [댓글 좋아요] 
+		else if (action.equals("likeUpComment.ucdo")) {
+			forward = new C_LikeUp_Action().execute(request, response);
+		}
 		// [댓글 읽기 R]
 		// [단일 게시물---showOne] 구성 (게시물+좋아요+댓글) 
 		else if (action.equals("selectOne.ucdo")) {
@@ -141,15 +140,22 @@ public class UserComment_ctrl extends HttpServlet {
 		}
 		
 		/////////////////////////////////////reply/////////////////////////////////////
-		
+		//[리플 좋아요]
+		else if (action.equals("likeUpReply.ucdo")) {
+			forward = new R_LikeUp_Action().execute(request, response);
+
+		}
+		//[리플 생성 C]
 		else if (action.equals("insertReply.ucdo")) {
 			forward = new R_InsertReply_Action().execute(request, response);
 
 		}
+		//[리플 수정 U]
 		else if (action.equals("editReply.ucdo")) {
 			forward = new R_UpdateReply_Action().execute(request, response);
 
 		}
+		//[리플 삭제 D]
 		else if (action.equals("deleteReply.ucdo")) {
 			forward = new R_DeleteReply_Action().execute(request, response);
 
