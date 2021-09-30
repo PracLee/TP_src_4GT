@@ -221,7 +221,7 @@
 				Copyright 2020 Xtra Blog Company Co. Ltd.</div>
 		</footer> </main>
 	</div>
-
+	<a href="tagtest.jsp">실험용쥐</a>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
 </body>
