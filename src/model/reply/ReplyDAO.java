@@ -10,13 +10,15 @@ import model.comments.CommentsVO;
 import model.common.DBCP;
 
 public class ReplyDAO {
-	// 기본 CRUD
+	// 기본 비즈니스 로직
 	private static String sql_SELECT_ALL = "SELECT * FROM reply";
 	private static String sql_SELECT_ONE = "SELECT * FROM reply WHERE rnum=?";
 	private static String sql_INSERT = "INSERT INTO reply (rnum, rment, rdate, rwriter, r_user, r_post, r_comments) VALUES((SELECT NVL(MAX(rnum),0) + 1 FROM reply), ?, sysdate, ?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM reply WHERE rnum=?";
 	private static String sql_UPDATE = "UPDATE reply SET rment=?, rdate=sysdate WHERE rnum=?";
 
+	// 사용자 정의 함수
+	private static String sql_likeCntUp = "UPDATE reply SET rlikeCnt=rlikeCnt+1 WHERE rnum=?";
 	private static String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
 	private static String sql_comCntDown = "UPDATE post SET comCnt=comCnt-1 WHERE pnum=?";
 	private static String sql_replyCntUp = "UPDATE comments SET replyCnt=replyCnt+1 WHERE cnum=?";
@@ -37,6 +39,7 @@ public class ReplyDAO {
 				vo.setRment(rs.getString("rment"));
 				vo.setRdate(rs.getDate("rdate"));
 				vo.setRwriter(rs.getString("rwriter"));
+				vo.setRlikeCnt(rs.getInt("rlikeCnt"));
 				vo.setR_user(rs.getString("r_user"));
 				vo.setR_post(rs.getInt("r_post"));
 				vo.setR_comments(rs.getInt("r_comments"));
@@ -69,6 +72,7 @@ public class ReplyDAO {
 				data.setRment(rs.getString("rment"));
 				data.setRdate(rs.getDate("rdate"));
 				data.setRwriter(rs.getString("rwriter"));
+				data.setRlikeCnt(rs.getInt("rlikeCnt"));
 				data.setR_user(rs.getString("r_user"));
 				data.setR_post(rs.getInt("r_post"));
 				data.setR_comments(rs.getInt("r_comments"));
@@ -189,6 +193,28 @@ public class ReplyDAO {
 		}
 		catch(Exception e){
 			System.out.println("ReplyDAO UpdateDB()에서 출력");
+			e.printStackTrace();
+			//res=false;
+		}
+		finally {
+			DBCP.disconnect(pstmt,conn);
+		}
+		return res;
+	}
+	
+	// 좋아요 ++
+	public boolean likeCntUp(ReplyVO vo) {
+		Connection conn=DBCP.connect();
+		boolean res=false;
+		PreparedStatement pstmt=null;
+		try{
+			pstmt=conn.prepareStatement(sql_likeCntUp);
+			pstmt.setInt(1, vo.getRnum());
+			pstmt.executeUpdate();
+			res=true;
+		}
+		catch(Exception e){
+			System.out.println("ReplyDAO likeCntUp()에서 출력");
 			e.printStackTrace();
 			//res=false;
 		}

@@ -20,10 +20,11 @@ public class CommentsDAO {
 
 	// 사용자 정의 함수
 	private static String sql_SELECT_POST = "SELECT * FROM comments WHERE c_post=?"; // c_post를 받아서 그 글의 댓글들을 리턴
-	
+	private static String sql_likeCntUp = "UPDATE comments SET clikeCnt=clikeCnt+1 WHERE cnum=?";
 	// 다른 테이블 접근 쿼리
 	private static String sql_SELECT_ALL_REPLY = "SELECT * FROM reply WHERE r_comments=?";
 	private static String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
+	
 	public ArrayList<CommentsSet> getSetData(CommentsVO vo) {
 		Connection conn = DBCP.connect();
 		ArrayList<CommentsSet> result = new ArrayList<CommentsSet>();
@@ -43,11 +44,12 @@ public class CommentsDAO {
 				cvo.setCdate(rs.getDate("cdate"));
 				cvo.setCwriter(rs.getString("cwriter"));
 				cvo.setReplyCnt(rs.getInt("replyCnt"));
+				cvo.setClikeCnt(rs.getInt("clikeCnt"));
 				cvo.setC_user(rs.getString("c_user"));
 				cvo.setC_post(rs.getInt("c_post"));
 				// CommentsSet에 댓글을 set
 				cs.setComment(cvo);
-				
+
 				// 2번째 쿼리 -> 댓글에 있는 답글들을 출력
 				pstmt = conn.prepareStatement(sql_SELECT_ALL_REPLY);
 				pstmt.setInt(1, cvo.getCnum()); // 댓글 PK가져오기 
@@ -60,6 +62,7 @@ public class CommentsDAO {
 					rvo.setRment(rrs.getString("rment"));
 					rvo.setRdate(rrs.getDate("rdate"));
 					rvo.setRwriter(rrs.getString("rwriter"));
+					rvo.setRlikeCnt(rrs.getInt("rlikeCnt"));
 					rvo.setR_user(rrs.getString("r_user"));
 					rvo.setR_post(rrs.getInt("r_post"));
 					rvo.setR_comments(rrs.getInt("r_comments"));
@@ -100,6 +103,7 @@ public class CommentsDAO {
 				vo.setCdate(rs.getDate("cdate"));
 				vo.setCwriter(rs.getString("cwriter"));
 				vo.setReplyCnt(rs.getInt("replyCnt"));
+				vo.setClikeCnt(rs.getInt("clikeCnt"));
 				vo.setC_user(rs.getString("c_user"));
 				vo.setC_post(rs.getInt("c_post"));
 				datas.add(vo);
@@ -116,7 +120,7 @@ public class CommentsDAO {
 		return datas;
 	}
 
-	// SELECT ONE -> 로그인 
+	// SELECT ONE 
 	public CommentsVO SelectOne(CommentsVO vo) {
 		Connection conn=DBCP.connect();
 		CommentsVO data=null;
@@ -132,6 +136,7 @@ public class CommentsDAO {
 				data.setCdate(rs.getDate("cdate"));
 				data.setCwriter(rs.getString("cwriter"));
 				data.setReplyCnt(rs.getInt("replyCnt"));
+				data.setClikeCnt(rs.getInt("clikeCnt"));
 				data.setC_user(rs.getString("c_user"));
 				data.setC_post(rs.getInt("c_post"));
 			}   
@@ -162,7 +167,7 @@ public class CommentsDAO {
 			pstmt.setInt(4, vo.getC_post());
 			pstmt.executeUpdate();
 			pstmt.close();
-			
+
 			// "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?"
 			// POST 댓글 수 ++
 			pstmt=conn.prepareStatement(sql_comCntUp);
@@ -249,6 +254,28 @@ public class CommentsDAO {
 		return res;
 	}
 
+	// 좋아요 ++
+	public boolean likeCntUp(CommentsVO vo) {
+		Connection conn=DBCP.connect();
+		boolean res=false;
+		PreparedStatement pstmt=null;
+		try{
+			pstmt=conn.prepareStatement(sql_likeCntUp);
+			pstmt.setInt(1, vo.getCnum());
+			pstmt.executeUpdate();
+			res=true;
+		}
+		catch(Exception e){
+			System.out.println("CommentsDAO likeCntUp()에서 출력");
+			e.printStackTrace();
+			//res=false;
+		}
+		finally {
+			DBCP.disconnect(pstmt,conn);
+		}
+		return res;
+	}
+
 	// 입력 vo 안에는 c_post만 존재하면 됩니다. 리턴은 그 글에 달린 댓글들만 뽑아줍니다. 
 	public ArrayList<CommentsVO> SelectPost(CommentsVO vo){
 		Connection conn = DBCP.connect();
@@ -265,6 +292,7 @@ public class CommentsDAO {
 				data.setCment(rs.getString("cment"));
 				data.setCdate(rs.getDate("cdate"));
 				data.setCwriter(rs.getString("cwriter"));
+				data.setClikeCnt(rs.getInt("clikeCnt"));
 				data.setC_user(rs.getString("c_user"));
 				data.setC_post(rs.getInt("c_post"));
 				datas.add(data);
