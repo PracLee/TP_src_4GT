@@ -46,7 +46,7 @@ CREATE TABLE reply(
 	rment varchar(300),
 	rdate date default sysdate,
 	rwriter varchar(30),
-	rlikeCnt default 0,
+	rlikeCnt int default 0,
 	r_user varchar(30),
 	r_post int,
 	r_comments int,
@@ -72,7 +72,7 @@ drop table reply;
 
 
 /* 테스트용 예시 데이터 */
-insert into userInfo values('?','?','?');
+insert into userInfo (id, pw, name) values('admin','123','관리자');
 insert into post (pnum, views, plike, category, title, content, writer, p_user, path)
 values(1,0,0, '치킨', '푸라닭', '?', '?', '1111', '??');
 
