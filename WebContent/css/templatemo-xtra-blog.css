@@ -91,6 +91,8 @@ hr {
 .tm-nav-item {
     list-style: none;
     margin-bottom: 30px;
+    overflow:hidden;
+    height:75px;
 }
 
 .tm-nav-link {
@@ -103,6 +105,7 @@ hr {
     align-items: center;
     font-size: 1.4rem;
     padding: 30px;
+    
 }
 
 .tm-nav-item:hover .tm-nav-link,
@@ -615,7 +618,7 @@ a:hover figcaption { color: #77231F; }
 hr.tm-hr-mycss { border-top: 1px solid #D25A53; }
 
 
-select {
+#selectInsert {
      width:150px;
      padding: .2em;
      border:1px solid #999;
@@ -628,5 +631,57 @@ select {
      margin-left:20px;
 }
 
+.selectEmail {
+     width:35%;
+     padding: .2em;
+     border:1px solid #D25A53;
+     font-family:'Nanumgothic';
+     background:url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+     border-radius:3px;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance : none;
+     display:inline-block;
+     vertical-align:middle;
+     height:45px;
+     font-size:16px;
+}
+.s-btn {
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 1.0rem;
+    transition: all 0.3s ease;
+}
+.s-btn-small { padding: 5px 10px; }
+
+.tm-nav-myitem {
+    list-style: none;
+    margin-bottom: 30px;
+    overflow:hidden;
+    height:75px;
+}
+
+.tm-nav-myitem:hover .tm-nav-link,
+.tm-nav-myitem.myActive .tm-nav-link
+ {
+    color: #D25A53;
+    background-color: white;
+    text-decoration: none;
+}
+
+.tm-nav-myitem:hover:after,
+.tm-nav-myitem .myActive:after {
+    content: '';
+    width: 100%;
+    max-width: 300px;    
+    height: 600px;
+    display: block;
+    border: 1px solid white;
+    margin-left: 10px;
+    margin-top: -590px;
+    position: absolute;
+    z-index: -1000;
+   
+}
 
 

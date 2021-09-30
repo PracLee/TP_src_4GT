@@ -97,7 +97,7 @@ function checkAlert(uri,text){
 						<div class="mb-4">
 							<label class=" col-form-label tm-color-primary"
 								style="font-size: 28px;">category</label> <select
-								name="category">
+								name="category" id="selectInsert">
 								<option ${PostVO.category=='치킨' ? 'selected':'' }>치킨</option>
 								<option ${PostVO.category=='피자' ? 'selected':'' }>피자</option>
 								<option ${PostVO.category=='햄버거' ? 'selected':'' }>햄버거</option>

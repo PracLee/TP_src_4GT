@@ -41,9 +41,27 @@
 		} else {
 			return;
 		}
-	}
+	}		
 </script>
-
+<!-- jQuery -->
+<script type="text/javascript">
+	
+	$(function(){
+		var $homeMenu = $("#home");
+		
+		$homeMenu.mouseover(function(){
+			$homeMenu.stop().animate({height:"600px"},150);			
+		})
+		.mouseout(function(){
+			$homeMenu.stop().animate({height:"75px"},150);			
+		});
+	});
+		
+			
+		
+	
+	
+</script>
 
 </head>
 <body>

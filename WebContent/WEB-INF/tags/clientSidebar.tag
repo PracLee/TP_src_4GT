@@ -18,9 +18,10 @@
 		</div>
 		<nav class="tm-nav" id="tm-nav">
 			<ul>
+			
 				<li class="tm-nav-item active subCmenu"><a href="main.pdo"
 					class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
-				</a> <!--  
+				</a>   
                     <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>인기글</a>
                     <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>치킨</a>
                     <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>피자</a>
@@ -28,7 +29,7 @@
                    	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>한식</a>
                    	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>중식</a>
                    	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>일식</a>
-                    --></li>
+                    </li>
 				<li class="tm-nav-item"><a href="InsertPost.jsp"
 					class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
 				</a></li>
@@ -36,6 +37,7 @@
 				<li class="tm-nav-item"><a href="#"
 					onclick="checkAlert('logOut.ucdo?pnum=${param.pnum}','로그아웃하시겠어요???')"
 					class="tm-nav-link"> <i class="fas fa-users"></i> Logout
+
 				</a></li>
 				<li class="tm-nav-item"><a href="MyPage.jsp"
 					class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
