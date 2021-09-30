@@ -58,6 +58,10 @@ public class UserComment_ctrl extends HttpServlet {
 
 
 		////////////////////////////////////userInfo////////////////////////////////////
+		// [프로필 수정] 
+		else if(action.equals("ProfileImage.ucdo")) {
+			new U_ProfileImage_Action().execute(request, response);
+		}
 		// [ID중복체크] --- 회원가입시 ID중복여부 체크 
 		else if(action.equals("checkID.ucdo")) {
 			new U_CheckID_Action().execute(request, response);
