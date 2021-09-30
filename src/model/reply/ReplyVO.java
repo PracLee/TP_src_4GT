@@ -7,6 +7,7 @@ public class ReplyVO {
 	private String rment;
 	private Date rdate;
 	private String rwriter;
+	private int rlikeCnt;
 	private String r_user;
 	private int r_post;
 	private int r_comments;
@@ -52,6 +53,12 @@ public class ReplyVO {
 	}
 	public void setR_comments(int r_comments) {
 		this.r_comments = r_comments;
+	}
+	public int getRlikeCnt() {
+		return rlikeCnt;
+	}
+	public void setRlikeCnt(int rlikeCnt) {
+		this.rlikeCnt = rlikeCnt;
 	}
 	@Override
 	public String toString() {
