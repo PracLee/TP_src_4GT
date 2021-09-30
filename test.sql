@@ -26,6 +26,7 @@ CREATE TABLE comments(
 	cdate date default sysdate,
 	cwriter varchar(30),
 	replyCnt int default 0,
+	clikeCnt int default 0,
 	c_user varchar(30),
 	c_post int,
 	foreign key (c_user) references userInfo(id) on delete cascade,
@@ -45,6 +46,7 @@ CREATE TABLE reply(
 	rment varchar(300),
 	rdate date default sysdate,
 	rwriter varchar(30),
+	rlikeCnt default 0,
 	r_user varchar(30),
 	r_post int,
 	r_comments int,
@@ -59,11 +61,9 @@ select * from userInfo;
 select * from post;
 select * from comments;
 select * from likeInfo;
-
 select * from reply;
 
 /* 테이블 삭제 */
-
 drop table userInfo CASCADE CONSTRAINTS;
 drop table post CASCADE CONSTRAINTS;
 drop table comments CASCADE CONSTRAINTS;
