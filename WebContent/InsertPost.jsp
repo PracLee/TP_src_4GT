@@ -34,6 +34,9 @@
 #PostingContent {
 	height: 800px;
 }
+.mlogo {
+	width: 220px;
+}
 </style>
 <script type="text/javascript">
 function forbid() {
@@ -99,7 +102,7 @@ function checkAlert(uri,text){
 						<div class="mb-4">
 							<label class=" col-form-label tm-color-primary"
 								style="font-size: 28px;">category</label> <select
-								name="category">
+								name="category" id="selectInsert">
 								<option selected>치킨</option>
 								<option>피자</option>
 								<option>햄버거</option>
