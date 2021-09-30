@@ -180,7 +180,7 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 					<c:set var="index" value="0" />
 					<h2 class="tm-color-primary tm-post-title">Comments</h2>
 							<hr class="tm-hr-primary tm-mb-45">
-						<c:forEach var="cl" items="${postOne_comments}">							
+						<c:forEach var="cl" items="${postOne_comments.comment}">							
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
 									<img src="img/comment-1.jpg" alt="Image"
