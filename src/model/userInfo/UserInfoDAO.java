@@ -10,18 +10,19 @@ import model.userInfo.UserInfoVO;
 
 public class UserInfoDAO {
 
-	// 기본 CRUD 비즈니스 메서드
+	//  Basic CRUD form
 	private static String sql_SELECT_ALL = "SELECT * FROM userInfo";
 	private static String sql_SELECT_ONE = "SELECT * FROM userInfo WHERE id=? AND pw=?";
 	private static String sql_INSERT = "INSERT INTO userInfo VALUES(?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM userInfo WHERE id=?";
 	private static String sql_UPDATE = "UPDATE userInfo SET name=?, pw=? WHERE id=?";
 
-	// 사용자 정의 비즈니스 메서드
-	private static String sql_FindID = "SELECT * FROM userInfo WHERE pw=? AND name=?";
-	private static String sql_FindPW = "SELECT * FROM userInfo WHERE id=?";
+	// Various Functions form
+	//private static String sql_FindID = "SELECT * FROM userInfo WHERE id=?";
+	//private static String sql_FindPW = "SELECT * FROM userInfo WHERE id=?";
+	//private static String sql_CheckID = "SELECT * FROM userInfo WHERE id=?";
 	private static String sql_updateProfile = "UPDATE userinfo SET profile=? WHERE id=?";
-	private static String sql_CheckID = "SELECT * FROM userInfo WHERE id=?";
+	private static String sql_FindInfo = "SELECT * FROM userInfo WHERE id=?";
 
 
 	// SELECT ALL
@@ -44,7 +45,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("UserDAO SelectAll() 에서 문제 발생!");
+			System.out.println("UserDAO SelectAll() printed!");
 			e.printStackTrace();
 		}
 		finally {
@@ -73,7 +74,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO SelectOne() 에서 문제 발생!");
+			System.out.println("UserDAO SelectOne() printed!");
 			e.printStackTrace();
 		}
 		finally {
@@ -96,7 +97,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO InsertDB() 에서 문제 발생!");
+			System.out.println("UserDAO InsertDB() printed!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -118,7 +119,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO DeleteDB() 에서 문제 발생!");
+			System.out.println("UserDAO DeleteDB() printed!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -142,7 +143,7 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO UpdateDB() 에서 문제 발생!");
+			System.out.println("UserDAO UpdateDB() printed!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -152,13 +153,13 @@ public class UserInfoDAO {
 		return res;
 	}
 
-	// 아이디 찾기
+	// Method for find user ID.
 	public UserInfoVO FindID(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
 		PreparedStatement pstmt=null;
 		try{
-			pstmt=conn.prepareStatement(sql_FindID);
+			pstmt=conn.prepareStatement(sql_FindInfo);
 			pstmt.setString(1, vo.getPw());
 			pstmt.setString(2, vo.getName());
 			ResultSet rs=pstmt.executeQuery();
@@ -171,7 +172,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO FindID() 에서 문제 발생!");
+			System.out.println("UserDAO FindID() printed!");
 			e.printStackTrace();
 		}
 		finally {
@@ -180,13 +181,13 @@ public class UserInfoDAO {
 		return data;
 	}
 
-	// 비밀번호 찾기
+	// Method for find user PW.
 	public UserInfoVO FindPW(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
 		PreparedStatement pstmt=null;
 		try{
-			pstmt=conn.prepareStatement(sql_FindPW);
+			pstmt=conn.prepareStatement(sql_FindInfo);
 			pstmt.setString(1, vo.getId());
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()){
@@ -198,7 +199,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserDAO FindPW() 에서 문제 발생!");
+			System.out.println("UserDAO FindPW() printed!");
 			e.printStackTrace();
 		}
 		finally {
@@ -220,20 +221,20 @@ public class UserInfoDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("UserDAO UpdateProfile() 에서 문제 발생!");
+			System.out.println("UserDAO UpdateProfile() printed!");
 			e.printStackTrace();
 			//res=false;
 		}
 		return res;
 	}
-	// ID 중복 확인 비즈니스 로직 -> 중복있으면 true 아니면 false
+	// Method for find user's overlapped ID.
 	public boolean CheckID(String id) {
 		Connection conn=DBCP.connect();
 		PreparedStatement pstmt=null;
 		boolean exist=false;
 
 		try{
-			pstmt=conn.prepareStatement(sql_CheckID);
+			pstmt=conn.prepareStatement(sql_FindInfo);
 			pstmt.setString(1, id);
 			ResultSet rs=pstmt.executeQuery();
 
@@ -243,7 +244,7 @@ public class UserInfoDAO {
 			rs.close();
 		}
 		catch(Exception e){
-			System.out.println("UserInfoDAO CheckID() 에서 문제 발생!");
+			System.out.println("UserInfoDAO CheckID() printed!");
 			e.printStackTrace();
 		}
 		finally {
