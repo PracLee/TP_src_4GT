@@ -1,10 +1,10 @@
-<%@ tag language="java" pageEncoding="UTF-8"%>
+<%@ tag language="java" pageEncoding="UTF-8" body-content="empty"%>
 <%!public int getRandom() {
 		int random = 0;
 		random = (int) Math.floor((Math.random() * (99999 - 10000 + 1))) + 10000;
 		return random;
 	}%>
-<form action=".send" method="post" id="emailsend">
+<form action="codeSend.ucdo" method="post" id="emailsend">
 	<table>
 		<tr>
 			<td><input type="text" id="receiver" name="receiver"
