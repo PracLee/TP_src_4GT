@@ -181,7 +181,7 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 					<h2 class="tm-color-primary tm-post-title">Comments</h2>
 							<hr class="tm-hr-primary tm-mb-45">
 						<c:forEach var="datas" items="${postOne_comments}">	
-							<c:set var="cl" value="${datas.comment}"/>
+							<c:set var="cl" value="${datas.comment}"/> <!-- 변수설정 > index별 멤버변수 접근가능 -->
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
 									<img src="img/comment-1.jpg" alt="Image"
