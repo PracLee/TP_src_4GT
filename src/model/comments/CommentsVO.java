@@ -9,6 +9,14 @@ public class CommentsVO {
 	private String c_user;
 	private String cwriter;
 	private int replyCnt;
+	private int clikeCnt;
+	
+	public int getClikeCnt() {
+		return clikeCnt;
+	}
+	public void setClikeCnt(int clikeCnt) {
+		this.clikeCnt = clikeCnt;
+	}
 	private int c_post;
 	public int getCnum() {
 		return cnum;
@@ -40,14 +48,12 @@ public class CommentsVO {
 	public void setC_post(int c_post) {
 		this.c_post = c_post;
 	}
-	
 	public String getCwriter() {
 		return cwriter;
 	}
 	public void setCwriter(String cwriter) {
 		this.cwriter = cwriter;
 	}
-	
 	public int getReplyCnt() {
 		return replyCnt;
 	}
@@ -59,8 +65,4 @@ public class CommentsVO {
 		return "CommentVO [cnum=" + cnum + ", cment=" + cment + ", cdate=" + cdate + ", c_user=" + c_user + ", c_post="
 				+ c_post + "]";
 	}
-
-	
-	
-	
 }
