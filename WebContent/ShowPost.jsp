@@ -180,7 +180,8 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 					<c:set var="index" value="0" />
 					<h2 class="tm-color-primary tm-post-title">Comments</h2>
 							<hr class="tm-hr-primary tm-mb-45">
-						<c:forEach var="cl" items="${postOne_comments}">							
+						<c:forEach var="datas" items="${postOne_comments}">	
+							<c:set var="cl" value="${datas.comment}"/>
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
 									<img src="img/comment-1.jpg" alt="Image"
@@ -211,7 +212,7 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
-												<a href="javascript:void(0);" onclick="msgEdit(${index})"class="tm-color-primary">수정</a>										
+												<a href="javascript:void(0);" onclick="msgEdit(${index})"class="tm-color-primary">수정</a>								
 												<a href="#" onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
