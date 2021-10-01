@@ -159,7 +159,12 @@ public class UserComment_ctrl extends HttpServlet {
 		else if (action.equals("deleteReply.ucdo")) {
 			forward = new R_DeleteReply_Action().execute(request, response);
 
-		}else {// 미지정된 경로 -> 404
+		}
+		//[프로필 사진 변경]
+		else if (action.equals("userProfileEdit.ucdo")) {
+			forward = new U_ProfileEdit_Action().execute(request, response);
+		}
+		else {// 미지정된 경로 -> 404
 			forward.setPath("error/error404.jsp");
 			forward.setRedirect(false);
 		}
