@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
@@ -41,27 +42,22 @@
 	width: 360px;
 }
 </style>
+<script src="js/Common.js"></script>
+
 <script type="text/javascript">
-function forbid() {
-	alert('로그인을 해야 이용가능한 서비스입니다!');
-}
-function infoHelp(){
-	window.open("infoHelp.jsp","id/pw찾기","width=800px,height=600px");
-}
-function checkAlert(uri,text){
-	result=confirm("text");
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
+window.onload = function(){
+	 
+	 actRemove();
+		var loginSignUp = $('#loginSignUp');
+		loginSignUp.addClass("active");
+	 
+	 
 }
 </script>
 
 </head>
 <body>
-	<mytag:nonClientSidebar/>
+	<mytag:nonClientSidebar />
 	<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
 		<div class="row tm-row">

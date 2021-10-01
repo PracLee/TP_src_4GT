@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
+<script src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UpdateUser</title>
@@ -39,19 +40,14 @@
 	width: 220px;
 }
 </style>
+<script src="js/Common.js"></script>
 <script type="text/javascript">
-function forbid() {
-	alert('로그인을 해야 이용가능한 서비스입니다!');
-}
-
-function checkAlert(uri,text){
-	result=confirm(text);
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
+window.onload = function(){
+	 
+	 actRemove();
+		var myPage = $('#myPage');
+		myPage.addClass("active"); 
+	 
 }
 </script>
 </head>

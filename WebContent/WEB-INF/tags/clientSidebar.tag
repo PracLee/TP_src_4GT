@@ -19,18 +19,18 @@
 		<nav class="tm-nav" id="tm-nav">
 			<ul>
 			
-				<li class="tm-nav-item active subCmenu"><a href="main.pdo"
+				<li class="tm-nav-myitem myActive"  id="main"><a href="main.pdo"
 					class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
-				</a>   
-                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>인기글</a>
-                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>치킨</a>
-                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>피자</a>
-                    <a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>햄버거</a>
-                   	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>한식</a>
-                   	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>중식</a>
-                   	<a href="#" class="tm-nav-link"> <i class="fas fa-home"></i>일식</a>
+				</a>  
+                    <a href="#"  class="tm-nav-option">&nbsp;&nbsp; <i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인기글</a>
+                    <a href="#"  class="tm-nav-option">&nbsp;&nbsp; <i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;치킨</a>
+                    <a href="#"  class="tm-nav-option">&nbsp;&nbsp; <i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;피자</a>
+                    <a href="#" onclick="actChange('#main')"  class="tm-nav-option">&nbsp;&nbsp; <i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;햄버거</a>
+                   	<a href="#" onclick="actChange('#main')"  class="tm-nav-option">&nbsp;&nbsp; <i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한식</a>
+                   	<a href="#" onclick="actChange('#main')"  class="tm-nav-option">&nbsp;&nbsp; <i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중식</a>
+                   	<a href="#" onclick="actChange('#main')"  class="tm-nav-option">&nbsp;&nbsp; <i class="fas fa-home"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일식</a>                  	
                     </li>
-				<li class="tm-nav-item"><a href="InsertPost.jsp"
+				<li class="tm-nav-item" id="posting"><a href="InsertPost.jsp" onclick="actChange('#posting')" 
 					class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
 				</a></li>
 
@@ -39,7 +39,7 @@
 					class="tm-nav-link"> <i class="fas fa-users"></i> Logout
 
 				</a></li>
-				<li class="tm-nav-item"><a href="MyPage.jsp"
+				<li class="tm-nav-item" id="myPage"><a href="MyPage.jsp" onclick="actChange('#myPage')" 
 					class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
 				</a></li>
 			</ul>

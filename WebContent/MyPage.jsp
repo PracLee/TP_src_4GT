@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyPage</title>
@@ -38,111 +39,23 @@
 	margin-left: 10px;
 }
 </style>
+
 <script type="text/javascript">
-function forbid() {
-	alert('로그인을 해야 이용가능한 서비스입니다!');
-}
-function logout(){
-	result=confirm("로그아웃 하시겠습니까??");
-	if(result==true){
-		location.href="logOut.ucdo";
-	}
-	else{
-		return;
-	}
-}
-function delUser(uri){
-	result=confirm("회원탈퇴 하시겠습니까?");
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
-}
-function checkAlert(uri,text){
-	result=confirm(text);
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
+window.onload = function(){
+	 
+	 actRemove();
+		var myPage = $('#myPage');
+		myPage.addClass("active");
+	 
+	 
 }
 </script>
-
+<script src="js/Common.js"></script>
 </head>
 <body>
 <mytag:clientSidebar/>
-	<header class="tm-header" id="tm-header">
-		<div class="tm-header-wrapper">
-			<button class="navbar-toggler" type="button"
-				aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
-			</button>
-			<div class="tm-site-header">
-				<div class="mb-3 mx-auto">
-					<img alt="4TeamLogo" src="img/logo.png" class="mlogo">
-				</div>
-			</div>
-			<nav class="tm-nav" id="tm-nav">
-				<ul>
-					<li class="tm-nav-item "><a href="main.ucdo"
-						class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
-					</a></li>
 
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="InsertPost.jsp"
-								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-							</a></li>
-						</c:when>
-					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item"><a href="#" onClick="forbid()"
-								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-							</a></li>
-						</c:when>
-					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item active"><a href="Login.jsp"
-								class="tm-nav-link"> <i class="fas fa-users"></i> Login /
-									Sign-up
-							</a></li>
-						</c:when>
-					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="#" onclick="checkAlert('logOut.ucdo','로그아웃하시겠어요???')"
-								class="tm-nav-link"> <i class="fas fa-users"></i> Logout
-							</a></li>
-							<li class="tm-nav-item active"><a href="MyPage.jsp"
-								class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
-							</a></li>
-						</c:when>
-					</c:choose>
-				</ul>
-			</nav>
-			<div class="tm-mb-65">
-				<a href="https://facebook.com" class="tm-social-link"> <i
-					class="fab fa-facebook tm-social-icon"></i>
-				</a> <a href="https://twitter.com" class="tm-social-link"> <i
-					class="fab fa-twitter tm-social-icon"></i>
-				</a> <a href="https://instagram.com" class="tm-social-link"> <i
-					class="fab fa-instagram tm-social-icon"></i>
-				</a> <a href="https://linkedin.com" class="tm-social-link"> <i
-					class="fab fa-linkedin tm-social-icon"></i>
-				</a>
-			</div>
-
-		</div>
-	</header>
-	<div class="container-fluid">
+		<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
 		<div class="row tm-row">
 			<div class="col-12">
@@ -196,8 +109,8 @@ function checkAlert(uri,text){
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
 					<ul class="tm-mb-75 pl-5 tm-category-list">
-						<li><a href="#" class="tm-color-primary">내 게시글보기</a></li>
-						<li><a href="UpdateUser.jsp" class="tm-color-primary">회원정보
+						<li><a href="#" onclick="actChange('#myPage')" class="tm-color-primary">내 게시글보기</a></li>
+						<li><a href="UpdateUser.jsp" onclick="actChange('#myPage')" class="tm-color-primary">회원정보
 								변경</a></li>
 						<li>							
 							<a href="#" onclick="delUser('deleteUser.ucdo?id=${userInfoData.id}')" class="tm-color-primary">회원탈퇴</a>						

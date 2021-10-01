@@ -10,16 +10,21 @@
 <title>Posting</title>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <!-- https://fontawesome.com/ -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
-	rel="stylesheet">
-<!-- https://fonts.google.com/ -->
+
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="img/favicon2.ico">
 
 <style type="text/css">
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 #PostingBox {
 	display: block;
 	width: 1000px;
@@ -38,22 +43,18 @@
 	width: 220px;
 }
 </style>
-<script type="text/javascript">
-function forbid() {
-	alert('로그인을 해야 이용가능한 서비스입니다!');
-}
 
-function checkAlert(uri,text){
-	result=confirm(text);
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
+<script src="js/Common.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	 
+	 actRemove();
+		var posting = $('#posting');
+		posting.addClass("active");
+	 
+	 
 }
 </script>
-
 </head>
 <body>
 	<mytag:clientSidebar/>

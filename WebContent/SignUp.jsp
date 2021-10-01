@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
+<script src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SignUp</title>
@@ -138,64 +140,10 @@
 }
 </style>
 
-<script type="text/javascript">
-function forbid() {
-	alert('로그인을 해야 이용가능한 서비스입니다!');
-}
-function checkAlert(uri,text){
-	result=confirm("text");
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
-}
-
-</script>
+<script src="js/Common.js"></script>
 <!-- 아이디중복 -->
 <script type="text/javascript">
-//아이디 유효성 검사(1 = 중복 / 0 != 중복)
-$("#id").blur(function() {
-	// id = "id_reg" / name = "Id"
-	var id = $('#id').val();
-	$.ajax({
-		url : "checkID.ucdo?id="+ id,
-		type : 'get',
-		success : function(data) {
-			console.log("1 = 중복o / 0 = 중복x : "+ data);							
-			
-			if (data == 1) {
-					// 1 : 아이디가 중복되는 문구
-					$("#id_check").text("사용중인 아이디입니다 :p");
-					$("#id_check").css("color", "red");
-					$("#reg_submit").attr("disabled", true);
-				} else {
-					
-					if(idJ.test(user_id)){
-						// 0 : 아이디 길이 / 문자열 검사
-						$("#id_check").text("");
-						$("#reg_submit").attr("disabled", false);
-			
-					} else if(user_id == ""){
-						
-						$('#id_check').text('아이디를 입력해주세요 :)');
-						$('#id_check').css('color', 'red');
-						$("#reg_submit").attr("disabled", true);				
-						
-					} else {
-						
-						$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-						$('#id_check').css('color', 'red');
-						$("#reg_submit").attr("disabled", true);
-					}
-					
-				}
-			}, error : function() {
-					console.log("실패");
-			}
-		});
-	});
+
 	
 	function checkID() { // 회원 가입 시 ID 중복 체크하는 함수
 		var id = document.getElementById("sid").value;
@@ -223,78 +171,7 @@ $("#id").blur(function() {
 
 </head>
 <body>
-	<header class="tm-header" id="tm-header">
-		<div class="tm-header-wrapper">
-			<button class="navbar-toggler" type="button"
-				aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
-			</button>
-			<div class="tm-site-header">
-				<div class="mb-3 mx-auto">
-					<img alt="4TeamLogo" src="img/logo.png" class="mlogo">
-				</div>
-
-			</div>
-			<nav class="tm-nav" id="tm-nav">
-				<ul>
-					<li class="tm-nav-item"><a href="main.ucdo"
-						class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
-					</a></li>
-
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="InsertPost.jsp"
-								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-							</a></li>
-
-						</c:when>
-					</c:choose>
-
-					<c:choose>
-						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item"><a href="#" onClick="forbid()"
-								class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
-							</a></li>
-						</c:when>
-					</c:choose>
-
-
-					<c:choose>
-						<c:when test="${userInfoData==null}">
-							<li class="tm-nav-item active"><a href="Login.jsp"
-								class="tm-nav-link"> <i class="fas fa-users"></i> Login /
-									Sign-up
-							</a></li>
-						</c:when>
-					</c:choose>
-
-
-					<c:choose>
-						<c:when test="${userInfoData!=null}">
-							<li class="tm-nav-item"><a href="logOut.ucdo"
-								class="tm-nav-link"> <i class="fas fa-users"></i> Logout
-							</a></li>
-							<li class="tm-nav-item"><a href="MyPage.jsp"
-								class="tm-nav-link"> <i class="far fa-comments"></i> MyPage
-							</a></li>
-						</c:when>
-					</c:choose>
-				</ul>
-			</nav>
-			<div class="tm-mb-65">
-				<a href="https://facebook.com" class="tm-social-link"> <i
-					class="fab fa-facebook tm-social-icon"></i>
-				</a> <a href="https://twitter.com" class="tm-social-link"> <i
-					class="fab fa-twitter tm-social-icon"></i>
-				</a> <a href="https://instagram.com" class="tm-social-link"> <i
-					class="fab fa-instagram tm-social-icon"></i>
-				</a> <a href="https://linkedin.com" class="tm-social-link"> <i
-					class="fab fa-linkedin tm-social-icon"></i>
-				</a>
-			</div>
-
-		</div>
-	</header>
+	<mytag:nonClientSidebar />
 	<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
 		<div class="row tm-row">
