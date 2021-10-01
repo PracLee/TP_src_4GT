@@ -19,10 +19,10 @@ public class CommentsDAO {
 	private static String sql_UPDATE = "UPDATE comments SET cment=?, cdate=sysdate WHERE cnum=?";
 
 	// 사용자 정의 함수
-	private static String sql_SELECT_POST = "SELECT * FROM comments WHERE c_post=?"; // c_post를 받아서 그 글의 댓글들을 리턴
+	private static String sql_SELECT_POST = "SELECT * FROM comments WHERE c_post=? ORDER BY cdate"; // c_post를 받아서 그 글의 댓글들을 리턴
 	private static String sql_likeCntUp = "UPDATE comments SET clikeCnt=clikeCnt+1 WHERE cnum=?";
 	// 다른 테이블 접근 쿼리
-	private static String sql_SELECT_ALL_REPLY = "SELECT * FROM reply WHERE r_comments=?";
+	private static String sql_SELECT_ALL_REPLY = "SELECT * FROM reply WHERE r_comments=? ORDER BY rdate";
 	private static String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
 	
 	public ArrayList<CommentsSet> getSetData(CommentsVO vo) {
