@@ -29,6 +29,7 @@ public class C_InsertComment_Action implements Action{
 	    
 	    // DAO수행 필요데이터 SET
 	    commentVO.setCment(request.getParameter("cment"));
+	    commentVO.setCwriter(request.getParameter("cwrite"));
 	    commentVO.setC_user(request.getParameter("c_user"));
 	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post")));
 	    
@@ -53,7 +54,7 @@ public class C_InsertComment_Action implements Action{
 	    }
 	    
 	    // 전송 설정
-	    forward.setRedirect(false); // sendRedirect
+	    forward.setRedirect(false); // forward
 	    forward.setPath(path);
 	    
 	    return forward;

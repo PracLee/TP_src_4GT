@@ -153,36 +153,9 @@ public class UserInfoDAO {
 		return res;
 	}
 
-	// Method for find user ID.
-	public UserInfoVO FindID(UserInfoVO vo) {
-		Connection conn=DBCP.connect();
-		UserInfoVO data=null;
-		PreparedStatement pstmt=null;
-		try{
-			pstmt=conn.prepareStatement(sql_FindInfo);
-			pstmt.setString(1, vo.getPw());
-			pstmt.setString(2, vo.getName());
-			ResultSet rs=pstmt.executeQuery();
-			if(rs.next()){
-				data=new UserInfoVO();
-				data.setId(rs.getString("id"));
-				data.setPw(rs.getString("pw"));
-				data.setName(rs.getString("name"));
-			}	
-			rs.close();
-		}
-		catch(Exception e){
-			System.out.println("UserDAO FindID() printed!");
-			e.printStackTrace();
-		}
-		finally {
-			DBCP.disconnect(pstmt,conn);
-		}
-		return data;
-	}
 
-	// Method for find user PW.
-	public UserInfoVO FindPW(UserInfoVO vo) {
+	// Method for find user ID and PW.
+	public UserInfoVO Find(UserInfoVO vo) {
 		Connection conn=DBCP.connect();
 		UserInfoVO data=null;
 		PreparedStatement pstmt=null;

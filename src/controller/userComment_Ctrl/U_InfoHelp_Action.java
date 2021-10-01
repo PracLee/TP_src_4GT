@@ -23,41 +23,33 @@ public class U_InfoHelp_Action implements Action{
 		UserInfoVO userInfoVO = new UserInfoVO();
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 
+		// DAO수행 필요데이터 SET
+		userInfoVO.setId(request.getParameter("id"));
+
+		// DAO 수행
+		userInfoVO = userInfoDAO.Find(userInfoVO);
+		
+		// response 전달 --- findUser
+		request.setAttribute("findUser", userInfoVO);
 
 		// ID찾기 --> view 반환 -> 객체 userInfo
 		if(request.getParameter("type").equals("id")) {
-			// DAO수행 필요데이터 SET
-			userInfoVO.setPw(request.getParameter("pw"));
-			userInfoVO.setName(request.getParameter("name"));
-			
-			// DAO수행
-			userInfoVO = userInfoDAO.FindID(userInfoVO);
-			
+
 			// informID 페이지 전송
 			forward.setPath("informID.jsp");
 		}
 		// PW찾기 --> view 반환 == 객체 userInfo
 		else if (request.getParameter("type").equals("pw")) {
-			// DAO수행 필요데이터 SET
-			userInfoVO.setId(request.getParameter("id"));
-			
-			// DAO수행
-			userInfoVO = userInfoDAO.FindPW(userInfoVO);
-			
+
 			// informPW 페이지 전송
 			forward.setPath("informPW.jsp");
 		}
 		
 		
-		// view 객체전달 --- findUser
-		request.setAttribute("findUser", userInfoVO);
-
-		
 		// 페이지 전송설정
 		forward.setRedirect(false); // forward
 
-
-
+		
 		return forward;
 	}
 
