@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Action;
 import controller.ActionForward;
@@ -19,11 +20,12 @@ public class LikeUpAction implements Action{
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		PostVO PVO = new PostVO();
+		HttpSession session = request.getSession();
+		
 		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
 		if(PDAO.LikesUp(PVO)){
-			int pnum = Integer.parseInt(request.getParameter("pnum"));
-			request.setAttribute("pnum", pnum);
-			action.setPath("selectOne.pdo");
+			String pnum = request.getParameter("pnum");
+			action.setPath("selectOne.pdo?pnum="+pnum);
 			action.setRedirect(true);
 		}else{
 			try {
