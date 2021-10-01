@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
-
+<script src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Post</title>
-<script src="js/jquery-3.6.0.min.js"></script>
+
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <!-- https://fontawesome.com/ -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -67,21 +67,7 @@
 	display:none;
 }
 </style>
-<script type="text/javascript">
-function forbid() {
-	alert('로그인을 해야 이용가능한 서비스입니다!');
-}
-// 로그아웃, 삭제시 삭제여부를 묻는 기능
-function checkAlert(uri,text){
-	result=confirm(text);
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
-}
-</script>
+
 
 <!-- jQuery -->
 <script type="text/javascript">
@@ -105,6 +91,17 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 	
 }	 
  
+</script>
+<script src="js/Common.js"></script>
+<script type="text/javascript">
+		 window.onload = function(){
+			 
+			 actRemove();
+			 var main = $('mainmenu'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+			 main.addClass("myActive");
+			 
+			 
+		 }
 </script>
 </head>
 <body>
@@ -165,7 +162,7 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 							<c:when test="${userInfoData.id==singlePost.p_user}">
 								<div class="text-right">
 									
-										<button onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}'"
+										<button onclick="location.href='editPost.pdo?pnum=${singlePost.pnum}';actChange('#main');"
 											class="tm-btn tm-btn-primary tm-btn-small">글 수정</button> 
 										<button onclick="checkAlert('deletePostDB.pdo?pnum=${singlePost.pnum}','게시글을 삭제하시겠어요?')" class="tm-btn tm-btn-primary tm-btn-small">글 삭제</button>
 									

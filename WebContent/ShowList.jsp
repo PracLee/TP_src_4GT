@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
-
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShowList</title>
@@ -30,19 +30,14 @@
 }
 </style>
 
+<script src="js/Common.js"></script>
 <script type="text/javascript">
-function forbid() {
-	alert('로그인을 해야 이용가능한 서비스입니다!');
-}
-
-function checkAlert(uri,text){
-	result=confirm(text);
-	if(result==true){
-		location.href=uri;
-	}
-	else{
-		return;
-	}
+window.onload = function(){
+	 
+	actRemove();
+	 var main = $('mainmenu'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+	 main.addClass("myActive");
+	 
 }
 </script>
 </head>
@@ -74,7 +69,8 @@ function checkAlert(uri,text){
 			<c:forEach var="pl" items="${PostList}">
 				<article class="col-12 col-md-6 tm-post">
 					<hr class="tm-hr-primary">
-					<a href="selectOne.pdo" class="effect-lily tm-post-link tm-pt-60">
+					<a href="selectOne.pdo" class="effect-lily tm-post-link tm-pt-60" onclick="actChange('#main')">
+						
 						<div class="tm-post-link-inner">
 							<img src="img/img-05.jpg" alt="Image" class="img-fluid">
 						</div> <span class="position-absolute tm-new-badge">New</span>

@@ -1,5 +1,9 @@
 window.onload = function(){
-
+	actRemove();
+	var loginSignUp = $('#loginSignUp');
+	console.log(loginSignUp);
+	loginSignUp.addClass("active");
+	
 //	form의 name(signUp)으로 → 내부 데이터를 변수에 가져옴 
 	var join = document.join;
 	// console.log(signUp); 

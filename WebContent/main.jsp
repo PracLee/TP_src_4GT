@@ -29,39 +29,19 @@
 	width: 220px;
 }
 </style>
-<script type="text/javascript">
-	function forbid() {
-		alert('로그인을 해야 이용가능한 서비스입니다!');
-	}
-
-	function checkAlert(uri, text) {
-		result = confirm(text);
-		if (result == true) {
-			location.href = uri;
-		} else {
-			return;
-		}
-	}		
-</script>
+<script src="js/Common.js"></script>
 <!-- jQuery -->
 <script type="text/javascript">
-	
-	$(function(){
-		var $homeMenu = $("#home");
-		
-		$homeMenu.mouseover(function(){
-			$homeMenu.stop().animate({height:"600px"},150);			
-		})
-		.mouseout(function(){
-			$homeMenu.stop().animate({height:"75px"},150);			
-		});
-	});
-		
-			
-		
-	
-	
+		 window.onload = function(){
+			 
+			 actRemove();
+			 var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+			 main.addClass("myActive");
+			 
+			 
+		 }
 </script>
+
 
 </head>
 <body>
@@ -74,6 +54,8 @@
 		<c:when test="${userInfoData==null}">
 			<mytag:nonClientSidebar />
 		</c:when>
+		
+		
 	</c:choose>
 	<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
@@ -93,7 +75,7 @@
 				<article class="col-12 col-md-6 tm-post">
 					<hr class="tm-hr-primary">
 
-					<a href="selectOne.pdo?pnum=${pl.pnum}"
+					<a href="selectOne.pdo?pnum=${pl.pnum}" onclick="actChange('#main')"
 						class="effect-lily tm-post-link tm-pt-60">
 
 						<div class="tm-post-link-inner">

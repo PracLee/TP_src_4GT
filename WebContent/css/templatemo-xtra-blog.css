@@ -674,14 +674,32 @@ hr.tm-hr-mycss { border-top: 1px solid #D25A53; }
     content: '';
     width: 100%;
     max-width: 300px;    
-    height: 600px;
+    height: 495px;
     display: block;
     border: 1px solid white;
     margin-left: 10px;
-    margin-top: -590px;
+    margin-top: -485px;
     position: absolute;
     z-index: -1000;
    
 }
 
-
+.tm-nav-option {
+    color: white;
+    background-color: #F2F2F2;
+    height: 50px;
+    width: 100%;
+    max-width: 300px;    
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 30px;
+    
+}
+.tm-nav-myitem:hover .tm-nav-option,
+.tm-nav-myitem.myActive .tm-nav-option
+ {
+    color: #D25A53;
+    background-color: #F2F2F2;
+    text-decoration: none;
+}
