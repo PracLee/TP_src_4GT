@@ -177,8 +177,8 @@
 			type: "GET", // 단순 정보 조회 시에는 GET, 정보가 너무 많거나 insert/update를 할때는 POST
 			url: "checkID.ucdo",	 // "checkID.ucdo?id="+id+"&mail="+mail,
 			data:{// 위 컨트롤에 데이터 전송
-				id : $("#id").val(),
-				mail : $("#mail").val()
+				id : $("#sid").val(),
+				mail : $("#smail").val()
 			},
 			success: function(data) { 
 				//console.log('adasdasd '+data.trim());
@@ -186,10 +186,10 @@
 				if (data.trim()=="false") { // 중복 데이터가 없을 때, trim():문자열 공백제거
 					console.log(id.value+" "+mail.value);
 					alert("사용 가능한 ID입니다.\n잠시후 이메일 인증 팝업창이 실행됩니다.");
-					window.open("codeSend.ucdo?id="+id.value+"&mail="+mail.value,'인증처리 페이지','width=500, height=700');
+					window.open("codeSend.ucdo?id="+id.value+"&mail="+mail.value,'인증처리 페이지','width=800, height=700');
 					//emailCheck.jsp?id='+id.value+'&mail='+mail.value,'이메일 인증 ', 'width=500, height=700
 				} else {
-					alert("ID가 이미 존재합니다. 다시 입력하세요.");
+					alert("존재하는 ID입니다.");
 				}
 			},
 			error: function(xhr) {
@@ -265,8 +265,8 @@
 						<input type="hidden" name="idCheck" id="idCheck" value="0">
 						
 						<div style="padding: 10px; float: right;">
-						<button onclick="emptyID()"
-							class="s-btn tm-btn-primary s-btn-small checkID" id="confirm">인증</button>
+						<input type="button" onclick="emptyID()"
+							class="s-btn tm-btn-primary s-btn-small checkID" id="confirm" value="인증처리">
 						</div>
 
 					</div>

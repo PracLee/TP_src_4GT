@@ -43,7 +43,7 @@
 </style>
 </head>
 <body>
-${code_check}
+
 	<div class="outer">
 		<div class="inner">
 			<mytag:EmailCodeCheck code="${code_check}"/>

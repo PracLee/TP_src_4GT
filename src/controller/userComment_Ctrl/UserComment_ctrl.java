@@ -35,14 +35,12 @@ public class UserComment_ctrl extends HttpServlet {
 
 	// [로직수행 메서드]
 	private void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-System.out.println("이예나 : ");
+
 		// [사용자 요청 구분]
 		String uri=request.getRequestURI();
 		String cp=request.getContextPath();
 		String action=uri.substring(cp.length()+1); // +1 ==  "/"까지 sub하기 위함
-		System.out.println("----------------------------------------------------");
-		System.out.println("UCC : "+action);
-		System.out.println("이예나 : "+action);
+
 		// [요청 수행]
 		ActionForward forward = null;
 
