@@ -25,26 +25,19 @@
 		var sBtn = $('.button-like > .like_a');
 		var upRef = "likeUp.pdo";
 		var downRef = "likeDown.pdo";
-		var ppnum = function objToString (pnum) {
-		    var str = '';
-		    for (var p in pnum) {
-		        if (obj.hasOwnProperty(p)) {
-		            str += p + '::' + obj[p] + '\n';
-		        }
-		    }
-		    return str;
-		}
+		var ppnum = JSON.stringify(pnum).replace(/\"/g , "");
+		
 		//JSON.stringify(pnum)
 		console.log(ppnum+"되나?");
-		console.log(downRef+"?pnum="+JSON.stringify(pnum));
-		console.log(upRef+"?pnum="+JSON.stringify(pnum));
+		console.log(downRef+"?pnum="+ppnum);
+		console.log(upRef+"?pnum="+ppnum);
 		sBtn.click(function(pnum) {
 			if ($(sBtn).hasClass("likeActive")) {
 				sBtn.removeClass("likeActive");
-				//document.location.replace(downRef+"?pnum="+JSON.stringify(pnum)); 
+				document.location.replace(downRef+"?pnum="+ppnum); 
 			} else {
 				sBtn.addClass("likeActive");
-				//document.location.replace(upRef+"?pnum="+pnum);
+				document.location.replace(upRef+"?pnum="+ppnum);
 			}
 		})
 	}
