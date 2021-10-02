@@ -1,6 +1,7 @@
 package controller.userComment_Ctrl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
@@ -29,6 +30,7 @@ public class M_codeSend_Action implements Action{
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		
+		
 		Properties prop = System.getProperties();
 	      prop.put("mail.smtp.user", "4grouptuna@gamil.com");   // 서버 아이디만 쓰기
 	      prop.put("mail.smtp.host", "smtp.gmail.com");   // 구글 SMTP
@@ -44,7 +46,13 @@ public class M_codeSend_Action implements Action{
 	      //Session 생성 및 MimeMessage 생성
 	      Session session = Session.getDefaultInstance(prop, auth);
 	      MimeMessage msg = new MimeMessage(session);
-	      try {
+
+
+	      try {  
+	    	  // 랜덤코드 발급
+			 int code = 0;
+			 code = (int) Math.floor((Math.random() * (99999 - 10000 + 1))) + 10000;
+			 System.out.println(code+"코드샌드에서발송");
 	         // 보낸시간 현재
 	         msg.setSentDate(new Date());   
 
@@ -52,19 +60,25 @@ public class M_codeSend_Action implements Action{
 	         msg.setFrom(new InternetAddress("4grouptuna@gamil.com", "4GT_Admin"));   
 
 	         // 수신자
-	         String email = request.getParameter("receiver");   // 사용자가 입력한 값을 받아옴
+		     String id = request.getParameter("id");
+		     String mail = request.getParameter("mail");
+	         String email = id+"@"+mail;   // 사용자가 입력한 값을 받아옴
 	         InternetAddress to = new InternetAddress(email);
 
+	         // 데이터 전송
+			 request.setAttribute("code_check", code); // 다음페이지에서 코드 확인
+			 request.setAttribute("id", id);
+			 request.setAttribute("mail", mail);
+			 
+			 
 	         // 메일 제목
 	         msg.setSubject("[4GT Blog] 이메일 인증", "UTF-8");
 
 	         // 메일 내용
-	         String code = request.getParameter("code_check");
 	         msg.setText("4GT 이메일 주소 인증 안내\n인증번호 [ "+code+" ]\n"
 	         		+ "해당 계정 및 사이트 보안을 안전하게 유지할 수 있도록 본인의 이메일 주소를 인증해주세요. "
-	         		+ "이메일 주소 인증이 완료되면 작업을 시작할 수 있습니다.", "UTF-8");
-	         
-	         request.setAttribute("code", code);    // 다음페이지에서 코드 확인
+	         		+ "\n이메일 주소 인증이 완료되면 이어 진행하실 수 있습니다.", "UTF-8");
+
 
 	         // 참조인
 	         msg.setRecipient(Message.RecipientType.TO, to);
@@ -80,10 +94,17 @@ public class M_codeSend_Action implements Action{
 	      } catch(UnsupportedEncodingException e) {
 	         System.out.println("UnsupportedEncodingException : " + e.getMessage());
 	      }
+		//response.setContentType("text/html; charset=UTF-8"); 
+		//PrintWriter out = response.getWriter();
+		//String uri = "emailCheck.jsp?id="+id+"&mail="+mail+"&code_check="+code;
+		//String uri2 = "<script>window.open('"+uri+"','이메일 인증 ', 'width=500, height=700'); </script>";
+		//System.out.println(uri2);
+		//out.println(uri2);
+		//out.println("<script>window.open('emailCheck.jsp?receiver='+receiver,'이메일 인증 ', 'width=500, height=700'); </script>");
+
+		forward.setRedirect(false); // forward
+		forward.setPath("emailCheck.jsp"); 
 		
-		
-		forward.setRedirect(false); // forward전송
-		forward.setPath("emailCheck.jsp"); // 전송페이지 (임시)
 		
 		return forward;
 	}

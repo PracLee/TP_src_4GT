@@ -18,7 +18,6 @@ public class U_CheckID_Action implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
-		
 		// DAO 인스턴스화
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 		
@@ -28,16 +27,13 @@ public class U_CheckID_Action implements Action{
 		
 		//DAO 수행 ★JS로 구현예정
 		if(userInfoDAO.CheckID(request.getParameter("id")+"@"+request.getParameter("mail"))){
-			out.println("true");
-			out.println("<script>alert('사용 가능한 아이디입니다.'); history.go(-1);</script>");
+			out.println("true"); // out.println으로 ajax data에게 데이터가 넘어가게됨
 			
 		}
 		// 반영 실패 -> 오류 수행
 		else { 
 			out.println("false");
-			out.println("<script>alert('이미 사용중인 아이디입니다.'); history.go(-1);</script>");
 		}
-		
 		// 이동경로 없음
 		return null;
 	}
