@@ -151,6 +151,6 @@ window.onload = function(){
 	 	 }
 	 	 
 	 	 
-	 	document.getElementById("smail").setAttribute("disabled",false);
+	 	document.getElementById("smail").removeAttribute("disabled");
 	}// join.submit
 }

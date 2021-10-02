@@ -24,7 +24,7 @@ public class U_CheckID_Action implements Action{
 		
 		response.setContentType("text/html; charset=UTF-8"); 
 		PrintWriter out = response.getWriter();
-		
+		//System.out.println(request.getParameter("id")+"@"+request.getParameter("mail")+" asdasdadsa");
 		//DAO 수행 ★JS로 구현예정
 		if(userInfoDAO.CheckID(request.getParameter("id")+"@"+request.getParameter("mail"))){
 			out.println("true"); // out.println으로 ajax data에게 데이터가 넘어가게됨
