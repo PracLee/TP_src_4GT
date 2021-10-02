@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
-<script src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SignUp</title>
@@ -20,36 +19,29 @@
 #noneCheck {
 	margin-left: 30px;
 }
-
 #checkBox {
 	font-size: 15px;
 	color: dimgrey;
 }
-
 #Header {
 	color: #D25A53;
 	font-weight: bold;
 	margin-bottom: 60px;
 }
-
 #consentHeader {
 	font-weight: bold;
 	color: dimgrey;
 }
-
 #signUpBtn {
 	margin-top: 80px;
 	margin-bottom: 80px;
 }
-
 #consent {
 	margin-top: 100px;
 }
-
 #pwHeader {
 	width: 500px;
 }
-
 #consentError {
 	display: block;
 	color: red;
@@ -59,7 +51,6 @@
 	margin-bottom: -10px;
 	margin-right: 15px;
 }
-
 #idError, #pwError, #pwCheckError, #nameError {
 	width: 0px auto;
 	display: inline-block;
@@ -68,7 +59,6 @@
 	font-weight: normal;
 	margin-left: 10px;
 }
-
 #consentBox {
 	margin: 0px auto;
 	display: block;
@@ -102,12 +92,10 @@
 	text-align: justify;
 	font-size: 15px;
 }
-
 #ftsw {
 	font-size: 20px;
 	font-weight: bold;
 }
-
 .signupt {
 	margin-bottom: 0px;
 	text-align: left;
@@ -115,7 +103,6 @@
 	margin-left: 5px;
 	font-size: 15px;
 }
-
 @font-face {
 	font-family: 'NanumSquareRound';
 	src:
@@ -124,36 +111,83 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 .mlogo {
 	width: 220px;
 }
-
 .fset {
 	display: inline-block;
 	width: 360px;
 }
-
 .checkID {
 	height: 45px;
 	float: right;
 }
 </style>
-
+<script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/Common.js"></script>
 <!-- 아이디중복 -->
 <script type="text/javascript">
-
+//아이디 유효성 검사(1 = 중복 / 0 != 중복)
+/* $("#id").blur(function() {
+	// id = "id_reg" / name = "Id"
+	var id = $('#id').val();
+	$.ajax({
+		url : "checkID.ucdo?id="+ id,
+		type : 'get',
+		success : function(data) {
+			console.log("1 = 중복o / 0 = 중복x : "+ data);							
+			
+			if (data == 1) {
+					// 1 : 아이디가 중복되는 문구
+					$("#id_check").text("사용중인 아이디입니다 :p");
+					$("#id_check").css("color", "red");
+					$("#reg_submit").attr("disabled", true);
+				} else {
+					
+					if(idJ.test(user_id)){
+						// 0 : 아이디 길이 / 문자열 검사
+						$("#id_check").text("");
+						$("#reg_submit").attr("disabled", false);
+			
+					} else if(user_id == ""){
+						
+						$('#id_check').text('아이디를 입력해주세요 :)');
+						$('#id_check').css('color', 'red');
+						$("#reg_submit").attr("disabled", true);				
+						
+					} else {
+						
+						$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+						$('#id_check').css('color', 'red');
+						$("#reg_submit").attr("disabled", true);
+					}
+					
+				}
+			}, error : function() {
+					console.log("실패");
+			}
+		});
+	}); */
 	
-	function checkID() { // 회원 가입 시 ID 중복 체크하는 함수
-		var id = document.getElementById("sid").value;
-		var mail = document.getElementById("smail").value;
+	function checkID(id, mail) { // 회원 가입 시 ID 중복 체크하는 함수
+/* 		var id = document.getElementById("sid").value;
+		var mail = document.getElementById("smail").value; */
 		$.ajax({ 
+			// [요청 데이터 경로]
 			type: "GET", // 단순 정보 조회 시에는 GET, 정보가 너무 많거나 insert/update를 할때는 POST
-			url: "checkID.ucdo?id="+id+"&mail="+mail,			
+			url: "checkID.ucdo",	 // "checkID.ucdo?id="+id+"&mail="+mail,
+			data:{// 위 컨트롤에 데이터 전송
+				id : $("#id").val(),
+				mail : $("#mail").val()
+			},
 			success: function(data) { 
+				//console.log('adasdasd '+data.trim());
+				//console.log(data.trim()=="false");
 				if (data.trim()=="false") { // 중복 데이터가 없을 때, trim():문자열 공백제거
-					alert("사용 가능한 ID입니다.");
+					console.log(id.value+" "+mail.value);
+					alert("사용 가능한 ID입니다.\n잠시후 이메일 인증 팝업창이 실행됩니다.");
+					window.open("codeSend.ucdo?id="+id.value+"&mail="+mail.value,'인증처리 페이지','width=500, height=700');
+					//emailCheck.jsp?id='+id.value+'&mail='+mail.value,'이메일 인증 ', 'width=500, height=700
 				} else {
 					alert("ID가 이미 존재합니다. 다시 입력하세요.");
 				}
@@ -165,13 +199,31 @@
 			}
 		});
 	}
+	
+	function emptyID(){
+		var id = document.getElementById("sid")
+		var mail = document.getElementById("smail")
+
+		// id를 입력하지 않았거나, 이메일을 선택하지 않았다면 alert창 띄움
+		if (!id.value || mail.value == "이메일 선택") {
+			console.log(mail.value);
+			alert('아이디 혹은 이메일을 입력해 주세요.');
+			id.focus(); // 포커스 이동
+			return false;
+		}
+		else{// 입력되면 id중복확인
+			checkID(id, mail); // 함수호출
+		}
+		
+	}
 </script>
 <!-- 스크립트 불러오기 -->
-<script src="SignUp.js"></script>
+<script src="SignUp2.js"></script>
 
 </head>
 <body>
 	<mytag:nonClientSidebar />
+	
 	<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
 		<div class="row tm-row">
@@ -196,23 +248,25 @@
 					<div class="mb-4">
 						<!-- 이예나: error추가, class check -->
 						<p class="signupt">
-							아이디 <span id="idError"></span>
+							아이디
 						</p>
-
-						<input class="form-control check"
+						<input class="form-control"
 							style="display: inline-block; width: 56%" name="id" id="sid"
 							type="text" placeholder="ID" maxlength=15> <span>@</span>
 						<select name="mail" id="smail" class="selectEmail">
 							<option selected>이메일 선택</option>
-							<option>google.com</option>
+							<option>gmail.com</option>
 							<option>daum.net</option>
 							<option>naver.com</option>
 							<option>kakao.com</option>
-						</select>
+						</select> 
 						<br>
-						<div style="padding:10px; float:right;">
-							<button onclick="checkID('checkID.ucdo?id=${id}&mail=${mail}')"
-								class="s-btn tm-btn-primary s-btn-small checkID">중복확인</button>
+						<!-- 자식 창으로부터 데이터 받아옴 -->
+						<input type="hidden" name="idCheck" id="idCheck" value="0">
+						
+						<div style="padding: 10px; float: right;">
+						<button onclick="emptyID()"
+							class="s-btn tm-btn-primary s-btn-small checkID" id="confirm">인증</button>
 						</div>
 
 					</div>
@@ -268,8 +322,8 @@
 						</span>
 					</div>
 					<div class="text-right">
-						<button type="submit" id="signUpBtn"
-							class="tm-btn tm-btn-primary tm-btn-small">sign-up</button>
+						<input type="submit" id="signUpBtn"
+							class="tm-btn tm-btn-primary tm-btn-small" value="sign-up">
 					</div>
 				</form>
 			</div>

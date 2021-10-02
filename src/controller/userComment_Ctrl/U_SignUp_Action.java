@@ -18,7 +18,7 @@ public class U_SignUp_Action implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("사인업 들림");
 		ActionForward forward = new ActionForward();
 		
 		// VO DAO 인스턴스화
@@ -26,7 +26,7 @@ public class U_SignUp_Action implements Action {
 		UserInfoVO userInfoVO = new UserInfoVO();
 		
 		// DAO수행 필요데이터 SET
-		userInfoVO.setId(request.getParameter("id"));
+		userInfoVO.setId(request.getParameter("id")+"@"+request.getParameter("mail"));
 		userInfoVO.setPw(request.getParameter("pw"));
 		userInfoVO.setName(request.getParameter("name"));
 		
