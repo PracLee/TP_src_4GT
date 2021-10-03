@@ -80,3 +80,4 @@ insert into comments (cnum, cwriter, cment, c_user, c_post)
 values(1, '?', '1111','1111', 1);
 
 insert into likeInfo (l_user,l_post)values ('1111', 1);
+

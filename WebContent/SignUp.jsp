@@ -119,6 +119,7 @@
 	width: 360px;
 }
 .checkID {
+	margin-top="";
 	height: 45px;
 	float: right;
 }
@@ -263,11 +264,9 @@
 						<br>
 						<!-- 자식 창으로부터 데이터 받아옴 -->
 						<input type="hidden" name="idCheck" id="idCheck" value="0">
-						
-						<div style="padding: 10px; float: right;">
+												
 						<input type="button" onclick="emptyID()"
-							class="s-btn tm-btn-primary s-btn-small checkID" id="confirm" value="인증처리">
-						</div>
+							class="s-btn tm-btn-primary s-btn-small checkID" id="confirm" value="중복인증">						
 
 					</div>
 					<div class="mb-4">

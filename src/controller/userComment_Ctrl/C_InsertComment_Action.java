@@ -29,7 +29,7 @@ public class C_InsertComment_Action implements Action{
 	    
 	    // DAO수행 필요데이터 SET
 	    commentVO.setCment(request.getParameter("cment"));
-	    commentVO.setCwriter(request.getParameter("cwrite"));
+	    commentVO.setCwriter(request.getParameter("cwriter"));
 	    commentVO.setC_user(request.getParameter("c_user"));
 	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post")));
 	    
