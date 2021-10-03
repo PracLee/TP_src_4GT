@@ -5,11 +5,15 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Action;
 import controller.ActionForward;
+import model.likeInfo.LikeInfoDAO;
+import model.likeInfo.LikeInfoVO;
 import model.post.PostDAO;
 import model.post.PostVO;
+import model.userInfo.UserInfoVO;
 
 public class LikeDownAciton implements Action{
 
@@ -19,15 +23,35 @@ public class LikeDownAciton implements Action{
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		PostVO PVO = new PostVO();
-		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
-		if(PDAO.LikesDown(PVO)){
-			int pnum = Integer.parseInt(request.getParameter("pnum"));
-			request.setAttribute("pnum", pnum);
-			action.setPath("selectOne.pdo");
-			action.setRedirect(true);
-		}else{
+		LikeInfoVO LVO = new LikeInfoVO();
+		LikeInfoDAO LDAO = new LikeInfoDAO();
+		
+		// 좋아요 테이블 접근 정보 세팅
+		HttpSession session = request.getSession();
+		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfo");
+		int pnum = Integer.parseInt(request.getParameter("pnum"));
+		String id = UVO.getId();
+		LVO.setL_post(pnum);
+		LVO.setL_user(id);
+		
+		if(LDAO.DeleteDB(LVO)) {	// 업데이트 됬을시에만 Post 테이블 좋아요 수 추가
+			// post 테이블 좋아요 수 + 1
+			PVO.setPnum(pnum);
+			if(PDAO.LikesUp(PVO)){
+				action.setPath("selectOne.pdo?pnum="+pnum);
+				action.setRedirect(true);
+			}else{
+				try {
+					throw new Exception("LikeCnt-- 오류발생!");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}else {
 			try {
-				throw new Exception("LikeUp 오류발생!");
+				throw new Exception("insertLike 오류발생!");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
