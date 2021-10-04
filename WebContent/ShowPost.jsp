@@ -192,13 +192,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 							. ${singlePost.category}</span> <br> <br>
 
 						<!-- 좋아요버튼 -->
-						<div class="feeling_div">
-							<div class="button-like">
-								<button class="like_a">
-									LIKE&nbsp<i class="fa fa-heart"></i>
-								</button>
-							</div>
-						</div>
+						<mytag:likeBtn/>
 						<br> <br>
 						<c:choose>
 							<c:when test="${userInfoData.id==singlePost.p_user}">

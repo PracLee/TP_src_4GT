@@ -28,7 +28,8 @@ public class LikeDownAciton implements Action{
 		
 		// 좋아요 테이블 접근 정보 세팅
 		HttpSession session = request.getSession();
-		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfo");
+		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfoData");
+		System.out.println("@@@@ LikeupUVO = "+UVO);
 		int pnum = Integer.parseInt(request.getParameter("pnum"));
 		String id = UVO.getId();
 		LVO.setL_post(pnum);
