@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!--email통합에 따라, findInfo로 일괄변경함 해당페이지 없어도 무관합니다. -->
+<!-- 
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -59,4 +61,4 @@
 	</div>
 
 </body>
-</html>
+</html> -->

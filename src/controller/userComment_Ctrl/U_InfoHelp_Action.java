@@ -24,11 +24,11 @@ public class U_InfoHelp_Action implements Action{
 		UserInfoDAO userInfoDAO = new UserInfoDAO();
 
 		// DAO수행 필요데이터 SET
-		userInfoVO.setId(request.getParameter("id"));
-
+		userInfoVO.setId(request.getParameter("id")+"@"+request.getParameter("mail"));
+		System.out.println(request.getParameter("id")+"@"+request.getParameter("mail"));
 		// DAO 수행
 		userInfoVO = userInfoDAO.Find(userInfoVO);
-		
+		System.out.println(userInfoVO+"11");
 		// response 전달 --- findUser
 		request.setAttribute("findUser", userInfoVO);
 

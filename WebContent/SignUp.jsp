@@ -15,220 +15,24 @@
 <link rel="shortcut icon" href="img/favicon2.ico">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
-<style type="text/css">
-#smail{
-	color : #474B50;
-}
-#confirm{
-	margin-top: 20px;
-	margin-bottom : 20px;
-	width : 100%;
-}
-#noneCheck {
-	margin-left: 30px;
-}
-#checkBox {
-	font-size: 15px;
-	color: dimgrey;
-}
-#Header {
-	color: #D25A53;
-	font-weight: bold;
-	margin-bottom: 60px;
-}
-#consentHeader {
-	font-weight: bold;
-	color: dimgrey;
-}
-#signUpBtn {
-	margin-top: 80px;
-	margin-bottom: 80px;
-}
-#consent {
-	margin-top: 100px;
-}
-#pwHeader {
-	width: 500px;
-	float : left;
-}
-#consentError {
-	display: block;
-	color: red;
-	text-align: right;
-	font-size: 11px;
-	font-weight: normal;
-	margin-bottom: -10px;
-	margin-right: 15px;
-}
-#idError, #pwError, #pwCheckError, #nameError {
-	width: 0px auto;
-	display: inline-block;
-	color: red;
-	font-size: 11px;
-	font-weight: normal;
-	margin-left: 10px;
-}
-#consentBox {
-	margin: 0px auto;
-	display: block;
-	position: relative;
-	width: 100%;
-	height: 300px;
-	border: solid 1px #D25A53;
-	border-top-color: #D25A53;
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-right-color: #D25A53;
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-bottom-color: #D25A53;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-left-color: #D25A53;
-	border-left-style: solid;
-	border-left-width: 1px;
-	border-image-source: initial;
-	border-image-slice: initial;
-	border-image-width: initial;
-	border-image-outset: initial;
-	border-image-repeat: initial;
-	padding-top: 10px;
-	padding-left: 14px;
-	padding-right: 14px;
-	box-sizing: border-box;
-	background-color: white;
-	overflow-y: scroll;
-	text-align: justify;
-	font-size: 15px;
-}
-#ftsw {
-	font-size: 20px;
-	font-weight: bold;
-}
-.signupt {
-	margin-bottom: 0px;
-	text-align: left;
-	display: block;
-	margin-left: 5px;
-	font-size: 15px;
-}
-@font-face {
-	font-family: 'NanumSquareRound';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-.mlogo {
-	width: 220px;
-}
-.fset {
-	display: inline-block;
-	width: 360px;
-}
-.checkID {
-	margin-top="";
-	height: 45px;
-	float: right;
-}
-</style>
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/Common.js"></script>
-<!-- 아이디중복 -->
-<script type="text/javascript">
-//아이디 유효성 검사(1 = 중복 / 0 != 중복)
-/* $("#id").blur(function() {
-	// id = "id_reg" / name = "Id"
-	var id = $('#id').val();
-	$.ajax({
-		url : "checkID.ucdo?id="+ id,
-		type : 'get',
-		success : function(data) {
-			console.log("1 = 중복o / 0 = 중복x : "+ data);							
-			
-			if (data == 1) {
-					// 1 : 아이디가 중복되는 문구
-					$("#id_check").text("사용중인 아이디입니다 :p");
-					$("#id_check").css("color", "red");
-					$("#reg_submit").attr("disabled", true);
-				} else {
-					
-					if(idJ.test(user_id)){
-						// 0 : 아이디 길이 / 문자열 검사
-						$("#id_check").text("");
-						$("#reg_submit").attr("disabled", false);
-			
-					} else if(user_id == ""){
-						
-						$('#id_check').text('아이디를 입력해주세요 :)');
-						$('#id_check').css('color', 'red');
-						$("#reg_submit").attr("disabled", true);				
-						
-					} else {
-						
-						$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-						$('#id_check').css('color', 'red');
-						$("#reg_submit").attr("disabled", true);
-					}
-					
-				}
-			}, error : function() {
-					console.log("실패");
-			}
-		});
-	}); */
-	
-	function checkID(id, mail) { // 회원 가입 시 ID 중복 체크하는 함수
-/* 		var id = document.getElementById("sid").value;
-		var mail = document.getElementById("smail").value; */
-		$.ajax({ 
-			// [요청 데이터 경로]
-			type: "GET", // 단순 정보 조회 시에는 GET, 정보가 너무 많거나 insert/update를 할때는 POST
-			url: "checkID.ucdo",	 // "checkID.ucdo?id="+id+"&mail="+mail,
-			data:{// 위 컨트롤에 데이터 전송
-				id : $("#sid").val(),
-				mail : $("#smail").val()
-			},
-			success: function(data) { 
-				//console.log('adasdasd '+data.trim());
-				//console.log(data.trim()=="false");
-				if (data.trim()=="false") { // 중복 데이터가 없을 때, trim():문자열 공백제거
-					console.log(id.value+" "+mail.value);
-					alert("사용 가능한 ID입니다.\n잠시후 이메일 인증 팝업창이 실행됩니다.");
-					window.open("codeSend.ucdo?id="+id.value+"&mail="+mail.value,'인증처리 페이지','width=800, height=700');
-					//emailCheck.jsp?id='+id.value+'&mail='+mail.value,'이메일 인증 ', 'width=500, height=700
-				} else {
-					alert("존재하는 ID입니다.");
-				}
-			},
-			error: function(xhr) {
-				console.log(xhr.status + " : " + xhr.errorText);
-				console.log("uri : " + uri);
-				alert("에러발생!");
-			}
-		});
-	}
-	
-	function emptyID(){
-		var id = document.getElementById("sid")
-		var mail = document.getElementById("smail")
 
-		// id를 입력하지 않았거나, 이메일을 선택하지 않았다면 alert창 띄움
-		if (!id.value || mail.value == "이메일 선택") {
-			console.log(mail.value);
-			alert('아이디 혹은 이메일을 입력해 주세요.');
-			id.focus(); // 포커스 이동
-			return false;
-		}
-		else{// 입력되면 id중복확인
-			checkID(id, mail); // 함수호출
-		}
-		
-	}
-</script>
-<!-- 스크립트 불러오기 -->
-<script src="SignUp2.js"></script>
+
+<!-- CSS -->
+<style type="text/css">
+@import url("css/signUp.css");
+</style>
+
+
+<!-- 자바스크립트 -->
+	<!-- JQuery -->
+<script src="js/jquery-3.6.0.min.js"></script>
+	<!-- action --> 
+<script src="js/Common.js"></script>  
+	<!-- 이메일 중복체크 -->
+<script src="js/emailCheck.js"></script>
+	<!-- 유효성검사 --> 
+<script src="SignUp2.js"></script> 
+
 
 </head>
 <body>
@@ -248,7 +52,7 @@
 			</div>
 		</div>
 		<div class="row tm-row">
-			<div style="text-align: center;" class="col-12">
+			<div class="col-12" id="conteiner">
 				<hr class="tm-hr-primary tm-mb-55">
 				<h2 id="Header">회원가입</h2>
 				<br>
@@ -260,9 +64,7 @@
 						<p class="signupt">
 							아이디
 						</p>
-						<input class="form-control"
-							style="display: inline-block; width: 56%" name="id" id="sid"
-							type="text" placeholder="ID" maxlength=15> <span>@</span>
+						<input class="form-control" name="id" id="sid" type="text" placeholder="ID" maxlength=15> <span>@</span>
 						<select name="mail" id="smail" class="selectEmail">
 							<option selected>이메일 선택</option>
 							<option>gmail.com</option>
@@ -271,10 +73,8 @@
 							<option>kakao.com</option>
 						</select> 
 						<br>
-						<!-- 자식 창으로부터 데이터 받아옴 -->
-						<input type="hidden" name="idCheck" id="idCheck" value="0">
 												
-						<input type="button" onclick="emptyID()"
+						<input type="button" onclick="emptyID('signUp')"
 							class="s-btn tm-btn-primary s-btn-small checkID" id="confirm" value="중복인증">						
 
 					</div>

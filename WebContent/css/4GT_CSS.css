@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+
+/*
+===========================================================================================================================================
+
+----------------------------------------------------------------ID/PW찾기 + 이메일 인증----------------------------------------------------------------
+*/
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+.outer{
+	display:flex;
+	align-items:center;
+	flex-direction:row;
+	justify-content: center;
+}
+.inner{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+}
+.fset{
+	display:inline-block;
+	width: 360px;
+}
+.txtleft{
+	text-align:left;
+}
+#confirm, #submit{
+	margin-top: 50px;
+	margin-bottom : 20px;
+	width : 100%;
+}
+#sid{
+	width : 56%;
+	display : inline-block;	
+}
+#checkMailCode{
+	display: block; 
+	text-align: center;
+}
+/*
+===========================================================================================================================================
+*/
