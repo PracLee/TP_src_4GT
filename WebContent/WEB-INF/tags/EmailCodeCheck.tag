@@ -62,18 +62,18 @@
 	}*/
 </script>
 <form action="#" id="checkEmail">
+	<!-- 태호님 나중에 CSS 외부 시트로 변경해주세용 ^▽^ -->
+	<span id="checkMailCode" class="checkMailset"></span>
 	<table>
-		<tr>
-			<td>인증번호</td>
-			<td><input type="text" name="code" id="code"
-				onkeyup="checkCode('${type}')" placeholder="인증번호를 입력하세요."></td>
+
+		<tr>			
+			<td><input type="text" name="code" id="code" class="mailCheckset form-control"
+				onkeyup="checkCode()" placeholder="인증번호를 입력하세요."></td>
 			<td><input type="hidden" readonly="readonly" name="code_check"
 				id="code_check" value="${code}"></td>
 		</tr>
-		<tr>
-			<!-- 태호님 나중에 CSS 외부 시트로 변경해주세용 ^▽^ -->
-			<span id="checkMailCode"></span>
-		</tr>
+		
+
 	</table>
 
 </form>

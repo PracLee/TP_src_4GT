@@ -13,14 +13,22 @@
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon2.ico">
 <style type="text/css">
+
 @import url("css/4GT_CSS.css");
+.mailCheckset{
+	width: 250px;
+    height: 50px;
+    font-size: 20px;
+}
 </style>
 </head>
 <body>
 
 	<div class="outer">
 		<div class="inner">
+
 			<mytag:EmailCodeCheck code="${code_check}" type="${type}"/>
+
 		</div>
 	</div>
 
