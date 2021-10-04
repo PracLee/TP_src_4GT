@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import controller.ActionForward;
 import controller.post_ctrl.likeinfo.LikeDownAciton;
 import controller.post_ctrl.likeinfo.LikeUpAction;
-import controller.post_ctrl.post.c.InsertPostAction;
-import controller.post_ctrl.post.d.DeleteAction;
-import controller.post_ctrl.post.r.MainAction;
-import controller.post_ctrl.post.r.PostAction;
-import controller.post_ctrl.post.r.SelectOneAction;
-import controller.post_ctrl.post.u.EditPostAction;
-import controller.post_ctrl.post.u.EditPostDB;
+import controller.post_ctrl.post.create.InsertPostAction;
+import controller.post_ctrl.post.delete.DeleteAction;
+import controller.post_ctrl.post.read.MainAction;
+import controller.post_ctrl.post.read.PostAction;
+import controller.post_ctrl.post.read.SelectOneAction;
+import controller.post_ctrl.post.update.EditPostAction;
+import controller.post_ctrl.post.update.EditPostDB;
 
 /**
  * Servlet implementation class Post_ctrl

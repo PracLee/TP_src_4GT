@@ -1,4 +1,4 @@
-package controller.post_ctrl.post.d;
+package controller.post_ctrl.post.update;
 
 import java.io.IOException;
 
@@ -11,27 +11,30 @@ import controller.ActionForward;
 import model.post.PostDAO;
 import model.post.PostVO;
 
-public class DeleteAction implements Action{
+public class EditPostDB implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward action = new ActionForward();
-		PostDAO PDAO = new PostDAO();
 		PostVO PVO = new PostVO();
+		PostDAO PDAO = new PostDAO();
 		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
-		if (PDAO.DeleteDB(PVO)) {
-			action.setPath("main.ucdo");
+		PVO.setCategory(request.getParameter("category"));
+		PVO.setTitle(request.getParameter("title"));
+		PVO.setPlike(Integer.parseInt(request.getParameter("plike")));
+		PVO.setContent(request.getParameter("content"));
+		if (PDAO.UpdateDB(PVO)) {
+			action.setPath("selectOne.pdo?pnum="+PVO.getPnum());
 			action.setRedirect(false);
 		} else {
 			try {
-				throw new Exception("DeleteDB 오류발생!");
+				throw new Exception("UpdateDB 오류발생!");
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return action;
 	}
-
+	
 }

@@ -1,4 +1,4 @@
-package controller.post_ctrl.post.c;
+package controller.post_ctrl.post.create;
 
 import java.io.IOException;
 import java.nio.file.Files;

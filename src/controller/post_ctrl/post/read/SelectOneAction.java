@@ -1,4 +1,4 @@
-package controller.post_ctrl.post.r;
+package controller.post_ctrl.post.read;
 
 import java.io.IOException;
 
