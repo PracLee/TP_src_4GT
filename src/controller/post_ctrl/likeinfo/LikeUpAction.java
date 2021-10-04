@@ -1,4 +1,4 @@
-package controller.post_ctrl;
+package controller.post_ctrl.likeinfo;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import model.post.PostDAO;
 import model.post.PostVO;
 import model.userInfo.UserInfoVO;
 
-public class LikeDownAciton implements Action{
+public class LikeUpAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -29,13 +29,12 @@ public class LikeDownAciton implements Action{
 		// 좋아요 테이블 접근 정보 세팅
 		HttpSession session = request.getSession();
 		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfoData");
-		System.out.println("@@@@ LikeupUVO = "+UVO);
 		int pnum = Integer.parseInt(request.getParameter("pnum"));
 		String id = UVO.getId();
 		LVO.setL_post(pnum);
 		LVO.setL_user(id);
-		 
-		if(LDAO.DeleteDB(LVO)) {	// 업데이트 됬을시에만 Post 테이블 좋아요 수 추가
+		
+		if(LDAO.InsertDB(LVO)) {	// 업데이트 됬을시에만 Post 테이블 좋아요 수 추가
 			// post 테이블 좋아요 수 + 1
 			PVO.setPnum(pnum);
 			if(PDAO.LikesUp(PVO)){
@@ -43,13 +42,13 @@ public class LikeDownAciton implements Action{
 				action.setRedirect(true);
 			}else{
 				try {
-					throw new Exception("LikeCnt-- 오류발생!");
+					throw new Exception("LikeCnt++ 오류발생!");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			
+			 
 		}else {
 			try {
 				throw new Exception("insertLike 오류발생!");

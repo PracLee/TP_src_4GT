@@ -10,6 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.ActionForward;
+import controller.post_ctrl.likeinfo.LikeDownAciton;
+import controller.post_ctrl.likeinfo.LikeUpAction;
+import controller.post_ctrl.post.c.InsertPostAction;
+import controller.post_ctrl.post.d.DeleteAction;
+import controller.post_ctrl.post.r.MainAction;
+import controller.post_ctrl.post.r.PostAction;
+import controller.post_ctrl.post.r.SelectOneAction;
+import controller.post_ctrl.post.u.EditPostAction;
+import controller.post_ctrl.post.u.EditPostDB;
 
 /**
  * Servlet implementation class Post_ctrl
