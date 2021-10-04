@@ -73,33 +73,33 @@ window.onload = function(){
 						class="lmargin">포스팅 수정</h2>
 					<form action="editPostDB.pdo" method="post"
 						style="display: block; width: 1000px;" class="mb-5 ctext">
-						<input type="hidden" name="pnum" value="${PostVO.pnum}">
-						<input type="hidden" name="plike" value="${PostVO.plike}">
+						<input type="hidden" name="pnum" value="${singlePost.pnum}">
+						<input type="hidden" name="plike" value="${singlePost.plike}">
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">
 							<input class="form-control"
 								style="width: 100%; border-color: white; font-size: 25px;"
 								name="title" type="text" placeholder="제목을 입력하세요"
-								value="${PostVO.title}">
+								value="${singlePost.title}">
 
 						</div>
 						<hr class="tm-hr-mycss">
 						<div class="mb-4">
 							<label class="col-sm-3 col-form-label tm-color-primary">내용</label>
 							<textarea class="form-control mr-0 ml-auto" name="content"
-								id="message" rows="8" required style="height: 800px;">${PostVO.content}</textarea>
+								id="message" rows="8" required style="height: 800px;">${singlePost.content}</textarea>
 						</div>
 						<div class="mb-4">
 							<label class=" col-form-label tm-color-primary"
 								style="font-size: 28px;">category</label> <select
 								name="category" id="selectInsert">
-								<option ${PostVO.category=='치킨' ? 'selected':'' }>치킨</option>
-								<option ${PostVO.category=='피자' ? 'selected':'' }>피자</option>
-								<option ${PostVO.category=='햄버거' ? 'selected':'' }>햄버거</option>
-								<option ${PostVO.category=='한식' ? 'selected':'' }>한식</option>
-								<option ${PostVO.category=='중식' ? 'selected':'' }>중식</option>
-								<option ${PostVO.category=='일식' ? 'selected':'' }>일식</option>
+								<option ${singlePost.category=='치킨' ? 'selected':'' }>치킨</option>
+								<option ${singlePost.category=='피자' ? 'selected':'' }>피자</option>
+								<option ${singlePost.category=='햄버거' ? 'selected':'' }>햄버거</option>
+								<option ${singlePost.category=='한식' ? 'selected':'' }>한식</option>
+								<option ${singlePost.category=='중식' ? 'selected':'' }>중식</option>
+								<option ${singlePost.category=='일식' ? 'selected':'' }>일식</option>
 							</select>
 						</div>
 						<div class="text-right">
