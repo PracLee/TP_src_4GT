@@ -84,7 +84,7 @@ window.onload = function(){
 				<div class="mb-4">
 					<h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title"
 						class="lmargin">포스팅하기</h2>
-					<form action="insertPostDB.pdo" method="post" id="PostingBox"
+					<form action="insertPostDB.pdo" method="post" id="PostingBox" enctype="multipart/form-data"
 						class="mb-5 ctext">
 
 						<input type="hidden" name="writer" value="${userInfoData.name}">
@@ -113,6 +113,8 @@ window.onload = function(){
 							</select>
 						</div>
 						<div class="text-right">
+								<input type = "file" name="filename1">
+						
 							<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">글
 								등록하기</button>
 						</div>
@@ -121,7 +123,6 @@ window.onload = function(){
 				</div>
 			</div>
 		</div>
-
 		<div class="row tm-row tm-mb-60">
 			<div class="col-12">
 				<hr class="tm-hr-primary  tm-mb-55">
