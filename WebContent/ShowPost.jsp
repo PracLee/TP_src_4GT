@@ -99,17 +99,6 @@
 
 <!-- jQuery -->
 <script type="text/javascript">
-$(function(){ //좋아요 active효과 추가제거효과
-	  var sBtn = $('.button-like > .like_a');    
-	  sBtn.click(function(){
-		  if($(sBtn).hasClass("likeActive")){
-			  sBtn.removeClass("likeActive");  
-		  }
-		  else{
-			  sBtn.addClass("likeActive");
-		  }
-		})
-	 })	
 function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
 	
 	$('#pcmsg'+index).css('display','none');

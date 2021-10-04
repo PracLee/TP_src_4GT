@@ -1,5 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8" body-content="empty"%>
 <%@ attribute name="singlePost"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- jQuery -->
 <script type="text/javascript">
 	function up(pnum) {
@@ -9,19 +10,9 @@
 
 	}
 	function down(pnum) {
-
 		var downRef = "likeDown.pdo";
-		var ppnum = JSON.stringify(pnum).replace(/\"/g , "");
-		console.log("ppnum == "+ppnum+"되나?");
-		sBtn.click(function(pnum) {
-			if ($(sBtn).hasClass("likeActive")) {
-				sBtn.removeClass("likeActive");
-				document.location.replace(downRef+"?pnum="+ppnum); 
-			} else {
-				sBtn.addClass("likeActive");
-				document.location.replace(upRef+"?pnum="+ppnum);
-			}
-		})
+		var ppnum = JSON.stringify(pnum).replace(/\"/g, "");
+		document.location.replace(downRef + "?pnum=" + ppnum);
 	}
 </script>
 <div class="feeling_div">
