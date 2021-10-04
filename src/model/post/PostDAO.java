@@ -34,6 +34,32 @@ public class PostDAO {
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM post ORDER BY views DESC";
 	
+	// 생성될 pnum 반환
+	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0 + 1) FROM post";
+	
+	public int expectPnum() {
+		Connection conn = DBCP.connect();
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql_getPnum);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(0);
+			}
+			rs.close();
+		}
+		catch(Exception e) {
+			System.out.println("PostDAO expectPnum()에서 출력");
+			e.printStackTrace();
+		}
+		finally {
+			DBCP.disconnect(pstmt, conn);
+		}
+		return result;
+	}
+	
 	// SELECT ALL -> 전체 글 정보 추출
 	public ArrayList<PostVO> SelectAll(){
 		Connection conn = DBCP.connect();
