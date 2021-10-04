@@ -18,8 +18,9 @@
 </script>
 
 <div class="wrapper">
+
 		<div class="imagebox">
-			<img alt="${userInfoData.id}_profile" id="preImage" src="${userInfoData.profile}">
+			<img alt="${userInfoData.id}_profile" id="preImage" src="${userInfoData.profile
 		</div>
 		<form method="post" enctype="multipart/form-data"
 			action="userProfileEdit.ucdo">

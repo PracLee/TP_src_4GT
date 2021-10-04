@@ -159,18 +159,14 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 		<div class="row tm-row">
 			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
-				<!-- Video player 1422x800 -->
-				<video width="954" height="535" controls class="tm-mb-40">
-					<source src="video/wheat-field.mp4" type="video/mp4">
-					Your browser does not support the video tag.
-				</video>
+				
 			</div>
 		</div>
 		<div class="row tm-row">
 			<div class="col-lg-8 tm-post-col">
 				<div class="tm-post-full">
 					<div class="mb-4">
-						<h2 class="pt-2 tm-color-primary tm-post-title">${singlePost.title}</h2>
+						<h2 class="pt-2 tm-color-primary tm-post-title" id="title">${singlePost.title}</h2>
 						<p class="tm-mb-40">${singlePost.pdate}postedby
 							${singlePost.writer}</p>
 						<p>${singlePost.content}</p>
