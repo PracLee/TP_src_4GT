@@ -16,6 +16,13 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <style type="text/css">
+#smail{
+	color : #474B50;
+}
+#confirm{
+	margin-top: 20px;
+	width : 100%;
+}
 #noneCheck {
 	margin-left: 30px;
 }
@@ -41,6 +48,7 @@
 }
 #pwHeader {
 	width: 500px;
+	float : left;
 }
 #consentError {
 	display: block;
