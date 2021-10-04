@@ -7,7 +7,7 @@
 		<div class="fileUpLoad">
 		<p>userInfo : ${userInfoData}</p>
 			<input type="file" name="filename1"> <input
-				type="submit" value="업로드!">
+				type="submit" value="업로드!"> 
 		</div>
 	</form>
 </div>
