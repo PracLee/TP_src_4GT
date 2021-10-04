@@ -20,7 +20,7 @@ window.onload = function(){
 	//var RegExp = [/^[a-zA-Z0-9-_]{5,15}$/, /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/, /^[.]{1,20}$/];
 
 	// 에러문구
-	var errorStr = ["10~20자의 영문, 숫자와 특수기호 ~!@#$%^&*()_-만 사용 가능합니다.", "1~20자 입력 가능합니다."];
+	var errorStr = ["10~20자의 영문, 숫자와 특수기호 ~!@#$%^&*()_-만 사용 가능합니다.", "1~10자의 한글, 영문, 숫자 (_),(-)만 입력 가능합니다."];
 
 	// 오류ID 구간 전체 불러오기 -> innerReset함수 활용변수
 	var error = document.querySelectorAll('.signupt > span');
@@ -58,26 +58,36 @@ window.onload = function(){
 */
 	innerReset(error);
 
-	 join.pw.onkeydown = function(){
+	//비밀번호
+	 join.pw.onkeyup = function(){
 		 innerReset(error);// 오류문구 초기화
-		 var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/;
+		 var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/; // 10~20자이나, 오류문구 발생시기가 +1되고있어→ -1처리
          
          if (!pwLimit.test(input[0].value)) {
             document.getElementById(errorId[0]+"Error").innerHTML = errorStr[0];
          }
          
 	 }
-	 
-	 join.name.onkeydown = function(){
+	 //비밀번호 체크
+	 join.pwCheck.onkeyup= function(){
+		
 		 innerReset(error);// 오류문구 초기화
-		 var nameLimit = /^[.]{1,20}$/;
+		 if (join.pw.value != join.pwCheck.value) {
+	         document.getElementById("pwCheckError").innerHTML = "비밀번호가 일치하지 않습니다.";
+	     }
+		 
+	 }
+	 // 성명
+	 join.name.onkeyup = function(){
+		 innerReset(error);// 오류문구 초기화
+		 var nameLimit = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9a-zA-Z]{1,10}$/; // 1~20자이나,  오류문구 발생시기가 +1되고있어→ -1처리
          
          if (!nameLimit.test(input[2].value)) {
             document.getElementById(errorId[2]+"Error").innerHTML = errorStr[1];
          }
          
 	 }
-	 
+	
 	 
 	//-------------------------------------------------------------------------------------------
 
@@ -85,7 +95,7 @@ window.onload = function(){
 //	submit시 오류 동작
 	join.onsubmit = function() {
 		 var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/;
-		 var nameLimit = /^.{1,20}$/;
+		 var nameLimit = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9a-zA-Z]{1,10}$/;
 		 
 		// 오류문구 초기화
 		innerReset(error);
@@ -146,7 +156,7 @@ window.onload = function(){
             return false;
 	 	 }
 	 	 if(document.getElementById("confirm")!=null){
-	 		 alert('이메일 인증처리 해주세요. ');
+	 		 alert('이메일 인증처리를 해주세요. ');
 	 		 return false;
 	 	 }
 	 	 
