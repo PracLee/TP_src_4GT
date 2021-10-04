@@ -21,16 +21,12 @@
 		})
 	})  */
 	function a(pnum) { //좋아요 active효과 추가제거효과
-		console.log(pnum);
+		console.log("pnum은 이걸로 저장 ->"+pnum);
 		var sBtn = $('.button-like > .like_a');
 		var upRef = "likeUp.pdo";
 		var downRef = "likeDown.pdo";
 		var ppnum = JSON.stringify(pnum).replace(/\"/g , "");
-		
-		//JSON.stringify(pnum)
-		console.log(ppnum+"되나?");
-		console.log(downRef+"?pnum="+ppnum);
-		console.log(upRef+"?pnum="+ppnum);
+		console.log("ppnum == "+ppnum+"되나?");
 		sBtn.click(function(pnum) {
 			if ($(sBtn).hasClass("likeActive")) {
 				sBtn.removeClass("likeActive");
@@ -46,7 +42,7 @@
 <div class="feeling_div">
 	<div class="button-like">
 		<button class="like_a">
-			LIKE&nbsp<i class="fa fa-heart" onClick="a('${singlePost}')"></i>
+			LIKE&nbsp<i class="fa fa-heart" onClick="a('${singlePost.pnum}')"></i>
 		</button>
 	</div>
 </div>
