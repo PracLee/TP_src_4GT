@@ -48,7 +48,7 @@ public class LikeUpAction implements Action{
 					e.printStackTrace();
 				}
 			}
-			
+			 
 		}else {
 			try {
 				throw new Exception("insertLike 오류발생!");
