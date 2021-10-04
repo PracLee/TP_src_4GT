@@ -35,7 +35,7 @@ public class PostDAO {
 	private static String sql_SELECT_VIEWS = "SELECT * FROM post ORDER BY views DESC";
 	
 	// 
-	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 FROM post";
+	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 AS pnum FROM post";
 	
 	public int expectPnum() {
 		Connection conn = DBCP.connect();
@@ -44,11 +44,9 @@ public class PostDAO {
 		try {
 			pstmt = conn.prepareStatement(sql_getPnum);
 			ResultSet rs = pstmt.executeQuery();
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@rs(pnum) == "+rs.getInt("pnum"));
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@rs(0) == "+rs.getInt(0));
+		
 			if(rs.next()) {
-				result = rs.getInt("pnum");
-				
+				result = rs.getInt("pnum");	
 			}
 			rs.close();
 		}
