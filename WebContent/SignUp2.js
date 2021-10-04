@@ -3,9 +3,9 @@ window.onload = function(){
 	var loginSignUp = $('#loginSignUp');
 	console.log(loginSignUp);
 	loginSignUp.addClass("active");
+	
+	
 //	form의 name(signUp)으로 → 내부 데이터를 변수에 가져옴 
-
-	console.log(document.getElementById("confirm"));
 	var join = document.join;
 	// console.log(signUp); 
 
@@ -18,7 +18,9 @@ window.onload = function(){
 
 	// 정규식 모음 		ID(5~15자 a~z, A~Z, 0~9, -, _ )		PW(10~20자 a~z, A~Z, 0~9,~!@#$%^&*()_-)	NAME(3~10자)
 	//var RegExp = [/^[a-zA-Z0-9-_]{5,15}$/, /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/, /^[.]{1,20}$/];
-
+	var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/; // a~Z, 0~9, ~!@, ~!@#$%^&*()_- 를 10~20자 이내 입력가능
+	var nameLimit = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9a-zA-Z_-]{1,10}$/; // 한글, a-Z, 0~9 _ - 를 1~10자 이내 입력가능
+	
 	// 에러문구
 	var errorStr = ["10~20자의 영문, 숫자와 특수기호 ~!@#$%^&*()_-만 사용 가능합니다.", "1~10자의 한글, 영문, 숫자 (_),(-)만 입력 가능합니다."];
 
@@ -61,7 +63,7 @@ window.onload = function(){
 	//비밀번호
 	 join.pw.onkeyup = function(){
 		 innerReset(error);// 오류문구 초기화
-		 var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/; // 10~20자이나, 오류문구 발생시기가 +1되고있어→ -1처리
+		// var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/;
          
          if (!pwLimit.test(input[0].value)) {
             document.getElementById(errorId[0]+"Error").innerHTML = errorStr[0];
@@ -80,7 +82,7 @@ window.onload = function(){
 	 // 성명
 	 join.name.onkeyup = function(){
 		 innerReset(error);// 오류문구 초기화
-		 var nameLimit = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9a-zA-Z]{1,10}$/; // 1~20자이나,  오류문구 발생시기가 +1되고있어→ -1처리
+		 //var nameLimit = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9a-zA-Z_-]{1,10}$/;
          
          if (!nameLimit.test(input[2].value)) {
             document.getElementById(errorId[2]+"Error").innerHTML = errorStr[1];
@@ -94,8 +96,6 @@ window.onload = function(){
 
 //	submit시 오류 동작
 	join.onsubmit = function() {
-		 var pwLimit = /^[a-zA-Z0-9~!@#$%^&*()_-]{10,20}/;
-		 var nameLimit = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9a-zA-Z]{1,10}$/;
 		 
 		// 오류문구 초기화
 		innerReset(error);
