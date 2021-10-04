@@ -69,7 +69,7 @@ public class M_codeSend_Action implements Action{
 			 request.setAttribute("code_check", code); // 다음페이지에서 코드 확인
 			 request.setAttribute("id", id);
 			 request.setAttribute("mail", mail);
-			 
+			 request.setAttribute("type", request.getParameter("type"));
 			 
 	         // 메일 제목
 	         msg.setSubject("[4GT Blog] 이메일 인증", "UTF-8");
@@ -94,14 +94,7 @@ public class M_codeSend_Action implements Action{
 	      } catch(UnsupportedEncodingException e) {
 	         System.out.println("UnsupportedEncodingException : " + e.getMessage());
 	      }
-		//response.setContentType("text/html; charset=UTF-8"); 
-		//PrintWriter out = response.getWriter();
-		//String uri = "emailCheck.jsp?id="+id+"&mail="+mail+"&code_check="+code;
-		//String uri2 = "<script>window.open('"+uri+"','이메일 인증 ', 'width=500, height=700'); </script>";
-		//System.out.println(uri2);
-		//out.println(uri2);
-		//out.println("<script>window.open('emailCheck.jsp?receiver='+receiver,'이메일 인증 ', 'width=500, height=700'); </script>");
-
+	
 		forward.setRedirect(false); // forward
 		forward.setPath("emailCheck.jsp"); 
 		

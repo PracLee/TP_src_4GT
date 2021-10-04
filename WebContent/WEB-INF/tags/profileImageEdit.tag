@@ -18,6 +18,7 @@
 </script>
 
 <div class="wrapper">
+
 		<div class="imagebox">
 			<img alt="${userInfoData.id}_profile" id="preImage" src="${userInfoData.profile}">
 		</div>

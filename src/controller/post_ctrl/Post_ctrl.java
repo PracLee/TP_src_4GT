@@ -10,6 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.ActionForward;
+import controller.post_ctrl.likeinfo.LikeDownAciton;
+import controller.post_ctrl.likeinfo.LikeUpAction;
+import controller.post_ctrl.post.create.InsertPostAction;
+import controller.post_ctrl.post.delete.DeleteAction;
+import controller.post_ctrl.post.read.MainAction;
+import controller.post_ctrl.post.read.PostAction;
+import controller.post_ctrl.post.read.SelectOneAction;
+import controller.post_ctrl.post.update.EditPostAction;
+import controller.post_ctrl.post.update.EditPostDB;
 
 /**
  * Servlet implementation class Post_ctrl
@@ -54,7 +63,7 @@ public class Post_ctrl extends HttpServlet {
 		}else if(action.equals("/selectOne.pdo")) {
 			forward = new SelectOneAction().execute(request, response);
 		}else if(action.equals("/insertPostDB.pdo")) {
-			forward = new InsertPostDB().execute(request, response);
+			forward = new InsertPostAction().execute(request, response);
 		}else if(action.equals("/editPost.pdo")) {
 			// System.out.println("/editPost.pdo 들어왔다");
 			forward = new EditPostAction().execute(request, response);

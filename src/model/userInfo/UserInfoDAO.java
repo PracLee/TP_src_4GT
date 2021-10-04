@@ -13,7 +13,7 @@ public class UserInfoDAO {
 	//  Basic CRUD form
 	private static String sql_SELECT_ALL = "SELECT * FROM userInfo";
 	private static String sql_SELECT_ONE = "SELECT * FROM userInfo WHERE id=? AND pw=?";
-	private static String sql_INSERT = "INSERT INTO userInfo VALUES(?, ?, ?)";
+	private static String sql_INSERT = "INSERT INTO userInfo (id, pw, name) VALUES(?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM userInfo WHERE id=?";
 	private static String sql_UPDATE = "UPDATE userInfo SET name=?, pw=? WHERE id=?";
 

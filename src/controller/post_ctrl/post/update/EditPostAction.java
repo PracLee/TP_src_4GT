@@ -1,11 +1,20 @@
-package controller.post_ctrl;
+package controller.post_ctrl.post.update;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Enumeration;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import controller.Action;
 import controller.ActionForward;
@@ -20,18 +29,15 @@ public class EditPostAction implements Action{
 			throws ServletException, IOException {
 		//System.out.println("EditPostAction 왔당!");
 		ActionForward action = new ActionForward();
-		PostVO PVO = new PostVO();
 		PostDAO PDAO = new PostDAO();
-		UserInfoVO UVO = new UserInfoVO();
-		HttpSession session = request.getSession();
-		//System.out.println("pnum == "+request.getParameter("pnum"));
+		PostVO PVO = new PostVO();
+		
 		PVO.setPnum(Integer.parseInt(request.getParameter("pnum")));
 		PVO = PDAO.SelectOne(PVO);
-		UVO = (UserInfoVO) session.getAttribute("userInfoData"); // 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
-		request.setAttribute("PostVO", PVO); // 수정 정보를 담은 PostVO 를 PostVO로 넘겨줌
+		request.setAttribute("singlePost", PVO);
 		action.setPath("EditPost.jsp");
 		action.setRedirect(false);
-		System.out.println(action);
+		
 		return action;
 	}
 
