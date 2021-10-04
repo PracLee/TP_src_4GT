@@ -62,7 +62,7 @@ select * from post;
 select * from comments;
 select * from likeInfo;
 select * from reply;
-
+SELECT NVL(MAX(pnum),0 + 1) FROM post;
 /* 테이블 삭제 */
 drop table userInfo CASCADE CONSTRAINTS;
 drop table post CASCADE CONSTRAINTS;

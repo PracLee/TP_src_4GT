@@ -35,7 +35,7 @@ public class PostDAO {
 	private static String sql_SELECT_VIEWS = "SELECT * FROM post ORDER BY views DESC";
 	
 	// 생성될 pnum 반환
-	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0 + 1) FROM post";
+	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 FROM post";
 	
 	public int expectPnum() {
 		Connection conn = DBCP.connect();
@@ -45,8 +45,10 @@ public class PostDAO {
 			pstmt = conn.prepareStatement(sql_getPnum);
 			ResultSet rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				result = rs.getInt(0);
+			while(rs.next()) {
+				System.out.println("rs전 : "+result);
+				result = rs.getInt("pnum");
+				System.out.println("rs후 : "+result);
 			}
 			rs.close();
 		}
