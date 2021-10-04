@@ -130,12 +130,9 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 <script src="js/Common.js"></script>
 <script type="text/javascript">
 		 window.onload = function(){
-			 
 			 actRemove();
 			 var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
 			 main.addClass("myActive");
-			 
-			 
 		 }
 </script>
 </head>
