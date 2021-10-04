@@ -40,13 +40,19 @@
 	display: inline-block;
 	width: 360px;
 }
+.mailCheckset{
+	width: 250px;
+    height: 50px;
+    font-size: 20px;
+}
 </style>
 </head>
 <body>
 
 	<div class="outer">
 		<div class="inner">
-			<mytag:EmailCodeCheck code="${code_check}"/>
+		<mytag:EmailCodeCheck code="${code_check}"/>	 
+				
 		</div>
 	</div>
 

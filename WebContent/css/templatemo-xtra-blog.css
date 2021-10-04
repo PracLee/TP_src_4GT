@@ -703,3 +703,30 @@ hr.tm-hr-mycss { border-top: 1px solid #D25A53; }
     background-color: #F2F2F2;
     text-decoration: none;
 }
+.checkMailset{
+	display: block; 
+	text-align: center;	
+}
+#BJBlog, #HTBlog, #HJBlog, #YNBlog, #THBlog{
+	animation-name : linkMove;
+	animation-duration : 3s; 
+	/* animation-delay : 3s;  */
+	animation-iteration-count: infinite;
+	/*animation:linkMove 2s ease-out Infinite*/
+	
+}
+ #BJBlog{
+	animation-delay : .5s;	
+}
+#HTBlog{
+	animation-delay : 1s;
+}
+#HJBlog{
+	animation-delay : 1.5s;
+}
+#YNBlog{
+	animation-delay : 2.0s;
+}
+#THBlog{
+	animation-delay : 2.5s;
+}
