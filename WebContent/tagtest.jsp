@@ -72,8 +72,9 @@
 </head>
 <body>
 	<h1>커스텀태그 모르모트...</h1>
-	<mytag:profileImageEdit />
-	<mytag:likeBtn singlePost="${param.pnum}"/>
+	
+	<mytag:profileImageEdit/>
+	<mytag:likeBtn singlePost="${param.pnum}" />
 	<p>param.pnum == ${param.pnum}</p>
 	<p>pnum == ${pnum}</p>
 </body>
