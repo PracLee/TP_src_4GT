@@ -12,7 +12,7 @@ import model.common.DBCP;
 
 public class PostDAO {
 	
-	// ±âº» CRUD
+	// ê¸°ë³¸ CRUD
 	private static String sql_SELECT_ALL = "SELECT * FROM post ORDER BY pnum DESC";
 	private static String sql_SELECT_ONE = "SELECT * FROM post WHERE pnum=?";
 	private static String sql_INSERT = 
@@ -21,20 +21,20 @@ public class PostDAO {
 	private static String sql_DELETE = "DELETE FROM post WHERE pnum=?";
 	private static String sql_UPDATE = "UPDATE post SET category=?, title=?, content=?, writer=?, path=?, pdate=sysdate WHERE pnum=?";
 	
-	// »ç¿ëÀÚ Á¤ÀÇ ÇÔ¼ö
-	// Á¶È¸¼ö ¾÷, ÁÁ¾Æ¿ä ¾÷ ´Ù¿î
+	// ì‚¬ìš©ì ì •ì˜ í•¨ìˆ˜
+	// ì¡°íšŒìˆ˜ ì—…, ì¢‹ì•„ìš” ì—… ë‹¤ìš´
 	private static String sql_ViewsUp = "UPDATE post SET views=views+1 WHERE pnum=?";
 	private static String sql_LikesUp = "UPDATE post SET plike=plike+1 WHERE pnum=?";
 	private static String sql_LikesDown = "UPDATE post SET plike=plike-1 WHERE pnum=?";
-	// °Ë»ö
+	// ê²€ìƒ‰
 	private static String sql_SearchPostTitle = "SELECT * from post WHERE title like %?%";
 	private static String sql_SearchPostWriter = "SELECT * from post WHERE writer like %?%";
 	private static String sql_SearchPostContent = "SELECT * from post WHERE content like %?%";
-	// Á¾·ùº° Á¤·Ä
+	// ì¢…ë¥˜ë³„ ì •ë ¬
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM post ORDER BY views DESC";
 	
-	// »ı¼ºµÉ pnum ¹İÈ¯
+	// ìƒì„±ë  pnum ë°˜í™˜
 	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 FROM post";
 	
 	public int expectPnum() {
@@ -44,16 +44,13 @@ public class PostDAO {
 		try {
 			pstmt = conn.prepareStatement(sql_getPnum);
 			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				System.out.println("rsÀü : "+result);
-				result = rs.getInt("pnum");
-				System.out.println("rsÈÄ : "+result);
+			if(rs.next()) {
+				result = rs.getInt(0);
 			}
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO expectPnum()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO expectPnum()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -62,7 +59,7 @@ public class PostDAO {
 		return result;
 	}
 	
-	// SELECT ALL -> ÀüÃ¼ ±Û Á¤º¸ ÃßÃâ
+	// SELECT ALL -> ì „ì²´ ê¸€ ì •ë³´ ì¶”ì¶œ
 	public ArrayList<PostVO> SelectAll(){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
@@ -93,7 +90,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SelectAll()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO SelectAll()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -102,7 +99,7 @@ public class PostDAO {
 		return datas;
 	}
 
-	// SELECT ONE -> ±Û º¸±â
+	// SELECT ONE -> ê¸€ ë³´ê¸°
 	public PostVO SelectOne(PostVO vo) {
 	      Connection conn=DBCP.connect();
 	      PostVO data=null;
@@ -113,7 +110,7 @@ public class PostDAO {
 	      try{
 	         conn.setAutoCommit(false);
 	         
-	         //±Ûº¸±â
+	         //ê¸€ë³´ê¸°
 	         pstmt=conn.prepareStatement(sql_SELECT_ONE);
 	         pstmt.setInt(1, vo.getPnum());
 	         ResultSet rs=pstmt.executeQuery();
@@ -135,7 +132,7 @@ public class PostDAO {
 	         }   
 	         rs.close();
 	         
-	         //Á¶È¸¼ö ¾÷
+	         //ì¡°íšŒìˆ˜ ì—…
 	         pstmt=conn.prepareStatement(sql_ViewsUp); //
 	         pstmt.setInt(1, vo.getPnum());
 	         pstmt.executeUpdate();
@@ -144,7 +141,7 @@ public class PostDAO {
 	         
 	      }
 	      catch(Exception e){
-	         System.out.println("PostDAO SelectOne()¿¡¼­ Ãâ·Â");
+	         System.out.println("PostDAO SelectOne()ì—ì„œ ì¶œë ¥");
 	         e.printStackTrace();
 	         try {
 	            conn.rollback();
@@ -158,7 +155,7 @@ public class PostDAO {
 	      return data;
 	   }
 	
-	// INSERT -> pnum, pdate, views, plike´Â ÀÚµ¿ÀÔ·Â
+	// INSERT -> pnum, pdate, views, plikeëŠ” ìë™ì…ë ¥
 	public boolean InsertDB(PostVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res = false;
@@ -175,7 +172,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO InsertDB()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO InsertDB()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -185,7 +182,7 @@ public class PostDAO {
 		return res;
 	}
 	
-	// DELETE -> Æ÷½ºÆ® »èÁ¦
+	// DELETE -> í¬ìŠ¤íŠ¸ ì‚­ì œ
 	public boolean DeleteDB(PostVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -197,7 +194,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO DeleteDB()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO DeleteDB()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -207,7 +204,7 @@ public class PostDAO {
 		return res;
 	}
 
-	// UPDATE -> Ä«Å×°í¸®, Á¦¸ñ, ³»¿ë º¯°æ
+	// UPDATE -> ì¹´í…Œê³ ë¦¬, ì œëª©, ë‚´ìš© ë³€ê²½
 	public boolean UpdateDB(PostVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -224,7 +221,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO UpdateDB()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO UpdateDB()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -234,7 +231,7 @@ public class PostDAO {
 		return res;
 	}
 	
-	// Á¶È¸¼ö ++
+	// ì¡°íšŒìˆ˜ ++
 	public boolean ViewsUp(PostVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -246,7 +243,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO ViewsUp()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO ViewsUp()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -256,7 +253,7 @@ public class PostDAO {
 		return res;
 	}
 	
-	// ÁÁ¾Æ¿ä ++
+	// ì¢‹ì•„ìš” ++
 	public boolean LikesUp(PostVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
@@ -268,7 +265,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO LikesUp()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO LikesUp()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -277,7 +274,7 @@ public class PostDAO {
 		}
 		return res;
 	}
-	// ÁÁ¾Æ¿ä --
+	// ì¢‹ì•„ìš” --
 	public boolean LikesDown(PostVO vo) {
 		
 		Connection conn=DBCP.connect();
@@ -290,7 +287,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO LikesDown()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO LikesDown()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -300,7 +297,7 @@ public class PostDAO {
 		return res;
 	}
 	
-	// °Ë»ö±â´É
+	// ê²€ìƒ‰ê¸°ëŠ¥
 	public ArrayList<PostVO> SearchPostTitle(String text){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
@@ -331,7 +328,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SearchPostTitle()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO SearchPostTitle()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -370,7 +367,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SearchPostWriter()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO SearchPostWriter()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -409,7 +406,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SearchPostContent()¿¡¼­ Ãâ·Â");
+			System.out.println("PostDAO SearchPostContent()ì—ì„œ ì¶œë ¥");
 			e.printStackTrace();
 		}
 		finally {
@@ -418,7 +415,7 @@ public class PostDAO {
 		return datas;
 	}
 	
-	// SELECT Category -> Ä«Å×°í¸® º° ±Û Á¤º¸ ÃßÃâ
+	// SELECT Category -> ì¹´í…Œê³ ë¦¬ ë³„ ê¸€ ì •ë³´ ì¶”ì¶œ
     public ArrayList<PostVO> SelectCategory(PostVO vo){
        Connection conn = DBCP.connect();
        ArrayList<PostVO> datas = new ArrayList();
@@ -447,7 +444,7 @@ public class PostDAO {
           rs.close();
        }
        catch(Exception e) {
-          System.out.println("PostDAO SelectCategory()¿¡¼­ Ãâ·Â");
+          System.out.println("PostDAO SelectCategory()ì—ì„œ ì¶œë ¥");
           e.printStackTrace();
        }
        finally {
@@ -456,7 +453,7 @@ public class PostDAO {
        return datas;
     }
     
-    // SELECT VIEWS -> ÀüÃ¼ ±Û Á¤º¸ Á¶È¸¼ö Á¤·Ä ÇØ¼­ ¹İÈ¯
+    // SELECT VIEWS -> ì „ì²´ ê¸€ ì •ë³´ ì¡°íšŒìˆ˜ ì •ë ¬ í•´ì„œ ë°˜í™˜
     public ArrayList<PostVO> SelectViews(){
        Connection conn = DBCP.connect();
        ArrayList<PostVO> datas = new ArrayList();
@@ -484,7 +481,7 @@ public class PostDAO {
           rs.close();
        }
        catch(Exception e) {
-          System.out.println("PostDAO SelectViews()¿¡¼­ Ãâ·Â");
+          System.out.println("PostDAO SelectViews()ì—ì„œ ì¶œë ¥");
           e.printStackTrace();
        }
        finally {
