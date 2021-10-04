@@ -38,7 +38,7 @@ public class LikeUpAction implements Action{
 			// post 테이블 좋아요 수 + 1
 			PVO.setPnum(pnum);
 			if(PDAO.LikesUp(PVO)){
-				action.setPath("selectOne.pdo?pnum="+pnum);
+				action.setPath("selectOne.pdo?pnum="+pnum+"#title");
 				action.setRedirect(true);
 			}else{
 				try {
