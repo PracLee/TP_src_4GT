@@ -386,6 +386,7 @@ public class PostDAO {
              dateToStr = dateFix.format(dateOrigin);
              vo.setPdate(dateToStr);
              vo.setP_user(rs.getString("p_user"));
+             vo.setWriter(rs.getString("writer"));
              datas.add(vo);
           }
           rs.close();
