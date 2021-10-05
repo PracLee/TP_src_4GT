@@ -34,7 +34,6 @@ public class PostDAO {
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM (SELECT * FROM post ORDER BY views DESC) WHERE ROWNUM <= 10";
 	
-	
 	// 다음에 부여될 pnum 미리 알려주기
 	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 AS pnum FROM post";
 	
