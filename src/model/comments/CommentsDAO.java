@@ -207,6 +207,7 @@ public class CommentsDAO {
 			String sql_comCntDown = "UPDATE post SET comCnt=comCnt-? WHERE pnum=?";
 			pstmt=conn.prepareStatement(sql_comCntDown);
 			// pstmt.setInt(1, 1);
+			System.out.println("vo.getReplyCnt() : " + vo.getReplyCnt());
 			pstmt.setInt(1, vo.getReplyCnt() + 1);
 			pstmt.setInt(2, vo.getC_post());
 			pstmt.executeUpdate();

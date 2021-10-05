@@ -252,7 +252,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 												<a href="javascript:void(0);" onclick="msgEdit(${index})"
 													class="tm-color-primary">수정</a>
 												<a href="#"
-													onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"
+													onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&replyCnt=${cl.replyCnt}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"
 													class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
