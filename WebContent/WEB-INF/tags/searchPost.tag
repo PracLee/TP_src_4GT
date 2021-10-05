@@ -3,11 +3,6 @@
 		<div class="row tm-row">
 			<div class="col-12">
 				<form action="findpost.pdo" method="post" class="form-inline tm-mb-80 tm-search-form">
-					<select name="condition" class="form-control tm-search-input" style="width:150px">
-            			<option selected value="title">제목</option>
-            			<option value="writer">작성자</option>         				
-            			<option value="content">내용</option>         				
-     				</select>
 					<input class="form-control tm-search-input" name="findWord"
 						type="text" placeholder="Search..." aria-label="Search">
 					<button class="tm-search-button" type="submit">
