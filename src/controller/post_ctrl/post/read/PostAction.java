@@ -21,7 +21,25 @@ public class PostAction implements Action {
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		PostVO PVO = new PostVO();
-		ArrayList<PostVO> datas = PDAO.SelectAll();
+		String initial = request.getParameter("category");
+		String category = "";
+		if(initial.equals("hot")) {
+			category = "인기글";
+		}else if(initial.equals("chi")) {
+			category = "치킨";
+		}else if(initial.equals("piz")) {
+			category = "피자";
+		}else if(initial.equals("ham")) {
+			category = "햄버거";
+		}else if(initial.equals("kor")) {
+			category = "한식";
+		}else if(initial.equals("cha")) {
+			category = "중식";
+		}else if(initial.equals("jap")) {
+			category = "일식";
+		}
+		PVO.setCategory(category);
+		ArrayList<PostVO> datas = PDAO.SelectCategory(PVO);
 		/*ArrayList<CommentsVO> CommentDatas = (ArrayList<CommentsVO>) request.getAttribute("CommentDatas");
 		ArrayList<Integer> commentsCnt = new ArrayList<Integer>(datas.size()); // 포스트 리스트와 같은 크기를 가진 댓글수 AL생성
 		for (int i = 0; i < commentsCnt.size(); i++) { // 댓글수 AL 0으로 초기화
@@ -31,9 +49,11 @@ public class PostAction implements Action {
 			int index = (CommentDatas.get(i).getC_post() - 1);
 			commentsCnt.add(index, (commentsCnt.get(index) + 1)); // commentsCnt index = postnum - 1
 		}*/	// 댓글수 로직 -> 0927 model column 추가로 삭제
+		System.out.println("showList로 가는 데이터 : "+datas);
+		request.setAttribute("category", category);
 		request.setAttribute("PostList", datas); // PostList로 SelectAll 데이터를 넘김
 		// request.setAttribute("commentsCnt", commentsCnt); // 댓글 수 AL로 넘김 0번 인덱스에 1번 포스트의 댓글 갯수 담겨있음! 댓글수 로직 -> 0927 model column 추가로 삭제
-		action.setPath("main.jsp");
+		action.setPath("ShowList.jsp");
 		action.setRedirect(false);
 		return action;
 	}

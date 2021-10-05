@@ -18,25 +18,24 @@
 		</div>
 		<nav class="tm-nav" id="tm-nav">
 			<ul>
-			
-				<li class="tm-nav-myitem myActive"  id="main"><a href="main.pdo"
+			<li class="tm-nav-myitem myActive" id="main"><a href="main.pdo"
 					class="tm-nav-link"> <i class="fas fa-home"></i> Blog Home
-				</a>  
-                    </a> <a href="#" class="tm-nav-option">&nbsp;&nbsp; <i
-						class="fas fa-thumbs-up"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인기글
-				</a> <a href="#" class="tm-nav-option">&nbsp;&nbsp; <i
-						class="fas fa-drumstick-bite"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;치킨
-				</a> <a href="#" class="tm-nav-option">&nbsp;&nbsp; <i
-						class="fas fa-pizza-slice"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;피자
-				</a> <a href="#" class="tm-nav-option">&nbsp;&nbsp; <i
-						class="fas fa-hamburger"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;햄버거
-				</a> <a href="#" class="tm-nav-option">&nbsp;&nbsp; <i
-						class="fas fa-bread-slice"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한식
-				</a> <a href="#" class="tm-nav-option">&nbsp;&nbsp; <i
-						class="fas fa-bacon"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중식
-				</a> <a href="#" class="tm-nav-option">&nbsp;&nbsp; <i
-						class="fas fa-fish"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일식
+				</a> <a href="post.pdo?category=hot" class="tm-nav-option">&nbsp;&nbsp;
+						<i class="fas fa-thumbs-up"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인기글
+				</a> <a href="post.pdo?category=chi" class="tm-nav-option">&nbsp;&nbsp;
+						<i class="fas fa-drumstick-bite"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;치킨
+				</a> <a href="post.pdo?category=piz" class="tm-nav-option">&nbsp;&nbsp;
+						<i class="fas fa-pizza-slice"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;피자
+				</a> <a href="post.pdo?category=ham" class="tm-nav-option">&nbsp;&nbsp;
+						<i class="fas fa-hamburger"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;햄버거
+				</a> <a href="post.pdo?category=kor" class="tm-nav-option">&nbsp;&nbsp;
+						<i class="fas fa-bread-slice"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한식
+				</a> <a href="post.pdo?category=cha" class="tm-nav-option">&nbsp;&nbsp;
+						<i class="fas fa-bacon"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중식
+				</a> <a href="post.pdo?category=jap" class="tm-nav-option">&nbsp;&nbsp;
+						<i class="fas fa-fish"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일식
 				</a></li>
+				
 				<li class="tm-nav-item" id="posting"><a href="InsertPost.jsp"
 					class="tm-nav-link"> <i class="fas fa-pen"></i> Posting
 				</a></li>
