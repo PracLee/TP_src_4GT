@@ -65,34 +65,7 @@
 			</div>
 		</div>
 		<div class="row tm-row">
-			<c:forEach var="pl" items="${titleResult}" varStatus="i">
-				<article class="col-12 col-md-6 tm-post">
-					<hr class="tm-hr-primary">
-
-					<a href="selectOne.pdo?pnum=${pl.pnum}"
-						onclick="actChange('#main')"
-						class="effect-lily tm-post-link tm-pt-60">
-
-						<div class="tm-post-link-inner">
-							<img src="img/img-05.jpg" alt="Image" class="img-fluid">
-						</div> <span class="position-absolute tm-new-badge">New</span>
-						<h2 class="tm-pt-30 tm-color-primary tm-post-title">${pl.title}</h2>
-					</a>
-					<p class="tm-pt-30">
-						${pl.content}
-						<!-- 글자 몇개로짜르는건 안해놓음! -->
-					</p>
-					<div class="d-flex justify-content-between tm-pt-45">
-						<span class="tm-color-primary">Category . ${pl.category}</span> <span
-							class="tm-color-primary">${pl.pdate}</span>
-					</div>
-					<hr>
-					<div class="d-flex justify-content-between">
-						<span>${pl.comCnt} comments</span> <span>by ${pl.writer}</span>
-					</div>
-
-				</article>
-			</c:forEach>
+			<mytag:postView info="${titleResult}" />
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
 			<div class="tm-prev-next-wrapper">
@@ -124,34 +97,7 @@
 			</div>
 		</div>
 		<div class="row tm-row">
-			<c:forEach var="pl" items="${contentResult}" varStatus="i">
-				<article class="col-12 col-md-6 tm-post">
-					<hr class="tm-hr-primary">
-
-					<a href="selectOne.pdo?pnum=${pl.pnum}"
-						onclick="actChange('#main')"
-						class="effect-lily tm-post-link tm-pt-60">
-
-						<div class="tm-post-link-inner">
-							<img src="img/img-05.jpg" alt="Image" class="img-fluid">
-						</div> <span class="position-absolute tm-new-badge">New</span>
-						<h2 class="tm-pt-30 tm-color-primary tm-post-title">${pl.title}</h2>
-					</a>
-					<p class="tm-pt-30">
-						${pl.content}
-						<!-- 글자 몇개로짜르는건 안해놓음! -->
-					</p>
-					<div class="d-flex justify-content-between tm-pt-45">
-						<span class="tm-color-primary">Category . ${pl.category}</span> <span
-							class="tm-color-primary">${pl.pdate}</span>
-					</div>
-					<hr>
-					<div class="d-flex justify-content-between">
-						<span>${pl.comCnt} comments</span> <span>by ${pl.writer}</span>
-					</div>
-
-				</article>
-			</c:forEach>
+			<mytag:postView info="${contentResult}"/>
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
 			<div class="tm-prev-next-wrapper">
@@ -183,33 +129,7 @@
 			</div>
 		</div>
 		<div class="row tm-row">
-			<c:forEach var="pl" items="${writerResult}" varStatus="i">
-				<article class="col-12 col-md-6 tm-post">
-					<hr class="tm-hr-primary">
-
-					<a href="selectOne.pdo?pnum=${pl.pnum}"
-						onclick="actChange('#main')"
-						class="effect-lily tm-post-link tm-pt-60">
-
-						<div class="tm-post-link-inner">
-							<img src="img/img-05.jpg" alt="Image" class="img-fluid">
-						</div> <span class="position-absolute tm-new-badge">New</span>
-						<h2 class="tm-pt-30 tm-color-primary tm-post-title">${pl.title}</h2>
-					</a>
-					<p class="tm-pt-30">
-						${pl.content}
-						<!-- 글자 몇개로짜르는건 안해놓음! -->
-					</p>
-					<div class="d-flex justify-content-between tm-pt-45">
-						<span class="tm-color-primary">Category . ${pl.category}</span> <span
-							class="tm-color-primary">${pl.pdate}</span>
-					</div>
-					<hr>
-					<div class="d-flex justify-content-between">
-						<span>${pl.comCnt} comments</span> <span>by ${pl.writer}</span>
-					</div>
-				</article>
-			</c:forEach>
+			<mytag:postView info="${writerResult}"/>
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
 			<div class="tm-prev-next-wrapper">

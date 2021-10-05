@@ -32,14 +32,13 @@
 <script src="js/Common.js"></script>
 <!-- jQuery -->
 <script type="text/javascript">
-		 window.onload = function(){
-			 
-			 actRemove();
-			 var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
-			 main.addClass("myActive");
-			 
-			 
-		 }
+	window.onload = function() {
+
+		actRemove();
+		var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+		main.addClass("myActive");
+
+	}
 </script>
 
 
@@ -52,21 +51,20 @@
 	</c:choose>
 	<c:choose>
 		<c:when test="${userInfoData==null}">
-			 <mytag:nonClientSidebar />
-			
+			<mytag:nonClientSidebar />
+
 		</c:when>
-		
-		
+
+
 	</c:choose>
 	<div class="container-fluid">
-		<main class="tm-main"> <!-- Search form -->
-		<mytag:searchPost />
+		<main class="tm-main"> <!-- Search form --> <mytag:searchPost />
 		<div class="row tm-row">
 			<c:forEach var="pl" items="${PostList}" varStatus="i">
 				<article class="col-12 col-md-6 tm-post">
 					<hr class="tm-hr-primary">
 
-					<a href="selectOne.pdo?pnum=${pl.pnum}" onclick="actChange('#main')"
+					<a href="selectOne.pdo?pnum=${pl.pnum}"
 						class="effect-lily tm-post-link tm-pt-60">
 
 						<div class="tm-post-link-inner">
@@ -84,12 +82,11 @@
 					</div>
 					<hr>
 					<div class="d-flex justify-content-between">
-						<span>${pl.comCnt} comments</span> <span>by
-							${pl.writer}</span>
+						<span>${pl.comCnt} comments</span> <span>by ${pl.writer}</span>
 					</div>
+
 				</article>
 			</c:forEach>
-
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
 			<div class="tm-prev-next-wrapper">
