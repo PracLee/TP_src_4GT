@@ -35,7 +35,7 @@ public class C_DeleteComment_Action implements Action{
 	    if (commentDAO.DeleteDB(commentVO)) {
 			// [페이징처리 메서드] 호출 (uri 반환)
 	    	path = new Post_Action().paging(request.getParameter("c_post"));
-			path += "#pcmsg"+request.getParameter("index");
+			path += "#pcmsg"+request.getParameter("pcmsg");
 	    }
 	    // 반영실패 -> 오류수행
 	    else {

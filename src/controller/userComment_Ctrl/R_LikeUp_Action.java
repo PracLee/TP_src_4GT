@@ -31,7 +31,7 @@ public class R_LikeUp_Action implements Action{
 		String path = null;
 		if (RDAO.likeCntUp(RVO)) {
 			path = new Post_Action().paging(pnum);
-			path += "#pcmsg"+request.getParameter("index");
+			path += "#prmsg"+request.getParameter("prmsg");
 
 		}
 		else {

@@ -33,7 +33,7 @@ public class R_UpdateReply_Action implements Action{
 		if(replyDAO.UpdateDB(replyVO)) {
 			// [페이징처리 메서드] 호출 (uri 반환)
 			path = new Post_Action().paging(request.getParameter("r_post"));
-			path += "#pcmsg"+request.getParameter("index");
+			path += "#prmsg"+request.getParameter("prmsg");
 		}
 		// 반영 실패 -> 오류 수행
 		else {
