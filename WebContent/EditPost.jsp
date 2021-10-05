@@ -44,7 +44,7 @@ window.onload = function(){
 </script>
 </head>
 <body>
-	<mytag:clientSidebar/>
+	<mytag:clientSidebar />
 	<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
 		<div class="row tm-row">
@@ -72,6 +72,7 @@ window.onload = function(){
 					<h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title"
 						class="lmargin">포스팅 수정</h2>
 					<form action="editPostDB.pdo" method="post"
+						enctype="multipart/form-data" id="PostingBox"
 						style="display: block; width: 1000px;" class="mb-5 ctext">
 						<input type="hidden" name="pnum" value="${singlePost.pnum}">
 						<input type="hidden" name="plike" value="${singlePost.plike}">
@@ -103,6 +104,8 @@ window.onload = function(){
 							</select>
 						</div>
 						<div class="text-right">
+
+							<input type="file" name="filename1">
 							<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">글
 								수정하기</button>
 						</div>

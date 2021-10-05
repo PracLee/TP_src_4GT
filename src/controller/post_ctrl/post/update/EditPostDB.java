@@ -18,6 +18,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import controller.Action;
 import controller.ActionForward;
+import model.likeInfo.LikeInfoDAO;
+import model.likeInfo.LikeInfoVO;
 import model.post.PostDAO;
 import model.post.PostVO;
 import model.userInfo.UserInfoVO;
@@ -55,8 +57,8 @@ public class EditPostDB implements Action{
 			Enumeration<?> files = multi.getFileNames(); 
 			String file1 = (String)files.nextElement();
 			filename1 = multi.getFilesystemName(file1);
-			System.out.println(filename1);
 			HttpSession session = request.getSession();
+			PVO.setPnum(Integer.parseInt(multi.getParameter("pnum")));
 			PVO.setCategory(multi.getParameter("category"));
 			PVO.setContent(multi.getParameter("content"));
 			UVO = (UserInfoVO) session.getAttribute("userInfoData"); // 이름은 세션에서 VO로 저장된 UserInfoVO 사용!
@@ -64,7 +66,7 @@ public class EditPostDB implements Action{
 			PVO.setP_user(UVO.getId()); // ID
 			PVO.setTitle(multi.getParameter("title"));
 			System.out.println(PVO);
-			
+
 			// 업로드 된 파일의 이름 변경하는 로직
 			Path oldfile = Paths.get(realFolder +"/" +filename1);
 			Path newfile = Paths.get(realFolder +"/" +PVO.getPnum()+"_PostImage.jpg"); 
@@ -80,7 +82,16 @@ public class EditPostDB implements Action{
 
 
 		if(PDAO.UpdateDB(PVO)){
-			// 업데이트가 완료됬을시 돌아가는 페이지
+			// 업데이트가 완료됬을시 돌아가는 페이지 정보 세팅
+			System.out.println("EditPostDB에서 넘어가는 PVO는 이거다! "+ PVO);
+			request.setAttribute("singlePost", PVO);
+			LikeInfoDAO LDAO = new LikeInfoDAO();
+			LikeInfoVO LVO = new LikeInfoVO();
+			String ID = UVO.getId();
+			LVO.setL_post(PVO.getPnum());
+			LVO.setL_user(ID);
+			request.setAttribute("likeInfo", LDAO.SelectOne(LVO)); // 좋아요 정보
+
 			forward.setRedirect(true);
 			forward.setPath("selectOne.pdo?pnum="+PVO.getPnum());	
 			return forward;
