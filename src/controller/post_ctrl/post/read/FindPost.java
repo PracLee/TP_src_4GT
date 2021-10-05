@@ -21,7 +21,6 @@ public class FindPost implements Action{
 		PostDAO PDAO = new PostDAO();
 		// 검색 값 저장
 		String word = request.getParameter("findWord");
-		String notFind = "검색 결과 없음";
 		// 제목검색 결과
 		ArrayList<PostVO> titleResult = PDAO.SearchPostTitle(word);
 		if(titleResult!=null) {
