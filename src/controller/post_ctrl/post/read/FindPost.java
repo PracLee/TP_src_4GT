@@ -26,22 +26,16 @@ public class FindPost implements Action{
 		ArrayList<PostVO> titleResult = PDAO.SearchPostTitle(word);
 		if(titleResult!=null) {
 			request.setAttribute("titleResult", titleResult);			
-		}else {
-			request.setAttribute("titleResult", notFind);	
 		}
 		// 내용검색 결과
 		ArrayList<PostVO> contentResult = PDAO.SearchPostContent(word);
 		if(contentResult!=null) {
 			request.setAttribute("contentResult", contentResult);			
-		}else {
-			request.setAttribute("contentResult", notFind);	
 		}
 		// 글쓴이 검색 결과
 		ArrayList<PostVO> writerResult = PDAO.SearchPostWriter(word);
 		if(writerResult!=null) {			
 			request.setAttribute("writerResult", writerResult);
-		}else {
-			request.setAttribute("writerResult", notFind);	
 		}
 		
 		action.setPath("result.jsp");
