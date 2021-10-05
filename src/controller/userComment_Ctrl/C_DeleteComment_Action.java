@@ -26,7 +26,7 @@ public class C_DeleteComment_Action implements Action{
 	    // DAO수행 필요데이터 SET
 	    commentVO.setCnum(Integer.parseInt(request.getParameter("cnum")));
 	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post"))); // 트랜잭션 쿼리문 수행 위함
-	    
+	    commentVO.setReplyCnt(Integer.parseInt(request.getParameter("replyCnt"))); // 트랜잭션 쿼리문 수행 위함
 	    
 		String path = null; // uri변수 초기화
 		
