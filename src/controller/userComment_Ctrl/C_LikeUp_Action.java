@@ -31,7 +31,7 @@ public class C_LikeUp_Action implements Action{
 		String path = null;
 		if (CDAO.likeCntUp(CVO)) {
 			path = new Post_Action().paging(pnum);
-			path += "#pcmsg"+request.getParameter("index");
+			path += "#pcmsg"+request.getParameter("pcmsg");
 
 		}
 		else {
