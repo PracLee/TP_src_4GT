@@ -14,6 +14,7 @@ import controller.post_ctrl.likeinfo.LikeDownAciton;
 import controller.post_ctrl.likeinfo.LikeUpAction;
 import controller.post_ctrl.post.create.InsertPostAction;
 import controller.post_ctrl.post.delete.DeleteAction;
+import controller.post_ctrl.post.read.FindPost;
 import controller.post_ctrl.post.read.MainAction;
 import controller.post_ctrl.post.read.PostAction;
 import controller.post_ctrl.post.read.SelectOneAction;
@@ -76,6 +77,8 @@ public class Post_ctrl extends HttpServlet {
 			forward = new LikeUpAction().execute(request, response);
 		}else if(action.equals("/likeDown.pdo")) {
 			forward = new LikeDownAciton().execute(request, response);
+		}else if(action.equals("/findpost.pdo")){
+			forward = new FindPost().execute(request, response);
 		}else {
 			forward.setPath("error/error404.jsp");	// 404페이지로 보냄
 			forward.setRedirect(false);
