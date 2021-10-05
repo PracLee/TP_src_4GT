@@ -52,11 +52,19 @@
 			</ul>
 		</nav>
 		<div class="tm-mb-65">
-			<div style="width: 54px; display: inline-block;"id=BJBlog><a rel="nofollow" href="https://fb.com/templatemo" ><img alt="이병재 블로그" src="img/BJ2.png"></a></div>
+			<!-- <div style="width: 54px; display: inline-block;"id=BJBlog><a rel="nofollow" href="https://fb.com/templatemo" ><img alt="이병재 블로그" src="img/BJ2.png"></a></div>
 			<div style="width: 54px; display: inline-block;"id="HTBlog"><a href="https://twitter.com" ><img alt="오현택 블로그" src="img/HT2.png"></a></div>
 			<div style="width: 54px; display: inline-block;"id="HJBlog"><a href="https://instagram.com" ><img alt="김혁재 블로그" src="img/HJ2.png"></a></div>
 			<div style="width: 54px; display: inline-block;"id="YNBlog"><a href="https://linkedin.com" ><img alt="이예나 블로그" src="img/YN2.png"></a></div>
-			<div style="width: 54px; display: inline-block;"id="THBlog"><a href="https://linkedin.com" ><img alt="이태호 블로그" src="img/TH2.png"></a></div>
+			<div style="width: 54px; display: inline-block;"id="THBlog"><a href="https://linkedin.com" ><img alt="이태호 블로그" src="img/TH2.png"></a></div> -->
+			<!-- 블로그 LINK -->
+			<ul id="blogLinks">
+				<li style="width : 20px;"><a rel="nofollow" href="https://fb.com/templatemo" ><img alt="이병재 블로그" src="img/BJ2.png"></a></li>
+				<li style="width : 20px;"><a href="https://twitter.com" ><img alt="오현택 블로그" src="img/HT2.png"></a></li>
+				<li style="width : 20px;"><a href="https://instagram.com" ><img alt="김혁재 블로그" src="img/HJ2.png"></a></li>
+				<li style="width : 20px;"><a href="https://linkedin.com" ><img alt="이예나 블로그" src="img/YN2.png"></a></li>
+				<li style="width : 20px;"><a href="https://linkedin.com" ><img alt="이태호 블로그" src="img/TH2.png"></a></li>
+			</ul>
 		</div>
 
 	</div>
