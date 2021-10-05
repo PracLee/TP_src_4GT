@@ -6,6 +6,51 @@ https://templatemo.com/tm-553-xtra-blog
 
 */
 
+/*--------------------------------Blog 애니메이션 적용--------------------------------*/
+@keyframes linkMove{
+		0% {transform: translate(0,0); }		
+		50% {transform: translate(0,-50px); }
+		to{
+			top: 20px;
+		}
+		100% {transform: translate(0,0);}
+		
+}
+#BJBlog, #HTBlog, #HJBlog, #YNBlog, #THBlog{
+	animation-name : linkMove;
+	animation-duration : 5.0s; /*5*/ 
+	animation-iteration-count: infinite;
+}
+ #BJBlog{
+	animation-delay : .5s;	/*0.5초씩*/
+}
+#HTBlog{
+	animation-delay : 1s;
+}
+#HJBlog{
+	animation-delay : 1.5s;
+}
+#YNBlog{
+	animation-delay : 2.0s;
+}
+#THBlog{
+	animation-delay : 2.5s;
+}
+#blogLinks{
+	list-style : none;
+}
+.blog{
+	float : left;
+}
+.blog a img{
+	width : 50px;
+	height : 50px;
+}
+#HTBlog, #HJBlog, #YNBlog, #THBlog{
+	margin-left : 10px;
+}
+/*---------------------------------------------------------------------*/
+
 html { overflow-x: hidden; }
 
 body {
@@ -706,27 +751,4 @@ hr.tm-hr-mycss { border-top: 1px solid #D25A53; }
 .checkMailset{
 	display: block; 
 	text-align: center;	
-}
-#BJBlog, #HTBlog, #HJBlog, #YNBlog, #THBlog{
-	animation-name : linkMove;
-	animation-duration : 3s; 
-	/* animation-delay : 3s;  */
-	animation-iteration-count: infinite;
-	/*animation:linkMove 2s ease-out Infinite*/
-	
-}
- #BJBlog{
-	animation-delay : .5s;	
-}
-#HTBlog{
-	animation-delay : 1s;
-}
-#HJBlog{
-	animation-delay : 1.5s;
-}
-#YNBlog{
-	animation-delay : 2.0s;
-}
-#THBlog{
-	animation-delay : 2.5s;
 }
