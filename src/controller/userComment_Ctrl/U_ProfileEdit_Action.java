@@ -82,7 +82,7 @@ public class U_ProfileEdit_Action implements Action{
 		if(UDAO.UpdateProfile(UVO)){
 			// 업데이트가 완료됬을시 돌아가는 페이지
 			forward.setRedirect(true);
-			forward.setPath("tagtest.jsp");	
+			forward.setPath("ChangeProfile.jsp");	
 			return forward;
 		}
 		else{

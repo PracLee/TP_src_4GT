@@ -167,8 +167,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 				<div class="tm-post-full">
 					<div class="mb-4">
 						<h2 class="pt-2 tm-color-primary tm-post-title" id="title">${singlePost.title}</h2>
-						<p class="tm-mb-40">${singlePost.pdate}postedby
-							${singlePost.writer}</p>
+						<p class="tm-mb-40">${singlePost.pdate} posted by ${singlePost.writer}</p>
 						<p>${singlePost.content}</p>
 						<span class="d-block text-right tm-color-primary">Category
 							. ${singlePost.category}</span> <br> <br>
@@ -204,8 +203,8 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
-									<img src="img/comment-1.jpg" alt="Image"
-										class="mb-2 rounded-circle img-thumbnail">
+									<img src="${userInfoData.profile}" alt="${userInfoData.id} 프로필사진"
+										class="mb-2 rounded-circle img-thumbnail" width="100px">
 									<figcaption class="tm-color-primary text-center">${cl.cwriter}</figcaption>
 								</figure>
 								<div class="cwidth">
@@ -221,7 +220,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 										<input type="hidden" name="cwriter"
 											value="${userInfoData.name}"> <input type="hidden"
 											name="cnum" value="${cl.cnum}"> <input type="hidden"
-											name="index" value="${index}">
+											name="pcmsg" value="${index}">
 										<textarea id="ucmsg${index}" class="crset dnone form-control"
 											name="cment" rows="6" required>${cl.cment}</textarea>
 										<div class="text-right marginTop">
@@ -262,6 +261,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 								
 							</div>
 							<!-- 답글달기1 -->
+							<c:set var="rindex" value="0" />
 							<div class="tm-comment-reply tm-mb-45 marginLeft dnone" id="crInsert${index}">		
 								<form action="insertReply.ucdo" method="post" class="mb-5 tm-comment-form">
 								<div class="tm-comment">
@@ -269,7 +269,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 								<input type="hidden" name="r_user" value="${userInfoData.id}">
 								<input type="hidden" name="r_post" value="${singlePost.pnum}">
 								<input type="hidden" name="r_comments" value="${cl.cnum}">
-								<input type="hidden" name="index" value=""><!-- ${index} -->
+								<input type="hidden" name="prmsg" value="${rindex}">
 									<textarea id="ucmsg${index}" class="rset form-control"
 										name="rment" rows="6" required></textarea>
 								</div>
@@ -283,14 +283,14 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 							
 
 							<!-- 답글(reply) -->
-							<c:set var="rindex" value="0" />
+							
 							<c:forEach var="rl" items="${datas.rlist}">							
 								<div class="tm-comment-reply tm-mb-45">
 									<hr>
 									<div class="tm-comment">
 										<figure class="tm-comment-figure">
-											<img src="img/comment-2.jpg" alt="Image"
-												class="mb-2 rounded-circle img-thumbnail">
+											<img src="${userInfoData.profile}" alt="${userInfoData.id} 프로필사진"
+												class="mb-2 rounded-circle img-thumbnail" width="100px">
 											<figcaption class="tm-color-primary text-center">${rl.rwriter}</figcaption>
 										</figure>
 										<p id="prmsg${rindex}">${rl.rment}</p>
@@ -332,7 +332,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 												<a href="javascript:void(0);" onclick="rmsgEdit(${rindex})"
 													class="tm-color-primary">수정</a>
 												<a href="#"
-													onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&c_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
+													onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 													class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
@@ -348,7 +348,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 								<input type="hidden" name="r_user" value="${userInfoData.id}">
 								<input type="hidden" name="r_post" value="${singlePost.pnum}">
 								<input type="hidden" name="r_comments" value="${cl.cnum}">
-								<input type="hidden" name="index" value=""><!-- ${index} -->
+								<input type="hidden" name="prmsg" value="${rindex}">
 									<textarea id="urmsg${rindex}" class="rset form-control"
 										name="rment" rows="6" required></textarea>
 								</div>
@@ -372,7 +372,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 									<input type="hidden" name="c_user" value="${userInfoData.id}">
 									<input type="hidden" name="cwriter"
 										value="${userInfoData.name}"> <input type="hidden"
-										name="index" value="${index}">
+										name="pcmsg" value="0">
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>
 

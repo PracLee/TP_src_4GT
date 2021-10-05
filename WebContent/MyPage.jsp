@@ -38,8 +38,14 @@
 	display: block;
 	margin-left: 10px;
 }
-</style>
 
+.myPageset {
+	width: 360px;
+	text-align: center;
+	display: inline-block;
+}
+</style>
+<script src="js/Common.js"></script>
 <script type="text/javascript">
 window.onload = function(){
 	 
@@ -49,13 +55,14 @@ window.onload = function(){
 	 
 	 
 }
+
 </script>
-<script src="js/Common.js"></script>
+
 </head>
 <body>
-<mytag:clientSidebar/>
+	<mytag:clientSidebar />
 
-		<div class="container-fluid">
+	<div class="container-fluid">
 		<main class="tm-main"> <!-- Search form -->
 		<div class="row tm-row">
 			<div class="col-12">
@@ -81,11 +88,23 @@ window.onload = function(){
 
 						<h2 style="color: #D25A53;">내 정보</h2>
 						<br>
+						<!-- 프로필사진 -->
+						<!-- Profile Image 1422x800 -->
+						
+							<div class="col-12">
+								<img src="${userInfoData.profile}" alt="${userInfoData.id} 프로필사진" class="img-fluid" width="200px">								
+							</div>
+							<br>
+							<div class="col-12">
+								<button onclick="ChangeProfile()" class="tm-btn tm-btn-primary tm-btn-small">사진변경</button>								
+							</div>
+						<br>
+
 						<!-- MyPage -->
-						<div style="display: inline-block;" class="mb-5 tm-comment-form">
+						<div class="myPageset mb-5 tm-comment-form">
 							<div class="mb-4">
 								<span class="signupt">아이디</span> <input class="form-control"
-									style="width: 360px" name="id" type="text" placeholder="ID"
+									name="id" type="text" placeholder="ID"
 									value="${userInfoData.id}" readonly>
 							</div>
 							<div class="mb-4">
@@ -109,12 +128,12 @@ window.onload = function(){
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
 					<ul class="tm-mb-75 pl-5 tm-category-list">
-						<li><a href="#" onclick="actChange('#myPage')" class="tm-color-primary">내 게시글보기</a></li>
-						<li><a href="UpdateUser.jsp" onclick="actChange('#myPage')" class="tm-color-primary">회원정보
+						<li><a href="#" class="tm-color-primary">내 게시글보기</a></li>
+						<li><a href="UpdateUser.jsp" class="tm-color-primary">회원정보
 								변경</a></li>
-						<li>							
-							<a href="#" onclick="delUser('deleteUser.ucdo?id=${userInfoData.id}')" class="tm-color-primary">회원탈퇴</a>						
-						</li>
+						<li><a href="#"
+							onclick="delUser('deleteUser.ucdo?id=${userInfoData.id}')"
+							class="tm-color-primary">회원탈퇴</a></li>
 
 					</ul>
 					<hr class="mb-3 tm-hr-primary">
