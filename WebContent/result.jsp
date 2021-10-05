@@ -61,7 +61,7 @@
 	<div class="container-fluid">
 		<div class="row tm-row">
 			<div class="col-lg-8 tm-post-col">
-				<div class="tm-post-full">제목 검색 결과</div>
+				<div class="tm-post-full">제목 검색 결과 </div>
 			</div>
 		</div>
 		<div class="row tm-row">

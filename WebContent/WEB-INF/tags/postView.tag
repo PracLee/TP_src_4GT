@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8" body-content="empty"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ attribute name="info" required="true"%>
+<%@ attribute name="info" required="true" type = "java.util.ArrayList"%>
 <c:forEach var="pl" items="${info}">
 	<article class="col-12 col-md-6 tm-post">
 		<hr class="tm-hr-primary">
