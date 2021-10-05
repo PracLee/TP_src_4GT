@@ -70,7 +70,7 @@
 			<td><input type="text" name="code" id="code" class="mailCheckset form-control"
 				onkeyup="checkCode()" placeholder="인증번호를 입력하세요."></td>
 			<td><input type="hidden" readonly="readonly" name="code_check"
-				id="code_check" value="${code}"></td>
+				id="code_check" value="${code}" maxlength="5"></td>
 		</tr>
 		
 

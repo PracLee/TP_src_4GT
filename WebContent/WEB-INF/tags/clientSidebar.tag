@@ -46,7 +46,7 @@
 
 				</a></li>
 				<li class="tm-nav-item" id="myPage"><a href="MyPage.jsp" 
-					class="tm-nav-link"> <i class="far fa-file"></i> MyPage
+					class="tm-nav-link"> <i class="fas fa-file"></i> MyPage
 				</a></li>
 			</ul>
 		</nav>

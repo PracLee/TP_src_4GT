@@ -15,11 +15,7 @@
 <style type="text/css">
 
 @import url("css/4GT_CSS.css");
-.mailCheckset{
-	width: 250px;
-    height: 50px;
-    font-size: 20px;
-}
+
 </style>
 </head>
 <body>

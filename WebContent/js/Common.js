@@ -14,6 +14,9 @@ function checkAlert(uri, text) {
 function infoHelp(){
    window.open("infoHelp.jsp","id/pw찾기","width=800px,height=600px");
 }
+function ChangeProfile(){
+	   window.open("ChangeProfile.jsp","프로필사진변경","width=800px,height=600px");
+	}
 function actChange(id){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
          
    var main = $('main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
