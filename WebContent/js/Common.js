@@ -40,6 +40,29 @@ function actChange(id){ // 수정버튼 클릭시 바로 수정가능하게 해�
       })
    
 }
+function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
+	
+	$('#pcmsg'+index).css('display','none');
+	$('#cOption'+index).css('visibility','hidden');
+	$('#ucmsg'+index).removeClass('dnone');
+	$('#uButton'+index).removeClass('dnone');
+	
+}	 
+ 
+function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
+	$('#crInsert'+index).removeClass('dnone');		
+}	
+function rmsgInsert2(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
+	$('#rInsert'+rindex).removeClass('dnone');		
+}
+function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
+	
+	$('#prmsg'+rindex).css('display','none');
+	$('#rOption'+rindex).css('visibility','hidden');
+	$('#urmsg'+rindex).removeClass('dnone');
+	$('#urButton'+rindex).removeClass('dnone');
+	
+}
 
 function actRemove(){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
    
@@ -65,3 +88,28 @@ $(function(){ // 아코디언
       $homeMenu.stop().animate({height:"75px"},200);         
    });
 });
+
+// showPost
+function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
+	
+	$('#pcmsg'+index).css('display','none');
+	$('#cOption'+index).css('visibility','hidden');
+	$('#ucmsg'+index).removeClass('dnone');
+	$('#uButton'+index).removeClass('dnone');
+	
+}	 
+ 
+function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
+	$('#crInsert'+index).removeClass('dnone');		
+}	
+function rmsgInsert2(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
+	$('#rInsert'+rindex).removeClass('dnone');		
+}
+function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
+	
+	$('#prmsg'+rindex).css('display','none');
+	$('#rOption'+rindex).css('visibility','hidden');
+	$('#urmsg'+rindex).removeClass('dnone');
+	$('#urButton'+rindex).removeClass('dnone');
+	
+}	
