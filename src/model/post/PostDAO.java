@@ -27,7 +27,7 @@ public class PostDAO {
 	private static String sql_LikesUp = "UPDATE post SET plike=plike+1 WHERE pnum=?";
 	private static String sql_LikesDown = "UPDATE post SET plike=plike-1 WHERE pnum=?";
 	// 검색기능
-	private static String sql_SearchPost = "SELECT * FROM post WHERE ? LIKE ? ORDER BY pnum DESC";
+
 	// 카테고리별, 좋아요 정렬 
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM (SELECT * FROM post ORDER BY views DESC) WHERE ROWNUM <= 10";
@@ -38,7 +38,7 @@ public class PostDAO {
 	// 글 전체 보기
 	public ArrayList<PostVO> SelectAll(){
 		Connection conn = DBCP.connect();
-		ArrayList<PostVO> datas = new ArrayList();
+		ArrayList<PostVO> datas = new ArrayList<PostVO>();
 		PreparedStatement pstmt = null;
 		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateOrigin;
@@ -206,16 +206,16 @@ public class PostDAO {
 	
 	//Condition별 검색
 	public ArrayList<PostVO> searchPost(String condition,String text){
+		String sql_SearchPost = "SELECT * FROM post WHERE "+condition+" LIKE ? ORDER BY pnum DESC";
 		Connection conn = DBCP.connect();
-		ArrayList<PostVO> datas = new ArrayList();
+		ArrayList<PostVO> datas = new ArrayList<PostVO>();
 		PreparedStatement pstmt = null;
 		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateOrigin;
 		String dateToStr;
 		try {
 			pstmt = conn.prepareStatement(sql_SearchPost);
-			pstmt.setString(1, condition);
-			pstmt.setString(2, text);
+			pstmt.setString(1, text);
 			
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -232,6 +232,7 @@ public class PostDAO {
 				dateToStr = dateFix.format(dateOrigin);
 				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
+				System.out.println("DAO 에서 데이터 : "+vo);
 				datas.add(vo);
 			}
 			rs.close();
@@ -243,6 +244,7 @@ public class PostDAO {
 		finally {
 			DBCP.disconnect(pstmt, conn);
 		}
+		System.out.println("DAO에서 datas : "+datas);
 		return datas;
 	}
 	

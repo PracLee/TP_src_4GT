@@ -2,6 +2,7 @@ package controller.post_ctrl.post.read;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,13 +25,12 @@ public class MainAction implements Action{
 		// 페이징 처리 로직
 		String url="main.jsp";	
 		String indexx=request.getParameter("index");
-		int index=6;
+		int index=1;
 		if(indexx!=null){
 			index=Integer.parseInt(indexx);
 		}
 		url= url+ "?index="+index;
-		request.setAttribute("index", index);
-		
+
 		datas = PDAO.SelectAll();
 		// System.out.println("datas == "+datas);
 		/*ArrayList<CommentsVO> CommentDatas = new ArrayList<CommentsVO>();
@@ -44,12 +44,28 @@ public class MainAction implements Action{
 			// System.out.println("index : "+index);
 			commentsCnt.add(index, (commentsCnt.get(index) + 1)); // commentsCnt index = postnum - 1
 		}*/	// 댓글수 로직 -> 0927 model column 추가로 삭제
-		request.setAttribute("PostList", datas); // PostList로 SelectAll 데이터를 넘김
-		
+
+		int maxIndex = 1;
+		int listCnt = 6;
+		Paginator page = new Paginator(5, listCnt, datas.size());
 		// 인덱스 조정
-		int maxIndex = datas.size()/6;
-		request.setAttribute("maxIndex", maxIndex);
+		if(datas != null) {
+			maxIndex = page.getTotalLastPageNum();
+		}
+		Map<String,Object> pageInfo = page.getFixedBlock(index);
 		
+		ArrayList<PostVO> slicedata = new ArrayList<PostVO>();
+		for(int i=(index-1)*6; i<index*6; i++) { // 현재 인덱스에 -1*6~현재인덱스*6 까지의 데이터만 넘겨주기
+			PostVO vo = datas.get(i);
+			slicedata.add(vo);
+			if(i==datas.size()-1) {
+				break;
+			}
+		}
+
+
+		request.setAttribute("maxIndex", maxIndex);
+		request.setAttribute("PostList", slicedata); // PostList로 SelectAll 데이터를 넘김
 		//System.out.println("mainActio 에서 보내주는 datas == "+datas);
 		// request.setAttribute("commentsCnt", commentsCnt); // 댓글 수 AL로 넘김 0번 인덱스에 1번 포스트의 댓글 갯수 담겨있음! 댓글수 로직 -> 0927 model column 추가로 삭제
 		action.setPath(url);
