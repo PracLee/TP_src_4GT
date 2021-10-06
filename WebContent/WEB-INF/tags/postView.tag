@@ -22,7 +22,7 @@
 		</div>
 		<hr>
 		<div class="d-flex justify-content-between">
-			<span>${pl.comCnt} comments</span> <span>by ${pl.writer}</span>
+			<span class="postInfo">${pl.comCnt} comments</span><span class="postInfo">${pl.plike} Likes</span><span class="postInfo">${pl.views} Views</span> <span>Post by ${pl.writer}</span>
 		</div>
 
 	</article>
