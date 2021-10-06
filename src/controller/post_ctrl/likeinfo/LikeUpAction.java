@@ -37,18 +37,8 @@ public class LikeUpAction implements Action{
 		if(LDAO.InsertDB(LVO)) {	// 업데이트 됬을시에만 Post 테이블 좋아요 수 추가
 			// post 테이블 좋아요 수 + 1
 			PVO.setPnum(pnum);
-			if(PDAO.LikesUp(PVO)){
 				action.setPath("selectOne.pdo?pnum="+pnum+"#title");
 				action.setRedirect(true);
-			}else{
-				try {
-					throw new Exception("LikeCnt++ 오류발생!");
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			 
 		}else {
 			try {
 				throw new Exception("insertLike 오류발생!");

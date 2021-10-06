@@ -25,7 +25,7 @@ public class LikeDownAciton implements Action{
 		PostVO PVO = new PostVO();
 		LikeInfoVO LVO = new LikeInfoVO();
 		LikeInfoDAO LDAO = new LikeInfoDAO();
-		
+
 		// 좋아요 테이블 접근 정보 세팅
 		HttpSession session = request.getSession();
 		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfoData");
@@ -34,22 +34,12 @@ public class LikeDownAciton implements Action{
 		String id = UVO.getId();
 		LVO.setL_post(pnum);
 		LVO.setL_user(id);
-		 
+
 		if(LDAO.DeleteDB(LVO)) {	// 업데이트 됬을시에만 Post 테이블 좋아요 수 추가
 			// post 테이블 좋아요 수 + 1
 			PVO.setPnum(pnum);
-			if(PDAO.LikesUp(PVO)){
-				action.setPath("selectOne.pdo?pnum="+pnum+"#title");
-				action.setRedirect(true);
-			}else{
-				try {
-					throw new Exception("LikeCnt-- 오류발생!");
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
+			action.setPath("selectOne.pdo?pnum="+pnum+"#title");
+			action.setRedirect(true);
 		}else {
 			try {
 				throw new Exception("insertLike 오류발생!");
