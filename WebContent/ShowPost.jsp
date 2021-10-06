@@ -289,7 +289,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 									<hr>
 									<div class="tm-comment">
 										<figure class="tm-comment-figure">
-											<img src="userProfile/${rl.r_user}_profile.jpg" alt="${rl.profile} 프로필사진"
+											<img src="userProfile/${rl.r_user}_profile.jpg" alt="${rl.r_user} 프로필사진"
 												class="mb-2 rounded-circle img-thumbnail" width="100px">
 											<figcaption class="tm-color-primary text-center">${rl.rwriter}</figcaption>
 										</figure>
