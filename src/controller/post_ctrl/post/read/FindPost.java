@@ -20,23 +20,27 @@ public class FindPost implements Action{
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		// 검색 값 저장
-		String word = request.getParameter("findWord");
+		String word = (String)request.getParameter("findWord");
+		String find = "%"+word+"%";
 		// 제목검색 결과
-		ArrayList<PostVO> titleResult = PDAO.SearchPostTitle(word);
+		ArrayList<PostVO> titleResult = PDAO.SearchPostTitle(find);
 		if(titleResult!=null) {
-			request.setAttribute("titleResult", titleResult);			
+			request.setAttribute("titleResult", titleResult);
+			System.out.println("titleResult"+ titleResult);			
 		}
 		// 내용검색 결과
-		ArrayList<PostVO> contentResult = PDAO.SearchPostContent(word);
+		ArrayList<PostVO> contentResult = PDAO.SearchPostContent(find);
 		if(contentResult!=null) {
-			request.setAttribute("contentResult", contentResult);			
+			request.setAttribute("contentResult", contentResult);
+			System.out.println("contentResult"+ contentResult);			
 		}
 		// 글쓴이 검색 결과
-		ArrayList<PostVO> writerResult = PDAO.SearchPostWriter(word);
+		ArrayList<PostVO> writerResult = PDAO.SearchPostWriter(find);
 		if(writerResult!=null) {			
 			request.setAttribute("writerResult", writerResult);
+			System.out.println("writerResult"+ writerResult);
 		}
-		
+		request.setAttribute("word", word);
 		action.setPath("result.jsp");
 		action.setRedirect(false);
 		return action;

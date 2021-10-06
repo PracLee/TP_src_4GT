@@ -27,12 +27,12 @@ public class PostDAO {
 	private static String sql_LikesUp = "UPDATE post SET plike=plike+1 WHERE pnum=?";
 	private static String sql_LikesDown = "UPDATE post SET plike=plike-1 WHERE pnum=?";
 	// 검색기능
-	private static String sql_SearchPostTitle = "SELECT * from post WHERE title like %?%";
-	private static String sql_SearchPostWriter = "SELECT * from post WHERE writer like %?%";
-	private static String sql_SearchPostContent = "SELECT * from post WHERE content like %?%";
+	private static String sql_SearchPostTitle = "SELECT * from post WHERE title like ?";
+	private static String sql_SearchPostWriter = "SELECT * from post WHERE writer like ?";
+	private static String sql_SearchPostContent = "SELECT * from post WHERE content like ?";
 	// 카테고리별, 좋아요 정렬 
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
-	private static String sql_SELECT_VIEWS = "SELECT * FROM post ORDER BY views DESC";
+	private static String sql_SELECT_VIEWS = "SELECT * FROM (SELECT * FROM post ORDER BY views DESC) WHERE ROWNUM <= 10";
 	
 	// 다음에 부여될 pnum 미리 알려주기
 	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 AS pnum FROM post";
@@ -386,6 +386,7 @@ public class PostDAO {
              dateToStr = dateFix.format(dateOrigin);
              vo.setPdate(dateToStr);
              vo.setP_user(rs.getString("p_user"));
+             vo.setWriter(rs.getString("writer"));
              datas.add(vo);
           }
           rs.close();

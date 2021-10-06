@@ -32,14 +32,13 @@
 <script src="js/Common.js"></script>
 <!-- jQuery -->
 <script type="text/javascript">
-		 window.onload = function(){
-			 
-			 actRemove();
-			 var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
-			 main.addClass("myActive");
-			 
-			 
-		 }
+	window.onload = function() {
+
+		actRemove();
+		var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+		main.addClass("myActive");
+
+	}
 </script>
 
 
@@ -52,115 +51,16 @@
 	</c:choose>
 	<c:choose>
 		<c:when test="${userInfoData==null}">
-			 <mytag:nonClientSidebar />
-			
+			<mytag:nonClientSidebar />
+
 		</c:when>
-		
-		
+
+
 	</c:choose>
 	<div class="container-fluid">
-		<main class="tm-main"> <!-- Search form -->
-		<mytag:searchPost />
+		<main class="tm-main"> <!-- Search form --> <mytag:searchPost />
 		<div class="row tm-row">
-			<c:forEach var="pl" items="${PostList}" varStatus="i">
-				<article class="col-12 col-md-6 tm-post">
-					<hr class="tm-hr-primary">
-
-					<a href="selectOne.pdo?pnum=${pl.pnum}" onclick="actChange('#main')"
-						class="effect-lily tm-post-link tm-pt-60">
-
-						<div class="tm-post-link-inner">
-							<img src="img/img-05.jpg" alt="Image" class="img-fluid">
-						</div> <span class="position-absolute tm-new-badge">New</span>
-						<h2 class="tm-pt-30 tm-color-primary tm-post-title">${pl.title}</h2>
-					</a>
-					<p class="tm-pt-30">
-						${pl.content}
-						<!-- 글자 몇개로짜르는건 안해놓음! -->
-					</p>
-					<div class="d-flex justify-content-between tm-pt-45">
-						<span class="tm-color-primary">Category . ${pl.category}</span> <span
-							class="tm-color-primary">${pl.pdate}</span>
-					</div>
-					<hr>
-					<div class="d-flex justify-content-between">
-						<span>${pl.comCnt} comments</span> <span>by
-							${pl.writer}</span>
-					</div>
-				</article>
-			</c:forEach>
-
-			<article class="col-12 col-md-6 tm-post">
-				<hr class="tm-hr-primary">
-				<a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-					<div class="tm-post-link-inner">
-						<img src="img/img-01.jpg" alt="Image" class="img-fluid">
-					</div> <span class="position-absolute tm-new-badge">New</span>
-					<h2 class="tm-pt-30 tm-color-primary tm-post-title">Simple and
-						useful HTML layout</h2>
-				</a>
-				<p class="tm-pt-30">There is a clickable image with beautiful
-					hover effect and active title link for each post item. Left side is
-					a sticky menu bar. Right side is a blog content that will scroll up
-					and down.</p>
-				<div class="d-flex justify-content-between tm-pt-45">
-					<span class="tm-color-primary">Travel . Events</span> <span
-						class="tm-color-primary">June 24, 2020</span>
-				</div>
-				<hr>
-				<div class="d-flex justify-content-between">
-					<span>36 comments</span> <span>by Admin Nat</span>
-				</div>
-			</article>
-			<article class="col-12 col-md-6 tm-post">
-				<hr class="tm-hr-primary">
-				<a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-					<div class=" tm-post-link-inner">
-						<img src="img/img-02.jpg" alt="Image" class="img-fluid">
-					</div> <span class="position-absolute tm-new-badge">New</span>
-					<h2 class="tm-pt-30 tm-color-primary tm-post-title">Multi-purpose
-						blog template</h2>
-				</a>
-				<p class="tm-pt-30">
-					<a rel="nofollow" class="underline"
-						href="https://templatemo.com/tm-553-xtra-blog" target="_blank">Xtra
-						Blog</a> is a multi-purpose HTML CSS template from TemplateMo website.
-					Blog list, single post, about, contact pages are included. Left
-					sidebar fixed width and content area is a fluid full-width.
-				</p>
-				<div class="d-flex justify-content-between tm-pt-45">
-					<span class="tm-color-primary">Creative . Design . Business</span>
-					<span class="tm-color-primary">June 16, 2020</span>
-				</div>
-				<hr>
-				<div class="d-flex justify-content-between">
-					<span>48 comments</span> <span>by Admin Sam</span>
-				</div>
-			</article>
-			<article class="col-12 col-md-6 tm-post">
-				<hr class="tm-hr-primary">
-				<a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-					<div class="tm-post-link-inner">
-						<img src="img/img-03.jpg" alt="Image" class="img-fluid">
-					</div>
-					<h2 class="tm-pt-30 tm-color-primary tm-post-title">How can
-						you apply Xtra Blog</h2>
-				</a>
-				<p class="tm-pt-30">
-					You are <u>allowed</u> to convert this template as any kind of CMS
-					theme or template for your custom website builder. You can also use
-					this for your clients. Thank you for choosing us.
-				</p>
-				<div class="d-flex justify-content-between tm-pt-45">
-					<span class="tm-color-primary">Music . Audio</span> <span
-						class="tm-color-primary">June 11, 2020</span>
-				</div>
-				<hr>
-				<div class="d-flex justify-content-between">
-					<span>24 comments</span> <span>by John Walker</span>
-				</div>
-			</article>
-
+			<mytag:postView info="${PostList}"/>
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
 			<div class="tm-prev-next-wrapper">
