@@ -82,4 +82,4 @@ values(1, '?', '1111','1111', 1);
 insert into likeInfo (l_user,l_post)values ('1111', 1);
 
 SELECT * from post WHERE title like '%1%';
-
+SELECT * FROM post WHERE ? LIKE '%1%' ORDER BY pnum DESC

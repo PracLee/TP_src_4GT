@@ -45,8 +45,11 @@ public class MainAction implements Action{
 			commentsCnt.add(index, (commentsCnt.get(index) + 1)); // commentsCnt index = postnum - 1
 		}*/	// 댓글수 로직 -> 0927 model column 추가로 삭제
 		request.setAttribute("PostList", datas); // PostList로 SelectAll 데이터를 넘김
-		int maxIndex = datas.size()/6;	// 인덱스 조정
+		
+		// 인덱스 조정
+		int maxIndex = datas.size()/6;
 		request.setAttribute("maxIndex", maxIndex);
+		
 		//System.out.println("mainActio 에서 보내주는 datas == "+datas);
 		// request.setAttribute("commentsCnt", commentsCnt); // 댓글 수 AL로 넘김 0번 인덱스에 1번 포스트의 댓글 갯수 담겨있음! 댓글수 로직 -> 0927 model column 추가로 삭제
 		action.setPath(url);

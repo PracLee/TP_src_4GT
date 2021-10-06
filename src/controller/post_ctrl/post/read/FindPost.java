@@ -34,10 +34,11 @@ public class FindPost implements Action{
 		url= url+ "?index="+index;
 		request.setAttribute("index", index);
 		// 제목검색 결과
-		ArrayList<PostVO> result = PDAO.SearchPostTitle(find,index);	// condition추가
+		ArrayList<PostVO> result = PDAO.searchPost(condition,find);	// condition추가
+		int maxIndex;
 		if(result!=null) {
 			request.setAttribute("result", result);
-			System.out.println("result"+ result);			
+			
 		}
 		request.setAttribute("condition", condition);
 		request.setAttribute("word", word);
