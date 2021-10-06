@@ -8,7 +8,7 @@
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>main</title>
+<title>${word}, ${condition} 검색 결과</title>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <!-- https://fontawesome.com/ -->
 
@@ -63,11 +63,11 @@
 	<div class="container-fluid">
 		<div class="row tm-row">
 			<div class="col-lg-8 tm-post-col">
-				<div class="tm-post-full">제목 검색 결과 </div>
+				<div class="tm-post-full">${condition} 검색 결과 </div>
 			</div>
 		</div>
 		<div class="row tm-row">
-			<mytag:postView info="${titleResult}" />
+			<mytag:postView info="${result}" />
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
 
@@ -94,72 +94,7 @@
 		</div>
 
 	</div>
-	<div class="container-fluid">
-		<div class="row tm-row">
-			<div class="col-lg-8 tm-post-col">
-				<div class="tm-post-full">내용 검색 결과</div>
-			</div>
-		</div>
-		<div class="row tm-row">
-			<mytag:postView info="${contentResult}"/>
-		</div>
-		<div class="row tm-row tm-mt-100 tm-mb-75">
-
-			<div class="tm-prev-next-wrapper">
-				<a href="#"
-					class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-				<a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
-			</div>
-			<div class="tm-paging-wrapper">
-				<span class="d-inline-block mr-3">Page</span>
-				<nav class="tm-paging-nav d-inline-block">
-					<ul>
-						<li class="tm-paging-item active"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">1</a></li>
-						<li class="tm-paging-item"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">2</a></li>
-						<li class="tm-paging-item"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">3</a></li>
-						<li class="tm-paging-item"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">4</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-
-	</div>
-	<div class="container-fluid">
-		<div class="row tm-row">
-			<div class="col-lg-8 tm-post-col">
-				<div class="tm-post-full">작성자 검색 결과</div>
-			</div>
-		</div>
-		<div class="row tm-row">
-			<mytag:postView info="${writerResult}"/>
-		</div>
-
-		<div class="row tm-row tm-mt-100 tm-mb-75">
-			<div class="tm-prev-next-wrapper">
-				<a href="#"
-					class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-				<a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
-			</div>
-			<div class="tm-paging-wrapper">
-				<span class="d-inline-block mr-3">Page</span>
-				<nav class="tm-paging-nav d-inline-block">
-					<ul>
-						<li class="tm-paging-item active"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">1</a></li>
-						<li class="tm-paging-item"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">2</a></li>
-						<li class="tm-paging-item"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">3</a></li>
-						<li class="tm-paging-item"><a href="#"
-							class="mb-2 tm-btn tm-paging-link">4</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
+	
 		<footer class="row tm-row">
 			<hr class="col-12">
 			<div class="col-md-6 col-12 tm-color-gray">
