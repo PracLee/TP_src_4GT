@@ -200,7 +200,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 						<c:forEach var="datas" items="${postOne_comments}">
 							<c:set var="cl" value="${datas.comment}" />
 							<!-- 변수설정 > index별 멤버변수 접근가능 -->
-
+							
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
 									<img src="userProfile/${cl.c_user}_profile.jpg" alt="${cl.c_user} 프로필사진"
@@ -211,7 +211,8 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 
 									<!-- 평상시 코멘트내용 -->
 									<p id="pcmsg${index}">${cl.cment}</p>
-
+									<p style="text-align:right;color:red" ><i class='far fa-heart'></i>&nbsp0</p>
+									<p style="text-align:right;color:red"><i class='fas fa-heart'></i>&nbsp0</p>
 									<!-- 수정시 textarea나오게 설정 -->
 									<form action="editComment.ucdo" method="post"
 										class="mb-5 tm-comment-form">
@@ -228,7 +229,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 												class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
 										</div>
 									</form>
-
+									
 									<div id="cOption${index}"
 										class="d-flex justify-content-between">
 									<!-- 비회원일때 -->
@@ -310,8 +311,11 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 								</div>
 								</form>										
 									</div>
+									<p style="text-align:right;color:red" ><i class='far fa-heart'></i>&nbsp0</p>
+										<p style="text-align:right;color:red"><i class='fas fa-heart'></i>&nbsp0</p>
 									<div id="rOption${rindex}"
 										class="d-flex justify-content-between rmsgOption">
+										
 									<!-- 비회원일때 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==null}">
@@ -388,7 +392,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 								</form>
 							</c:when>
 						</c:choose>
-						<c:set var="index" value="${index+1}" />
+						
 						<c:choose>
 							<c:when test="${userInfoData==null}">
 								<button

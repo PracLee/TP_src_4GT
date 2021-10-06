@@ -32,13 +32,16 @@
 <script src="js/Common.js"></script>
 <!-- jQuery -->
 <script type="text/javascript">
-	window.onload = function() {
 
-		actRemove();
-		var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
-		main.addClass("myActive");
+		 window.onload = function(){
+			 
+			 actRemove();
+			 var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+			 main.addClass("myActive");
+			 
+			 
+		 }
 
-	}
 </script>
 
 
@@ -54,7 +57,6 @@
 			<mytag:nonClientSidebar />
 		</c:when>
 
-
 	</c:choose>
 
 	<main class="tm-main"> <!-- Search form --> <mytag:searchPost />
@@ -68,6 +70,7 @@
 			<mytag:postView info="${titleResult}" />
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
+
 			<div class="tm-prev-next-wrapper">
 				<a href="#"
 					class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
@@ -89,6 +92,7 @@
 				</nav>
 			</div>
 		</div>
+
 	</div>
 	<div class="container-fluid">
 		<div class="row tm-row">
@@ -100,6 +104,7 @@
 			<mytag:postView info="${contentResult}"/>
 		</div>
 		<div class="row tm-row tm-mt-100 tm-mb-75">
+
 			<div class="tm-prev-next-wrapper">
 				<a href="#"
 					class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
@@ -121,6 +126,7 @@
 				</nav>
 			</div>
 		</div>
+
 	</div>
 	<div class="container-fluid">
 		<div class="row tm-row">
@@ -131,6 +137,7 @@
 		<div class="row tm-row">
 			<mytag:postView info="${writerResult}"/>
 		</div>
+
 		<div class="row tm-row tm-mt-100 tm-mb-75">
 			<div class="tm-prev-next-wrapper">
 				<a href="#"
@@ -161,9 +168,11 @@
 			</div>
 			<div class="col-md-6 col-12 tm-color-gray tm-copyright">
 				Copyright 2020 Xtra Blog Company Co. Ltd.</div>
+
 		</footer>
 	</div>
 	</main>
+
 	<a href="tagtest.jsp?pnum=1">실험용쥐</a>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
