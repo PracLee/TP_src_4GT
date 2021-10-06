@@ -24,13 +24,13 @@ public class MainAction implements Action{
 		ArrayList<PostVO> datas = new ArrayList<PostVO>();
 		// 其捞隆 贸府 肺流
 		String url="main.jsp";	
-		String mcntt=request.getParameter("mcnt");
-		int mcnt=6;
-		if(mcntt!=null){
-			mcnt=Integer.parseInt(mcntt);
+		String indexx=request.getParameter("index");
+		int index=6;
+		if(indexx!=null){
+			index=Integer.parseInt(indexx);
 		}
-		url= url+ "?mcnt="+mcnt;
-		request.setAttribute("mcnt", mcnt);
+		url= url+ "?index="+index;
+		request.setAttribute("index", index);
 		
 		datas = PDAO.SelectAll();
 		// System.out.println("datas == "+datas);
