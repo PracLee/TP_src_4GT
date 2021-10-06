@@ -170,7 +170,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 				<div class="tm-post-full">
 					<div class="mb-4">
 						<h2 class="pt-2 tm-color-primary tm-post-title" id="title">${singlePost.title}</h2>
-						<p class="tm-mb-40">${singlePost.pdate}posted by
+						<p class="tm-mb-40">${singlePost.pdate} posted by
 							${singlePost.writer}</p>
 						<p>${singlePost.content}</p>
 						<span class="d-block text-right tm-color-primary">Category
@@ -216,12 +216,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 
 									<!-- 평상시 코멘트내용 -->
 									<p id="pcmsg${index}">${cl.cment}</p>
-									<p style="text-align: right; color: red">
-										<i class='far fa-heart'></i>&nbsp0
-									</p>
-									<p style="text-align: right; color: red">
-										<i class='fas fa-heart'></i>&nbsp0
-									</p>
+									
 									<!-- 수정시 textarea나오게 설정 -->
 									<form action="editComment.ucdo" method="post"
 										class="mb-5 tm-comment-form">
@@ -238,7 +233,12 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 												class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
 										</div>
 									</form>
-
+									<p class="text-right" style="color: red" id="clike">
+										<a href="likeUpComment.ucdo?pnum=${singlePost.pnum}&cnum=${cl.cnum}"><i class='far fa-heart'></i></a>&nbsp${cl.clikeCnt}
+									</p>
+									<p class="text-right dnone" style="color: red">
+										<i class='fas fa-heart' id="clikeUp"></i>&nbsp${cl.clikeCnt}
+									</p>
 									<div id="cOption${index}"
 										class="d-flex justify-content-between">
 										<!-- 비회원일때 -->
@@ -329,10 +329,10 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 											</div>
 										</form>
 									</div>
-									<p style="text-align: right; color: red">
+									<p class="text-right" style="color: red">
 										<i class='far fa-heart'></i>&nbsp0
 									</p>
-									<p style="text-align: right; color: red">
+									<p class="text-right dnone" style="color: red">
 										<i class='fas fa-heart'></i>&nbsp0
 									</p>
 									
