@@ -114,6 +114,7 @@
 									<!-- 수정시 textarea나오게 설정 -->
 									<form action="editComment.ucdo" method="post"
 										class="mb-5 tm-comment-form">
+										<div>
 										<input type="hidden" name="c_post" value="${singlePost.pnum}">
 										<input type="hidden" name="c_user" value="${userInfoData.id}">
 										<input type="hidden" name="cwriter"
@@ -124,7 +125,10 @@
 											name="cment" rows="6" required>${cl.cment}</textarea>
 										<div class="text-right marginTop">
 											<button type="submit" id="uButton${index}"
-												class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
+												class="uButton tm-btn tm-btn-primary tm-btn-small Edit">댓글수정</button>
+												<%-- <button type="submit" id="uButton${index}"
+												class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button> --%>
+										</div>
 										</div>
 									</form>
 									<p class="text-right" style="color: red" id="clike">
@@ -207,19 +211,19 @@
 										<!-- 수정버튼 클릭시 변화되는 코드들 -->
 										<form action="editReply.ucdo" method="post"
 											class="mb-5 tm-comment-form">
-											<div class="tm-comment">
+											<div class="tm-comment ">
 												<input type="hidden" name="r_post"
 													value="${singlePost.pnum}"> <input type="hidden"
 													name="rnum" value="${rl.rnum}"> <input
 													type="hidden" name="index" value="">
 												<!-- ${index} -->
 												<textarea id="urmsg${rindex}"
-													class="dnone urmsgSet form-control" name="rment" rows="6"
+													class="rset dnone form-control urmsgSet" name="rment" rows="6"
 													required>${rl.rment}</textarea>
 											</div>
 											<div class="text-right marginTop">
 												<button type="submit" id="urButton${rindex}"
-													class="dnone tm-btn tm-btn-primary tm-btn-small">답글수정</button>
+													class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button>
 											</div>
 										</form>
 									</div>
@@ -296,7 +300,7 @@
 										comment</h2>
 
 									<div class="mb-4">
-										<textarea class="crset form-control" name="cment" rows="6"
+										<textarea class="crset form-control" id="crset" name="cment" rows="6"
 											required></textarea>
 									</div>
 
