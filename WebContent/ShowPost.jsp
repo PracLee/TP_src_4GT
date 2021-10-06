@@ -78,15 +78,18 @@
 	width: 587px;
 	height: 152px;
 }
-.inlineBlock{
-	display:inline-block;
+
+.inlineBlock {
+	display: inline-block;
 }
-.marginLeft{	
-	margin-left:90px;
+
+.marginLeft {
+	margin-left: 90px;
 }
-.rmsgOption{
-	width: 460px;
-    float: right;
+
+.rmsgOption {
+	width: 350px;
+	float: right;
 }
 
 .urmsgSet {
@@ -159,7 +162,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 		<div class="row tm-row">
 			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
-				
+
 			</div>
 		</div>
 		<div class="row tm-row">
@@ -167,13 +170,14 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 				<div class="tm-post-full">
 					<div class="mb-4">
 						<h2 class="pt-2 tm-color-primary tm-post-title" id="title">${singlePost.title}</h2>
-						<p class="tm-mb-40">${singlePost.pdate} posted by ${singlePost.writer}</p>
+						<p class="tm-mb-40">${singlePost.pdate}posted by
+							${singlePost.writer}</p>
 						<p>${singlePost.content}</p>
 						<span class="d-block text-right tm-color-primary">Category
 							. ${singlePost.category}</span> <br> <br>
 
 						<!-- 좋아요버튼 -->
-						<mytag:likeBtn/>
+						<mytag:likeBtn />
 						<br> <br>
 						<c:choose>
 							<c:when test="${userInfoData.id==singlePost.p_user}">
@@ -200,10 +204,11 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 						<c:forEach var="datas" items="${postOne_comments}">
 							<c:set var="cl" value="${datas.comment}" />
 							<!-- 변수설정 > index별 멤버변수 접근가능 -->
-							
+
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
-									<img src="userProfile/${cl.c_user}_profile.jpg" alt="${cl.c_user} 프로필사진"
+									<img src="userProfile/${cl.c_user}_profile.jpg"
+										alt="${cl.c_user} 프로필사진"
 										class="mb-2 rounded-circle img-thumbnail" width="100px">
 									<figcaption class="tm-color-primary text-center">${cl.cwriter}</figcaption>
 								</figure>
@@ -211,8 +216,12 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 
 									<!-- 평상시 코멘트내용 -->
 									<p id="pcmsg${index}">${cl.cment}</p>
-									<p style="text-align:right;color:red" ><i class='far fa-heart'></i>&nbsp0</p>
-									<p style="text-align:right;color:red"><i class='fas fa-heart'></i>&nbsp0</p>
+									<p style="text-align: right; color: red">
+										<i class='far fa-heart'></i>&nbsp0
+									</p>
+									<p style="text-align: right; color: red">
+										<i class='fas fa-heart'></i>&nbsp0
+									</p>
 									<!-- 수정시 textarea나오게 설정 -->
 									<form action="editComment.ucdo" method="post"
 										class="mb-5 tm-comment-form">
@@ -229,10 +238,10 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 												class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button>
 										</div>
 									</form>
-									
+
 									<div id="cOption${index}"
 										class="d-flex justify-content-between">
-									<!-- 비회원일때 -->
+										<!-- 비회원일때 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==null}">
 												<a href="#"
@@ -243,7 +252,8 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 										<!-- 로그인상태일때 답글버튼 활성화 -->
 										<c:choose>
 											<c:when test="${userInfoData.id!=null}">
-												<a href="javascript:void(0);" onclick="rmsgInsert(${index})" class="tm-color-primary">답글</a>
+												<a href="javascript:void(0);" onclick="rmsgInsert(${index})"
+													class="tm-color-primary">답글</a>
 											</c:when>
 										</c:choose>
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
@@ -259,92 +269,103 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 										<span class="tm-color-primary"> ${cl.cdate}</span>
 									</div>
 								</div>
-								
+
 							</div>
-							<!-- 답글달기1 -->
+							<!-- 답글달기 -->
 							<c:set var="rindex" value="0" />
-							<div class="tm-comment-reply tm-mb-45 marginLeft dnone" id="crInsert${index}">		
-								<form action="insertReply.ucdo" method="post" class="mb-5 tm-comment-form">
-								<div class="tm-comment">
-								<input type="hidden" name="rwriter" value="${userInfoData.name}">
-								<input type="hidden" name="r_user" value="${userInfoData.id}">
-								<input type="hidden" name="r_post" value="${singlePost.pnum}">
-								<input type="hidden" name="r_comments" value="${cl.cnum}">
-								<input type="hidden" name="prmsg" value="${rindex}">
-									<textarea id="ucmsg${index}" class="rset form-control"
-										name="rment" rows="6" required></textarea>
-								</div>
-								<div class="text-right marginTop">
-									<button type="submit"
-										class="tm-btn tm-btn-primary tm-btn-small">답글등록</button>
-								</div>
+							<div class="tm-comment-reply tm-mb-45 marginLeft dnone"
+								id="crInsert${index}">
+								<form action="insertReply.ucdo" method="post"
+									class="mb-5 tm-comment-form">
+									<div class="tm-comment">
+										<input type="hidden" name="rwriter"
+											value="${userInfoData.name}"> <input type="hidden"
+											name="r_user" value="${userInfoData.id}"> <input
+											type="hidden" name="r_post" value="${singlePost.pnum}">
+										<input type="hidden" name="r_comments" value="${cl.cnum}">
+										<input type="hidden" name="prmsg" value="${rindex}">
+										<textarea id="ucmsg${index}" class="rset form-control"
+											name="rment" rows="6" required></textarea>
+									</div>
+									<div class="text-right marginTop">
+										<button type="submit"
+											class="tm-btn tm-btn-primary tm-btn-small">답글등록</button>
+									</div>
 								</form>
 							</div>
-							
-							
+
+
 
 							<!-- 답글(reply) -->
-							
-							<c:forEach var="rl" items="${datas.rlist}">							
+
+							<c:forEach var="rl" items="${datas.rlist}">
 								<div class="tm-comment-reply tm-mb-45">
 									<hr>
 									<div class="tm-comment">
 										<figure class="tm-comment-figure">
-											<img src="userProfile/${rl.r_user}_profile.jpg" alt="${rl.r_user} 프로필사진"
+											<img src="userProfile/${rl.r_user}_profile.jpg"
+												alt="${rl.r_user} 프로필사진"
 												class="mb-2 rounded-circle img-thumbnail" width="100px">
 											<figcaption class="tm-color-primary text-center">${rl.rwriter}</figcaption>
 										</figure>
 										<p id="prmsg${rindex}">${rl.rment}</p>
-										
+
 										<!-- 수정버튼 클릭시 변화되는 코드들 -->
-								<form action="editReply.ucdo" method="post" class="mb-5 tm-comment-form">
-								<div class="tm-comment">								
-								<input type="hidden" name="r_post" value="${singlePost.pnum}">
-								<input type="hidden" name="rnum" value="${rl.rnum}">
-								<input type="hidden" name="index" value=""><!-- ${index} -->
-								<textarea id="urmsg${rindex}" class="dnone urmsgSet form-control"
-										name="rment" rows="6" required>${rl.rment}</textarea>
-								</div>
-								<div class="text-right marginTop">
-									<button type="submit" id="urButton${rindex}"
-										class="dnone tm-btn tm-btn-primary tm-btn-small">답글수정</button>
-								</div>
-								</form>										
+										<form action="editReply.ucdo" method="post"
+											class="mb-5 tm-comment-form">
+											<div class="tm-comment">
+												<input type="hidden" name="r_post"
+													value="${singlePost.pnum}"> <input type="hidden"
+													name="rnum" value="${rl.rnum}"> <input
+													type="hidden" name="index" value="">
+												<!-- ${index} -->
+												<textarea id="urmsg${rindex}"
+													class="dnone urmsgSet form-control" name="rment" rows="6"
+													required>${rl.rment}</textarea>
+											</div>
+											<div class="text-right marginTop">
+												<button type="submit" id="urButton${rindex}"
+													class="dnone tm-btn tm-btn-primary tm-btn-small">답글수정</button>
+											</div>
+										</form>
 									</div>
-									<p style="text-align:right;color:red" ><i class='far fa-heart'></i>&nbsp0</p>
-										<p style="text-align:right;color:red"><i class='fas fa-heart'></i>&nbsp0</p>
-									<div id="rOption${rindex}"
-										class="d-flex justify-content-between rmsgOption">
+									<p style="text-align: right; color: red">
+										<i class='far fa-heart'></i>&nbsp0
+									</p>
+									<p style="text-align: right; color: red">
+										<i class='fas fa-heart'></i>&nbsp0
+									</p>
+									
 										
-									<!-- 비회원일때 -->
+										<!-- 비회원일 경우 날자만 보임 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==null}">
-												<a href="#"
-													onclick="checkAlert('Login.jsp','답글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')"
-													class="tm-color-primary">답글</a>
+												<div class="text-right">
+													<span class="tm-color-primary"> ${rl.rdate}</span>
+												</div>
 											</c:when>
 										</c:choose>
-										<!-- 로그인상태일때 답글버튼 활성화 -->
-										<c:choose>
-											<c:when test="${userInfoData.id!=null}">
-												<a href="javascript:void(0);" onclick="rmsgInsert2(${rindex})" class="tm-color-primary">답글</a>
-											</c:when>
-										</c:choose>
+
 										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==cl.c_user}">
+											<div id="rOption${rindex}"
+										class="d-flex justify-content-between rmsgOption">
 												<a href="javascript:void(0);" onclick="rmsgEdit(${rindex})"
 													class="tm-color-primary">수정</a>
 												<a href="#"
 													onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 													class="tm-color-primary">삭제</a>
+												<span class="tm-color-primary"> ${rl.rdate}</span>
+												</div>
 											</c:when>
 										</c:choose>
-										<span class="tm-color-primary"> ${rl.rdate}</span>
-									</div>
+									
+
+
 									<span class="d-block text-right tm-color-primary"></span>
 								</div>
-								<!-- 답글에서 답글달기2 -->
+								<!-- 답글에서 답글달기2 => 답글에서 답글다는기능 삭제
 								<div class="tm-comment-reply tm-mb-45 marginLeft dnone" id="rInsert${rindex}">		
 								<form action="insertReply.ucdo" method="post" class="mb-5 tm-comment-form inlineBlock">
 								<div class="tm-comment">
@@ -361,13 +382,13 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 										class="tm-btn tm-btn-primary tm-btn-small">답글등록</button>
 								</div>
 								</form>
-							</div>
+							</div>-->
 								<c:set var="rindex" value="${rindex+1}" />
 							</c:forEach>
 							<c:set var="index" value="${index+1}" />
 							<br>
 						</c:forEach>
-						
+
 						<c:choose>
 							<c:when test="${userInfoData!=null}">
 								<form action="insertComment.ucdo" method="post"
@@ -392,7 +413,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 								</form>
 							</c:when>
 						</c:choose>
-						
+
 						<c:choose>
 							<c:when test="${userInfoData==null}">
 								<button
