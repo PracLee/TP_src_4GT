@@ -18,117 +18,11 @@
 <!-- 파비콘 -->
 
 <link rel="shortcut icon" href="img/favicon2.ico">
-<style type="text/css">
-@font-face {
-	font-family: 'NanumSquareRound';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
 
-.mlogo {
-	width: 220px;
-}
-
-.feeling_div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.button-like {
-	margin-left: 20px;
-}
-
-.like_a {
-	background-color: white;
-	border: 2px solid #D25A53;
-	padding: 10px 20px;
-	border-radius: 2px;
-	color: #D25A53;
-}
-
-.likeActive {
-	background-color: #D25A53;
-	color: white;
-}
-
-.crset {
-	resize: none;
-	width: 460px;
-	height: 152px;
-}
-
-.cwidth {
-	width: 460px;
-}
-
-.dnone {
-	display: none;
-}
-
-.marginTop {
-	margin-top: 10px;
-}
-
-.rset {
-	resize: none;
-	width: 587px;
-	height: 152px;
-}
-
-.inlineBlock {
-	display: inline-block;
-}
-
-.marginLeft {
-	margin-left: 90px;
-}
-
-.rmsgOption {
-	width: 350px;
-	float: right;
-}
-
-.urmsgSet {
-	resize: none;
-	width: 420px;
-	height: 152px;
-}
-</style>
-
-
-<!-- jQuery -->
-<script type="text/javascript">
-function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
-	
-	$('#pcmsg'+index).css('display','none');
-	$('#cOption'+index).css('visibility','hidden');
-	$('#ucmsg'+index).removeClass('dnone');
-	$('#uButton'+index).removeClass('dnone');
-	
-}	 
- 
-function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
-	$('#crInsert'+index).removeClass('dnone');		
-}	
-function rmsgInsert2(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
-	$('#rInsert'+rindex).removeClass('dnone');		
-}
-function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
-	
-	$('#prmsg'+rindex).css('display','none');
-	$('#rOption'+rindex).css('visibility','hidden');
-	$('#urmsg'+rindex).removeClass('dnone');
-	$('#urButton'+rindex).removeClass('dnone');
-	
-}	 
-</script>
 <script src="js/Common.js"></script>
 <script type="text/javascript">
 		 window.onload = function(){
+			 //window.scrollTo({top:500, behavior:"smooth"}); // 스크롤 조절기능(댓글창 이동)
 			 actRemove();
 			 var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
 			 main.addClass("myActive");

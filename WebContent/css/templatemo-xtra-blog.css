@@ -5,7 +5,138 @@ TemplateMo 553 Xtra Blog
 https://templatemo.com/tm-553-xtra-blog
 
 */
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+/*
+===========================================================================================================================================
 
+----------------------------------------------------------------ShowPost----------------------------------------------------------------
+*/
+
+
+
+.mlogo {
+	width: 220px;
+}
+
+.feeling_div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-like {
+	margin-left: 20px;
+}
+
+.like_a {
+	background-color: white;
+	border: 2px solid #D25A53;
+	padding: 10px 20px;
+	border-radius: 2px;
+	color: #D25A53;
+}
+
+.likeActive {
+	background-color: #D25A53;
+	color: white;
+}
+
+.crset {
+	resize: none;
+	width: 460px;
+	height: 152px;
+}
+
+.cwidth {
+	width: 460px;
+}
+
+.dnone {
+	display: none;
+}
+
+.marginTop {
+	margin-top: 10px;
+}
+
+.rset {
+	resize: none;
+	width: 587px;
+	height: 152px;
+}
+
+.inlineBlock {
+	display: inline-block;
+}
+
+.marginLeft {
+	margin-left: 90px;
+}
+
+.rmsgOption {
+	width: 350px;
+	float: right;
+}
+
+.urmsgSet {
+	resize: none;
+	width: 420px;
+	height: 152px;
+}
+
+/*
+===========================================================================================================================================
+
+----------------------------------------------------------------ID/PW찾기 + 이메일 인증----------------------------------------------------------------
+*/
+.outer{
+	display:flex;
+	align-items:center;
+	flex-direction:row;
+	justify-content: center;
+}
+.inner{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+}
+.fset{
+	display:inline-block;
+	width: 360px;
+}
+.txtleft{
+	text-align:left;
+}
+#confirm, #submit{
+	margin-top: 50px;
+	margin-bottom : 20px;
+	width : 100%;
+}
+#sid{
+	width : 56%;
+	display : inline-block;	
+}
+#checkMailCode{
+	display: block; 
+	text-align: center;
+}
+.mailCheckset{
+	width: 250px;
+    height: 50px;
+    font-size: 20px;
+}
+
+/*
+===========================================================================================================================================
+*/
 /*--------------------------------Blog 애니메이션 적용--------------------------------*/
 @keyframes linkMove{
 		0% {transform: translate(0,0); }		

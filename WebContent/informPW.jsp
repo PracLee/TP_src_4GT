@@ -10,9 +10,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon2.ico">
-<style type="text/css">
-@import url("css/4GT_CSS.css");
-</style>
+
 </head>
 <body>
 	<div class="outer">
