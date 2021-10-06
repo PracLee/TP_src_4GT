@@ -27,9 +27,9 @@ public class PostDAO {
 	private static String sql_LikesUp = "UPDATE post SET plike=plike+1 WHERE pnum=?";
 	private static String sql_LikesDown = "UPDATE post SET plike=plike-1 WHERE pnum=?";
 	// 검색기능
-	private static String sql_SearchPostTitle = "SELECT * from post WHERE title like ?";
-	private static String sql_SearchPostWriter = "SELECT * from post WHERE writer like ?";
-	private static String sql_SearchPostContent = "SELECT * from post WHERE content like ?";
+	private static String sql_SearchPostTitle = "SELECT * FROM (SELECT * FROM post WHERE title like ? ORDER BY pnum DESC) WHERE ROWNUM >= ? AND ROWNUM < (? + 6)";
+	private static String sql_SearchPostWriter = "SELECT * FROM (SELECT * FROM post WHERE writer like ? ORDER BY pnum DESC) WHERE ROWNUM >= ? AND ROWNUM < (? + 6)";
+	private static String sql_SearchPostContent = "SELECT * FROM (SELECT * FROM post WHERE content like ? ORDER BY pnum DESC) WHERE ROWNUM >= ? AND ROWNUM < (? + 6)";
 	// 카테고리별, 좋아요 정렬 
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM (SELECT * FROM post ORDER BY views DESC) WHERE ROWNUM <= 10";
@@ -207,7 +207,7 @@ public class PostDAO {
 	}
 	
 	// 제목으로 검색
-	public ArrayList<PostVO> SearchPostTitle(String text){
+	public ArrayList<PostVO> SearchPostTitle(String text, int index){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -217,6 +217,8 @@ public class PostDAO {
 		try {
 			pstmt = conn.prepareStatement(sql_SearchPostTitle);
 			pstmt.setString(1, text);
+			pstmt.setInt(2, index);
+			pstmt.setInt(3, index);
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -246,7 +248,7 @@ public class PostDAO {
 		return datas;
 	}
 	// 작성자로 검색
-	public ArrayList<PostVO> SearchPostWriter(String text){
+	public ArrayList<PostVO> SearchPostWriter(String text, int index){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -256,6 +258,8 @@ public class PostDAO {
 		try {
 			pstmt = conn.prepareStatement(sql_SearchPostWriter);
 			pstmt.setString(1, text);
+			pstmt.setInt(2, index);
+			pstmt.setInt(3, index);
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -285,7 +289,7 @@ public class PostDAO {
 		return datas;
 	}
 	// 내용으로 검색
-	public ArrayList<PostVO> SearchPostContent(String text){
+	public ArrayList<PostVO> SearchPostContent(String text, int index){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -295,6 +299,8 @@ public class PostDAO {
 		try {
 			pstmt = conn.prepareStatement(sql_SearchPostContent);
 			pstmt.setString(1, text);
+			pstmt.setInt(2, index);
+			pstmt.setInt(3, index);
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
