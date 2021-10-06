@@ -95,7 +95,7 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 	$('#pcmsg'+index).css('display','none');
 	$('#cOption'+index).css('visibility','hidden');
 	$('#ucmsg'+index).removeClass('dnone');
-	$('#uButton'+index).removeClass('dnone');
+	$('#uButton'+index).removeClass('uButton');
 	
 }	 
  
@@ -110,6 +110,6 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 	$('#prmsg'+rindex).css('display','none');
 	$('#rOption'+rindex).css('visibility','hidden');
 	$('#urmsg'+rindex).removeClass('dnone');
-	$('#urButton'+rindex).removeClass('dnone');
+	$('#urButton'+rindex).removeClass('uButton');
 	
 }	
