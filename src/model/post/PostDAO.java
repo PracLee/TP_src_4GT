@@ -27,9 +27,7 @@ public class PostDAO {
 	private static String sql_LikesUp = "UPDATE post SET plike=plike+1 WHERE pnum=?";
 	private static String sql_LikesDown = "UPDATE post SET plike=plike-1 WHERE pnum=?";
 	// 검색기능
-	private static String sql_SearchPostTitle = "SELECT * FROM (SELECT * FROM post WHERE title like ? ORDER BY pnum DESC) WHERE ROWNUM >= ? AND ROWNUM < (? + 6)";
-	private static String sql_SearchPostWriter = "SELECT * FROM (SELECT * FROM post WHERE writer like ? ORDER BY pnum DESC) WHERE ROWNUM >= ? AND ROWNUM < (? + 6)";
-	private static String sql_SearchPostContent = "SELECT * FROM (SELECT * FROM post WHERE content like ? ORDER BY pnum DESC) WHERE ROWNUM >= ? AND ROWNUM < (? + 6)";
+	private static String sql_SearchPost = "SELECT * FROM post WHERE ? LIKE ? ORDER BY pnum DESC";
 	// 카테고리별, 좋아요 정렬 
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM (SELECT * FROM post ORDER BY views DESC) WHERE ROWNUM <= 10";
@@ -206,8 +204,8 @@ public class PostDAO {
 		return res;
 	}
 	
-	// 제목으로 검색
-	public ArrayList<PostVO> SearchPostTitle(String text, int index){
+	//Condition별 검색
+	public ArrayList<PostVO> searchPost(String condition,String text){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList();
 		PreparedStatement pstmt = null;
@@ -215,10 +213,10 @@ public class PostDAO {
 		Date dateOrigin;
 		String dateToStr;
 		try {
-			pstmt = conn.prepareStatement(sql_SearchPostTitle);
-			pstmt.setString(1, text);
-			pstmt.setInt(2, index);
-			pstmt.setInt(3, index);
+			pstmt = conn.prepareStatement(sql_SearchPost);
+			pstmt.setString(1, condition);
+			pstmt.setString(2, text);
+			
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -239,7 +237,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SearchPostTitle()에서 출력");
+			System.out.println("PostDAO SearchPost()에서 출력");
 			e.printStackTrace();
 		}
 		finally {
@@ -247,88 +245,8 @@ public class PostDAO {
 		}
 		return datas;
 	}
-	// 작성자로 검색
-	public ArrayList<PostVO> SearchPostWriter(String text, int index){
-		Connection conn = DBCP.connect();
-		ArrayList<PostVO> datas = new ArrayList();
-		PreparedStatement pstmt = null;
-		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateOrigin;
-		String dateToStr;
-		try {
-			pstmt = conn.prepareStatement(sql_SearchPostWriter);
-			pstmt.setString(1, text);
-			pstmt.setInt(2, index);
-			pstmt.setInt(3, index);
-			
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				PostVO vo = new PostVO();
-				vo.setPnum(rs.getInt("pnum"));
-				vo.setViews(rs.getInt("views"));
-				vo.setPlike(rs.getInt("plike"));
-				vo.setCategory(rs.getString("category"));
-				vo.setTitle(rs.getString("title"));
-				vo.setContent(rs.getString("content"));
-				vo.setWriter(rs.getString("writer"));
-				dateOrigin = rs.getDate("pdate");
-				dateToStr = dateFix.format(dateOrigin);
-				vo.setPdate(dateToStr);
-				vo.setP_user(rs.getString("p_user"));
-				datas.add(vo);
-			}
-			rs.close();
-		}
-		catch(Exception e) {
-			System.out.println("PostDAO SearchPostWriter()에서 출력");
-			e.printStackTrace();
-		}
-		finally {
-			DBCP.disconnect(pstmt, conn);
-		}
-		return datas;
-	}
-	// 내용으로 검색
-	public ArrayList<PostVO> SearchPostContent(String text, int index){
-		Connection conn = DBCP.connect();
-		ArrayList<PostVO> datas = new ArrayList();
-		PreparedStatement pstmt = null;
-		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateOrigin;
-		String dateToStr;
-		try {
-			pstmt = conn.prepareStatement(sql_SearchPostContent);
-			pstmt.setString(1, text);
-			pstmt.setInt(2, index);
-			pstmt.setInt(3, index);
-			
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				PostVO vo = new PostVO();
-				vo.setPnum(rs.getInt("pnum"));
-				vo.setViews(rs.getInt("views"));
-				vo.setPlike(rs.getInt("plike"));
-				vo.setCategory(rs.getString("category"));
-				vo.setTitle(rs.getString("title"));
-				vo.setContent(rs.getString("content"));
-				vo.setWriter(rs.getString("writer"));
-				dateOrigin = rs.getDate("pdate");
-				dateToStr = dateFix.format(dateOrigin);
-				vo.setPdate(dateToStr);
-				vo.setP_user(rs.getString("p_user"));
-				datas.add(vo);
-			}
-			rs.close();
-		}
-		catch(Exception e) {
-			System.out.println("PostDAO SearchPostContent()에서 출력");
-			e.printStackTrace();
-		}
-		finally {
-			DBCP.disconnect(pstmt, conn);
-		}
-		return datas;
-	}
+	
+	
 	
 	// 카테고리별 출력
     public ArrayList<PostVO> SelectCategory(PostVO vo){
