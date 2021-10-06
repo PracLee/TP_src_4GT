@@ -1007,3 +1007,8 @@ hr.tm-hr-mycss {
 	display: block;
 	text-align: center;
 }
+
+body .postInfo{
+	font-size:12px;
+	color : gray;
+}
