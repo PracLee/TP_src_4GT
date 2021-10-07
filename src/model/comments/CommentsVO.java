@@ -10,7 +10,6 @@ public class CommentsVO {
 	private String cwriter;
 	private int replyCnt;
 	private int clikeCnt;
-	private String cprofileImage;
 	
 	public int getClikeCnt() {
 		return clikeCnt;
@@ -61,17 +60,13 @@ public class CommentsVO {
 	public void setReplyCnt(int replyCnt) {
 		this.replyCnt = replyCnt;
 	}
-	public String getCprofileImage() {
-		return cprofileImage;
-	}
-	public void setCprofileImage(String cprofileImage) {
-		this.cprofileImage = cprofileImage;
-	}
 	@Override
 	public String toString() {
 		return "CommentsVO [cnum=" + cnum + ", cment=" + cment + ", cdate=" + cdate + ", c_user=" + c_user
-				+ ", cwriter=" + cwriter + ", replyCnt=" + replyCnt + ", clikeCnt=" + clikeCnt + ", cprofileImage="
-				+ cprofileImage + ", c_post=" + c_post + "]";
+				+ ", cwriter=" + cwriter + ", replyCnt=" + replyCnt + ", clikeCnt=" + clikeCnt + ", c_post=" + c_post
+				+ "]";
 	}
+	
+	
 	
 }

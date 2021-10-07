@@ -13,7 +13,7 @@ public class ReplyDAO {
 	// 기본 비즈니스 로직
 	private static String sql_SELECT_ALL = "SELECT * FROM reply";
 	private static String sql_SELECT_ONE = "SELECT * FROM reply WHERE rnum=?";
-	private static String sql_INSERT = "INSERT INTO reply (rnum, rment, rdate, rwriter, rprofileImage, r_user, r_post, r_comments) VALUES((SELECT NVL(MAX(rnum),0) + 1 FROM reply), ?, sysdate, ?, ?, ?, ?, ?)";
+	private static String sql_INSERT = "INSERT INTO reply (rnum, rment, rdate, rwriter, r_user, r_post, r_comments) VALUES((SELECT NVL(MAX(rnum),0) + 1 FROM reply), ?, sysdate, ?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM reply WHERE rnum=?";
 	private static String sql_UPDATE = "UPDATE reply SET rment=?, rdate=sysdate WHERE rnum=?";
 
@@ -40,7 +40,6 @@ public class ReplyDAO {
 				vo.setRdate(rs.getDate("rdate"));
 				vo.setRwriter(rs.getString("rwriter"));
 				vo.setRlikeCnt(rs.getInt("rlikeCnt"));
-				vo.setRprofileImage(rs.getString("rprofileImage"));
 				vo.setR_user(rs.getString("r_user"));
 				vo.setR_post(rs.getInt("r_post"));
 				vo.setR_comments(rs.getInt("r_comments"));
@@ -74,7 +73,6 @@ public class ReplyDAO {
 				data.setRdate(rs.getDate("rdate"));
 				data.setRwriter(rs.getString("rwriter"));
 				data.setRlikeCnt(rs.getInt("rlikeCnt"));
-				data.setRprofileImage(rs.getString("rprofileImage"));
 				data.setR_user(rs.getString("r_user"));
 				data.setR_post(rs.getInt("r_post"));
 				data.setR_comments(rs.getInt("r_comments"));
@@ -102,10 +100,9 @@ public class ReplyDAO {
 			pstmt=conn.prepareStatement(sql_INSERT);
 			pstmt.setString(1, vo.getRment());
 			pstmt.setString(2, vo.getRwriter());
-			pstmt.setString(3, vo.getRprofileImage());
-			pstmt.setString(4, vo.getR_user());
-			pstmt.setInt(5, vo.getR_post());
-			pstmt.setInt(6, vo.getR_comments());
+			pstmt.setString(3, vo.getR_user());
+			pstmt.setInt(4, vo.getR_post());
+			pstmt.setInt(5, vo.getR_comments());
 			pstmt.executeUpdate();
 
 			// POST 댓글 수 ++

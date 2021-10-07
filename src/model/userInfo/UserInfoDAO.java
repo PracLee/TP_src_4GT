@@ -188,26 +188,10 @@ public class UserInfoDAO {
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
-			conn.setAutoCommit(false);
 			pstmt=conn.prepareStatement(sql_updateProfile);
 			pstmt.setString(1, vo.getProfile());
 			pstmt.setString(2, vo.getId());
 			pstmt.executeUpdate();
-			// "UPDATE userinfo SET profile=? WHERE id=?"
-			
-			String sql_updateProfileC="UPDATE comments SET cprofileImage=? WHERE c_user=?";
-			pstmt=conn.prepareStatement(sql_updateProfileC);
-			pstmt.setString(1, vo.getProfile());
-			pstmt.setString(2, vo.getId());
-			pstmt.executeUpdate();
-			
-			String sql_updateProfileR="UPDATE reply SET rprofileImage=? WHERE r_user=?";
-			pstmt=conn.prepareStatement(sql_updateProfileR);
-			pstmt.setString(1, vo.getProfile());
-			pstmt.setString(2, vo.getId());
-			pstmt.executeUpdate();
-			conn.commit();
-			conn.setAutoCommit(true);
 			res=true;
 		}
 		catch(Exception e){

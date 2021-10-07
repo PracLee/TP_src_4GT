@@ -27,7 +27,6 @@ CREATE TABLE comments(
 	cwriter varchar(30),
 	replyCnt int default 0,
 	clikeCnt int default 0,
-	cprofileImage varchar(300),
 	c_user varchar(30),
 	c_post int,
 	foreign key (c_user) references userInfo(id) on delete cascade,
@@ -48,7 +47,6 @@ CREATE TABLE reply(
 	rdate date default sysdate,
 	rwriter varchar(30),
 	rlikeCnt int default 0,
-	rprofileImage varchar(300),
 	r_user varchar(30),
 	r_post int,
 	r_comments int,
@@ -76,7 +74,7 @@ drop table reply;
 /* 테스트용 예시 데이터 */
 insert into userInfo (id, pw, name) values('admin','123','관리자');
 insert into post (pnum, views, plike, category, title, content, writer, p_user, path)
-values(1,0,0, '치킨', '푸라닭', '?', '?', '1111', '??');
+values(1,0,0, '치킨', '푸라닭', '?', '?', 'admin', '??');
 
 insert into comments (cnum, cwriter, cment, c_user, c_post)
 values(1, '?', '1111','1111', 1);

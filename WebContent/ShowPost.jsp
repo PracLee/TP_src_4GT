@@ -101,13 +101,12 @@
 
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
-									<img src="${cl.cprofileImage}"
-										alt="${cl.c_user} 프로필사진"
+									<img src="userProfile/${cl.c_user}_profile.jpg"
+										alt="${cl.c_user} 프로필사진" onerror="this.src='userProfile/defaultImage.jpg'" 
 										class="mb-2 rounded-circle img-thumbnail" width="100px">
 									<figcaption class="tm-color-primary text-center">${cl.cwriter}</figcaption>
 								</figure>
 								<div class="cwidth">
-
 									<!-- 평상시 코멘트내용 -->
 									<p id="pcmsg${index}">${cl.cment}</p>
 									
@@ -180,7 +179,6 @@
 											value="${userInfoData.name}"> <input type="hidden"
 											name="r_user" value="${userInfoData.id}"> <input
 											type="hidden" name="r_post" value="${singlePost.pnum}">
-										<input type="hidden" name="rprofileImage" value="${userInfoData.profile}">
 										<input type="hidden" name="r_comments" value="${cl.cnum}">
 										<input type="hidden" name="prmsg" value="${rindex}">
 										<textarea id="ucmsg${index}" class="rset form-control"
@@ -202,8 +200,8 @@
 									<hr>
 									<div class="tm-comment">
 										<figure class="tm-comment-figure">
-											<img src="${rl.rprofileImage}"
-												alt="${rl.r_user} 프로필사진"
+											<img src="userProfile/${rl.r_user}_profile.jpg"
+												alt="${rl.r_user} 프로필사진" onerror="this.src='userProfile/defaultImage.jpg'" 
 												class="mb-2 rounded-circle img-thumbnail" width="100px">
 											<figcaption class="tm-color-primary text-center">${rl.rwriter}</figcaption>
 										</figure>
@@ -294,7 +292,6 @@
 									class="mb-5 tm-comment-form">
 									<input type="hidden" name="c_post" value="${singlePost.pnum}">
 									<input type="hidden" name="c_user" value="${userInfoData.id}">
-									<input type="hidden" name="cprofileImage" value="${userInfoData.profile}">
 									
 									<input type="hidden" name="cwriter"
 										value="${userInfoData.name}"> <input type="hidden"
