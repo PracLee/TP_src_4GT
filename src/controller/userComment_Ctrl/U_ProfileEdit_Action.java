@@ -1,6 +1,7 @@
 package controller.userComment_Ctrl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,7 +28,7 @@ public class U_ProfileEdit_Action implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
-
+		PrintWriter out=response.getWriter();
 
 		String realFolder = "";
 		String filename1 = "";
@@ -80,10 +81,9 @@ public class U_ProfileEdit_Action implements Action{
 
 
 		if(UDAO.UpdateProfile(UVO)){
-			// 업데이트가 완료됬을시 돌아가는 페이지
-			forward.setRedirect(true);
-			forward.setPath("ChangeProfile.jsp");	
-			return forward;
+			// 부모 페이지 새로고침
+			out.println("<script>opener.location.reload();</script>");
+			out.println("<script>window.close();</script>");
 		}
 		else{
 			// 예외를 발생시켜 에러페이지로 이동
