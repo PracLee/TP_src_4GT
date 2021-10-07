@@ -48,14 +48,12 @@ window.onload = function newcheck() {
 			<!-- 글자 몇개로짜르는건 안해놓음! -->
 		</p>
 		<div class="d-flex justify-content-between tm-pt-45">
-			<span class="tm-color-primary">Category . ${pl.category}</span> <span
-				class="tm-color-primary">${pl.pdate}</span>
+			<span class="tm-color-primary postCate">Category . ${pl.category}</span> <span
+				class="tm-color-primary postCate">${pl.pdate}</span>
 		</div>
 		<hr>
 		<div class="d-flex justify-content-between">
-			<span class="postInfo">${pl.comCnt} comments</span><span
-				class="postInfo">${pl.plike} Likes</span><span class="postInfo">${pl.views}
-				Views</span> <span>Post by ${pl.writer}</span>
+			<span class="postInfo">${pl.comCnt} comments</span><span class="postInfo">${pl.plike} Likes</span><span class="postInfo">${pl.views} Views</span> <span class="byUser">Post by ${pl.writer}</span>
 		</div>
 
 	</article>

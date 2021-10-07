@@ -16,6 +16,17 @@ https://templatemo.com/tm-553-xtra-blog
 	font-weight: normal;
 	font-style: normal;
 }
+.postInfo{
+	font-size : 16px;
+}
+.btw{
+	margin-top : 20px;
+}
+#loginFooter{
+	position: fixed; 
+	bottom: 0; 
+	width: 80%;
+}
 /*
 ===========================================================================================================================================
 
@@ -51,7 +62,7 @@ https://templatemo.com/tm-553-xtra-blog
 	color: white;
 }
 
-.crset { /*y*/
+form div .crset { /*y*/
 	resize: none;
 	height: 152px;
 }
@@ -101,9 +112,7 @@ form div .rset { /*y*/
 	height : 152px;
 	
 }
-form .Edit{
-	
-}
+
 /*
 ===========================================================================================================================================
 
@@ -826,6 +835,9 @@ a:hover figcaption {
 	#schSelect{
 		width: 150px;
 	}
+	body .postInfo {
+		font-size: 12px;
+	}
 }
 
 @media ( max-width : 1300px) {
@@ -972,6 +984,9 @@ a:hover figcaption {
 	#schSelect{
 		width :100px;
 	}
+	#loginFooter{
+		font-size : 12px;
+	}
 }
 
 @media ( max-width : 767px) {
@@ -1032,6 +1047,18 @@ a:hover figcaption {
 	#schSelect{
 		width :100px;
 	}
+	body .postInfo{
+		font-size : 10px;
+	}
+	.byUser{
+		font-size: 11px;
+	}
+	.postCate{
+		font-size : 12px;
+	}
+	#loginFooter{
+		font-size : 15px;
+	}
 }
 
 @media ( max-width : 709px) {
@@ -1063,6 +1090,9 @@ a:hover figcaption {
 	}
 	#schSelect{
 		width :100px;
+	}
+	#loginFooter{
+		font-size : 15px;
 	}
 }
 
@@ -1119,6 +1149,12 @@ a:hover figcaption {
 	#schSelect{
 		width :100px;
 	}
+	.form-control{
+		width : 90%;
+	}
+	#login{
+		margin-right : 35px;
+	}
 }
 
 @media ( max-width : 380px) {
@@ -1137,6 +1173,31 @@ a:hover figcaption {
 	}
 	#schSelect{
 		width :100px;
+	}
+	.byUser{
+		font-size : 12px;
+	}
+	body .postInfo{
+		font-size : 10px;
+	}
+	.postCate{
+		font-size : 12px;
+	}
+	.form-control{
+		width : 70%;
+	}
+	#login{
+		margin-right : 108px;
+	}
+	#loginFooter{
+		width:100%;
+		font-size : 3px;
+	}
+	#signUpMove{
+		margin-right : 110px;
+	}
+	#move{
+		font-size : 15px;
 	}
 }
 
@@ -1250,8 +1311,8 @@ hr.tm-hr-mycss {
 	display: block;
 	text-align: center;
 }
-
-body .postInfo {
-	font-size: 12px;
-	color: gray;
+body .postInfo{
+		color: gray;
 }
+	
+

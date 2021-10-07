@@ -14,7 +14,7 @@ public class CommentsDAO {
 	// 기본 CRUD
 	private static String sql_SELECT_ALL = "SELECT * FROM comments";
 	private static String sql_SELECT_ONE = "SELECT * FROM comments WHERE cnum=?";
-	private static String sql_INSERT = "INSERT INTO comments (cnum, cment, cdate, cwriter, c_user, c_post) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM comments), ?, sysdate, ?, ?, ?)";
+	private static String sql_INSERT = "INSERT INTO comments (cnum, cment, cdate, cwriter, cprofileImage, c_user, c_post) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM comments), ?, sysdate, ?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM comments WHERE cnum=?";
 	private static String sql_UPDATE = "UPDATE comments SET cment=?, cdate=sysdate WHERE cnum=?";
 
@@ -45,6 +45,7 @@ public class CommentsDAO {
 				cvo.setCwriter(rs.getString("cwriter"));
 				cvo.setReplyCnt(rs.getInt("replyCnt"));
 				cvo.setClikeCnt(rs.getInt("clikeCnt"));
+				cvo.setCprofileImage(rs.getString("cprofileImage"));
 				cvo.setC_user(rs.getString("c_user"));
 				cvo.setC_post(rs.getInt("c_post"));
 				// CommentsSet에 댓글을 set
@@ -63,6 +64,7 @@ public class CommentsDAO {
 					rvo.setRdate(rrs.getDate("rdate"));
 					rvo.setRwriter(rrs.getString("rwriter"));
 					rvo.setRlikeCnt(rrs.getInt("rlikeCnt"));
+					rvo.setRprofileImage(rrs.getString("rprofileImage"));
 					rvo.setR_user(rrs.getString("r_user"));
 					rvo.setR_post(rrs.getInt("r_post"));
 					rvo.setR_comments(rrs.getInt("r_comments"));
@@ -104,6 +106,7 @@ public class CommentsDAO {
 				vo.setCwriter(rs.getString("cwriter"));
 				vo.setReplyCnt(rs.getInt("replyCnt"));
 				vo.setClikeCnt(rs.getInt("clikeCnt"));
+				vo.setCprofileImage(rs.getString("cprofileImage"));
 				vo.setC_user(rs.getString("c_user"));
 				vo.setC_post(rs.getInt("c_post"));
 				datas.add(vo);
@@ -137,6 +140,7 @@ public class CommentsDAO {
 				data.setCwriter(rs.getString("cwriter"));
 				data.setReplyCnt(rs.getInt("replyCnt"));
 				data.setClikeCnt(rs.getInt("clikeCnt"));
+				data.setCprofileImage(rs.getString("cprofileImage"));
 				data.setC_user(rs.getString("c_user"));
 				data.setC_post(rs.getInt("c_post"));
 			}   
@@ -163,8 +167,9 @@ public class CommentsDAO {
 			pstmt=conn.prepareStatement(sql_INSERT);
 			pstmt.setString(1, vo.getCment());
 			pstmt.setString(2, vo.getCwriter());
-			pstmt.setString(3, vo.getC_user());
-			pstmt.setInt(4, vo.getC_post());
+			pstmt.setString(3, vo.getCprofileImage());
+			pstmt.setString(4, vo.getC_user());
+			pstmt.setInt(5, vo.getC_post());
 			pstmt.executeUpdate();
 			pstmt.close();
 
@@ -294,6 +299,7 @@ public class CommentsDAO {
 				data.setCdate(rs.getDate("cdate"));
 				data.setCwriter(rs.getString("cwriter"));
 				data.setClikeCnt(rs.getInt("clikeCnt"));
+				data.setCprofileImage(rs.getString("cprofileImage"));
 				data.setC_user(rs.getString("c_user"));
 				data.setC_post(rs.getInt("c_post"));
 				datas.add(data);
