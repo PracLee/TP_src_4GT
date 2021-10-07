@@ -8,6 +8,7 @@ public class ReplyVO {
 	private Date rdate;
 	private String rwriter;
 	private int rlikeCnt;
+	private String rprofileImage;
 	private String r_user;
 	private int r_post;
 	private int r_comments;
@@ -60,9 +61,17 @@ public class ReplyVO {
 	public void setRlikeCnt(int rlikeCnt) {
 		this.rlikeCnt = rlikeCnt;
 	}
+	public String getRprofileImage() {
+		return rprofileImage;
+	}
+	public void setRprofileImage(String rprofileImage) {
+		this.rprofileImage = rprofileImage;
+	}
 	@Override
 	public String toString() {
-		return "ReplyVO [rnum=" + rnum + ", rment=" + rment + ", rdate=" + rdate + ", rwriter=" + rwriter + ", r_user="
-				+ r_user + ", r_post=" + r_post + "]";
+		return "ReplyVO [rnum=" + rnum + ", rment=" + rment + ", rdate=" + rdate + ", rwriter=" + rwriter
+				+ ", rlikeCnt=" + rlikeCnt + ", rprofileImage=" + rprofileImage + ", r_user=" + r_user + ", r_post="
+				+ r_post + ", r_comments=" + r_comments + "]";
 	}
+	
 }

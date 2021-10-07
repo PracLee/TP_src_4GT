@@ -25,6 +25,7 @@ public class R_InsertReply_Action implements Action{
 	    // DAO수행 필요데이터 SET
 		replyVO.setRment(request.getParameter("rment")); // 리플내용
 		replyVO.setRwriter(request.getParameter("rwriter")); // 작성자
+		replyVO.setRprofileImage(request.getParameter("rprofileImage"));
 		replyVO.setR_user(request.getParameter("r_user")); // id
 		replyVO.setR_post(Integer.parseInt(request.getParameter("r_post"))); // postPK 	
 		replyVO.setR_comments(Integer.parseInt(request.getParameter("r_comments")));  //commentPK
