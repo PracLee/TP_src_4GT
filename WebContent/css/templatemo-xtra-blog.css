@@ -19,6 +19,14 @@ https://templatemo.com/tm-553-xtra-blog
 .postInfo{
 	font-size : 16px;
 }
+.btw{
+	margin-top : 20px;
+}
+#loginFooter{
+	position: fixed; 
+	bottom: 0; 
+	width: 80%;
+}
 /*
 ===========================================================================================================================================
 
@@ -976,6 +984,9 @@ a:hover figcaption {
 	#schSelect{
 		width :100px;
 	}
+	#loginFooter{
+		font-size : 12px;
+	}
 }
 
 @media ( max-width : 767px) {
@@ -1045,6 +1056,9 @@ a:hover figcaption {
 	.postCate{
 		font-size : 12px;
 	}
+	#loginFooter{
+		font-size : 15px;
+	}
 }
 
 @media ( max-width : 709px) {
@@ -1076,6 +1090,9 @@ a:hover figcaption {
 	}
 	#schSelect{
 		width :100px;
+	}
+	#loginFooter{
+		font-size : 15px;
 	}
 }
 
@@ -1132,6 +1149,12 @@ a:hover figcaption {
 	#schSelect{
 		width :100px;
 	}
+	.form-control{
+		width : 90%;
+	}
+	#login{
+		margin-right : 35px;
+	}
 }
 
 @media ( max-width : 380px) {
@@ -1159,6 +1182,22 @@ a:hover figcaption {
 	}
 	.postCate{
 		font-size : 12px;
+	}
+	.form-control{
+		width : 70%;
+	}
+	#login{
+		margin-right : 108px;
+	}
+	#loginFooter{
+		width:100%;
+		font-size : 3px;
+	}
+	#signUpMove{
+		margin-right : 110px;
+	}
+	#move{
+		font-size : 15px;
 	}
 }
 
