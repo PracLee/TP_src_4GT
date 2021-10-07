@@ -283,6 +283,7 @@
 								<c:set var="rindex" value="${rindex+1}" />
 							</c:forEach>
 							<c:set var="index" value="${index+1}" />
+							<hr class="cHr">
 							<br>
 						</c:forEach>
 
