@@ -134,9 +134,9 @@
 									<p class="text-right" style="color: red" id="clike">
 										<a href="likeUpComment.ucdo?pnum=${singlePost.pnum}&cnum=${cl.cnum}"><i class='far fa-heart'></i></a>&nbsp${cl.clikeCnt}
 									</p>
-									<p class="text-right dnone" style="color: red">
+									<!-- <p class="text-right dnone" style="color: red">
 										<i class='fas fa-heart' id="clikeUp"></i>&nbsp${cl.clikeCnt}
-									</p>
+									</p> -->
 									<div id="cOption${index}"
 										class="d-flex justify-content-between">
 										<!-- 비회원일때 -->
@@ -171,7 +171,7 @@
 							</div>
 							<!-- 답글달기 -->
 							<c:set var="rindex" value="0" />
-							<div class="tm-comment-reply tm-mb-45 marginLeft dnone"
+							<div class="rwidth tm-comment-reply tm-mb-45 marginLeft dnone"
 								id="crInsert${index}">
 								<form action="insertReply.ucdo" method="post"
 									class="mb-5 tm-comment-form">

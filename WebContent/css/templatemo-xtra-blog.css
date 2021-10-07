@@ -86,8 +86,11 @@ form div .crset { /*y*/
 
 form div .rset { /*y*/
 	resize: none;
-	width: 587px;
+	
 	height: 152px;
+}
+.rwidth{
+	width: 587px;
 }
 
 /* .inlineBlock {
@@ -829,6 +832,11 @@ a:hover figcaption {
 		width: 350px;
 		height: 152px;
 	}
+	form div .rset { /*y*/
+	resize: none;
+	width: 340px;
+	height: 152px;
+}
 	.uButton, #click{
 		margin-right : 	10px;
 	}
@@ -855,8 +863,13 @@ a:hover figcaption {
 		width: 280px;
 		height: 152px;
 	}
+	form div .rset { /*y*/
+	resize: none;
+	width: 270px;
+	height: 152px;
+}
 	.uButton, #click{
-		margin-right : 	10px;
+		
 	}
 	.form-inline .form-control.tm-search-input {
 		width: 450px;
@@ -896,6 +909,16 @@ a:hover figcaption {
 	#schSelect{
 		width :150px;
 	}
+	.crset {
+		resize: none;
+		width: 460px;
+		height: 152px;
+	}
+	form div .rset { /*y*/
+	resize: none;
+	width: 460px;
+	height: 152px;
+}
 }
 
 @media ( max-width : 1086px) {
@@ -908,6 +931,9 @@ a:hover figcaption {
 	}
 	#schSelect{
 		width :100px;
+	}
+	.rwidth{
+		width :460px;
 	}
 	
 }
@@ -972,9 +998,14 @@ a:hover figcaption {
 	}
 	.crset {
 		resize: none;
-		width: 280px;
+		width: 460px;
 		height: 152px;
 	}
+	form div .rset { /*y*/
+	resize: none;
+	width: 460;
+	height: 152px;
+}
 	.form-inline .form-control.tm-search-input {
 		width: 190px;
 	}
