@@ -87,19 +87,18 @@ window.onload = function(){
 							placeholder="PW">
 					</div>
 					<div class="text-right">
-						<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">login</button>
+						<button type="submit" class="tm-btn tm-btn-primary tm-btn-small" id="login">Login</button>
 					</div>
-					<div class="mb-4 btw">
-						<a style="text-align: left;" href="#" onclick="infoHelp()">id/pw찾기</a>
-						<a class="text-right" href="SignUp.jsp">회원가입</a>
+					<div class="mb-4 btw" id="move">
+						<a style="text-align: left;" href="#" onclick="infoHelp()">ID/PW찾기</a>
+						<a class="text-right" id="signUpMove" href="SignUp.jsp">회원가입</a>
 					</div>
 				</form>
 
 			</div>
 		</div>
 
-		<footer class="row tm-row"
-			style="position: fixed; bottom: 0; width: 80%;">
+		<footer class="row tm-row" id="loginFooter">
 			<div class="col-md-6 col-12 tm-color-gray">
 				Design: <a rel="nofollow" target="_parent"
 					href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
