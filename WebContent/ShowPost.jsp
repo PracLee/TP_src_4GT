@@ -299,8 +299,8 @@
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>
 
-									<div class="mb-4">
-										<textarea class="crset form-control" id="crset" name="cment" rows="6"
+									<div class="mb-4">  <!-- id="crset" -->
+										<textarea class="crset form-control" name="cment" rows="6"
 											required></textarea>
 									</div>
 
