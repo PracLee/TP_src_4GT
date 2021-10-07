@@ -24,7 +24,23 @@
 
 <!-- 자바스크립트 -->
 <!-- JQuery -->
-<script src="js/jquery-3.6.0.min.js"></script>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#filename").on('change', function(){
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function (e) {
+                  $('#preImage').attr('src', e.target.result);
+               }
+               reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
 <!-- 이메일 중복체크 -->
 <script src="js/emailCheck.js"></script>
 
@@ -39,7 +55,7 @@
 				<div class="mb-4">					
 					<div class="col-12">
 						<img src="${userInfoData.profile}" alt="${userInfoData.id}_프로필사진" class="img-fluid"
-							width="200px">
+							width="200px" id="preImage">
 					</div>
 					<br>
 					<input type="file" class="CPmarLeft"name="filename1" id="filename" onchange="readImage(event)">
