@@ -16,6 +16,9 @@ https://templatemo.com/tm-553-xtra-blog
 	font-weight: normal;
 	font-style: normal;
 }
+.postInfo{
+	font-size : 16px;
+}
 /*
 ===========================================================================================================================================
 
@@ -101,9 +104,7 @@ form div .rset { /*y*/
 	height : 152px;
 	
 }
-form .Edit{
-	
-}
+
 /*
 ===========================================================================================================================================
 
@@ -826,6 +827,9 @@ a:hover figcaption {
 	#schSelect{
 		width: 150px;
 	}
+	body .postInfo {
+		font-size: 12px;
+	}
 }
 
 @media ( max-width : 1300px) {
@@ -1032,6 +1036,15 @@ a:hover figcaption {
 	#schSelect{
 		width :100px;
 	}
+	body .postInfo{
+		font-size : 10px;
+	}
+	.byUser{
+		font-size: 11px;
+	}
+	.postCate{
+		font-size : 12px;
+	}
 }
 
 @media ( max-width : 709px) {
@@ -1137,6 +1150,15 @@ a:hover figcaption {
 	}
 	#schSelect{
 		width :100px;
+	}
+	.byUser{
+		font-size : 12px;
+	}
+	body .postInfo{
+		font-size : 10px;
+	}
+	.postCate{
+		font-size : 12px;
 	}
 }
 
@@ -1250,8 +1272,8 @@ hr.tm-hr-mycss {
 	display: block;
 	text-align: center;
 }
-
-body .postInfo {
-	font-size: 12px;
-	color: gray;
+body .postInfo{
+		color: gray;
 }
+	
+
