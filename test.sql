@@ -74,7 +74,7 @@ drop table reply;
 /* 테스트용 예시 데이터 */
 insert into userInfo (id, pw, name) values('admin','123','관리자');
 insert into post (pnum, views, plike, category, title, content, writer, p_user, path)
-values(1,0,0, '치킨', '푸라닭', '?', '?', '1111', '??');
+values(1,0,0, '치킨', '푸라닭', '?', '?', 'admin', '??');
 
 insert into comments (cnum, cwriter, cment, c_user, c_post)
 values(1, '?', '1111','1111', 1);
