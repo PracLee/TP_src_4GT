@@ -35,6 +35,13 @@ public class PostDAO {
 	// 다음에 부여될 pnum 미리 알려주기
 	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 AS pnum FROM post";
 	
+	// 내 글 보기
+	private static String sql_SELECT_MYPOST = "SELECT * FROM post WHERE p_user=?";
+	
+	// 좋아요 누른 글 보기
+	private static String sql_SELECT_LIKEPOST = "SELECT l_post FROM likeInfo WHERE l_user=?";
+	private static String sql_SELECT_POSTINFO = "SELECT * FROM post WHERE pnum=?";
+	
 	// 글 전체 보기
 	public ArrayList<PostVO> SelectAll(){
 		Connection conn = DBCP.connect();
@@ -416,6 +423,90 @@ public class PostDAO {
  		}
  		return res;
  	}
- 
-	
+ 	
+ 	public ArrayList<PostVO> SelectMyPost(PostVO vo){
+		Connection conn = DBCP.connect();
+		ArrayList<PostVO> datas = new ArrayList<PostVO>();
+		PreparedStatement pstmt = null;
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date dateOrigin;
+		String dateToStr;
+		try {
+			pstmt = conn.prepareStatement(sql_SELECT_MYPOST);
+			pstmt.setString(1, vo.getP_user());
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				PostVO data = new PostVO();
+				data.setPnum(rs.getInt("pnum"));
+				data.setViews(rs.getInt("views"));
+				data.setPlike(rs.getInt("plike"));
+				data.setCategory(rs.getString("category"));
+				data.setTitle(rs.getString("title"));
+				data.setContent(rs.getString("content"));
+				data.setWriter(rs.getString("writer"));
+				dateOrigin = rs.getDate("pdate");
+				dateToStr = dateFix.format(dateOrigin);
+				data.setPdate(dateToStr);
+				data.setP_user(rs.getString("p_user"));
+				data.setPath(rs.getString("path"));
+				data.setComCnt(rs.getInt("comCnt"));
+				datas.add(data);
+			}
+			rs.close();
+		}
+		catch(Exception e) {
+			System.out.println("PostDAO SelectMyPost()에서 출력");
+			e.printStackTrace();
+		}
+		finally {
+			DBCP.disconnect(pstmt, conn);
+		}
+		return datas;
+	}
+ 	
+ 	public ArrayList<PostVO> SelectLikePost(String id){
+		Connection conn = DBCP.connect();
+		ArrayList<PostVO> datas = new ArrayList<PostVO>();
+		PreparedStatement pstmt = null;
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date dateOrigin;
+		String dateToStr;
+		try {
+			pstmt = conn.prepareStatement(sql_SELECT_LIKEPOST);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				pstmt = conn.prepareStatement(sql_SELECT_POSTINFO);
+				pstmt.setInt(1, rs.getInt("l_post"));
+				ResultSet rrs = pstmt.executeQuery();
+				if(rrs.next()) {
+					PostVO data = new PostVO();
+					data.setPnum(rrs.getInt("pnum"));
+					data.setViews(rrs.getInt("views"));
+					data.setPlike(rrs.getInt("plike"));
+					data.setCategory(rrs.getString("category"));
+					data.setTitle(rrs.getString("title"));
+					data.setContent(rrs.getString("content"));
+					data.setWriter(rrs.getString("writer"));
+					dateOrigin = rrs.getDate("pdate");
+					dateToStr = dateFix.format(dateOrigin);
+					data.setPdate(dateToStr);
+					data.setP_user(rrs.getString("p_user"));
+					data.setPath(rrs.getString("path"));
+					data.setComCnt(rrs.getInt("comCnt"));
+					datas.add(data);
+				}
+			}
+			rs.close();
+		}
+		catch(Exception e) {
+			System.out.println("PostDAO SelectLikePost()에서 출력");
+			e.printStackTrace();
+		}
+		finally {
+			DBCP.disconnect(pstmt, conn);
+		}
+		return datas;
+	}
 }
