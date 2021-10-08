@@ -10,7 +10,14 @@ public class CommentsVO {
 	private String cwriter;
 	private int replyCnt;
 	private int clikeCnt;
+	private int secretNum;
 	
+	public int getSecretNum() {
+		return secretNum;
+	}
+	public void setSecretNum(int secretNum) {
+		this.secretNum = secretNum;
+	}
 	public int getClikeCnt() {
 		return clikeCnt;
 	}
@@ -63,9 +70,10 @@ public class CommentsVO {
 	@Override
 	public String toString() {
 		return "CommentsVO [cnum=" + cnum + ", cment=" + cment + ", cdate=" + cdate + ", c_user=" + c_user
-				+ ", cwriter=" + cwriter + ", replyCnt=" + replyCnt + ", clikeCnt=" + clikeCnt + ", c_post=" + c_post
-				+ "]";
+				+ ", cwriter=" + cwriter + ", replyCnt=" + replyCnt + ", clikeCnt=" + clikeCnt + ", secretNum="
+				+ secretNum + ", c_post=" + c_post + "]";
 	}
+	
 	
 	
 	
