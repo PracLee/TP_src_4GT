@@ -140,5 +140,14 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 	$('#rOption'+rindex).css('visibility','hidden');
 	$('#urmsg'+rindex).removeClass('dnone');
 	$('#urButton'+rindex).removeClass('uButton');
-
+	$('#uRCButton'+rindex).removeClass('dnone');
 }	
+function rmsgEditCancle(rindex){ 
+	
+	$('#prmsg'+rindex).css('display','');
+	$('#rOption'+rindex).css('visibility','');
+	$('#urmsg'+rindex).addClass('dnone');
+	$('#urButton'+rindex).addClass('uButton');
+	$('#uRCButton'+rindex).addClass('dnone');
+			
+}
