@@ -116,8 +116,11 @@ function msgEditFinish(index){
 			$('#uButton'+index).addClass('dnone');
 			$('#uCButton'+index).addClass('dnone');
 			console.log(args[0].cment);
+			console.log(args[0].cdate);
 			console.log("index: " + index);
 			$("#pcmsg"+index).text(args[0].cment);
+			$("#cdate"+index).text(args[0].cdate);
+			
 		}
 	})
 }
