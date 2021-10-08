@@ -8,7 +8,7 @@
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${word}, ${condition} 검색 결과</title>
+<title>${word},${condition} 검색 결과</title>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <!-- https://fontawesome.com/ -->
 
@@ -63,25 +63,26 @@
 	<div class="container-fluid">
 		<div class="row tm-row">
 			<div class="col-lg-8 tm-post-col">
-				<div class="tm-post-full">${condition} 검색 결과 </div>
+				<div class="tm-post-full">${condition}검색 결과</div>
 			</div>
 		</div>
 		<div class="row tm-row">
 			<mytag:postView info="${PostList}" />
 		</div>
-		<mytag:paging isFirst="${isFirst}" url="findpost.pdo" isLast="${isLast}" pagingIndex="${pagingIndex}"/>
+		<mytag:paging isFirst="${isFirst}" url="findpost.pdo"
+			isLast="${isLast}" pagingIndex="${pagingIndex}" />
 	</div>
-	
-		<footer class="row tm-row">
-			<hr class="col-12">
-			<div class="col-md-6 col-12 tm-color-gray">
-				Design: <a rel="nofollow" target="_parent"
-					href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
-			</div>
-			<div class="col-md-6 col-12 tm-color-gray tm-copyright">
-				Copyright 2020 Xtra Blog Company Co. Ltd.</div>
 
-		</footer>
+	<footer class="row tm-row">
+		<hr class="col-12">
+		<div class="col-md-6 col-12 tm-color-gray">
+			Design: <a rel="nofollow" target="_parent"
+				href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+		</div>
+		<div class="col-md-6 col-12 tm-color-gray tm-copyright">
+			Copyright 2020 Xtra Blog Company Co. Ltd.</div>
+
+	</footer>
 	</div>
 	</main>
 
