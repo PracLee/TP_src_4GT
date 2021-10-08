@@ -103,19 +103,24 @@
 									<form action="editComment.ucdo" method="post"
 										class="mb-5 tm-comment-form">
 										<div>
-										<input type="hidden" name="c_post" value="${singlePost.pnum}">
-										<input type="hidden" name="c_user" value="${userInfoData.id}">
-										<input type="hidden" name="cwriter"
+										<input type="hidden" name="c_post" id="c_post${index}"  value="${singlePost.pnum}">
+										<input type="hidden" name="c_user" id="c_user${index}" value="${userInfoData.id}">
+										<input type="hidden" name="cwriter" id="cwriter${index}"
 											value="${userInfoData.name}"> <input type="hidden"
-											name="cnum" value="${cl.cnum}"> <input type="hidden"
+											name="cnum" id="cnum${index}" value="${cl.cnum}"> <input type="hidden"
 											name="pcmsg" value="${index}">
 										<textarea id="ucmsg${index}" class="crset dnone form-control"
 											name="cment" rows="6" required>${cl.cment}</textarea>
 										<div class="text-right marginTop">										
 											<a href="javascript:void(0);" onclick="msgEditCancle(${index})" id="uCButton${index}"
 													class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a href="javascript:void(0);" onclick="msgEditFinish(${index})" id="uButton${index}"
+											class="tm-color-primary dnone"
+													>댓글수정</a>
+											<!-- 
 											<button type="submit" id="uButton${index}"
 												class="uButton tm-btn tm-btn-primary tm-btn-small Edit">댓글수정</button>
+												 -->
 												<%-- <button type="submit" id="uButton${index}"
 												class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button> --%>
 										</div>
@@ -154,7 +159,7 @@
 													class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
-										<span class="tm-color-primary"> ${cl.cdate}</span>
+										<span class="tm-color-primary" id="cdate${index}"> ${cl.cdate}</span>
 									</div>
 								</div>
 

@@ -19,16 +19,18 @@ public class C_EditComment_Action implements Action{
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
+		response.setContentType("text/html; charset=UTF-8"); 
+		PrintWriter out=response.getWriter();
 		
 		// VO DAO 인스턴스화
 	    CommentsVO commentVO = new CommentsVO();
 	    CommentsDAO commentDAO = new CommentsDAO();
 	    
-	    
+	    System.out.println("야호!");
 	    // DAO수행 필요데이터 SET
 	    commentVO.setCment(request.getParameter("cment"));
 	    commentVO.setCnum(Integer.parseInt(request.getParameter("cnum")));
-	    
+	    CommentsVO newData = new CommentsVO();
 	    
 		String path = null; // uri변수 초기화
 	    
@@ -36,8 +38,10 @@ public class C_EditComment_Action implements Action{
 	    // 댓글 수정 완료 --> showPost이동
 	    if (commentDAO.UpdateDB(commentVO)) {
 			// [페이징처리 메서드] 호출 (uri 반환)
-	    	path = new Post_Action().paging(request.getParameter("c_post"));
-			path += "#pcmsg"+request.getParameter("pcmsg");
+//	    	path = new Post_Action().paging(request.getParameter("c_post"));
+//			path += "#pcmsg"+request.getParameter("pcmsg");
+	    	
+	    	newData = commentDAO.SelectOne(commentVO);
 	    	
 	    }
 	    // 반영 실패 -> 오류 수행
@@ -49,13 +53,14 @@ public class C_EditComment_Action implements Action{
 				return null;
 			}
 	    }
+	    String result = "[{\"cment\":\"" + newData.getCment()+"\"}]";
 	    
-	    
+	    out.println(result);
 	    // 전송 설정
-	    forward.setRedirect(false); // sendRedirect
-	    forward.setPath(path);
-	    
-	    return forward;
+//	    forward.setRedirect(false); // sendRedirect
+//	    forward.setPath(path);
+	    System.out.println("야호@@");
+	    return null;
 	}
 
 }
