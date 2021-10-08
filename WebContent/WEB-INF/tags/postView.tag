@@ -39,13 +39,12 @@ window.onload = function newcheck() {
 			<div class="tm-post-link-inner">
 				<img src="img/img-05.jpg" alt="Image" class="img-fluid">
 			</div> 
-			<%-- <c:choose>
-				<c:when test="${pl.isNew}">
+			<c:choose>
+				<c:when test="${pl.isNew()}">
 					<!-- 현재시간 -1일 전에 써진 글 만 newtag 붙임-->
-					<span class="position-absolute tm-new-badge" id="newBox"
-						onload="newcheck(${pl.pdate})"> new </span>
+					<span class="position-absolute tm-new-badge" id="newBox"> new </span>
 				</c:when>
-			</c:choose> --%>
+			</c:choose>
 			<h2 class="tm-pt-30 tm-color-primary tm-post-title">${pl.title}</h2>
 		</a>
 		<p class="tm-pt-30">

@@ -47,7 +47,7 @@ public class MainAction implements Action{
 			// System.out.println("index : "+index);
 			commentsCnt.add(index, (commentsCnt.get(index) + 1)); // commentsCnt index = postnum - 1
 		}*/	// 댓글수 로직 -> 0927 model column 추가로 삭제
-		
+
 		// 한페이지에 들어가는 게시물 수
 		int pagingSize = 6;
 		// 생성자 순서대로 int pageSize(한페이지 게시물 수), int thisPageNum(현재 페이지 번호), int totalPostCnt(총 포스트 갯수)
@@ -61,19 +61,42 @@ public class MainAction implements Action{
 			pagingIndex.add(page);
 			page++;
 		}
-		
+
 		// 해당하는 페이지에 데이터만 주기
 		ArrayList<PostVO> slicedata = new ArrayList<PostVO>();
 		for(int i=(index-1)*6; i<index*6; i++) { // 현재 인덱스에 -1*6~현재인덱스*6 까지의 데이터만 넘겨주기
 			PostVO vo = datas.get(i);
 			// vo에 있는 pdate
-			//Date pdate = vo.getPdate();
+			String pdate = vo.getPdate();
 			Date now = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			String today = sdf.format(now);
+
+			// 포스팅 날짜와 오늘 날짜 같은 타입으로 변환
+			Date datePdate = null;
+			Date dateToday = null;
+			try {
+				datePdate = sdf.parse(pdate);
+				dateToday = sdf.parse(today);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			// 시차 계산
+			long diff = dateToday.getTime() - datePdate.getTime();
+			long timeDif = diff / (60 * 60 * 1000); 
+
 			vo.setNew(false);	// 디폴트 false
-			if(true) {	// 현재시간 - pdate 가 24시간 이하면 true
+			if(timeDif<24) {	// 현재시간 - pdate 가 24시간 이하면 true
 				vo.setNew(true);
 			}
-
+			
+			// 넘겨줄 날짜 슬라이싱
+			SimpleDateFormat sliceDate = new SimpleDateFormat("yyyy-MM-dd");
+			pdate = sliceDate.format(datePdate);
+			vo.setPdate(pdate);
+			System.out.println("slicedata에 들어가는 data = "+vo);
 			slicedata.add(vo);
 			if(i==datas.size()-1) {
 				break;
