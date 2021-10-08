@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import model.common.DBCP;
+import model.userInfo.UserInfoVO;
 
 public class PostDAO {
 	
@@ -424,7 +425,7 @@ public class PostDAO {
  		return res;
  	}
  	
- 	public ArrayList<PostVO> SelectMyPost(PostVO vo){
+ 	public ArrayList<PostVO> SelectMyPost(UserInfoVO vo){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList<PostVO>();
 		PreparedStatement pstmt = null;
@@ -433,7 +434,7 @@ public class PostDAO {
 		String dateToStr;
 		try {
 			pstmt = conn.prepareStatement(sql_SELECT_MYPOST);
-			pstmt.setString(1, vo.getP_user());
+			pstmt.setString(1, vo.getId());
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				PostVO data = new PostVO();
