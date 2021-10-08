@@ -20,14 +20,14 @@ public class U_Mypage_Action implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionForward action = new ActionForward();
-		PostVO PVO = new PostVO();
 		PostDAO PDAO = new PostDAO();
 		HttpSession session = request.getSession();
 		UserInfoVO UVO = (UserInfoVO)session.getAttribute("UserInfoData");
 		String id = UVO.getId();
-		//ArrayList<PostVO> datas = PDAO.selectLikePost(id);
-		
-		
+		ArrayList<PostVO> datas = PDAO.SelectLikePost(id);
+		request.setAttribute("UserLikePost", datas);
+		action.setPath("MyPage.jsp");
+		action.setRedirect(false);
 		
 		return action;
 	}

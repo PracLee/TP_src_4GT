@@ -162,6 +162,9 @@ public class UserComment_ctrl extends HttpServlet {
 		else if (action.equals("userProfileEdit.ucdo")) {
 			forward = new U_ProfileEdit_Action().execute(request, response);
 		}
+		else if (action.equals("mypage.ucdo")) {
+			forward = new U_Mypage_Action().execute(request, response);
+		}
 		else {// 미지정된 경로 -> 404
 			forward.setPath("error/error404.jsp");
 			forward.setRedirect(false);
