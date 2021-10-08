@@ -29,6 +29,7 @@ CREATE TABLE comments(
 	clikeCnt int default 0,
 	c_user varchar(30),
 	c_post int,
+	secretNum int constraint test_secretNum_CK check(secretNum = 0 or secretNum = 1),
 	foreign key (c_user) references userInfo(id) on delete cascade,
 	foreign key (c_post) references post(pnum) on delete cascade
 );
@@ -83,3 +84,14 @@ insert into likeInfo (l_user,l_post)values ('1111', 1);
 
 SELECT * from post WHERE title like '%1%';
 SELECT * FROM post WHERE title LIKE '%1%' ORDER BY pnum DESC;
+
+CREATE TABLE test(
+	name varchar(30),
+	secretNum int constraint test_secretNum_CK check(secretNum = 0 or secretNum = 1)
+);
+
+select * from test;
+drop table test;
+
+insert into test (name,secretNum) values ('kim', 0);
+insert into test (name,secretNum) values ('lee', 4);
