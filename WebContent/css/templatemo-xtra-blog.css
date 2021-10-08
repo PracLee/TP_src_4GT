@@ -122,6 +122,9 @@ form div .rset { /*y*/
 	height : 152px;
 	
 }
+.text-right .uCButton{ /*y*/
+	display: none;
+}
 
 /*
 ===========================================================================================================================================
@@ -833,19 +836,22 @@ a:hover figcaption {
 		height: 40px;
 	}
 	
-	
+	.cwidth{
+	width: 350px;
+	}
 	.crset {
 		resize: none;
 		width: 350px;
 		height: 152px;
 	}
+	
 	form div .rset { /*y*/
 	resize: none;
 	width: 340px;
 	height: 152px;
 }
-	.uButton, #click{
-		margin-right : 	10px;
+	.uButton, #clike{
+		
 	}
 	#schSelect{
 		width: 150px;
@@ -884,6 +890,10 @@ a:hover figcaption {
 	#schSelect{
 		width: 150px;
 	}
+	.cwidth{
+	width: 280px;
+	}
+	
 }
 
 @media ( max-width : 1288px) {
@@ -900,6 +910,10 @@ a:hover figcaption {
 	#schSelect{
 		width :100px;
 	}
+	.cwidth{
+	width: 280px;
+	}
+	
 }
 
 @media ( max-width : 1199px) {
@@ -926,6 +940,9 @@ a:hover figcaption {
 	width: 460px;
 	height: 152px;
 }
+.cwidth{
+	width:600px;
+	}
 }
 
 @media ( max-width : 1086px) {
@@ -938,6 +955,9 @@ a:hover figcaption {
 	}
 	#schSelect{
 		width :100px;
+	}
+	.cwidth{
+		width:600px;
 	}
 	.rwidth{
 		width :460px;

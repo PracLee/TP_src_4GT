@@ -40,14 +40,7 @@ function actChange(id){ // 수정버튼 클릭시 바로 수정가능하게 해�
       })
    
 }
-function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
-	
-	$('#pcmsg'+index).css('display','none');
-	$('#cOption'+index).css('visibility','hidden');
-	$('#ucmsg'+index).removeClass('dnone');
-	$('#uButton'+index).removeClass('dnone');
-	
-}	 
+
  
 function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
 	$('#crInsert'+index).removeClass('dnone');		
@@ -96,9 +89,18 @@ function msgEdit(index){ // 수정버튼 클릭시 바로 수정가능하게 해
 	$('#cOption'+index).css('visibility','hidden');
 	$('#ucmsg'+index).removeClass('dnone');
 	$('#uButton'+index).removeClass('uButton');
+	$('#uCButton'+index).removeClass('dnone');
 	
 }	 
- 
+function msgEditCancle(index){ 
+	
+	$('#pcmsg'+index).css('display','');
+	$('#cOption'+index).css('visibility','');
+	$('#ucmsg'+index).addClass('dnone');
+	$('#uButton'+index).addClass('uButton');
+	$('#uCButton'+index).addClass('dnone');
+}
+
 function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
 	$('#crInsert'+index).removeClass('dnone');		
 }	
