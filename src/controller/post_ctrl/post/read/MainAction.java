@@ -68,22 +68,26 @@ public class MainAction implements Action{
 			PostVO vo = datas.get(i);
 			// String이였던 pdate를 Date로 변경
 			String StringPdate = vo.getPdate();
-			SimpleDateFormat transPdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			System.out.println("StringPdate == "+StringPdate);
+			SimpleDateFormat transPdate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a");
+			System.out.println("transPdate == "+transPdate);
 			Date datePdate = null;
 			try {
 				datePdate = transPdate.parse(StringPdate);
+				System.out.println("try됬니");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			// 현재시간
 			Date now = new Date();
-			long diffHor = (now.getTime() - datePdate.getTime()) / 3600000;
-			if(diffHor>24) {
-				//vo.isIsNew = true;
+			
+			/*long diffHor = (now.getDate() - datePdate.getDate()) / 3600000;
+			if(diffHor>1) {
+				vo.setNew(true);
 			}else {
-				//vo.isIsNew = false;
-			}
+				vo.setNew(false);
+			}*/
 			slicedata.add(vo);
 			if(i==datas.size()-1) {
 				break;

@@ -70,13 +70,13 @@ public class FindPost implements Action{
 					e.printStackTrace();
 				}
 				// 현재시간
-				Date now = new Date();
+				/*Date now = new Date();
 				long diffHor = (now.getTime() - datePdate.getTime()) / 3600000;
 				if(diffHor>24) {
-					//vo.isIsNew = true;
+					vo.setNew(true);
 				}else {
-					//vo.isIsNew = false;
-				}
+					vo.setNew(false);
+				}*/
 				slicedata.add(vo);
 				if(i==result.size()-1) {
 					break;
