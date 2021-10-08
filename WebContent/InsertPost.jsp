@@ -101,8 +101,9 @@ window.onload = function(){
 								<option>일식</option>
 							</select>
 						</div>
+						<input type = "file" name="filename1">
 						<div class="text-right">
-								<input type = "file" name="filename1">
+								
 						
 							<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">글
 								등록하기</button>

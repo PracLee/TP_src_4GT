@@ -19,7 +19,7 @@
 	<c:choose>
 		<c:when test="${userInfoData==null}">
 			<div class="button-like"
-				onclick="checkAlert('Login.jsp','댓글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')">
+				onclick="checkAlert('Login.jsp','좋아요를 누르시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')">
 				<button class="like_a">
 					LIKE&nbsp<i class="fa fa-heart"></i>
 				</button>

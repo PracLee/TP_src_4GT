@@ -35,7 +35,7 @@
 window.onload = function(){
 	 
 	actRemove();
-	 var main = $('mainmenu'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+	 var main = $('main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
 	 main.addClass("myActive");
 	 
 }
