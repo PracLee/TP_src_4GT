@@ -25,9 +25,6 @@
 	font-style: normal;
 }
 
-.mlogo {
-	width: 220px;
-}
 </style>
 <script src="js/Common.js"></script>
 <!-- jQuery -->
