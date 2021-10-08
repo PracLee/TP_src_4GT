@@ -40,7 +40,7 @@ public class PostDAO {
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList<PostVO>();
 		PreparedStatement pstmt = null;
-		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date dateOrigin;
 		String dateToStr;
 		try {
@@ -80,7 +80,7 @@ public class PostDAO {
 	      Connection conn=DBCP.connect();
 	      PostVO data=null;
 	      PreparedStatement pstmt=null;
-	      SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+	      SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	      Date dateOrigin;
 	      String dateToStr;
 	      try{
@@ -210,7 +210,7 @@ public class PostDAO {
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList<PostVO>();
 		PreparedStatement pstmt = null;
-		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date dateOrigin;
 		String dateToStr;
 		try {
@@ -255,7 +255,7 @@ public class PostDAO {
        Connection conn = DBCP.connect();
        ArrayList<PostVO> datas = new ArrayList();
        PreparedStatement pstmt = null;
-       SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+       SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
        Date dateOrigin;
        String dateToStr;
        try {
@@ -294,7 +294,7 @@ public class PostDAO {
        Connection conn = DBCP.connect();
        ArrayList<PostVO> datas = new ArrayList();
        PreparedStatement pstmt = null;
-       SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+       SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
        Date dateOrigin;
        String dateToStr;
        try {
