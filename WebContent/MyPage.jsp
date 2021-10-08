@@ -125,7 +125,7 @@ window.onload = function(){
 						<li><a href="UpdateUser.jsp" class="tm-color-primary">회원정보
 								변경</a></li>
 						<li><a href="#"
-							onclick="delUser('deleteUser.ucdo?id=${userInfoData.id}')"
+							onclick="checkAlert('deleteUser.ucdo?id=${userInfoData.id}','회원탈퇴 하시겠습니까?')"
 							class="tm-color-primary">회원탈퇴</a></li>
 
 					</ul>
