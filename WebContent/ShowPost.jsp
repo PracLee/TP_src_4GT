@@ -255,6 +255,7 @@
 													class="tm-color-primary">삭제</a>
 												<span class="tm-color-primary"> ${rl.rdate}</span>
 												</div>
+												<br>
 											</c:when>
 										</c:choose>
 									
