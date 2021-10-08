@@ -325,13 +325,13 @@
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
 					<ul class="tm-mb-75 pl-5 tm-category-list">
-						<li><a href="post_ctrl/jsp?action=post"
+						<li><a href="post.pdo?category=chi"
 							class="tm-color-primary">치킨</a></li>
-						<li><a href="#" class="tm-color-primary">피자</a></li>
-						<li><a href="#" class="tm-color-primary">햄버거</a></li>
-						<li><a href="#" class="tm-color-primary">한식</a></li>
-						<li><a href="#" class="tm-color-primary">중식</a></li>
-						<li><a href="#" class="tm-color-primary">일식</a></li>
+						<li><a href="post.pdo?category=piz" class="tm-color-primary">피자</a></li>
+						<li><a href="post.pdo?category=ham" class="tm-color-primary">햄버거</a></li>
+						<li><a href="post.pdo?category=kor" class="tm-color-primary">한식</a></li>
+						<li><a href="post.pdo?category=cha" class="tm-color-primary">중식</a></li>
+						<li><a href="post.pdo?category=jap" class="tm-color-primary">일식</a></li>
 					</ul>
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="tm-mb-40 tm-post-title tm-color-primary">Related
