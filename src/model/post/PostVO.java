@@ -15,7 +15,14 @@ public class PostVO {
 	private String p_user;
 	private String path;
 	private int comCnt;
+	private boolean isNew;
 	
+	public boolean isNew() {
+		return isNew;
+	}
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
 	public String getWriter() {
 		return writer;
 	}
@@ -83,13 +90,14 @@ public class PostVO {
 	public void setComCnt(int comCnt) {
 		this.comCnt = comCnt;
 	}
-	
 	@Override
 	public String toString() {
 		return "PostVO [pnum=" + pnum + ", views=" + views + ", plike=" + plike + ", category=" + category + ", title="
 				+ title + ", content=" + content + ", writer=" + writer + ", pdate=" + pdate + ", p_user=" + p_user
-				+ ", path=" + path + ", comCnt=" + comCnt + "]";
+				+ ", path=" + path + ", comCnt=" + comCnt + ", isNew=" + isNew + "]";
 	}
+	
+	
 	
 	
 }
