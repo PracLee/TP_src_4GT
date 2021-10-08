@@ -122,7 +122,9 @@
 											name="pcmsg" value="${index}">
 										<textarea id="ucmsg${index}" class="crset dnone form-control"
 											name="cment" rows="6" required>${cl.cment}</textarea>
-										<div class="text-right marginTop">
+										<div class="text-right marginTop">										
+											<a href="javascript:void(0);" onclick="msgEditCancle(${index})" id="uCButton${index}"
+													class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<button type="submit" id="uButton${index}"
 												class="uButton tm-btn tm-btn-primary tm-btn-small Edit">댓글수정</button>
 												<%-- <button type="submit" id="uButton${index}"
