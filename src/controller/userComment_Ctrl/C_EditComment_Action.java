@@ -2,6 +2,8 @@ package controller.userComment_Ctrl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +55,12 @@ public class C_EditComment_Action implements Action{
 				return null;
 			}
 	    }
-	    String result = "[{\"cment\":\"" + newData.getCment()+"\"}]";
+//	    SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
+//		Date dateOrigin;
+//		String dateToStr;
+//		dateOrigin = newData.getCdate();
+//		dateToStr = dateFix.format(dateOrigin);
+	    String result = "[{\"cment\":\"" + newData.getCment()+"\",\"cdate\":\"" + newData.getCdate() + "\"}]";
 	    
 	    out.println(result);
 	    // 전송 설정
