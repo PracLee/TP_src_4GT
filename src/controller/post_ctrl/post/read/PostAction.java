@@ -49,7 +49,7 @@ public class PostAction implements Action {
 			PVO.setCategory(category);
 			datas = PDAO.SelectCategory(PVO);
 		}
-		String url="showList.jsp";	
+		String url="ShowList.jsp";	
 		String indexx=request.getParameter("index");
 		int index=1;
 		if(indexx!=null){
@@ -112,7 +112,7 @@ public class PostAction implements Action {
 				}
 			}
 		}
-
+		request.setAttribute("category", category);
 		request.setAttribute("isLast", paging.isLast());
 		request.setAttribute("isFirst", paging.isFirst());
 		request.setAttribute("pagingIndex", pagingIndex);
@@ -120,6 +120,7 @@ public class PostAction implements Action {
 		request.setAttribute("PostList", slicedata); // PostList로 SelectAll 데이터를 넘김
 		//System.out.println("mainActio 에서 보내주는 datas == "+datas);
 		// request.setAttribute("commentsCnt", commentsCnt); // 댓글 수 AL로 넘김 0번 인덱스에 1번 포스트의 댓글 갯수 담겨있음! 댓글수 로직 -> 0927 model column 추가로 삭제
+		System.out.println("showList로 가자 : "+url);
 		action.setPath(url);
 		action.setRedirect(false);
 		return action;

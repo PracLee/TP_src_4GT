@@ -86,9 +86,9 @@ window.onload = function(){
 					</div>
 				</article>
 			</c:forEach>
+		</div>
 		<mytag:paging isFirst="${isFirst}" url="findpost.pdo"
 			isLast="${isLast}" pagingIndex="${pagingIndex}" />
-		</div>
 		
 		<footer class="row tm-row">
 			<hr class="col-12">

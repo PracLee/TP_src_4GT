@@ -22,7 +22,7 @@ public class U_Mypage_Action implements Action{
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		HttpSession session = request.getSession();
-		UserInfoVO UVO = (UserInfoVO)session.getAttribute("UserInfoData");
+		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfoData");
 		String id = UVO.getId();
 		ArrayList<PostVO> datas = PDAO.SelectLikePost(id);
 		request.setAttribute("UserLikePost", datas);
