@@ -20,7 +20,9 @@ public class U_JoinUs_Action implements Action{
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
-		
+
+		// 페이징처리 메서드 호출(uri 반환)
+		String path = new Post_Action().paging(request.getParameter("pnum"));
 		
 		// VO DAO 인스턴스화
 		UserInfoVO userInfoVO = new UserInfoVO();
@@ -44,9 +46,11 @@ public class U_JoinUs_Action implements Action{
 	    // 로그인 성공 - session 등록
 	    HttpSession session = request.getSession();
 		session.setAttribute("userInfoData", userInfoData);
+		
+		
 	    // 페이지 전송설정
 	    forward.setRedirect(false); // forward
-	    forward.setPath("Index.jsp"); // post Control에게 전달
+	    forward.setPath(path); // post Control에게 전달
 		
 		
 		return forward;

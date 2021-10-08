@@ -29,16 +29,20 @@ public class C_InsertComment_Action implements Action{
 	    
 	    // DAO수행 필요데이터 SET
 	    commentVO.setCment(request.getParameter("cment"));
+	    commentVO.setCwriter(request.getParameter("cwriter"));
 	    commentVO.setC_user(request.getParameter("c_user"));
 	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post")));
 	    
 	    
+
+		String path = null; // uri변수 초기화
+		
 	    //DAO 수행
 	    // 댓글 추가 완료
 	    if (commentDAO.InsertDB(commentVO)) {
-	    	String parameter = "?pnum="+request.getParameter("c_post"); // parameter 추가
-	    	forward.setRedirect(false); // sendRedirect
-	    	forward.setPath("selectOne.pdo"+parameter); // post 컨트롤러에게 페이지 요청(ShowList(단일 게시물)이동)
+			// [페이징처리 메서드] 호출 (uri 반환)
+	    	path = new Post_Action().paging(request.getParameter("c_post"));
+			path += "#pcmsg"+request.getParameter("pcmsg");
 	    }
 	    // 반영 실패 -> 오류 수행
 	    else {
@@ -49,6 +53,10 @@ public class C_InsertComment_Action implements Action{
 				return null;
 			}
 	    }
+	    
+	    // 전송 설정
+	    forward.setRedirect(false); // forward
+	    forward.setPath(path);
 	    
 	    return forward;
 	}

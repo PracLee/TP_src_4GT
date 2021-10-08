@@ -31,7 +31,7 @@ public class U_DeleteUser_Action implements Action{
 		if(userInfoDAO.DeleteDB(userInfoVO)) {
 			
 			HttpSession session = request.getSession();
-			session.removeAttribute("userInfoData");			
+			session.invalidate(); // 세션 초기화
 		}
 		  // 실패시 - 오류 수행
 		else {
@@ -45,7 +45,7 @@ public class U_DeleteUser_Action implements Action{
 		
 		// 페이지 전송설정
 		forward.setRedirect(true); // sendRedirect
-		forward.setPath("Index.jsp");
+		forward.setPath("main.pdo"); // main이동
 
 
 		return forward;
