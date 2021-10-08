@@ -1,7 +1,10 @@
 package controller.post_ctrl.post.read;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -56,12 +59,30 @@ public class FindPost implements Action{
 			slicedata = new ArrayList<PostVO>();
 			for(int i=(index-1)*6; i<index*6; i++) { // 현재 인덱스에 -1*6~현재인덱스*6 까지의 데이터만 넘겨주기
 				PostVO vo = result.get(i);
-				System.out.println("slicedata에 추가되는 VO : "+vo);
+				// String이였던 pdate를 Date로 변경
+				String StringPdate = vo.getPdate();
+				SimpleDateFormat transPdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date datePdate = null;
+				try {
+					datePdate = transPdate.parse(StringPdate);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// 현재시간
+				Date now = new Date();
+				long diffHor = (now.getTime() - datePdate.getTime()) / 3600000;
+				if(diffHor>24) {
+					//vo.isIsNew = true;
+				}else {
+					//vo.isIsNew = false;
+				}
 				slicedata.add(vo);
 				if(i==result.size()-1) {
 					break;
 				}
 			}
+
 		}
 
 		// condition 한글화
