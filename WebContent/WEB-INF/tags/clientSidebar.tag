@@ -45,7 +45,7 @@
 					class="tm-nav-link"> <i class="fas fa-users"></i> Logout
 
 				</a></li>
-				<li class="tm-nav-item" id="myPage"><a href="MyPage.jsp" 
+				<li class="tm-nav-item" id="myPage"><a href="mypage.ucdo" 
 					class="tm-nav-link"> <i class="fas fa-file"></i> MyPage
 				</a></li>
 			</ul>
