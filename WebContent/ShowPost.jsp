@@ -45,6 +45,8 @@
 		<div class="row tm-row">
 			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
+					<!-- 사진 1422x800 -->                   
+                        <img src="${singlePost.path}" alt="포스팅사진"  width="954" height="700">	
 
 			</div>
 		</div>
@@ -167,7 +169,7 @@
 							<!-- 답글달기 -->
 							<c:set var="rindex" value="0" />
 							<div class="rwidth tm-comment-reply tm-mb-45 marginLeft dnone"
-								id="crInsert${index}">
+								id="crInsert${rindex}">
 								<form action="insertReply.ucdo" method="post"
 									class="mb-5 tm-comment-form">
 									<div class="tm-comment">
@@ -217,6 +219,8 @@
 													required>${rl.rment}</textarea>
 											</div>
 											<div class="text-right marginTop">
+											<a href="javascript:void(0);" onclick="rmsgEditCancle(${rindex})" id="uRCButton${rindex}"
+													class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												<button type="submit" id="urButton${rindex}"
 													class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button>
 											</div>
