@@ -38,9 +38,14 @@ window.onload = function newcheck() {
 
 			<div class="tm-post-link-inner">
 				<img src="img/img-05.jpg" alt="Image" class="img-fluid">
-			</div> <!-- 현재시간 -1일 전에 써진 글 만 newtag 붙임--> <span
-			class="position-absolute tm-new-badge" id="newBox"
-			onload="newcheck(${pl.pdate})"> new </span>
+			</div> 
+			<%-- <c:choose>
+				<c:when test="${pl.isNew}">
+					<!-- 현재시간 -1일 전에 써진 글 만 newtag 붙임-->
+					<span class="position-absolute tm-new-badge" id="newBox"
+						onload="newcheck(${pl.pdate})"> new </span>
+				</c:when>
+			</c:choose> --%>
 			<h2 class="tm-pt-30 tm-color-primary tm-post-title">${pl.title}</h2>
 		</a>
 		<p class="tm-pt-30">
@@ -48,12 +53,14 @@ window.onload = function newcheck() {
 			<!-- 글자 몇개로짜르는건 안해놓음! -->
 		</p>
 		<div class="d-flex justify-content-between tm-pt-45">
-			<span class="tm-color-primary postCate">Category . ${pl.category}</span> <span
-				class="tm-color-primary postCate">${pl.pdate}</span>
+			<span class="tm-color-primary postCate">Category .
+				${pl.category}</span> <span class="tm-color-primary postCate">${pl.pdate}</span>
 		</div>
 		<hr>
 		<div class="d-flex justify-content-between">
-			<span class="postInfo">${pl.comCnt} comments</span><span class="postInfo">${pl.plike} Likes</span><span class="postInfo">${pl.views} Views</span> <span class="byUser">Post by ${pl.writer}</span>
+			<span class="postInfo">${pl.comCnt} comments</span><span
+				class="postInfo">${pl.plike} Likes</span><span class="postInfo">${pl.views}
+				Views</span> <span class="byUser">Post by ${pl.writer}</span>
 		</div>
 
 	</article>
