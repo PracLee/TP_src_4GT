@@ -66,28 +66,14 @@ public class MainAction implements Action{
 		ArrayList<PostVO> slicedata = new ArrayList<PostVO>();
 		for(int i=(index-1)*6; i<index*6; i++) { // 현재 인덱스에 -1*6~현재인덱스*6 까지의 데이터만 넘겨주기
 			PostVO vo = datas.get(i);
-			// String이였던 pdate를 Date로 변경
-			String StringPdate = vo.getPdate();
-			System.out.println("StringPdate == "+StringPdate);
-			SimpleDateFormat transPdate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a");
-			System.out.println("transPdate == "+transPdate);
-			Date datePdate = null;
-			try {
-				datePdate = transPdate.parse(StringPdate);
-				System.out.println("try됬니");
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			// 현재시간
+			// vo에 있는 pdate
+			//Date pdate = vo.getPdate();
 			Date now = new Date();
-			
-			/*long diffHor = (now.getDate() - datePdate.getDate()) / 3600000;
-			if(diffHor>1) {
+			vo.setNew(false);	// 디폴트 false
+			if(true) {	// 현재시간 - pdate 가 24시간 이하면 true
 				vo.setNew(true);
-			}else {
-				vo.setNew(false);
-			}*/
+			}
+
 			slicedata.add(vo);
 			if(i==datas.size()-1) {
 				break;
