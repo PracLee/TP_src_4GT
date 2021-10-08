@@ -1,6 +1,7 @@
 package controller.userComment_Ctrl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,18 +26,35 @@ public class U_InfoHelp_Action implements Action{
 
 		// DAO수행 필요데이터 SET
 		userInfoVO.setId(request.getParameter("id")+"@"+request.getParameter("mail"));
-		System.out.println(request.getParameter("id")+"@"+request.getParameter("mail"));
+		//System.out.println(request.getParameter("id")+"@"+request.getParameter("mail"));
+		
 		// DAO 수행
 		userInfoVO = userInfoDAO.Find(userInfoVO);
-		System.out.println(userInfoVO+"11");
+		//System.out.println(userInfoVO+"11");
+		
 		// response 전달 --- findUser
 		request.setAttribute("findUser", userInfoVO);
 
 		// ID찾기 --> view 반환 -> 객체 userInfo
 		if(request.getParameter("type").equals("id")) {
+			// informID 페이지 전송 -> 기존꺼
+			//forward.setPath("informID.jsp");
+			
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter out = response.getWriter();
 
-			// informID 페이지 전송
-			forward.setPath("informID.jsp");
+			// 반환여부 비교
+				// 정보조회 실패
+			if(userInfoVO == null) {
+				// 자바스크립트를 이용하여 알림창 뒤, Login.jsp 페이지 이동
+				out.println("<script>alert('존재하지 않는 ID입니다.'); window.close(); </script>");
+			}
+			else { // 정보조회 성공
+				// 자바스크립트를 이용하여 알림창 뒤, Login.jsp 페이지 이동
+				out.println("<script>alert('로그인이 가능한 ID입니다.'); window.close(); </script>");
+			}
+
+			return null;
 		}
 		// PW찾기 --> view 반환 == 객체 userInfo
 		else if (request.getParameter("type").equals("pw")) {
