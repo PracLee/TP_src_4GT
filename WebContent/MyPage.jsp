@@ -131,7 +131,7 @@ window.onload = function(){
 					</ul>
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="tm-mb-40 tm-post-title tm-color-primary">좋아요 누른 게시글</h2>
-					 <mytag:likePost/>
+					 <%-- 추가하세용 <mytag:likePost/> --%>
 				</div>
 			</aside>
 		</div>

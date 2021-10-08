@@ -18,6 +18,7 @@ import controller.post_ctrl.post.read.FindPost;
 import controller.post_ctrl.post.read.MainAction;
 import controller.post_ctrl.post.read.PostAction;
 import controller.post_ctrl.post.read.SelectOneAction;
+import controller.post_ctrl.post.read.ShowMypage;
 import controller.post_ctrl.post.update.EditPostAction;
 import controller.post_ctrl.post.update.EditPostDB;
 
@@ -79,7 +80,11 @@ public class Post_ctrl extends HttpServlet {
 			forward = new LikeDownAciton().execute(request, response);
 		}else if(action.equals("/findpost.pdo")){
 			forward = new FindPost().execute(request, response);
-		}else {
+		}
+		else if(action.equals("/showMyPost.pdo")){
+			forward = new ShowMypage().execute(request, response);
+		}
+		else {
 			forward.setPath("error/error404.jsp");	// 404페이지로 보냄
 			forward.setRedirect(false);
 		}
