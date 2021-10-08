@@ -82,6 +82,9 @@ form div .crset { /*y*/
 .dnone { /*y*/
 	display: none;
 }
+div a .dsnone{
+	display: none;
+}
 .text-right .uButton{ /*y*/
 	display: none;
 }

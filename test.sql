@@ -70,7 +70,7 @@ drop table comments CASCADE CONSTRAINTS;
 drop table likeInfo;
 drop table reply;
 
-
+DELETE FROM post WHERE pnum=5;
 /* 테스트용 예시 데이터 */
 insert into userInfo (id, pw, name) values('admin','123','관리자');
 insert into post (pnum, views, plike, category, title, content, writer, p_user, path)
