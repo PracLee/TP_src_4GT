@@ -104,6 +104,7 @@ public class PostDAO {
 	            data.setP_user(rs.getString("p_user"));
 	            data.setPath(rs.getString("path"));
 	            data.setComCnt(rs.getInt("comCnt"));
+	            System.out.println(data);
 	         }   
 	         rs.close();
 	         

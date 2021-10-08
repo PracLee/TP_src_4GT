@@ -1,6 +1,9 @@
 package controller.post_ctrl.post.read;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +37,24 @@ public class SelectOneAction implements Action{
 		} else {
 			throw new Exception("ViewUp 오류 발생!");
 		}*/
-		request.setAttribute("singlePost", PDAO.SelectOne(PVO));
+		
+		// 넘겨줄 날짜 슬라이싱
+		PVO = PDAO.SelectOne(PVO);
+		String pdate = PVO.getPdate();
+		Date datePdate = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			datePdate = sdf.parse(pdate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		SimpleDateFormat sliceDate = new SimpleDateFormat("yyyy-MM-dd");
+		pdate = sliceDate.format(datePdate);
+		PVO.setPdate(pdate);
+		
+		
+		request.setAttribute("singlePost", PVO);
 		request.setAttribute("likeInfo", false); // 사용자가 지금 보는글에 좋아요를 눌렀는지 확인하는 값 디폴트 false
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userInfoData") != null) {
