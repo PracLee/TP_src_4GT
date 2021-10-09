@@ -47,15 +47,13 @@
 </style>
 <script src="js/Common.js"></script>
 <script type="text/javascript">
-window.onload = function(){
-	 
-	 actRemove();
+	window.onload = function() {
+
+		actRemove();
 		var myPage = $('#myPage');
 		myPage.addClass("active");
-	 
-	 
-}
 
+	}
 </script>
 
 </head>
@@ -63,8 +61,7 @@ window.onload = function(){
 	<mytag:clientSidebar />
 
 	<div class="container-fluid">
-		<main class="tm-main"> <!-- Search form -->
-		<mytag:searchPost />
+		<main class="tm-main"> <!-- Search form --> <mytag:searchPost />
 		<div class="row tm-row">
 			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
@@ -80,17 +77,18 @@ window.onload = function(){
 						<br>
 						<!-- 프로필사진 -->
 						<!-- Profile Image 1422x800 -->
-						
-							<div class="col-12">
-								
-									<img src="${userInfoData.profile}" alt="${userInfoData.id} 프로필사진"
-										class="mb-2 rounded-circle img-thumbnail" width="200px">
-														
-							</div>
-							<br>
-							<div class="col-12">
-								<button onclick="ChangeProfile()" class="tm-btn tm-btn-primary tm-btn-small">사진변경</button>								
-							</div>
+
+						<div class="col-12">
+
+							<img src="${userInfoData.profile}" alt="${userInfoData.id} 프로필사진"
+								class="mb-2 rounded-circle img-thumbnail" width="200px">
+
+						</div>
+						<br>
+						<div class="col-12">
+							<button onclick="ChangeProfile()"
+								class="tm-btn tm-btn-primary tm-btn-small">사진변경</button>
+						</div>
 						<br>
 
 						<!-- MyPage -->
@@ -131,7 +129,7 @@ window.onload = function(){
 					</ul>
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="tm-mb-40 tm-post-title tm-color-primary">좋아요 누른 게시글</h2>
-					 <%-- 추가하세용 <mytag:likePost/> --%>
+					<mytag:likePost info="${UserLikePost}" />
 				</div>
 			</aside>
 		</div>

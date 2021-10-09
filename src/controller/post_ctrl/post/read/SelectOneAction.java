@@ -3,6 +3,7 @@ package controller.post_ctrl.post.read;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -37,7 +38,7 @@ public class SelectOneAction implements Action{
 		} else {
 			throw new Exception("ViewUp 오류 발생!");
 		}*/
-		
+
 		// 넘겨줄 날짜 슬라이싱
 		PVO = PDAO.SelectOne(PVO);
 		String pdate = PVO.getPdate();
@@ -52,11 +53,12 @@ public class SelectOneAction implements Action{
 		SimpleDateFormat sliceDate = new SimpleDateFormat("yyyy-MM-dd");
 		pdate = sliceDate.format(datePdate);
 		PVO.setPdate(pdate);
-		
+
+		// 내가 쓴 글 정보 로그인 시만 수행
+		HttpSession session = request.getSession();
 		
 		request.setAttribute("singlePost", PVO);
 		request.setAttribute("likeInfo", false); // 사용자가 지금 보는글에 좋아요를 눌렀는지 확인하는 값 디폴트 false
-		HttpSession session = request.getSession();
 		if (session.getAttribute("userInfoData") != null) {
 			UVO = (UserInfoVO) session.getAttribute("userInfoData"); // 로그인 정보 있으면 좋아요를 눌렀는지 체크
 			String ID = UVO.getId();
