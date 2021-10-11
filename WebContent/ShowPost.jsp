@@ -141,7 +141,7 @@
 										<i class='fas fa-heart' id="clikeUp"></i>&nbsp${cl.clikeCnt}
 									</p> -->
 									<div id="cOption${index}"
-										class="d-flex justify-content-between">
+										class="d-flex justify-content-between comInfo">
 										<!-- 비회원일때 -->
 										<c:choose>
 											<c:when test="${userInfoData.id==null}">

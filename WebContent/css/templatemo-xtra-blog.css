@@ -918,6 +918,42 @@ a:hover figcaption {
    resize: none;
    width: 340px;
    height: 152px;
+   }
+
+   #schSelect{
+      width: 150px;
+   }
+   body .postInfo {
+      font-size: 12px;
+   }
+}
+
+@media ( max-width : 1540px) {
+   .tm-header {
+      width: 320px;
+   }
+   .tm-main {
+      margin-left: 320px;
+      width: calc(100% - 320px);
+   }
+   .blog a img {
+      width: 40px;
+      height: 40px;
+   }
+   
+   .cwidth{
+   width: 350px;
+   }
+   .crset {
+      resize: none;
+      width: 350px;
+      height: 152px;
+   }
+   
+   form div .rset { /*y*/
+   resize: none;
+   width: 340px;
+   height: 152px;
 }
    .uButton, #clike{
       
@@ -928,6 +964,10 @@ a:hover figcaption {
    body .postInfo {
       font-size: 12px;
    }
+   
+	.tm-comment-form {
+	  max-width: 240px;
+	}
 }
 
 @media ( max-width : 1300px) {
@@ -950,9 +990,7 @@ a:hover figcaption {
    width: 270px;
    height: 152px;
 }
-   .uButton, #click{
-      
-   }
+
    .form-inline .form-control.tm-search-input {
       width: 450px;
    }
@@ -985,7 +1023,9 @@ a:hover figcaption {
    #ccnt{
       width : 100%;
    }
-   
+   .cwidth{
+   	  width: 240px;
+   }
 }
 
 @media ( max-width : 1199px) {
@@ -1245,6 +1285,10 @@ a:hover figcaption {
    #ccnt{
       width : 100%;
    }
+   .tm-comment-form {
+  	 max-width: 460px;
+  
+	}
 }
 
 @media ( max-width : 630px) {
@@ -1268,6 +1312,9 @@ a:hover figcaption {
    #ccnt{
       width : 100%;
    }
+   	.tm-comment-form {
+	  max-width: 240px;
+	}
 }
 
 @media ( max-width : 575px) {
@@ -1328,6 +1375,10 @@ a:hover figcaption {
       width: 40px;
       height: 40px;
    }
+   .form-control, #login{
+     width: 150%;
+   }
+   
    .form-inline .form-control.tm-search-input{
          width: 290px;
    }
@@ -1343,9 +1394,7 @@ a:hover figcaption {
    .postCate{
       font-size : 12px;
    }
-   .form-control{
-      width : 70%;
-   }
+
    #login{
       margin-right : 108px;
    }
@@ -1353,8 +1402,8 @@ a:hover figcaption {
       width:100%;
       font-size : 3px;
    }
-   #signUpMove{
-      margin-right : 110px;
+   #infoHelp{
+      display : block;
    }
    #move{
       font-size : 15px;
@@ -1362,7 +1411,31 @@ a:hover figcaption {
    #ccnt{
       width : 100%;
    }
+   .tm-comment-form {
+  	  max-width: 100px;
+  
+	}
+	.marginTop{
+	  font-size : 12px;
+	}
+	.replyEdit{
+	  font-size : 2px;
+	  padding :0;
+	  padding-left : 3px;
+	  padding-right: 3px;
+	}
+	.replyReset{
+      font-size : 13px;
+	}
+	.rmsgOption{
+		font-size : 12px;
+		width : 200px;
+	}
+	.comInfo{
+	    font-size : 12px;
+	}
 }
+
 
 .underline {
    text-decoration: underline;
