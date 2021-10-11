@@ -1428,8 +1428,10 @@ a:hover figcaption {
       font-size : 13px;
 	}
 	.rmsgOption{
-		font-size : 12px;
 		width : 200px;
+	}
+	.rmsgInfo{
+		font-size : 12px;
 	}
 	.comInfo{
 	    font-size : 12px;
