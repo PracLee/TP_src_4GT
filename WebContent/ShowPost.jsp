@@ -175,7 +175,7 @@
 							<!-- 답글달기 -->
 							<c:set var="rindex" value="0" />
 							<div class="rwidth tm-comment-reply tm-mb-45 marginLeft dnone"
-								id="crInsert${rindex}">
+								id="crInsert${index}">
 								<form action="insertReply.ucdo" method="post"
 									class="mb-5 tm-comment-form">
 									<div class="tm-comment">
@@ -184,7 +184,7 @@
 											name="r_user" value="${userInfoData.id}"> <input
 											type="hidden" name="r_post" value="${singlePost.pnum}">
 										<input type="hidden" name="r_comments" value="${cl.cnum}">
-										<input type="hidden" name="prmsg" value="${rindex}">
+										<input type="hidden" name="prmsg" value="${index}${rindex}">
 										<textarea id="ucmsg${index}" class="rset form-control"
 											name="rment" rows="6" required></textarea>
 									</div>
@@ -212,7 +212,7 @@
 													class="mb-2 rounded-circle img-thumbnail" width="100px">
 												<figcaption class="tm-color-primary text-center">${rl.rwriter}</figcaption>
 											</figure>
-											<p id="prmsg${rindex}">${rl.rment}</p>
+											<p id="prmsg${index}${rindex}">${rl.rment}</p>
 
 											<!-- 수정버튼 클릭시 변화되는 코드들 -->
 											<form action="editReply.ucdo" method="post"
@@ -223,16 +223,19 @@
 														name="rnum" value="${rl.rnum}"> <input
 														type="hidden" name="index" value="">
 													<!-- ${index} -->
-													<textarea id="urmsg${rindex}"
+													<textarea id="urmsg${index}${rindex}"
 														class="rset dnone form-control urmsgSet" name="rment"
 														rows="6" required>${rl.rment}</textarea>
 												</div>
 												<div class="text-right marginTop">
 													<a href="javascript:void(0);"
-														onclick="rmsgEditCancle(${rindex})"
-														id="uRCButton${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<button type="submit" id="urButton${rindex}"
-														class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button>
+														onclick="rmsgEditCancle(${index}${rindex})"
+														id="uRCButton${index}${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<a href="javascript:void(0);"
+														onclick="(${index}${rindex})"
+														id="urButton${index}${rindex}" class="tm-color-primary dnone">답글수정</a>
+													<!-- <button type="submit" id="urButton${index}${rindex}"
+														class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button> -->
 												</div>
 											</form>
 										</div>
@@ -251,10 +254,10 @@
 												</c:when>
 											</c:choose> <!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 --> <c:choose>
 												<c:when test="${userInfoData.id==cl.c_user}">
-													<div id="rOption${rindex}"
+													<div id="rOption${index}${rindex}"
 														class="d-flex justify-content-between rmsgOption">
 														<a href="javascript:void(0);"
-															onclick="rmsgEdit(${rindex})" class="tm-color-primary">수정</a>
+															onclick="rmsgEdit(${index},${rindex})" class="tm-color-primary">수정</a>
 														<a href="#"
 															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 															class="tm-color-primary">삭제</a> <span
@@ -269,15 +272,15 @@
 										<span class="d-block text-right tm-color-primary"></span>
 
 										<!-- 답글에서 답글달기2 => 답글에서 답글다는기능 삭제
-								<div class="tm-comment-reply tm-mb-45 marginLeft dnone" id="rInsert${rindex}">		
+								<div class="tm-comment-reply tm-mb-45 marginLeft dnone" id="rInsert${index}${rindex}">		
 								<form action="insertReply.ucdo" method="post" class="mb-5 tm-comment-form inlineBlock">
 								<div class="tm-comment">
 								<input type="hidden" name="rwriter" value="${userInfoData.name}">
 								<input type="hidden" name="r_user" value="${userInfoData.id}">
 								<input type="hidden" name="r_post" value="${singlePost.pnum}">
 								<input type="hidden" name="r_comments" value="${cl.cnum}">
-								<input type="hidden" name="prmsg" value="${rindex}">
-									<textarea id="urmsg${rindex}" class="rset form-control"
+								<input type="hidden" name="prmsg" value="${index}${rindex}">
+									<textarea id="urmsg${index}${rindex}" class="rset form-control"
 										name="rment" rows="6" required></textarea>
 								</div>
 								<div class="text-right marginTop">
