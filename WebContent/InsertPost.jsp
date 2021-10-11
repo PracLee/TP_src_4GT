@@ -17,33 +17,7 @@
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="img/favicon2.ico">
 
-<style type="text/css">
-@font-face {
-	font-family: 'NanumSquareRound';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-#PostingBox {
-	display: block;
-	width: 1000px;
-}
 
-#PostingSubject {
-	width: 100%;
-	border-color: white;
-	font-size: 25px;
-}
-
-#PostingContent {
-	height: 800px;
-}
-.mlogo {
-	width: 220px;
-}
-</style>
 
 <script src="js/Common.js"></script>
 <script type="text/javascript">
@@ -101,7 +75,12 @@ window.onload = function(){
 								<option>일식</option>
 							</select>
 						</div>
-						<input type = "file" name="filename1">
+						
+						<div class="filebox">
+						<label for="file">파일찾기</label>
+					    <input class="upload-name" value="첨부파일" placeholder="첨부파일" readonly>					    
+						<input type = "file" name="filename1" id="file" class="dnone">
+						</div>						
 						<div class="text-right">
 								
 						

@@ -41,12 +41,12 @@
 		</c:when>
 	</c:choose>
 	<div class="container-fluid">
-		<main class="tm-main"> <!-- Search form --><mytag:searchPost />
+		<main class="tm-main"> <!-- Search form --> <mytag:searchPost />
 		<div class="row tm-row">
 			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
-					<!-- 사진 1422x800 -->                   
-                        <img src="${singlePost.path}" alt="포스팅사진"  width="954" height="700">	
+				<!-- 사진 1422x800 -->
+				<img src="${singlePost.path}" alt="포스팅사진" width="954" height="700">
 
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 				<div class="tm-post-full">
 					<div class="mb-4">
 						<h2 class="pt-2 tm-color-primary tm-post-title" id="title">${singlePost.title}</h2>
-						<p class="tm-mb-40">${singlePost.pdate} posted by
+						<p class="tm-mb-40">${singlePost.pdate}postedby
 							${singlePost.writer}</p>
 						<p>${singlePost.content}</p>
 						<span class="d-block text-right tm-color-primary">Category
@@ -93,43 +93,48 @@
 							<div class="tm-comment tm-mb-45">
 								<figure class="tm-comment-figure">
 									<img src="userProfile/${cl.c_user}_profile.jpg"
-										alt="${cl.c_user} 프로필사진" onerror="this.src='userProfile/defaultImage.jpg'" 
+										alt="${cl.c_user} 프로필사진"
+										onerror="this.src='userProfile/defaultImage.jpg'"
 										class="mb-2 rounded-circle img-thumbnail" width="100px">
 									<figcaption class="tm-color-primary text-center">${cl.cwriter}</figcaption>
 								</figure>
 								<div class="cwidth">
 									<!-- 평상시 코멘트내용 -->
 									<p id="pcmsg${index}">${cl.cment}</p>
-									
+
 									<!-- 수정시 textarea나오게 설정 -->
 									<form action="editComment.ucdo" method="post"
 										class="mb-5 tm-comment-form">
 										<div>
-										<input type="hidden" name="c_post" id="c_post${index}"  value="${singlePost.pnum}">
-										<input type="hidden" name="c_user" id="c_user${index}" value="${userInfoData.id}">
-										<input type="hidden" name="cwriter" id="cwriter${index}"
-											value="${userInfoData.name}"> <input type="hidden"
-											name="cnum" id="cnum${index}" value="${cl.cnum}"> <input type="hidden"
-											name="pcmsg" value="${index}">
-										<textarea id="ucmsg${index}" class="crset dnone form-control"
-											name="cment" rows="6" required>${cl.cment}</textarea>
-										<div class="text-right marginTop">										
-											<a href="javascript:void(0);" onclick="msgEditCancle(${index})" id="uCButton${index}"
+											<input type="hidden" name="c_post" id="c_post${index}"
+												value="${singlePost.pnum}"> <input type="hidden"
+												name="c_user" id="c_user${index}" value="${userInfoData.id}">
+											<input type="hidden" name="cwriter" id="cwriter${index}"
+												value="${userInfoData.name}"> <input type="hidden"
+												name="cnum" id="cnum${index}" value="${cl.cnum}"> <input
+												type="hidden" name="pcmsg" value="${index}">
+											<textarea id="ucmsg${index}" class="crset dnone form-control"
+												name="cment" rows="6" required>${cl.cment}</textarea>
+											<div class="text-right marginTop">
+												<a href="javascript:void(0);"
+													onclick="msgEditCancle(${index})" id="uCButton${index}"
 													class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="javascript:void(0);" onclick="msgEditFinish(${index})" id="uButton${index}"
-											class="tm-color-primary dnone"
-													>댓글수정</a>
-											<!-- 
+												<a href="javascript:void(0);"
+													onclick="msgEditFinish(${index})" id="uButton${index}"
+													class="tm-color-primary dnone">댓글수정</a>
+												<!-- 
 											<button type="submit" id="uButton${index}"
 												class="uButton tm-btn tm-btn-primary tm-btn-small Edit">댓글수정</button>
 												 -->
 												<%-- <button type="submit" id="uButton${index}"
 												class="dnone tm-btn tm-btn-primary tm-btn-small">댓글수정</button> --%>
-										</div>
+											</div>
 										</div>
 									</form>
 									<p class="text-right" style="color: red" id="clike">
-										<a href="likeUpComment.ucdo?pnum=${singlePost.pnum}&cnum=${cl.cnum}"><i class='far fa-heart'></i></a>&nbsp${cl.clikeCnt}
+										<a
+											href="likeUpComment.ucdo?pnum=${singlePost.pnum}&cnum=${cl.cnum}"><i
+											class='far fa-heart'></i></a>&nbsp${cl.clikeCnt}
 									</p>
 									<!-- <p class="text-right dnone" style="color: red">
 										<i class='fas fa-heart' id="clikeUp"></i>&nbsp${cl.clikeCnt}
@@ -161,7 +166,8 @@
 													class="tm-color-primary">삭제</a>
 											</c:when>
 										</c:choose>
-										<span class="tm-color-primary" id="cdate${index}"> ${cl.cdate}</span>
+										<span class="tm-color-primary" id="cdate${index}">
+											${cl.cdate}</span>
 									</div>
 								</div>
 
@@ -192,6 +198,7 @@
 
 
 							<!-- 답글(reply) -->
+
 
 							<c:forEach var="rl" items="${datas.rlist}">
 								<div class="tm-comment-reply tm-mb-45">
@@ -254,16 +261,51 @@
 													onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 													class="tm-color-primary">삭제</a>
 												<span class="tm-color-primary" id="rdate${rindex}"> ${rl.rdate}</span>
+
+
 												</div>
-												<br>
-											</c:when>
-										</c:choose>
-									
+												<div class="text-right marginTop">
+													<a href="javascript:void(0);"
+														onclick="rmsgEditCancle(${rindex})"
+														id="uRCButton${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<button type="submit" id="urButton${rindex}"
+														class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button>
+												</div>
+											</form>
+										</div>
+										<!-- 여기 -->
+										<span class="replyInfo">
+											<p class="text-right" style="color: red">
+												<i class='far fa-heart'></i>&nbsp0
+											</p>
+											<p class="text-right dnone" style="color: red">
+												<i class='fas fa-heart'></i>&nbsp0
+											</p> <!-- 비회원일 경우 날자만 보임 --> <c:choose>
+												<c:when test="${userInfoData.id==null}">
+													<div class="text-right">
+														<span class="tm-color-primary"> ${rl.rdate}</span>
+													</div>
+												</c:when>
+											</c:choose> <!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 --> <c:choose>
+												<c:when test="${userInfoData.id==cl.c_user}">
+													<div id="rOption${rindex}"
+														class="d-flex justify-content-between rmsgOption">
+														<a href="javascript:void(0);"
+															onclick="rmsgEdit(${rindex})" class="tm-color-primary">수정</a>
+														<a href="#"
+															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
+															class="tm-color-primary">삭제</a> <span
+															class="tm-color-primary"> ${rl.rdate}</span>
+													</div>
+													<br>
+												</c:when>
+											</c:choose>
+										</span>
 
 
-									<span class="d-block text-right tm-color-primary"></span>
-								</div>
-								<!-- 답글에서 답글달기2 => 답글에서 답글다는기능 삭제
+										<span class="d-block text-right tm-color-primary"></span>
+
+										<!-- 답글에서 답글달기2 => 답글에서 답글다는기능 삭제
 								<div class="tm-comment-reply tm-mb-45 marginLeft dnone" id="rInsert${rindex}">		
 								<form action="insertReply.ucdo" method="post" class="mb-5 tm-comment-form inlineBlock">
 								<div class="tm-comment">
@@ -281,8 +323,11 @@
 								</div>
 								</form>
 							</div>-->
-								<c:set var="rindex" value="${rindex+1}" />
-							</c:forEach>
+										<c:set var="rindex" value="${rindex+1}" />
+									</c:forEach>
+								</div>
+							</div>
+
 							<c:set var="index" value="${index+1}" />
 							<hr class="cHr">
 							<br>
@@ -294,14 +339,22 @@
 									class="mb-5 tm-comment-form">
 									<input type="hidden" name="c_post" value="${singlePost.pnum}">
 									<input type="hidden" name="c_user" value="${userInfoData.id}">
-									
+
 									<input type="hidden" name="cwriter"
 										value="${userInfoData.name}"> <input type="hidden"
 										name="pcmsg" value="0">
+
+									<!-- 더보기 페이징 -->
+									<div id="ccnt">
+										<a href="selectOne.pdo?ccnt=${ccnt+3}&pnum=${singlePost.pnum}">더보기</a>
+									</div>
+
+
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>
 
-									<div class="mb-4">  <!-- id="crset" -->
+									<div class="mb-4">
+										<!-- id="crset" -->
 										<textarea class="crset form-control" name="cment" rows="6"
 											required></textarea>
 									</div>
@@ -329,8 +382,7 @@
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
 					<ul class="tm-mb-75 pl-5 tm-category-list">
-						<li><a href="post.pdo?category=chi"
-							class="tm-color-primary">치킨</a></li>
+						<li><a href="post.pdo?category=chi" class="tm-color-primary">치킨</a></li>
 						<li><a href="post.pdo?category=piz" class="tm-color-primary">피자</a></li>
 						<li><a href="post.pdo?category=ham" class="tm-color-primary">햄버거</a></li>
 						<li><a href="post.pdo?category=kor" class="tm-color-primary">한식</a></li>
