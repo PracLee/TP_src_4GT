@@ -22,7 +22,7 @@ public class ShowMypage implements Action {
 		ActionForward action = new ActionForward();
 		PostDAO PDAO = new PostDAO();
 		HttpSession session = request.getSession();
-		UserInfoVO UVO = (UserInfoVO)session.getAttribute("UserInfoData");
+		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfoData");
 		ArrayList<PostVO> datas = PDAO.SelectMyPost(UVO);
 		request.setAttribute("MyPost", datas);
 		action.setPath("ShowMyPost.jsp");
