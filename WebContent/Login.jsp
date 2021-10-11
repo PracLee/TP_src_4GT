@@ -79,7 +79,7 @@ window.onload = function(){
 						<button type="submit" class="tm-btn tm-btn-primary tm-btn-small" id="login">Login</button>
 					</div>
 					<div class="mb-4 btw" id="move">
-						<a style="text-align: left;" href="#" onclick="infoHelp()">ID/PW찾기</a>
+						<a id="infoHelp" style="text-align: left;" href="#" onclick="infoHelp()">ID/PW찾기</a>
 						<a class="text-right" id="signUpMove" href="SignUp.jsp">회원가입</a>
 					</div>
 				</form>
