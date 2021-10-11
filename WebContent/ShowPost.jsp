@@ -261,7 +261,8 @@
 													onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 													class="tm-color-primary">삭제</a>
 												<span class="tm-color-primary" id="rdate${rindex}"> ${rl.rdate}</span>
-
+											</c:when>
+										</c:choose>
 
 												</div>
 												<div class="text-right marginTop">
