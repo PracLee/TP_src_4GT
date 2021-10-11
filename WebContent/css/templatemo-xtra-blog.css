@@ -5,8 +5,57 @@ TemplateMo 553 Xtra Blog
 https://templatemo.com/tm-553-xtra-blog
 
 */
+/*InsertPost*/
+@font-face {
+   font-family: 'NanumSquareRound';
+   src:
+      url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+      format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+#PostingBox {
+   display: block;
+   width: 1000px;
+   
+}
+
+#PostingSubject {
+   width: 100%;
+   border-color: white;
+   font-size: 25px;
+}
+
+#PostingContent {
+   height: 800px;
+   resize:none;
+}
+
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius:4px;
+    background-color: #D25A53;
+    cursor: pointer;
+    height: 40px;
+    
+    padding-top:2px;
+}
+/*-----------------------------------------------------------*/
+
 .reply{
-	padding-left :30px;
+   padding-left :30px;
 }
 .replyInfo{
    display : block;
