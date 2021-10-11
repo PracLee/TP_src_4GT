@@ -309,7 +309,7 @@
 
 									<!-- 더보기 페이징 -->
 									<div id="ccnt">
-										<a href="selectOne.pdo?ccnt=${ccnt+3}">더보기</a>
+										<a href="selectOne.pdo?ccnt=${ccnt+3}&pnum=${singlePost.pnum}">더보기</a>
 									</div>
 
 
