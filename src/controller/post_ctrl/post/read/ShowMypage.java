@@ -25,7 +25,7 @@ public class ShowMypage implements Action {
 		UserInfoVO UVO = (UserInfoVO)session.getAttribute("UserInfoData");
 		ArrayList<PostVO> datas = PDAO.SelectMyPost(UVO);
 		request.setAttribute("MyPost", datas);
-		action.setPath("");
+		action.setPath("ShowMyPost.jsp");
 		action.setRedirect(false);
 		return action;
 	}
