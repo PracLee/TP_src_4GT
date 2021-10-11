@@ -46,13 +46,40 @@ public class C_SelectOne_Action implements Action{
 
 		// DAO수행
 		ArrayList<CommentsSet> postOne_comments = commentDAO.getSetData(commentVO);
+		int commentCnt = 1;			
+		String commentCntt = request.getParameter("ccnt");
+		if (commentCntt!=null) {
+			commentCnt = Integer.parseInt(commentCntt);
+		}
+		String url = "ShowPost.jsp?ccnt="+commentCnt;
+		
+		if(postOne_comments.size()!=0) {
+			ArrayList<CommentsSet> sliceComSet = new ArrayList<CommentsSet>();
+			for(int i=0;i<(commentCnt*2);i++) {
+				CommentsSet vo = new CommentsSet();
+				vo = postOne_comments.get(i);
+				sliceComSet.add(vo);
+				if(i+1==postOne_comments.size()) {
+					break;
+				}
+			}
+			// 댓글이 1개라도 있을때는 잘라낸 댓글을 보여줌!
+			request.setAttribute("postOne_comments", sliceComSet);
+			request.setAttribute("ccnt", commentCnt);
+			
+			// 페이지 전송설정
+			forward.setRedirect(false); // forward
+			forward.setPath(url);
+			return forward;
+		}
 
-		// ③ request 전달
+
+		// ③ request 전달	// 댓글이 하나도 없을 때 댓글 정보 전달
 		request.setAttribute("postOne_comments", postOne_comments);
 
 		// 페이지 전송설정
 		forward.setRedirect(false); // forward
-		forward.setPath("ShowPost.jsp");
+		forward.setPath(url);
 
 
 		return forward;
