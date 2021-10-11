@@ -30,17 +30,17 @@ public class PostDAO {
 	// 검색기능
 
 	// 카테고리별, 좋아요 정렬 
-	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=?";
+	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=? ORDER BY pnum DESC";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM (SELECT * FROM post ORDER BY views DESC) WHERE ROWNUM <= 10";
 	
 	// 다음에 부여될 pnum 미리 알려주기
 	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 AS pnum FROM post";
 	
 	// 내 글 보기
-	private static String sql_SELECT_MYPOST = "SELECT * FROM post WHERE p_user=?";
+	private static String sql_SELECT_MYPOST = "SELECT * FROM post WHERE p_user=? ORDER BY pnum DESC";
 	
 	// 좋아요 누른 글 보기
-	private static String sql_SELECT_LIKEPOST = "SELECT l_post FROM likeInfo WHERE l_user=?";
+	private static String sql_SELECT_LIKEPOST = "SELECT l_post FROM likeInfo WHERE l_user=? ORDER BY ldate DESC";
 	private static String sql_SELECT_POSTINFO = "SELECT * FROM post WHERE pnum=?";
 	
 	// 글 전체 보기
@@ -241,6 +241,7 @@ public class PostDAO {
 				dateToStr = dateFix.format(dateOrigin);
 				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
+				vo.setPath(rs.getString("path"));
 				System.out.println("DAO 에서 데이터 : "+vo);
 				datas.add(vo);
 			}
@@ -284,6 +285,7 @@ public class PostDAO {
              data.setPdate(dateToStr);
              data.setP_user(rs.getString("p_user"));
              data.setWriter(rs.getString("writer"));
+             vo.setPath(rs.getString("path"));
              datas.add(data);
           }
           rs.close();
