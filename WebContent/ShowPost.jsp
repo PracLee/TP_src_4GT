@@ -175,7 +175,7 @@
 							<!-- 답글달기 -->
 							<c:set var="rindex" value="0" />
 							<div class="rwidth tm-comment-reply tm-mb-45 marginLeft dnone"
-								id="crInsert${rindex}">
+								id="crInsert${index}">
 								<form action="insertReply.ucdo" method="post"
 									class="mb-5 tm-comment-form">
 									<div class="tm-comment">
@@ -199,33 +199,70 @@
 
 							<!-- 답글(reply) -->
 
-							<div class="tm-comment-reply tm-mb-45">
-								<div class="rContent">
-									<c:forEach var="rl" items="${datas.rlist}">
 
-										<hr>
-										<div class="tm-comment reply">
-											<figure class="tm-comment-figure">
-												<img src="userProfile/${rl.r_user}_profile.jpg"
-													alt="${rl.r_user} 프로필사진"
-													onerror="this.src='userProfile/defaultImage.jpg'"
-													class="mb-2 rounded-circle img-thumbnail" width="100px">
-												<figcaption class="tm-color-primary text-center">${rl.rwriter}</figcaption>
-											</figure>
-											<p id="prmsg${rindex}">${rl.rment}</p>
+							<c:forEach var="rl" items="${datas.rlist}">
+								<div class="tm-comment-reply tm-mb-45">
+									<hr>
+									<div class="tm-comment">
+										<figure class="tm-comment-figure">
+											<img src="userProfile/${rl.r_user}_profile.jpg"
+												alt="${rl.r_user} 프로필사진" onerror="this.src='userProfile/defaultImage.jpg'" 
+												class="mb-2 rounded-circle img-thumbnail" width="100px">
+											<figcaption class="tm-color-primary text-center">${rl.rwriter}</figcaption>
+										</figure>
+										<p id="prmsg${rindex}">${rl.rment}</p>
 
-											<!-- 수정버튼 클릭시 변화되는 코드들 -->
-											<form action="editReply.ucdo" method="post"
-												class="mb-5 tm-comment-form">
-												<div class="tm-comment ">
-													<input type="hidden" name="r_post"
-														value="${singlePost.pnum}"> <input type="hidden"
-														name="rnum" value="${rl.rnum}"> <input
-														type="hidden" name="index" value="">
-													<!-- ${index} -->
-													<textarea id="urmsg${rindex}"
-														class="rset dnone form-control urmsgSet" name="rment"
-														rows="6" required>${rl.rment}</textarea>
+										<!-- 수정버튼 클릭시 변화되는 코드들 -->
+										<form action="editReply.ucdo" method="post"
+											class="mb-5 tm-comment-form">
+											<div>
+												<input type="hidden" name="r_post"
+													value="${singlePost.pnum}"> <input type="hidden"
+													name="rnum" id="rnum${rindex}" value="${rl.rnum}"> <input
+													type="hidden" name="index" value="">
+												<!-- ${index} -->
+												<textarea id="urmsg${rindex}"
+													class="rset dnone form-control urmsgSet" id="rment${rindex}" name="rment" rows="6"
+													required>${rl.rment}</textarea>
+											<div class="text-right marginTop">
+												<a href="javascript:void(0);" onclick="rmsgEditCancle(${rindex})" id="uRCButton${rindex}"
+													class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="javascript:void(0);" onclick="rmsgEditFinish(${rindex})" id="urButton${rindex}" 
+													class="tm-color-primary uButton">답글수정 </a>
+											</div>
+											</div>
+										</form>
+									</div>
+									<p class="text-right" style="color: red">
+										<i class='far fa-heart'></i>&nbsp0
+									</p>
+									<p class="text-right dnone" style="color: red">
+										<i class='fas fa-heart'></i>&nbsp0
+									</p>
+									
+										
+										<!-- 비회원일 경우 날자만 보임 -->
+										<c:choose>
+											<c:when test="${userInfoData.id==null}">
+												<div class="text-right">
+													<span class="tm-color-primary"> ${rl.rdate}</span>
+												</div>
+											</c:when>
+										</c:choose>
+
+										<!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 -->
+										<c:choose>
+											<c:when test="${userInfoData.id==cl.c_user}">
+											<div id="rOption${rindex}"
+										class="d-flex justify-content-between rmsgOption">
+												<a href="javascript:void(0);" onclick="rmsgEdit(${rindex})"
+													class="tm-color-primary">수정</a>
+												<a href="#"
+													onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
+													class="tm-color-primary">삭제</a>
+												<span class="tm-color-primary" id="rdate${rindex}"> ${rl.rdate}</span>
+
+
 												</div>
 												<div class="text-right marginTop">
 													<a href="javascript:void(0);"

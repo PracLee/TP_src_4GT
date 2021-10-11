@@ -1,3 +1,4 @@
+
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
@@ -100,6 +101,8 @@ function msgEditCancle(index){
 	$('#uButton'+index).addClass('dnone');
 	$('#uCButton'+index).addClass('dnone');
 }
+
+
 function msgEditFinish(index){ 
 	var params = "c_post="+$("#c_post"+index).val()+"&c_user="+$("#c_user"+index).val()+
 	"&cwriter="+$("#cwriter"+index).val()+"&cnum="+$("#cnum"+index).val()+"&cment="+$("#ucmsg"+index).val();
@@ -115,10 +118,10 @@ function msgEditFinish(index){
 			$('#ucmsg'+index).addClass('dnone');
 			$('#uButton'+index).addClass('dnone');
 			$('#uCButton'+index).addClass('dnone');
-			console.log(args[0].cment);
+			console.log(msg);
 			console.log(args[0].cdate);
 			console.log("index: " + index);
-			$("#pcmsg"+index).text(args[0].cment);
+			$("#pcmsg"+index).text(encodeURIComponent(args[0].cment));
 			$("#cdate"+index).text(args[0].cdate);
 			
 		}
@@ -139,7 +142,7 @@ function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 �
 	$('#prmsg'+rindex).css('display','none');
 	$('#rOption'+rindex).css('visibility','hidden');
 	$('#urmsg'+rindex).removeClass('dnone');
-	$('#urButton'+rindex).removeClass('uButton');
+	// $('#urButton'+rindex).removeClass('uButton');
 	$('#uRCButton'+rindex).removeClass('dnone');
 }	
 function rmsgEditCancle(rindex){ 
@@ -150,4 +153,28 @@ function rmsgEditCancle(rindex){
 	$('#urButton'+rindex).addClass('uButton');
 	$('#uRCButton'+rindex).addClass('dnone');
 			
+}
+function rmsgEditFinish(rindex){ 
+
+	var params = "rnum="+$("#rnum"+rindex).val()+"&rment="+$("rment"+rindex).val();
+	console.log("js");
+	$.ajax({
+		type:"post",
+		url:"editReply.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(args){
+			$('#prmsg'+rindex).css('display','');
+			$('#rOption'+rindex).css('visibility','');
+			$('#urmsg'+rindex).addClass('dnone');
+			$('#urButton'+rindex).addClass('uButton');
+			$('#uRCButton'+rindex).addClass('dnone');
+			
+			console.log("js");
+			
+			$("#prmsg"+rindex).text(encodeURIComponent(args[0].rment));
+			$("#rdate"+rindex).text(args[0].rdate);
+			
+		}
+	})
 }
