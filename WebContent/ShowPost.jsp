@@ -169,7 +169,7 @@
 							<!-- 답글달기 -->
 							<c:set var="rindex" value="0" />
 							<div class="rwidth tm-comment-reply tm-mb-45 marginLeft dnone"
-								id="crInsert${rindex}">
+								id="crInsert${index}">
 								<form action="insertReply.ucdo" method="post"
 									class="mb-5 tm-comment-form">
 									<div class="tm-comment">
@@ -208,21 +208,21 @@
 										<!-- 수정버튼 클릭시 변화되는 코드들 -->
 										<form action="editReply.ucdo" method="post"
 											class="mb-5 tm-comment-form">
-											<div class="tm-comment ">
+											<div>
 												<input type="hidden" name="r_post"
 													value="${singlePost.pnum}"> <input type="hidden"
-													name="rnum" value="${rl.rnum}"> <input
+													name="rnum" id="rnum${rindex}" value="${rl.rnum}"> <input
 													type="hidden" name="index" value="">
 												<!-- ${index} -->
 												<textarea id="urmsg${rindex}"
-													class="rset dnone form-control urmsgSet" name="rment" rows="6"
+													class="rset dnone form-control urmsgSet" id="rment${rindex}" name="rment" rows="6"
 													required>${rl.rment}</textarea>
-											</div>
 											<div class="text-right marginTop">
-											<a href="javascript:void(0);" onclick="rmsgEditCancle(${rindex})" id="uRCButton${rindex}"
+												<a href="javascript:void(0);" onclick="rmsgEditCancle(${rindex})" id="uRCButton${rindex}"
 													class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<button type="submit" id="urButton${rindex}"
-													class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button>
+												<a href="javascript:void(0);" onclick="rmsgEditFinish(${rindex})" id="urButton${rindex}" 
+													class="tm-color-primary uButton">답글수정 </a>
+											</div>
 											</div>
 										</form>
 									</div>
@@ -253,7 +253,7 @@
 												<a href="#"
 													onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 													class="tm-color-primary">삭제</a>
-												<span class="tm-color-primary"> ${rl.rdate}</span>
+												<span class="tm-color-primary" id="rdate${rindex}"> ${rl.rdate}</span>
 												</div>
 												<br>
 											</c:when>
