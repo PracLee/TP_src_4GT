@@ -38,42 +38,8 @@
 		<main class="tm-main"> <!-- Search form --> <mytag:searchPost />
 		<div class="row tm-row">
 
-			<!-- MyPost로 컨트롤에서 세션을 보냄! -->
-			<c:forEach var="pl" items="${MyPost}">
-
-				<article class="col-12 col-md-6 tm-post">
-					<hr class="tm-hr-primary">
-					<a href="selectOne.pdo?pnum=${pl.pnum}"
-						class="effect-lily tm-post-link tm-pt-60">
-
-						<div class="tm-post-link-inner">
-							<img src="${pl.path}" alt="포스트사진" class="img-fluid">
-						</div> <c:choose>
-							<c:when test="${pl.isNew()}">
-								<!-- 현재시간 -1일 전에 써진 글 만 newtag 붙임-->
-								<span class="position-absolute tm-new-badge" id="newBox">
-									new </span>
-							</c:when>
-						</c:choose>
-						<h2 class="tm-pt-30 tm-color-primary tm-post-title">${pl.title}</h2>
-					</a>
-					<p class="tm-pt-30">
-						${pl.content}
-						<!-- 글자 몇개로짜르는건 안해놓음! -->
-					</p>
-					<div class="d-flex justify-content-between tm-pt-45">
-						<span class="tm-color-primary postCate">Category .
-							${pl.category}</span> <span class="tm-color-primary postCate">${pl.pdate}</span>
-					</div>
-					<hr>
-					<div class="d-flex justify-content-between">
-						<span class="postInfo">${pl.comCnt} comments</span><span
-							class="postInfo">${pl.plike} Likes</span><span class="postInfo">${pl.views}
-							Views</span> <span class="byUser">Post by ${pl.writer}</span>
-					</div>
-
-				</article>
-			</c:forEach>
+			<!-- 컨트롤에서 MyPost로 세션을 보냄! -->
+			<mytag:postView info="${MyPost}"/>
 		</div>
 		<mytag:paging isFirst="${isFirst}" url="findpost.pdo"
 			isLast="${isLast}" pagingIndex="${pagingIndex}" /> <footer
