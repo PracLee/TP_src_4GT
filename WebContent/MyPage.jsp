@@ -119,7 +119,7 @@
 					<hr class="mb-3 tm-hr-primary">
 					<h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
 					<ul class="tm-mb-75 pl-5 tm-category-list">
-						<li><a href="#" class="tm-color-primary">내 게시글보기</a></li>
+						<li><a href="ShowMyPost.pdo?id=${userInfoData.id}" class="tm-color-primary">내 게시글보기</a></li>
 						<li><a href="UpdateUser.jsp" class="tm-color-primary">회원정보
 								변경</a></li>
 						<li><a href="#"
