@@ -26,7 +26,7 @@ public class ShowMypage implements Action {
 		HttpSession session = request.getSession();
 		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfoData");
 		ArrayList<PostVO> datas = PDAO.SelectMyPost(UVO);
-		// ÆäÀÌÂ¡ Ã³¸® ·ÎÁ÷
+		// ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String url="ShowMyPost.jsp";	
 		String indexx=request.getParameter("index");
 		int index=1;
@@ -35,10 +35,10 @@ public class ShowMypage implements Action {
 		}
 		url= url+ "?index="+index;
 		int pagingSize = 6;
-		// »ý¼ºÀÚ ¼ø¼­´ë·Î int pageSize(ÇÑÆäÀÌÁö °Ô½Ã¹° ¼ö), int thisPageNum(ÇöÀç ÆäÀÌÁö ¹øÈ£), int totalPostCnt(ÃÑ Æ÷½ºÆ® °¹¼ö)
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ int pageSize(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½), int thisPageNum(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£), int totalPostCnt(ï¿½ï¿½ ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½)
 		Paging paging = new Paging(pagingSize,index,datas.size());
 		paging.makePaging();
-		// ÆäÀÌÂ¡ for¹®À¸·Î Ç¥±â ÇÒ ¼ö ÀÖµµ·Ï ÇÏ±â
+		// ï¿½ï¿½ï¿½ï¿½Â¡ forï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½Ï±ï¿½
 		ArrayList<Integer> pagingIndex = new ArrayList<Integer>();
 		int page = paging.getStartPageNum();
 		//					1							5
@@ -46,7 +46,7 @@ public class ShowMypage implements Action {
 			pagingIndex.add(page);
 			page++;
 		}
-		// ÆäÀÌÁö 6°³¾¿
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6ï¿½ï¿½ï¿½ï¿½
 		Date today = new Date();
 		DateSlice ds = new DateSlice(datas, today, index);
 		ds.excuteSlice();
@@ -58,6 +58,7 @@ public class ShowMypage implements Action {
 		request.setAttribute("index", index);
 		request.setAttribute("MyPost", ds.getNewData());
 		action.setPath(url);
+
 		action.setRedirect(false);
 		return action;
 	}

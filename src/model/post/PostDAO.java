@@ -426,15 +426,18 @@ public class PostDAO {
  	}
  	
  	public ArrayList<PostVO> SelectMyPost(UserInfoVO vo){
-		Connection conn = DBCP.connect();
+ 		System.out.println(vo.getId());
+ 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList<PostVO>();
 		PreparedStatement pstmt = null;
 		SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date dateOrigin;
 		String dateToStr;
+		
 		try {
 			pstmt = conn.prepareStatement(sql_SELECT_MYPOST);
 			pstmt.setString(1, vo.getId());
+			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				PostVO data = new PostVO();
