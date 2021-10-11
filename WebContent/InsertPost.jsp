@@ -17,52 +17,7 @@
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="img/favicon2.ico">
 
-<style type="text/css">
-@font-face {
-	font-family: 'NanumSquareRound';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-#PostingBox {
-	display: block;
-	width: 1000px;
-	resize:none;
-}
 
-#PostingSubject {
-	width: 100%;
-	border-color: white;
-	font-size: 25px;
-}
-
-#PostingContent {
-	height: 800px;
-}
-
-.filebox .upload-name {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    
-    color: #999999;
-}
-
-.filebox label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-}
-</style>
 
 <script src="js/Common.js"></script>
 <script type="text/javascript">
@@ -122,12 +77,10 @@ window.onload = function(){
 						</div>
 						
 						<div class="filebox">
-					    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-					    <label for="file">파일찾기</label>
-					    
+						<label for="file">파일찾기</label>
+					    <input class="upload-name" value="첨부파일" placeholder="첨부파일" readonly>					    
 						<input type = "file" name="filename1" id="file" class="dnone">
-						</div>
-						
+						</div>						
 						<div class="text-right">
 								
 						
