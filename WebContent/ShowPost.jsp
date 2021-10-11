@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
 
@@ -21,15 +21,16 @@
 
 <script src="js/Common.js"></script>
 <script type="text/javascript">
-		 window.onload = function(){
-			 //window.scrollTo({top:500, behavior:"smooth"}); // 스크롤 조절기능(댓글창 이동)
-			 actRemove();
-			 var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
-			 main.addClass("myActive");
-		 }
+       window.onload = function(){
+          //window.scrollTo({top:500, behavior:"smooth"}); // 스크롤 조절기능(댓글창 이동)
+          actRemove();
+          var main = $('#main'); // main , showPost, selectList 에 넣어야함, 이 친구들은 myActive로 넣어야함
+          main.addClass("myActive");
+       }
 </script>
 </head>
 <body>
+
 	<c:choose>
 		<c:when test="${userInfoData!=null}">
 			<mytag:clientSidebar />
@@ -391,6 +392,7 @@
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/templatemo-script.js"></script>
+
 
 </body>
 </html>

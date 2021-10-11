@@ -28,7 +28,6 @@ public class C_EditComment_Action implements Action{
 	    CommentsVO commentVO = new CommentsVO();
 	    CommentsDAO commentDAO = new CommentsDAO();
 	    
-	    System.out.println("야호!");
 	    // DAO수행 필요데이터 SET
 	    commentVO.setCment(request.getParameter("cment"));
 	    commentVO.setCnum(Integer.parseInt(request.getParameter("cnum")));
@@ -38,13 +37,8 @@ public class C_EditComment_Action implements Action{
 	    
 	    //DAO 수행
 	    // 댓글 수정 완료 --> showPost이동
-	    if (commentDAO.UpdateDB(commentVO)) {
-			// [페이징처리 메서드] 호출 (uri 반환)
-//	    	path = new Post_Action().paging(request.getParameter("c_post"));
-//			path += "#pcmsg"+request.getParameter("pcmsg");
-	    	
-	    	newData = commentDAO.SelectOne(commentVO);
-	    	
+	    if (commentDAO.UpdateDB(commentVO)) {	
+	    	newData = commentDAO.SelectOne(commentVO);	
 	    }
 	    // 반영 실패 -> 오류 수행
 	    else {
@@ -55,18 +49,13 @@ public class C_EditComment_Action implements Action{
 				return null;
 			}
 	    }
-//	    SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd");
-//		Date dateOrigin;
-//		String dateToStr;
-//		dateOrigin = newData.getCdate();
-//		dateToStr = dateFix.format(dateOrigin);
-	    String result = "[{\"cment\":\"" + newData.getCment()+"\",\"cdate\":\"" + newData.getCdate() + "\"}]";
-	    
+
+	    String msg = newData.getCment().replace("\n","<br>");
+	  
+	    String result = "[{\"cment\":\"" + msg+"\",\"cdate\":\"" + newData.getCdate() + "\"}]";
 	    out.println(result);
-	    // 전송 설정
-//	    forward.setRedirect(false); // sendRedirect
-//	    forward.setPath(path);
-	    System.out.println("야호@@");
+
+	   
 	    return null;
 	}
 

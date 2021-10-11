@@ -1,3 +1,4 @@
+
 function forbid() {
 	alert('로그인을 해야 이용가능한 서비스입니다!');
 }
@@ -100,6 +101,8 @@ function msgEditCancle(index){
 	$('#uButton'+index).addClass('dnone');
 	$('#uCButton'+index).addClass('dnone');
 }
+
+
 function msgEditFinish(index){ 
 	var params = "c_post="+$("#c_post"+index).val()+"&c_user="+$("#c_user"+index).val()+
 	"&cwriter="+$("#cwriter"+index).val()+"&cnum="+$("#cnum"+index).val()+"&cment="+$("#ucmsg"+index).val();
@@ -115,10 +118,10 @@ function msgEditFinish(index){
 			$('#ucmsg'+index).addClass('dnone');
 			$('#uButton'+index).addClass('dnone');
 			$('#uCButton'+index).addClass('dnone');
-			console.log(args[0].cment);
+			console.log(msg);
 			console.log(args[0].cdate);
 			console.log("index: " + index);
-			$("#pcmsg"+index).text(args[0].cment);
+			$("#pcmsg"+index).text(encodeURIComponent(args[0].cment));
 			$("#cdate"+index).text(args[0].cdate);
 			
 		}
@@ -131,6 +134,7 @@ function msgEditFinish(index){
 function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
 	$('#crInsert'+index).removeClass('dnone');		
 }	
+
 
 function rmsgEdit(index,rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
 	console.log($('#prmsg'+index+rindex));
