@@ -134,47 +134,33 @@ function msgEditFinish(index){
 function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
 	$('#crInsert'+index).removeClass('dnone');		
 }	
-function rmsgInsert2(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
-	$('#rInsert'+rindex).removeClass('dnone');		
-}
-function rmsgEdit(rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
 
-	$('#prmsg'+rindex).css('display','none');
-	$('#rOption'+rindex).css('visibility','hidden');
-	$('#urmsg'+rindex).removeClass('dnone');
-	// $('#urButton'+rindex).removeClass('uButton');
-	$('#uRCButton'+rindex).removeClass('dnone');
+
+function rmsgEdit(index,rindex){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능
+	console.log($('#prmsg'+index+rindex));
+	$('#prmsg'+index+rindex).css('display','none');
+	$('#rOption'+index+rindex).css('visibility','hidden');
+	$('#urmsg'+index+rindex).removeClass('dnone');
+	$('#urButton'+index+rindex).removeClass('dnone');
+	$('#uRCButton'+index+rindex).removeClass('dnone');
 }	
-function rmsgEditCancle(rindex){ 
+function rmsgEditCancle(index,rindex){ 
 	
-	$('#prmsg'+rindex).css('display','');
-	$('#rOption'+rindex).css('visibility','');
-	$('#urmsg'+rindex).addClass('dnone');
-	$('#urButton'+rindex).addClass('uButton');
-	$('#uRCButton'+rindex).addClass('dnone');
+	$('#prmsg'+index+rindex).css('display','');
+	$('#rOption'+index+rindex).css('visibility','');
+	$('#urmsg'+index+rindex).addClass('dnone');
+	$('#urButton'+index+rindex).addClass('dnone');
+	$('#uRCButton'+index+rindex).addClass('dnone');
 			
 }
-function rmsgEditFinish(rindex){ 
 
-	var params = "rnum="+$("#rnum"+rindex).val()+"&rment="+$("rment"+rindex).val();
-	console.log("js");
-	$.ajax({
-		type:"post",
-		url:"editReply.ucdo",
-		data:params,
-		dataType:"json",
-		success:function(args){
-			$('#prmsg'+rindex).css('display','');
-			$('#rOption'+rindex).css('visibility','');
-			$('#urmsg'+rindex).addClass('dnone');
-			$('#urButton'+rindex).addClass('uButton');
-			$('#uRCButton'+rindex).addClass('dnone');
+function rmsgEditFinish(index,rindex){ 
+	
+	$('#prmsg'+index+rindex).css('display','');
+	$('#rOption'+index+rindex).css('visibility','');
+	$('#urmsg'+index+rindex).addClass('dnone');
+	$('#urButton'+index+rindex).addClass('dnone');
+	$('#uRCButton'+index+rindex).addClass('dnone');
 			
-			console.log("js");
-			
-			$("#prmsg"+rindex).text(encodeURIComponent(args[0].rment));
-			$("#rdate"+rindex).text(args[0].rdate);
-			
-		}
-	})
 }
+
