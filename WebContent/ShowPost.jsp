@@ -250,7 +250,7 @@
 											</p> <!-- 비회원일 경우 날자만 보임 --> <c:choose>
 												<c:when test="${userInfoData.id==null}">
 													<div class="text-right">
-														<span class="tm-color-primary"> ${rl.rdate}</span>
+														<span class="tm-color-primary rmsgInfo"> ${rl.rdate}</span>
 													</div>
 												</c:when>
 											</c:choose> <!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 --> <c:choose>
