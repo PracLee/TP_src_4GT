@@ -29,6 +29,7 @@
 #PostingBox {
 	display: block;
 	width: 1000px;
+	resize:none;
 }
 
 #PostingSubject {
@@ -40,8 +41,26 @@
 #PostingContent {
 	height: 800px;
 }
-.mlogo {
-	width: 220px;
+
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    
+    color: #999999;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
 }
 </style>
 
@@ -101,7 +120,14 @@ window.onload = function(){
 								<option>일식</option>
 							</select>
 						</div>
-						<input type = "file" name="filename1">
+						
+						<div class="filebox">
+					    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+					    <label for="file">파일찾기</label>
+					    
+						<input type = "file" name="filename1" id="file" class="dnone">
+						</div>
+						
 						<div class="text-right">
 								
 						
