@@ -61,7 +61,7 @@ window.onload = function(){
 						<div class="mb-4">
 							<label class="col-sm-3 col-form-label tm-color-primary">내용</label>
 							<textarea id="PostingContent" class="form-control mr-0 ml-auto"
-								name="content" id="message" rows="8" required></textarea>
+								name="content" id="message" rows="8" onKeyUp="checkByte(this,3000)" required></textarea>
 						</div>
 						<div class="mb-4">
 							<label class=" col-form-label tm-color-primary"

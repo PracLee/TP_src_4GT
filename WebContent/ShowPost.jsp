@@ -52,6 +52,8 @@
 
 			</div>
 		</div>
+		<br>
+		
 		<div class="row tm-row">
 			<div class="col-lg-8 tm-post-col">
 				<div class="tm-post-full">
@@ -142,7 +144,7 @@
 												name="cnum" id="cnum${index}" value="${cl.cnum}"> <input
 												type="hidden" name="pcmsg" value="${index}">
 											<textarea id="ucmsg${index}" class="crset dnone form-control"
-												name="cment" rows="6" required>${cl.cment}</textarea>
+												name="cment" rows="6" onKeyUp="checkByte(this,200)" required>${cl.cment}</textarea>
 											<div class="text-right marginTop">
 												<a href="javascript:void(0);"
 													onclick="msgEditCancle(${index})" id="uCButton${index}"
@@ -214,7 +216,7 @@
 										<input type="hidden" name="r_comments" value="${cl.cnum}">
 										<input type="hidden" name="prmsg" value="${index}${rindex}">
 										<textarea id="ucmsg${index}" class="rset form-control"
-											name="rment" rows="6" required></textarea>
+											name="rment" rows="6" onKeyUp="checkByte(this,200)" required></textarea>
 									</div>
 									<div class="text-right marginTop">
 										<button type="submit"
@@ -253,7 +255,7 @@
 													<!-- ${index} -->
 													<textarea id="urmsg${index}${rindex}"
 														class="rset dnone form-control urmsgSet" name="rment"
-														rows="6" required>${rl.rment}</textarea>
+														rows="6" onKeyUp="checkByte(this,200)" required>${rl.rment}</textarea>
 												</div>
 												<div class="text-right marginTop">
 													<a href="javascript:void(0);"
@@ -362,6 +364,7 @@
 									<div class="mb-4">
 										<!-- id="crset" -->
 										<textarea class="crset form-control" name="cment" rows="6"
+										onKeyUp="checkByte(this,200)"
 											required></textarea>
 									</div>
 
