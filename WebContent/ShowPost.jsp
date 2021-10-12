@@ -230,10 +230,11 @@
 												</div>
 												<div class="text-right marginTop">
 													<a href="javascript:void(0);"
-														onclick="rmsgEditCancle(${index}${rindex})"
+														onclick="rmsgEditCancle(${index},${rindex})"
 														id="uRCButton${index}${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														
 														<a href="javascript:void(0);"
-														onclick="(${index}${rindex})"
+														onclick="rmsgEditFinish(${index},${rindex})"
 														id="urButton${index}${rindex}" class="tm-color-primary dnone">답글수정</a>
 													<!-- <button type="submit" id="urButton${index}${rindex}"
 														class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button> -->
@@ -312,10 +313,13 @@
 										name="pcmsg" value="0">
 
 									<!-- 더보기 페이징 -->
+									<c:choose>
+									<c:when test="">
 									<div id="ccnt">
 										<a href="selectOne.pdo?ccnt=${ccnt+3}&pnum=${singlePost.pnum}">더보기</a>
 									</div>
-
+									</c:when>
+									</c:choose>
 
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>

@@ -146,13 +146,13 @@ function rmsgEdit(index,rindex){ // 수정버튼 클릭시 바로 수정가능�
 	$('#uRCButton'+index+rindex).removeClass('dnone');
 }	
 function rmsgEditCancle(index,rindex){ 
-	
+	console.log($('#prmsg'+index+rindex));
 	$('#prmsg'+index+rindex).css('display','');
 	$('#rOption'+index+rindex).css('visibility','');
 	$('#urmsg'+index+rindex).addClass('dnone');
 	$('#urButton'+index+rindex).addClass('dnone');
 	$('#uRCButton'+index+rindex).addClass('dnone');
-			
+	
 }
 
 function rmsgEditFinish(index,rindex){ 
