@@ -47,7 +47,7 @@
 			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
 				<!-- 사진 1422x800 -->
-				<img src="${singlePost.path}" alt="포스팅사진" width="954" height="700">
+				<img src="${singlePost.path}" alt="포스팅사진" onerror="this.src='img/defaultImage.png'" width="954" height="700">
 
 			</div>
 		</div>

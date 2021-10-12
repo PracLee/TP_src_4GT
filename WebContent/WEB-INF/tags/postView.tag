@@ -37,7 +37,7 @@ window.onload = function newcheck() {
 			class="effect-lily tm-post-link tm-pt-60">
 
 			<div class="tm-post-link-inner">
-				<img src="${pl.path}" alt="포스트사진" class="img-fluid">
+				<img src="${pl.path}" onerror="this.src='img/defaultImage.png'" alt="포스트사진" class="img-fluid">
 			</div> 
 			<c:choose>
 				<c:when test="${pl.isNew()}">
