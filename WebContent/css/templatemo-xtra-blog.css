@@ -6,6 +6,10 @@ https://templatemo.com/tm-553-xtra-blog
 
 */
 /*InsertPost*/
+#comSecret{
+	width : 450px;
+	text-align : right;
+}
 @font-face {
    font-family: 'NanumSquareRound';
    src:
@@ -107,8 +111,13 @@ https://templatemo.com/tm-553-xtra-blog
 ----------------------------------------------------------------ShowPost----------------------------------------------------------------
 */
 
-
-
+#secretOpen{
+	color : gray;
+}
+.cwidth .secret{
+	color : #FF7575;
+	
+}
 .mlogo {/*y*/
    width: 220px;
 }
@@ -906,7 +915,10 @@ a:hover figcaption {
    }
    
    .cwidth{
-   width: 350px;
+   	  width: 350px;
+   }
+   #comSecret{
+   	  width: 345px;
    }
    .crset {
       resize: none;
@@ -926,6 +938,7 @@ a:hover figcaption {
    body .postInfo {
       font-size: 12px;
    }
+   
 }
 
 @media ( max-width : 1540px) {
@@ -943,6 +956,9 @@ a:hover figcaption {
    
    .cwidth{
    width: 350px;
+   }
+   #comSecret{
+   	  width: 345px;
    }
    .crset {
       resize: none;
@@ -1000,6 +1016,9 @@ a:hover figcaption {
    .cwidth{
    width: 280px;
    }
+   #comSecret{
+   	  width: 275px;
+   }
    
 }
 
@@ -1017,8 +1036,8 @@ a:hover figcaption {
    #schSelect{
       width :100px;
    }
-   .cwidth{
-   width: 280px;
+   #comSecret{
+   	  width: 275px;
    }
    #ccnt{
       width : 100%;
@@ -1026,7 +1045,9 @@ a:hover figcaption {
    .cwidth{
    	  width: 240px;
    }
+
 }
+
 
 @media ( max-width : 1199px) {
    .tm-post-sidebar {
@@ -1047,6 +1068,9 @@ a:hover figcaption {
       width: 460px;
       height: 152px;
    }
+   #comSecret{
+   	  width: 455px;
+   }
    form div .rset { /*y*/
       resize: none;
       width: 460px;
@@ -1055,6 +1079,7 @@ a:hover figcaption {
    .cwidth{
    width:600px;
    }
+  
    #ccnt{
       width : 100%;
    }
@@ -1074,11 +1099,17 @@ a:hover figcaption {
    .cwidth{
       width:600px;
    }
+   #comSecret{
+   	  width: 595px;
+   }
    .rwidth{
       width :460px;
    }
    #ccnt{
       width : 100%;
+   }
+    #comSecret{
+   	  width: 455px;
    }
    
 }
@@ -1145,6 +1176,9 @@ a:hover figcaption {
       resize: none;
       width: 460px;
       height: 152px;
+   }
+    #comSecret{
+   	  width: 455px;
    }
    form div .rset { /*y*/
    resize: none;
@@ -1361,6 +1395,9 @@ a:hover figcaption {
    }
    #ccnt{
       width : 100%;
+   }
+    #comSecret{
+   	  width: 90%;
    }
 }
 
