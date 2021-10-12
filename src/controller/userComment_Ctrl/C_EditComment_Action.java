@@ -50,9 +50,11 @@ public class C_EditComment_Action implements Action{
 			}
 	    }
 
-	    String msg = newData.getCment().replace("\n","<br>");
+	    String msg = newData.getCment().replace("\n"," ");
+	    System.out.println(msg);
 	  
 	    String result = "[{\"cment\":\"" + msg+"\",\"cdate\":\"" + newData.getCdate() + "\"}]";
+	    System.out.println(result);
 	    out.println(result);
 
 	   
