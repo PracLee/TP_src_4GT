@@ -88,7 +88,7 @@
 		</div>
 		<div class="row tm-row tm-mb-120">
 			<div class="col-lg-4 tm-about-col">
-				<div class="tm-bg-gray tm-about-pad">
+				<div class="tm-bg-gray tm-about-pad MVCPart">
 					<div class="text-center tm-mt-40 tm-mb-60">
 						<i class="fas fa-bezier-curve fa-4x tm-color-primary"></i>
 					</div>
@@ -99,16 +99,17 @@
 				</div>
 			</div>
 			<div class="col-lg-4 tm-about-col">
-				<div class="tm-bg-gray tm-about-pad">
+				<div class="tm-bg-gray tm-about-pad MVCPart">
 					<div class="text-center tm-mt-40 tm-mb-60">
 						<i class="fas fa-users-cog fa-4x tm-color-primary"></i>
 					</div>
 					<h2 class="mb-3 tm-color-primary tm-post-title">View</h2>
 					<p class="mb-0 tm-line-height-short">Lee Tae Ho</p>
+					<br>
 				</div>
 			</div>
 			<div class="col-lg-4 tm-about-col">
-				<div class="tm-bg-gray tm-about-pad">
+				<div class="tm-bg-gray tm-about-pad MVCPart">
 					<div class="text-center tm-mt-40 tm-mb-60">
 						<i class="fab fa-creative-commons-sampling fa-4x tm-color-primary"></i>
 					</div>
@@ -119,57 +120,69 @@
 				</div>
 			</div>
 		</div>
+
+		<hr class="tm-hr-primary  tm-mb-55">
+		
+		<!-- 파트장 -->
 		<div class="row tm-row tm-mb-60">
 			<div class="col-12">
-				<hr class="tm-hr-primary  tm-mb-55">
 			</div>
-			<div class="col-lg-6 tm-mb-60 tm-person-col">
-				<div class="media tm-person">
-					<img src="img/about-02.jpg" alt="Image" class="img-fluid mr-4">
+			<div class="col-lg-6 tm-mb-60 tm-person-col" id="partLeader">
+				<div class="media">
+					<img src="img/about-02.jpg" alt="Image" class="img-fluid mr-4 img">
 					<div class="media-body">
 						<h2 class="tm-color-primary tm-post-title mb-2">이병재</h2>
-						<h3 class="tm-h3 mb-3">팀장 / Controller</h3>
+						<h3 class="tm-h3 mb-3">파트장 / Controller</h3>
 						<p class="mb-0 tm-line-height-short">힘들었지만 좋은 팀원들을 만나서 기분좋게
 							개발에 임할 수 있었습니다. 가끔씩 치는 심한농담 참아주셔서 다들 감사합니다..!</p>
 					</div>
 				</div>
 			</div>
+			</div>
+			</div>
+			
+		<!-- 팀장 -->			
+		<div class="row tm-row tm-mb-60">
+			<div class="col-12">
+			</div>
 			<div class="col-lg-6 tm-mb-60 tm-person-col">
 				<div class="media tm-person">
-					<img src="img/about-02.jpg" alt="Image" class="img-fluid mr-4">
+					<img src="img/about-yn.jpg" alt="Image" class="img-fluid mr-4 img">
 					<div class="media-body">
 						<h2 class="tm-color-primary tm-post-title mb-2">이예나</h2>
-						<h3 class="tm-h3 mb-3">Controller지만 View팀장..!</h3>
-						<p class="mb-0 tm-line-height-short">친구들아 미안하다!</p>
+						<h3 class="tm-h3 mb-3">팀장 / Controller 겸 view...</h3>
+						<p class="mb-0 tm-line-height-short">
+						팀원들과 원활한 커뮤니케이션이 되어, 각자 파트를 수행할 때,<br>집중할 수 있었습니다. 4GT최고!! 👍   
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-6 tm-mb-60 tm-person-col">
 				<div class="media tm-person">
-					<img src="img/about-03.jpg" alt="Image" class="img-fluid mr-4">
+					<img src="img/about-03.jpg" alt="Image" class="img-fluid mr-4 img">
 					<div class="media-body">
 						<h2 class="tm-color-primary tm-post-title mb-2">오현택</h2>
-						<h3 class="tm-h3 mb-3">아마 Model 팀장 일지도..?</h3>
+						<h3 class="tm-h3 mb-3">팀장 / Model</h3>
 						<p class="mb-0 tm-line-height-short">제가요?</p>
 					</div>
 				</div>
 			</div>
+			<!-- 사원 -->
 			<div class="col-lg-6 tm-mb-60 tm-person-col">
 				<div class="media tm-person">
-					<img src="img/about-04.jpg" alt="Image" class="img-fluid mr-4">
+					<img src="img/about-04.jpg" alt="Image" class="img-fluid mr-4 img">
 					<div class="media-body">
 						<h2 class="tm-color-primary tm-post-title mb-2">이태호</h2>
-						<h3 class="tm-h3 mb-3">View혼자 외로워서 팀장님이 들어오심..!</h3>
+						<h3 class="tm-h3 mb-3">사원 / View</h3>
 						<p class="mb-0 tm-line-height-short">프로젝트 끝내고 로아 레이드 하세요..!</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-6 tm-mb-60 tm-person-col">
 				<div class="media tm-person">
-					<img src="img/about-05.jpg" alt="Image" class="img-fluid mr-4">
+					<img src="img/about-05.jpg" alt="Image" class="img-fluid mr-4 img">
 					<div class="media-body">
 						<h2 class="tm-color-primary tm-post-title mb-2">김혁재</h2>
-						<h3 class="tm-h3 mb-3">Model 팀원인가..? 4조 4초 성시경</h3>
+						<h3 class="tm-h3 mb-3">사원 / Model</h3>
 						<p class="mb-0 tm-line-height-short">잘자요</p>
 					</div>
 				</div>

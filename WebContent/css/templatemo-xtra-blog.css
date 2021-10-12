@@ -5,6 +5,17 @@ TemplateMo 553 Xtra Blog
 https://templatemo.com/tm-553-xtra-blog
 
 */
+.img{
+	width : 140px;
+	height : 210px;
+}
+#partLeader{
+	margin-left : 25%;
+}
+.MVCPart{
+	width : 300px;
+}
+
 /*InsertPost*/
 #comSecret{
 	width : 450px;
