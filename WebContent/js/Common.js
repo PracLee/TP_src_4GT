@@ -118,7 +118,6 @@ function msgEditFinish(index){
 			$('#ucmsg'+index).addClass('dnone');
 			$('#uButton'+index).addClass('dnone');
 			$('#uCButton'+index).addClass('dnone');
-			console.log(msg);
 			console.log(args[0].cdate);
 			console.log("index: " + index);
 			$("#pcmsg"+index).text(encodeURIComponent(args[0].cment));
