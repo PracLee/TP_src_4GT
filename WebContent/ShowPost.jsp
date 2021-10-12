@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
 
@@ -47,7 +47,8 @@
 			<div class="col-12">
 				<hr class="tm-hr-primary tm-mb-55">
 				<!-- 사진 1422x800 -->
-				<img src="${singlePost.path}" alt="포스팅사진" onerror="this.src='img/defaultImage.png'" width="954" height="700">
+				<img src="${singlePost.path}" alt="포스팅사진"
+					onerror="this.src='img/defaultImage.png'" width="954" height="700">
 
 			</div>
 		</div>
@@ -100,8 +101,34 @@
 									<figcaption class="tm-color-primary text-center">${cl.cwriter}</figcaption>
 								</figure>
 								<div class="cwidth">
-									<!-- 평상시 코멘트내용 -->
+								
+								<!-- 이예나 -->
+								<!-- secretNum이 비밀댓글이라면 (1:비밀댓글, 0:일반댓글) -->								
+								<c:if test="${cl.secretNum==1}">
+									<c:choose>
+										<c:when test="${userInfoData.id==cl.c_user||userInfoData.id==cl.cwriter}">
+										<!-- 본인이거나, 작성자인 경우 댓글 내용출력 -->
+											<p id="secretOpen">(비밀댓글)</p>
+											<p id="pcmsg${index}">${cl.cment}</p>
+										</c:when>
+										
+										<c:otherwise>
+										<!-- 디폴트 -->
+											<p id="pcmsg${index}" class="secret">비밀댓글 입니다.</p>
+										</c:otherwise>								
+									</c:choose>
+									
+								</c:if>
+								
+								<!-- 일반 댓글이라면 댓글 내용출력 -->
+								<c:if test="${cl.secretNum==0}">
 									<p id="pcmsg${index}">${cl.cment}</p>
+								</c:if>
+								
+								
+								
+									<!-- 평상시 코멘트내용 -->
+									<%-- <p id="pcmsg${index}">${cl.cment}</p> --%>
 
 									<!-- 수정시 textarea나오게 설정 -->
 									<form action="editComment.ucdo" method="post"
@@ -230,12 +257,14 @@
 												</div>
 												<div class="text-right marginTop">
 													<a href="javascript:void(0);"
+
 														onclick="rmsgEditCancle(${index},${rindex})"
 														id="uRCButton${index}${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 														
 														<a href="javascript:void(0);"
 														onclick="rmsgEditFinish(${index},${rindex})"
 														id="urButton${index}${rindex}" class="tm-color-primary dnone">답글수정</a>
+
 													<!-- <button type="submit" id="urButton${index}${rindex}"
 														class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button> -->
 												</div>
@@ -251,7 +280,8 @@
 											</p> <!-- 비회원일 경우 날자만 보임 --> <c:choose>
 												<c:when test="${userInfoData.id==null}">
 													<div class="text-right">
-														<span class="tm-color-primary rmsgInfo"> ${rl.rdate}</span>
+														<span class="tm-color-primary rmsgInfo">
+															${rl.rdate}</span>
 													</div>
 												</c:when>
 											</c:choose> <!-- 로그인세션의 id와 글쓴이의 id가 같을경우만 수정삭제가능 --> <c:choose>
@@ -259,8 +289,8 @@
 													<div id="rOption${index}${rindex}"
 														class="d-flex justify-content-between rmsgOption">
 														<a href="javascript:void(0);"
-															onclick="rmsgEdit(${index},${rindex})" class="tm-color-primary">수정</a>
-														<a href="#"
+															onclick="rmsgEdit(${index},${rindex})"
+															class="tm-color-primary">수정</a> <a href="#"
 															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 															class="tm-color-primary">삭제</a> <span
 															class="tm-color-primary"> ${rl.rdate}</span>
@@ -323,6 +353,11 @@
 
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>
+
+									<!-- 비밀댓글 선택  -->
+									<p id="comSecret">
+										비밀댓글<input type="checkbox" name="secretNum" value="1">
+									</p>
 
 									<div class="mb-4">
 										<!-- id="crset" -->

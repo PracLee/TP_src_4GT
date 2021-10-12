@@ -32,7 +32,13 @@ public class C_InsertComment_Action implements Action{
 	    commentVO.setCwriter(request.getParameter("cwriter"));
 	    commentVO.setC_user(request.getParameter("c_user"));
 	    commentVO.setC_post(Integer.parseInt(request.getParameter("c_post")));
+	    commentVO.setSecretNum(0); // 기본 0으로 set
 	    
+	    // secretNum데이터가 넘어왔다면 변경
+	    if(request.getParameter("secretNum") != null) {
+	    	System.out.println("ㅁㅇㄴㅁㅇㅁ");
+	    	commentVO.setSecretNum(Integer.parseInt(request.getParameter("secretNum")));
+	    }
 	    
 
 		String path = null; // uri변수 초기화
