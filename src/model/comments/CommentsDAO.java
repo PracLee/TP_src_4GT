@@ -14,7 +14,8 @@ public class CommentsDAO {
 	// 기본 CRUD
 	private static String sql_SELECT_ALL = "SELECT * FROM comments";
 	private static String sql_SELECT_ONE = "SELECT * FROM comments WHERE cnum=?";
-	private static String sql_INSERT = "INSERT INTO comments (cnum, cment, cdate, cwriter, c_user, c_post) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM comments), ?, sysdate, ?, ?, ?)";
+	// 이예나 secretNum 추가
+	private static String sql_INSERT = "INSERT INTO comments (cnum, cment, cdate, cwriter, c_user, c_post, secretNum) VALUES((SELECT NVL(MAX(cnum),0) + 1 FROM comments), ?, sysdate, ?, ?, ?, ?)";
 	private static String sql_DELETE = "DELETE FROM comments WHERE cnum=?";
 	private static String sql_UPDATE = "UPDATE comments SET cment=?, cdate=sysdate WHERE cnum=?";
 
@@ -47,6 +48,7 @@ public class CommentsDAO {
 				cvo.setClikeCnt(rs.getInt("clikeCnt"));
 				cvo.setC_user(rs.getString("c_user"));
 				cvo.setC_post(rs.getInt("c_post"));
+				cvo.setSecretNum(rs.getInt("secretNum")); 
 				// CommentsSet에 댓글을 set
 				cs.setComment(cvo);
 
@@ -165,6 +167,7 @@ public class CommentsDAO {
 			pstmt.setString(2, vo.getCwriter());
 			pstmt.setString(3, vo.getC_user());
 			pstmt.setInt(4, vo.getC_post());
+			pstmt.setInt(5, vo.getSecretNum());
 			pstmt.executeUpdate();
 			pstmt.close();
 
