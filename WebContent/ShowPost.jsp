@@ -396,7 +396,7 @@
 						<li><a href="post.pdo?category=jap" class="tm-color-primary">일식</a></li>
 					</ul>
 					<hr class="mb-3 tm-hr-primary">
-					<h2 class="tm-mb-40 tm-post-title tm-color-primary">카테고리 인기글</h2>
+					<h2 class="tm-mb-40 tm-post-title tm-color-primary">같은 카테고리 인기글</h2>
 					<mytag:likePost info="${categoryDatas}"/>
 				</div>
 			</aside>
