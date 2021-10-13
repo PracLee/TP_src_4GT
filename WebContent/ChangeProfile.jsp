@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>프로필사진 변경창</title>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="js/Common.js"></script>
+<!-- 이메일 중복체크 -->
+<script src="js/emailCheck.js"></script>
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,30 +26,7 @@
 }
 
 </style>
-
-<!-- 자바스크립트 -->
-<!-- JQuery -->
- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $("#filename").on('change', function(){
-                readURL(this);
-            });
-        });
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-               var reader = new FileReader();
-               reader.onload = function (e) {
-                  $('#preImage').attr('src', e.target.result);
-               }
-               reader.readAsDataURL(input.files[0]);
-            }
-        }
-</script>
-<!-- 이메일 중복체크 -->
-<script src="js/emailCheck.js"></script>
-
-
+ 
 </head>
 <body>
 	<div class="outer">
