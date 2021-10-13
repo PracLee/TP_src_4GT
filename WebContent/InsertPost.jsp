@@ -53,7 +53,7 @@ window.onload = function(){
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">
-							<input id="PostingSubject" class="form-control" name="title"
+							<input id="PostingSubject" class="form-control" name="title" required
 								type="text" onKeyUp="checkByte(this,60)" placeholder="제목을 입력하세요">
 
 						</div>
