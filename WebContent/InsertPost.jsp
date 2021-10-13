@@ -77,13 +77,17 @@ window.onload = function(){
 						</div>
 						
 						<div class="filebox">
-						<label for="file">파일찾기</label>
+						<label for="filename">파일찾기</label>
 					    <input class="upload-name" placeholder="첨부파일" readonly>					    
-						<input type = "file" name="filename1" id="file" class="dnone">
-						</div>						
-						<div class="text-right">
-								
+						<input type = "file" name="filename1" id="filename" class="dnone" onchange="readImage(event)">
+						</div>	
+						<div>
 						
+						<img src="" alt="${userInfoData.id}_미리보기 포스트사진" class="img-fluid"
+						onerror="this.src='img/defaultImage.png'" alt="포스트사진" class="img-fluid"
+							width="350px" id="preImage">
+							</div>		
+						<div class="text-right">
 							<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">글
 								등록하기</button>
 						</div>
