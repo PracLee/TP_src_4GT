@@ -92,7 +92,8 @@
 			<div class="col-lg-4 tm-about-col">
 				<div class="tm-bg-gray tm-about-pad MVCPart">
 					<div class="text-center tm-mt-40 tm-mb-60">
-						<i class="fas fa-bezier-curve fa-4x tm-color-primary"></i>
+						<i class="fas fa-server fa-4x tm-color-primary"></i>
+						
 					</div>
 					<h2 class="mb-3 tm-color-primary tm-post-title">Model</h2>
 					<p class="mb-0 tm-line-height-short">
@@ -103,7 +104,7 @@
 			<div class="col-lg-4 tm-about-col">
 				<div class="tm-bg-gray tm-about-pad MVCPart">
 					<div class="text-center tm-mt-40 tm-mb-60">
-						<i class="fas fa-users-cog fa-4x tm-color-primary"></i>
+						<i class="fas fa-palette fa-4x tm-color-primary"></i>
 					</div>
 					<h2 class="mb-3 tm-color-primary tm-post-title">View</h2>
 					<p class="mb-0 tm-line-height-short">Lee Tae Ho</p>
@@ -113,7 +114,7 @@
 			<div class="col-lg-4 tm-about-col">
 				<div class="tm-bg-gray tm-about-pad MVCPart">
 					<div class="text-center tm-mt-40 tm-mb-60">
-						<i class="fab fa-creative-commons-sampling fa-4x tm-color-primary"></i>
+						<i class="fas fa-gamepad fa-4x tm-color-primary"></i>
 					</div>
 					<h2 class="mb-3 tm-color-primary tm-post-title">Controller</h2>
 					<p class="mb-0 tm-line-height-short">
