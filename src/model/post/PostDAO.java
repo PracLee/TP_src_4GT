@@ -13,7 +13,7 @@ import model.userInfo.UserInfoVO;
 
 public class PostDAO {
 	
-	// 비즈니스 메서드 쿼리문
+	// 
 	private static String sql_SELECT_ALL = "SELECT * FROM post ORDER BY pnum DESC";
 	private static String sql_SELECT_ONE = "SELECT * FROM post WHERE pnum=?";
 	private static String sql_INSERT = 
@@ -22,28 +22,29 @@ public class PostDAO {
 	private static String sql_DELETE = "DELETE FROM post WHERE pnum=?";
 	private static String sql_UPDATE = "UPDATE post SET category=?, title=?, content=?, writer=?, path=?, pdate=sysdate WHERE pnum=?";
 	
-	// 사용자 설정 로직 쿼리문
-	// 좋아요 업 다운
+	// 
+	// 
 	private static String sql_ViewsUp = "UPDATE post SET views=views+1 WHERE pnum=?";
 	private static String sql_LikesUp = "UPDATE post SET plike=plike+1 WHERE pnum=?";
 	private static String sql_LikesDown = "UPDATE post SET plike=plike-1 WHERE pnum=?";
-	// 검색기능
+	// 
 
-	// 카테고리별, 좋아요 정렬 
+	//  
 	private static String sql_SELECT_CATEGORY = "SELECT * FROM post WHERE category=? ORDER BY pnum DESC";
 	private static String sql_SELECT_VIEWS = "SELECT * FROM (SELECT * FROM post ORDER BY views DESC) WHERE ROWNUM <= 10";
+	private static String sql_SELECT_CATEGORYFORVIEWS = "SELECT * FROM post WHERE category=? ORDER BY views DESC";
 	
-	// 다음에 부여될 pnum 미리 알려주기
+	// 
 	private static String sql_getPnum = "SELECT NVL(MAX(pnum),0) + 1 AS pnum FROM post";
 	
-	// 내 글 보기
+	// 
 	private static String sql_SELECT_MYPOST = "SELECT * FROM post WHERE p_user=? ORDER BY pnum DESC";
 	
-	// 좋아요 누른 글 보기
+	// 
 	private static String sql_SELECT_LIKEPOST = "SELECT l_post FROM likeInfo WHERE l_user=? ORDER BY ldate DESC";
 	private static String sql_SELECT_POSTINFO = "SELECT * FROM post WHERE pnum=?";
 	
-	// 글 전체 보기
+	// 
 	public ArrayList<PostVO> SelectAll(){
 		Connection conn = DBCP.connect();
 		ArrayList<PostVO> datas = new ArrayList<PostVO>();
@@ -74,7 +75,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SelectAll()에서 출력");
+			System.out.println("PostDAO SelectAll() printed!");
 			e.printStackTrace();
 		}
 		finally {
@@ -83,7 +84,7 @@ public class PostDAO {
 		return datas;
 	}
 
-	// showPost - ViewsUp 트랜잭션 처리
+	// 
 	public PostVO SelectOne(PostVO vo) {
 	      Connection conn=DBCP.connect();
 	      PostVO data=null;
@@ -92,7 +93,7 @@ public class PostDAO {
 	      Date dateOrigin;
 	      String dateToStr;
 	      try{
-	         conn.setAutoCommit(false);		// 자동 커밋옵션 끄기
+	         conn.setAutoCommit(false);		// 
 	         // showPost
 	         pstmt=conn.prepareStatement(sql_SELECT_ONE);
 	         pstmt.setInt(1, vo.getPnum());
@@ -120,10 +121,10 @@ public class PostDAO {
 	         pstmt=conn.prepareStatement(sql_ViewsUp); //
 	         pstmt.setInt(1, vo.getPnum());
 	         pstmt.executeUpdate();
-	         conn.commit(); // 트랜잭션 완료 후 커밋
+	         conn.commit(); // 
 	      }
 	      catch(Exception e){
-	         System.out.println("PostDAO SelectOne()에서 출력");
+	         System.out.println("PostDAO SelectOne() printed!");
 	         e.printStackTrace();
 	         try {
 	            conn.rollback();
@@ -154,7 +155,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO InsertDB()에서 출력");
+			System.out.println("PostDAO InsertDB() printed!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -176,7 +177,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO DeleteDB()에서 출력");
+			System.out.println("PostDAO DeleteDB() printed!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -203,7 +204,7 @@ public class PostDAO {
 			res=true;
 		}
 		catch(Exception e){
-			System.out.println("PostDAO UpdateDB()에서 출력");
+			System.out.println("PostDAO UpdateDB() printed!");
 			e.printStackTrace();
 			//res=false;
 		}
@@ -213,7 +214,7 @@ public class PostDAO {
 		return res;
 	}
 	
-	//Condition별 검색
+	//Condition
 	public ArrayList<PostVO> searchPost(String condition,String text){
 		String sql_SearchPost = "SELECT * FROM post WHERE "+condition+" LIKE ? ORDER BY pnum DESC";
 		Connection conn = DBCP.connect();
@@ -242,25 +243,25 @@ public class PostDAO {
 				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
 				vo.setPath(rs.getString("path"));
-				System.out.println("DAO 에서 데이터 : "+vo);
+				System.out.println("DAO  : "+vo);
 				datas.add(vo);
 			}
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SearchPost()에서 출력");
+			System.out.println("PostDAO SearchPost() printed!");
 			e.printStackTrace();
 		}
 		finally {
 			DBCP.disconnect(pstmt, conn);
 		}
-		System.out.println("DAO에서 datas : "+datas);
+		System.out.println("DAO datas : "+datas);
 		return datas;
 	}
 	
 	
 	
-	// 카테고리별 출력
+	// 
     public ArrayList<PostVO> SelectCategory(PostVO vo){
        Connection conn = DBCP.connect();
        ArrayList<PostVO> datas = new ArrayList();
@@ -291,7 +292,7 @@ public class PostDAO {
           rs.close();
        }
        catch(Exception e) {
-          System.out.println("PostDAO SelectCategory()에서 출력");
+          System.out.println("PostDAO SelectCategory() printed!");
           e.printStackTrace();
        }
        finally {
@@ -300,7 +301,7 @@ public class PostDAO {
        return datas;
     }
     
-    // 조회수 정렬
+    // 
     public ArrayList<PostVO> SelectViews(){
        Connection conn = DBCP.connect();
        ArrayList<PostVO> datas = new ArrayList();
@@ -330,7 +331,7 @@ public class PostDAO {
           rs.close();
        }
        catch(Exception e) {
-          System.out.println("PostDAO SelectViews()에서 출력");
+          System.out.println("PostDAO SelectViews() printed!");
           e.printStackTrace();
        }
        finally {
@@ -339,7 +340,46 @@ public class PostDAO {
        return datas;
     }
     
-    // 다음에 부여될 pnum 미리 알려주기
+    public ArrayList<PostVO> SelectCategoryForViews(PostVO vo){
+        Connection conn = DBCP.connect();
+        ArrayList<PostVO> datas = new ArrayList();
+        PreparedStatement pstmt = null;
+        SimpleDateFormat dateFix = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date dateOrigin;
+        String dateToStr;
+        try {
+           pstmt = conn.prepareStatement(sql_SELECT_CATEGORYFORVIEWS);
+           pstmt.setString(1, vo.getCategory());
+           ResultSet rs = pstmt.executeQuery();
+           while(rs.next()) {
+              PostVO data = new PostVO();
+              data.setPnum(rs.getInt("pnum"));
+              data.setViews(rs.getInt("views"));
+              data.setPlike(rs.getInt("plike"));
+              data.setCategory(rs.getString("category"));
+              data.setTitle(rs.getString("title"));
+              data.setContent(rs.getString("content"));
+              dateOrigin = rs.getDate("pdate");
+              dateToStr = dateFix.format(dateOrigin);
+              data.setPdate(dateToStr);
+              data.setP_user(rs.getString("p_user"));
+              data.setWriter(rs.getString("writer"));
+              data.setPath(rs.getString("path"));
+              datas.add(data);
+           }
+           rs.close();
+        }
+        catch(Exception e) {
+           System.out.println("PostDAO SelectCategoryForViews() printed!");
+           e.printStackTrace();
+        }
+        finally {
+           DBCP.disconnect(pstmt, conn);
+        }
+        return datas;
+     }
+    
+    // 
     public int expectPnum() {
 		Connection conn = DBCP.connect();
 		PreparedStatement pstmt = null;
@@ -354,7 +394,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO expectPnum()에서 출력");
+			System.out.println("PostDAO expectPnum() printed!");
 			e.printStackTrace();
 		}
 		finally {
@@ -375,7 +415,7 @@ public class PostDAO {
  			res=true;
  		}
  		catch(Exception e){
- 			System.out.println("PostDAO ViewsUp()에서 출력");
+ 			System.out.println("PostDAO ViewsUp() printed!");
  			e.printStackTrace();
  			//res=false;
  		}
@@ -396,7 +436,7 @@ public class PostDAO {
  			res=true;
  		}
  		catch(Exception e){
- 			System.out.println("PostDAO LikesUp()에서 출력");
+ 			System.out.println("PostDAO LikesUp() printed!");
  			e.printStackTrace();
  			//res=false;
  		}
@@ -418,7 +458,7 @@ public class PostDAO {
  			res=true;
  		}
  		catch(Exception e){
- 			System.out.println("PostDAO LikesDown()에서 출력");
+ 			System.out.println("PostDAO LikesDown() printed!");
  			e.printStackTrace();
  			//res=false;
  		}
@@ -462,7 +502,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SelectMyPost()에서 출력");
+			System.out.println("PostDAO SelectMyPost() printed!");
 			e.printStackTrace();
 		}
 		finally {
@@ -508,7 +548,7 @@ public class PostDAO {
 			rs.close();
 		}
 		catch(Exception e) {
-			System.out.println("PostDAO SelectLikePost()에서 출력");
+			System.out.println("PostDAO SelectLikePost() printed!");
 			e.printStackTrace();
 		}
 		finally {
