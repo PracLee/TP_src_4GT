@@ -5,11 +5,33 @@ TemplateMo 553 Xtra Blog
 https://templatemo.com/tm-553-xtra-blog
 
 */
+#group{
+	width : 100%;
+	margin: 40px;
+	font-size: 3em;
+	font-weight: bold;
+	text-align : center;
+	color : #DF3D3D;
+	padding-bottom: 40px;
+	padding-top: 30px;
+}
+#4GT{
+	border : 3px solid #D25A53;
+	margin-bottom : 500px;
+	
+}
+#team{
+	margin-left : 100px;
+}
 .img{
 	width : 170px;
 	height : 210px;
 }
+.teamLeader{
+	margin-bottom : 50px;
+}
 #partLeader{
+	margin-top : 50px;
 	margin-left : 25%;
 }
 .MVCPart{
