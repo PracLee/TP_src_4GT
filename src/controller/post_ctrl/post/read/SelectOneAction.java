@@ -56,7 +56,7 @@ public class SelectOneAction implements Action{
 
 		// 내가 쓴 글 정보 로그인 시만 수행
 		HttpSession session = request.getSession();
-		
+
 		request.setAttribute("singlePost", PVO);
 		request.setAttribute("likeInfo", false); // 사용자가 지금 보는글에 좋아요를 눌렀는지 확인하는 값 디폴트 false
 		if (session.getAttribute("userInfoData") != null) {
@@ -67,6 +67,21 @@ public class SelectOneAction implements Action{
 			LVO.setL_user(ID);
 			request.setAttribute("likeInfo", LDAO.SelectOne(LVO)); // 좋아요 정보
 		}
+		// 카테고리 인기글
+		ArrayList<PostVO> categoryDatas = PDAO.SelectCategoryForViews(PVO);
+		if(categoryDatas.size()!=0) {
+			ArrayList<PostVO> sliceCategoryDatas = new ArrayList<PostVO>();
+			for(int i=0;i<3;i++) {
+				PostVO vo =new PostVO();
+				vo = categoryDatas.get(i);
+				sliceCategoryDatas.add(vo);
+				if(categoryDatas.size()-1==i) {
+					break;
+				}
+			}
+			request.setAttribute("categoryDatas", sliceCategoryDatas);
+		}
+		
 		action.setPath("selectOne.ucdo");
 		action.setRedirect(false);
 		return action;
