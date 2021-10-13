@@ -341,7 +341,18 @@
 							<br>
 							</div>
 						</c:forEach>
+		<br>
+						</c:forEach>
 
+								<!-- 더보기 페이징 -->
+									<c:choose>
+										<c:when test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
+											<div style="text-align:right">
+												<a href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}" id="ccnt">더보기</a>
+											</div>
+										</c:when>
+									</c:choose>
+						<br>
 						<c:choose>
 							<c:when test="${userInfoData!=null}">
 								<form action="insertComment.ucdo" method="post"
@@ -352,15 +363,6 @@
 									<input type="hidden" name="cwriter"
 										value="${userInfoData.name}"> <input type="hidden"
 										name="pcmsg" value="0">
-
-									<!-- 더보기 페이징 -->
-									<c:choose>
-									<c:when test="">
-									<div id="ccnt">
-										<a href="selectOne.pdo?ccnt=${ccnt+3}&pnum=${singlePost.pnum}">더보기</a>
-									</div>
-									</c:when>
-									</c:choose>
 
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>

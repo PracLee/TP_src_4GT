@@ -104,9 +104,14 @@ function msgEditCancle(index){
 
 
 function msgEditFinish(index){ 
+	console.log("전달된 메시지: " + $("#ucmsg"+index).val());
+	console.log("인코딩된 메시지: " + encodeURIComponent($("#ucmsg"+index).val()));
+	var msg = $("#ucmsg"+index).val().replaceAll("??", "⁇").replaceAll("&","＆").replaceAll("%","％")
+	.replaceAll("+","＋").replaceAll("\\", "￦");
 	var params = "c_post="+$("#c_post"+index).val()+"&c_user="+$("#c_user"+index).val()+
 	"&cwriter="+$("#cwriter"+index).val()+"&cnum="+$("#cnum"+index).val()+"&cment="+$("#ucmsg"+index).val();
-    console.log(params);
+  //console.log(params);
+
 	$.ajax({
 		type:"post",
 		url:"editComment.ucdo",
@@ -196,7 +201,11 @@ function rmsgEditCancle(index,rindex){
 }
 
 function rmsgEditFinish(index,rindex){ 
-	var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+$("#urmsg"+index+rindex).val();
+	console.log("전달된 메시지: " + $("#urmsg"+index+rindex).val());
+	var msg = $("#urmsg"+index+rindex).val().replaceAll("??", "⁇").replaceAll("&","＆").replaceAll("%","％")
+	.replaceAll("+","＋").replaceAll("\\", "￦");
+	
+	var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+msg;
 
 	$.ajax({
 		type:"post",
