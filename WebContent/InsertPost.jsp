@@ -54,7 +54,7 @@ window.onload = function(){
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">
 							<input id="PostingSubject" class="form-control" name="title"
-								type="text" placeholder="제목을 입력하세요">
+								type="text" onKeyUp="checkByte(this,60)" placeholder="제목을 입력하세요">
 
 						</div>
 						<hr class="tm-hr-mycss">
