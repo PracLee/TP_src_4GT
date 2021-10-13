@@ -160,7 +160,11 @@ function rmsgEditCancle(index,rindex){
 }
 
 function rmsgEditFinish(index,rindex){ 
-	var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+$("#urmsg"+index+rindex).val();
+	console.log("전달된 메시지: " + $("#urmsg"+index+rindex).val());
+	var msg = $("#urmsg"+index).val().replaceAll("??", "⁇").replaceAll("&","＆").replaceAll("%","％")
+	.replaceAll("+","＋").replaceAll("\\", "￦");
+	
+	var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+msg;
 
 	$.ajax({
 		type:"post",
