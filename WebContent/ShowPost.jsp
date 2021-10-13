@@ -340,6 +340,15 @@
 							<br>
 						</c:forEach>
 
+								<!-- 더보기 페이징 -->
+									<c:choose>
+										<c:when test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
+											<div style="text-align:right">
+												<a href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}" id="ccnt">더보기</a>
+											</div>
+										</c:when>
+									</c:choose>
+						<br>
 						<c:choose>
 							<c:when test="${userInfoData!=null}">
 								<form action="insertComment.ucdo" method="post"
@@ -350,18 +359,6 @@
 									<input type="hidden" name="cwriter"
 										value="${userInfoData.name}"> <input type="hidden"
 										name="pcmsg" value="0">
-
-									<!-- 더보기 페이징 -->
-									<c:choose>
-										<c:when
-											test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
-											<div id="ccnt">
-												<a
-													href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}">더보기</a>
-											</div>
-										</c:when>
-									</c:choose>
-
 
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>
@@ -387,15 +384,8 @@
 
 						<c:choose>
 							<c:when test="${userInfoData==null}">
-								<!-- 더보기 페이징 -->
-								<c:choose>
-									<c:when test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
-										<div id="ccnt">
-											<a
-												href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}">더보기</a>
-										</div>
-									</c:when>
-								</c:choose>
+								
+								
 								<button
 									onclick="checkAlert('Login.jsp','댓글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')"
 									class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
