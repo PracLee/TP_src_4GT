@@ -56,7 +56,9 @@
 						</a>
 					</c:when>
 				</c:choose>
-
+				<li class="tm-nav-item"><a href="About.jsp" class="tm-nav-link">
+						<i class="far fa-comments"></i> Contact Us
+				</a></li>
 
 			</ul>
 			<!-- 블로그 LINK -->
@@ -66,13 +68,23 @@
 			<div style="width: 54px; display: inline-block;"id="HJBlog"><a href="https://instagram.com" ><img alt="김혁재 블로그" src="img/HJ2.png"></a></div>
 			<div style="width: 54px; display: inline-block;"id="YNBlog"><a href="https://linkedin.com" ><img alt="이예나 블로그" src="img/YN2.png"></a></div>
 			<div style="width: 54px; display: inline-block;"id="THBlog"><a href="https://linkedin.com" ><img alt="이태호 블로그" src="img/TH2.png"></a></div> -->
-			<ul id="blogLinks">
-				<li class="blog" id="BJBlog"><a rel="nofollow" href="https://github.com/PracLee" target="_blank"><img alt="이병재 깃허브" src="img/BJ2.png"></a></li>
-				<li class="blog" id="HTBlog"><a href="https://h-coding.tistory.com" target="_blank"><img alt="오현택 블로그" src="img/HT2.png"></a></li>
-				<li class="blog" id="HJBlog"><a href="https://github.com/James940909" target="_blank"><img alt="김혁재 깃허브" src="img/HJ2.png"></a></li>
-				<li class="blog" id="YNBlog"><a href="https://blog.naver.com/rn8958" target="_blank"><img alt="이예나 블로그" src="img/YN2.png"></a></li>
-				<li class="blog" id="THBlog"><a href="https://blog.naver.com/leeth0401" target="_blank"><img alt="이태호 블로그" src="img/TH2.png"></a></li>
-			</ul>
+		<ul id="blogLinks">
+			<li class="blog" id="BJBlog"><a rel="nofollow"
+				href="https://github.com/PracLee" target="_blank"><img
+					alt="이병재 깃허브" src="img/BJ2.png"></a></li>
+			<li class="blog" id="HTBlog"><a
+				href="https://h-coding.tistory.com" target="_blank"><img
+					alt="오현택 블로그" src="img/HT2.png"></a></li>
+			<li class="blog" id="HJBlog"><a
+				href="https://github.com/James940909" target="_blank"><img
+					alt="김혁재 깃허브" src="img/HJ2.png"></a></li>
+			<li class="blog" id="YNBlog"><a
+				href="https://blog.naver.com/rn8958" target="_blank"><img
+					alt="이예나 블로그" src="img/YN2.png"></a></li>
+			<li class="blog" id="THBlog"><a
+				href="https://blog.naver.com/leeth0401" target="_blank"><img
+					alt="이태호 블로그" src="img/TH2.png"></a></li>
+		</ul>
 
 	</div>
 </div>

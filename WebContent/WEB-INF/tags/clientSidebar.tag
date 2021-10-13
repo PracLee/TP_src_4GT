@@ -48,6 +48,11 @@
 				<li class="tm-nav-item" id="myPage"><a href="mypage.ucdo" 
 					class="tm-nav-link"> <i class="fas fa-file"></i> MyPage
 				</a></li>
+				
+				<li class="tm-nav-item"><a href="About.jsp" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        Contact Us
+                    </a></li>
 			</ul>
 		</nav>
 		   	<!-- <div style="width: 54px; display: inline-block;"id=BJBlog><a rel="nofollow" href="https://fb.com/templatemo" ><img alt="이병재 블로그" src="img/BJ2.png"></a></div>
