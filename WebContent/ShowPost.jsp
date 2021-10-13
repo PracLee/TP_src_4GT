@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<br>
-		
+
 		<div class="row tm-row">
 			<div class="col-lg-8 tm-post-col">
 				<div class="tm-post-full">
@@ -103,32 +103,33 @@
 									<figcaption class="tm-color-primary text-center">${cl.cwriter}</figcaption>
 								</figure>
 								<div class="cwidth">
-								
-								<!-- 이예나 -->
-								<!-- secretNum이 비밀댓글이라면 (1:비밀댓글, 0:일반댓글) -->								
-								<c:if test="${cl.secretNum==1}">
-									<c:choose>
-										<c:when test="${userInfoData.id==cl.c_user||userInfoData.id==cl.cwriter}">
-										<!-- 본인이거나, 작성자인 경우 댓글 내용출력 -->
-											<p id="secretOpen">(비밀댓글)</p>
-											<p id="pcmsg${index}">${cl.cment}</p>
-										</c:when>
-										
-										<c:otherwise>
-										<!-- 디폴트 -->
-											<p id="pcmsg${index}" class="secret">비밀댓글 입니다.</p>
-										</c:otherwise>								
-									</c:choose>
-									
-								</c:if>
-								
-								<!-- 일반 댓글이라면 댓글 내용출력 -->
-								<c:if test="${cl.secretNum==0}">
-									<p id="pcmsg${index}">${cl.cment}</p>
-								</c:if>
-								
-								
-								
+
+									<!-- 이예나 -->
+									<!-- secretNum이 비밀댓글이라면 (1:비밀댓글, 0:일반댓글) -->
+									<c:if test="${cl.secretNum==1}">
+										<c:choose>
+											<c:when
+												test="${userInfoData.id==cl.c_user||userInfoData.id==cl.cwriter}">
+												<!-- 본인이거나, 작성자인 경우 댓글 내용출력 -->
+												<p id="secretOpen">(비밀댓글)</p>
+												<p id="pcmsg${index}">${cl.cment}</p>
+											</c:when>
+
+											<c:otherwise>
+												<!-- 디폴트 -->
+												<p id="pcmsg${index}" class="secret">비밀댓글 입니다.</p>
+											</c:otherwise>
+										</c:choose>
+
+									</c:if>
+
+									<!-- 일반 댓글이라면 댓글 내용출력 -->
+									<c:if test="${cl.secretNum==0}">
+										<p id="pcmsg${index}">${cl.cment}</p>
+									</c:if>
+
+
+
 									<!-- 평상시 코멘트내용 -->
 									<%-- <p id="pcmsg${index}">${cl.cment}</p> --%>
 
@@ -250,19 +251,23 @@
 												<div class="tm-comment ">
 													<input type="hidden" name="r_post"
 														value="${singlePost.pnum}"> <input type="hidden"
-														name="rnum" id="rnum${index}${rindex}"value="${rl.rnum}"> <input
-														type="hidden" name="index" value="">
+														name="rnum" id="rnum${index}${rindex}" value="${rl.rnum}">
+													<input type="hidden" name="index" value="">
 													<!-- ${index} -->
 													<textarea id="urmsg${index}${rindex}"
 														class="rset dnone form-control urmsgSet" name="rment"
 														rows="6" onKeyUp="checkByte(this,200)" required>${rl.rment}</textarea>
 												</div>
 												<div class="text-right marginTop">
-													<a href="javascript:void(0);" onclick="rmsgEditCancle(${index},${rindex})"
-														id="uRCButton${index}${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														
-														<a href="javascript:void(0);" onclick="rmsgEditFinish(${index},${rindex})"
-														id="urButton${index}${rindex}" class="tm-color-primary dnone">답글수정</a>
+													<a href="javascript:void(0);"
+														onclick="rmsgEditCancle(${index},${rindex})"
+														id="uRCButton${index}${rindex}"
+														class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+													<a href="javascript:void(0);"
+														onclick="rmsgEditFinish(${index},${rindex})"
+														id="urButton${index}${rindex}"
+														class="tm-color-primary dnone">답글수정</a>
 
 													<!-- <button type="submit" id="urButton${index}${rindex}"
 														class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button> -->
@@ -292,7 +297,8 @@
 															class="tm-color-primary">수정</a> <a href="#"
 															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 															class="tm-color-primary">삭제</a> <span
-															class="tm-color-primary" id="rdate${index}${rindex}"> ${rl.rdate}</span>
+															class="tm-color-primary" id="rdate${index}${rindex}">
+															${rl.rdate}</span>
 													</div>
 													<br>
 												</c:when>
@@ -343,11 +349,13 @@
 
 									<!-- 더보기 페이징 -->
 									<c:choose>
-									<c:when test="">
-									<div id="ccnt">
-										<a href="selectOne.pdo?ccnt=${ccnt+3}&pnum=${singlePost.pnum}">더보기</a>
-									</div>
-									</c:when>
+										<c:when
+											test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
+											<div id="ccnt">
+												<a
+													href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}">더보기</a>
+											</div>
+										</c:when>
 									</c:choose>
 
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
@@ -361,8 +369,7 @@
 									<div class="mb-4">
 										<!-- id="crset" -->
 										<textarea class="crset form-control" name="cment" rows="6"
-										onKeyUp="checkByte(this,200)"
-											required></textarea>
+											onKeyUp="checkByte(this,200)" required></textarea>
 									</div>
 
 									<div class="text-right">
@@ -375,10 +382,21 @@
 
 						<c:choose>
 							<c:when test="${userInfoData==null}">
+								<!-- 더보기 페이징 -->
+								<c:choose>
+									<c:when test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
+										<div id="ccnt">
+											<a
+												href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}">더보기</a>
+										</div>
+									</c:when>
+								</c:choose>
 								<button
 									onclick="checkAlert('Login.jsp','댓글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')"
 									class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
+
 							</c:when>
+
 						</c:choose>
 					</div>
 				</div>
@@ -396,8 +414,9 @@
 						<li><a href="post.pdo?category=jap" class="tm-color-primary">일식</a></li>
 					</ul>
 					<hr class="mb-3 tm-hr-primary">
-					<h2 class="tm-mb-40 tm-post-title tm-color-primary">같은 카테고리 인기글</h2>
-					<mytag:likePost info="${categoryDatas}"/>
+					<h2 class="tm-mb-40 tm-post-title tm-color-primary">같은 카테고리
+						인기글</h2>
+					<mytag:likePost info="${categoryDatas}" />
 				</div>
 			</aside>
 		</div>

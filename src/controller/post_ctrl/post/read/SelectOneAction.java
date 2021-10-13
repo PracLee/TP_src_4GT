@@ -81,7 +81,6 @@ public class SelectOneAction implements Action{
 			}
 			request.setAttribute("categoryDatas", sliceCategoryDatas);
 		}
-		
 		action.setPath("selectOne.ucdo");
 		action.setRedirect(false);
 		return action;
