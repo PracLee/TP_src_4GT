@@ -68,6 +68,7 @@
 						모아보기, 검색기능도 구현하여 원하는 맛집들의 정보들을 알 수 있습니다.</p>
 					<p>또한 MyPage에 들어가 프로필 사진을 변경하고, 좋아요를 누른 글, 내가 작성한 글 등을 볼 수 있는
 						기능을 추가하여, 커뮤니티의 성격을 띄는 공유 블로그를 제작하였습니다.</p>
+					<br>
 					<h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title">개발 환경</h2>
 					<p>통합개발환경(IDE) : Eclipse photon</p>
 					<p>사용언어 : JAVA, HTML, CSS, JavaScript, JSP, Ajax, JSTL</p>
@@ -80,6 +81,7 @@
 					</p>
 					<p>개발모형 : 애자일방법론</p>
 					<p>소통 : 현장회의, Discord 서버 이용</p>
+					<br>
 					<h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title">발전방향</h2>
 					<p>추가적인 발전 방향으로는 사용자의 편의성을 추가하기 위해서 위치정보를 받아와서 Map에 마커로 표시할수 있는
 						기능을 추가하고, 추가로 주문과 대기 시스템을 합쳐, 기다림없이 음식을 받을 수 있게하는 방향이 있습니다.</p>
@@ -129,7 +131,7 @@
 			</div>
 			<div class="col-lg-6 tm-mb-60 tm-person-col" id="partLeader">
 				<div class="media">
-					<img src="img/about-02.jpg" alt="Image" class="img-fluid mr-4 img">
+					<img src="img/about-bj.jpg" alt="Image" class="img-fluid mr-4 img">
 					<div class="media-body">
 						<h2 class="tm-color-primary tm-post-title mb-2">이병재</h2>
 						<h3 class="tm-h3 mb-3">파트장 / Controller</h3>
@@ -152,7 +154,7 @@
 						<h2 class="tm-color-primary tm-post-title mb-2">이예나</h2>
 						<h3 class="tm-h3 mb-3">팀장 / Controller 겸 view...</h3>
 						<p class="mb-0 tm-line-height-short">
-						팀원들과 원활한 커뮤니케이션이 되어, 각자 파트를 수행할 때,<br>집중할 수 있었습니다. 4GT최고!! 👍   
+						팀원들과 원활한 커뮤니케이션이 되어, 파트를 수행할 때 집중할 수 있었습니다. 4GT최고!! 👍   
 					</div>
 				</div>
 			</div>
