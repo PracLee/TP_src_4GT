@@ -230,7 +230,7 @@ function rmsgEditFinish(index,rindex){
 			
 }
 //이예나 (구현 미완성)
-function rmsgInsert(index, cnum, replyCnt, c_post){ 
+/*function rmsgInsert(index, cnum, replyCnt, c_post){ 
 	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
 	console.log(index, cnum, replyCnt, c_post);
 	$.ajax({
@@ -249,7 +249,7 @@ function rmsgInsert(index, cnum, replyCnt, c_post){
 		}
 	});
 			
-}
+}*/
 //이예나 (구현 미완성)
 function rmsgDelete(index, rindex, rnum, r_post){ 
 	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
