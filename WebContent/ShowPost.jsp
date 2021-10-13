@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<br>
-
+		
 		<div class="row tm-row">
 			<div class="col-lg-8 tm-post-col">
 				<div class="tm-post-full">
@@ -86,12 +86,12 @@
 
 					<!-- Comments -->
 
-					<div>
 						<c:set var="index" value="0" />
 						<h2 class="tm-color-primary tm-post-title">Comments</h2>
 						<hr class="tm-hr-primary tm-mb-45">
 						<c:forEach var="datas" items="${postOne_comments}">
 							<c:set var="cl" value="${datas.comment}" />
+							<div class="commentSet${index}">
 							<!-- 변수설정 > index별 멤버변수 접근가능 -->
 
 							<div class="tm-comment tm-mb-45">
@@ -103,33 +103,32 @@
 									<figcaption class="tm-color-primary text-center">${cl.cwriter}</figcaption>
 								</figure>
 								<div class="cwidth">
-
-									<!-- 이예나 -->
-									<!-- secretNum이 비밀댓글이라면 (1:비밀댓글, 0:일반댓글) -->
-									<c:if test="${cl.secretNum==1}">
-										<c:choose>
-											<c:when
-												test="${userInfoData.id==cl.c_user||userInfoData.id==cl.cwriter}">
-												<!-- 본인이거나, 작성자인 경우 댓글 내용출력 -->
-												<p id="secretOpen">(비밀댓글)</p>
-												<p id="pcmsg${index}">${cl.cment}</p>
-											</c:when>
-
-											<c:otherwise>
-												<!-- 디폴트 -->
-												<p id="pcmsg${index}" class="secret">비밀댓글 입니다.</p>
-											</c:otherwise>
-										</c:choose>
-
-									</c:if>
-
-									<!-- 일반 댓글이라면 댓글 내용출력 -->
-									<c:if test="${cl.secretNum==0}">
-										<p id="pcmsg${index}">${cl.cment}</p>
-									</c:if>
-
-
-
+								
+								<!-- 이예나 -->
+								<!-- secretNum이 비밀댓글이라면 (1:비밀댓글, 0:일반댓글) -->								
+								<c:if test="${cl.secretNum==1}">
+									<c:choose>
+										<c:when test="${userInfoData.id==cl.c_user||userInfoData.id==cl.cwriter}">
+										<!-- 본인이거나, 작성자인 경우 댓글 내용출력 -->
+											<p id="secretOpen">(비밀댓글)</p>
+											<p id="pcmsg${index}">${cl.cment}</p>
+										</c:when>
+										
+										<c:otherwise>
+										<!-- 디폴트 -->
+											<p id="pcmsg${index}" class="secret">비밀댓글 입니다.</p>
+										</c:otherwise>								
+									</c:choose>
+									
+								</c:if>
+								
+								<!-- 일반 댓글이라면 댓글 내용출력 -->
+								<c:if test="${cl.secretNum==0}">
+									<p id="pcmsg${index}">${cl.cment}</p>
+								</c:if>
+								
+								
+								
 									<!-- 평상시 코멘트내용 -->
 									<%-- <p id="pcmsg${index}">${cl.cment}</p> --%>
 
@@ -192,9 +191,12 @@
 											<c:when test="${userInfoData.id==cl.c_user}">
 												<a href="javascript:void(0);" onclick="msgEdit(${index})"
 													class="tm-color-primary">수정</a>
-												<a href="#"
-													onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&replyCnt=${cl.replyCnt}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"
+													<a href="javascript:void(0);"
+													onclick="msgDelete(${index},${cl.cnum},${cl.replyCnt},${singlePost.pnum});"
 													class="tm-color-primary">삭제</a>
+												<%-- <a href="#"
+													onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&replyCnt=${cl.replyCnt}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"
+													class="tm-color-primary">삭제</a> --%>
 											</c:when>
 										</c:choose>
 										<span class="tm-color-primary" id="cdate${index}">
@@ -233,7 +235,6 @@
 							<div class="tm-comment-reply tm-mb-45">
 								<div class="rContent">
 									<c:forEach var="rl" items="${datas.rlist}">
-
 										<hr>
 										<div class="tm-comment reply">
 											<figure class="tm-comment-figure">
@@ -251,23 +252,19 @@
 												<div class="tm-comment ">
 													<input type="hidden" name="r_post"
 														value="${singlePost.pnum}"> <input type="hidden"
-														name="rnum" id="rnum${index}${rindex}" value="${rl.rnum}">
-													<input type="hidden" name="index" value="">
+														name="rnum" id="rnum${index}${rindex}"value="${rl.rnum}"> <input
+														type="hidden" name="index" value="">
 													<!-- ${index} -->
 													<textarea id="urmsg${index}${rindex}"
 														class="rset dnone form-control urmsgSet" name="rment"
 														rows="6" onKeyUp="checkByte(this,200)" required>${rl.rment}</textarea>
 												</div>
 												<div class="text-right marginTop">
-													<a href="javascript:void(0);"
-														onclick="rmsgEditCancle(${index},${rindex})"
-														id="uRCButton${index}${rindex}"
-														class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-													<a href="javascript:void(0);"
-														onclick="rmsgEditFinish(${index},${rindex})"
-														id="urButton${index}${rindex}"
-														class="tm-color-primary dnone">답글수정</a>
+													<a href="javascript:void(0);" onclick="rmsgEditCancle(${index},${rindex})"
+														id="uRCButton${index}${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														
+														<a href="javascript:void(0);" onclick="rmsgEditFinish(${index},${rindex})"
+														id="urButton${index}${rindex}" class="tm-color-primary dnone">답글수정</a>
 
 													<!-- <button type="submit" id="urButton${index}${rindex}"
 														class="uButton tm-btn tm-btn-primary tm-btn-small">답글수정</button> -->
@@ -276,16 +273,12 @@
 										</div>
 										<!-- 여기 -->
 										<span class="replyInfo">
-											<p class="text-right" style="color: red" id="rlike">
-												<a href="likeUpReply.ucdo?pnum=${singlePost.pnum}&rnum=${rl.rnum}">
-												<i class='far fa-heart'></i></a>&nbsp${rl.rlikeCnt}
+											<p class="text-right" style="color: red">
+												<i class='far fa-heart'></i>&nbsp0
 											</p>
-											
-											
-											<!--  <p class="text-right dnone" style="color: red">
+											<p class="text-right dnone" style="color: red">
 												<i class='fas fa-heart'></i>&nbsp0
-											</p> -->
-											<!-- 비회원일 경우 날짜만 보임 --> <c:choose>
+											</p> <!-- 비회원일 경우 날짜만 보임 --> <c:choose>
 												<c:when test="${userInfoData.id==null}">
 													<div class="text-right">
 														<span class="tm-color-primary rmsgInfo">
@@ -298,11 +291,18 @@
 														class="d-flex justify-content-between rmsgOption">
 														<a href="javascript:void(0);"
 															onclick="rmsgEdit(${index},${rindex})"
-															class="tm-color-primary">수정</a> <a href="#"
+															class="tm-color-primary">수정</a> 
+															
+															
+															<a href="javascript:void(0)"
 															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
-															class="tm-color-primary">삭제</a> <span
-															class="tm-color-primary" id="rdate${index}${rindex}">
-															${rl.rdate}</span>
+															class="tm-color-primary">삭제</a>
+															
+															<%-- <a href="javascript:void(0)"
+															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
+															class="tm-color-primary">삭제</a>  --%>
+															
+															<span class="tm-color-primary" id="rdate${index}${rindex}"> ${rl.rdate}</span>
 													</div>
 													<br>
 												</c:when>
@@ -331,6 +331,7 @@
 								</form>
 							</div>-->
 										<c:set var="rindex" value="${rindex+1}" />
+										
 									</c:forEach>
 								</div>
 							</div>
@@ -338,6 +339,9 @@
 							<c:set var="index" value="${index+1}" />
 							<hr class="cHr">
 							<br>
+							</div>
+						</c:forEach>
+		<br>
 						</c:forEach>
 
 								<!-- 더보기 페이징 -->
@@ -371,7 +375,8 @@
 									<div class="mb-4">
 										<!-- id="crset" -->
 										<textarea class="crset form-control" name="cment" rows="6"
-											onKeyUp="checkByte(this,200)" required></textarea>
+										onKeyUp="checkByte(this,200)"
+											required></textarea>
 									</div>
 
 									<div class="text-right">
@@ -384,14 +389,10 @@
 
 						<c:choose>
 							<c:when test="${userInfoData==null}">
-								
-								
 								<button
 									onclick="checkAlert('Login.jsp','댓글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')"
 									class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
-
 							</c:when>
-
 						</c:choose>
 					</div>
 				</div>
@@ -409,9 +410,8 @@
 						<li><a href="post.pdo?category=jap" class="tm-color-primary">일식</a></li>
 					</ul>
 					<hr class="mb-3 tm-hr-primary">
-					<h2 class="tm-mb-40 tm-post-title tm-color-primary">같은 카테고리
-						인기글</h2>
-					<mytag:likePost info="${categoryDatas}" />
+					<h2 class="tm-mb-40 tm-post-title tm-color-primary">같은 카테고리 인기글</h2>
+					<mytag:likePost info="${categoryDatas}"/>
 				</div>
 			</aside>
 		</div>

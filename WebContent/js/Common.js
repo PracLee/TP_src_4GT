@@ -109,7 +109,8 @@ function msgEditFinish(index){
 	var msg = $("#ucmsg"+index).val().replaceAll("??", "⁇").replaceAll("&","＆").replaceAll("%","％")
 	.replaceAll("+","＋").replaceAll("\\", "￦");
 	var params = "c_post="+$("#c_post"+index).val()+"&c_user="+$("#c_user"+index).val()+
-	"&cwriter="+$("#cwriter"+index).val()+"&cnum="+$("#cnum"+index).val()+"&cment="+msg;
+	"&cwriter="+$("#cwriter"+index).val()+"&cnum="+$("#cnum"+index).val()+"&cment="+$("#ucmsg"+index).val();
+  //console.log(params);
 
 	$.ajax({
 		type:"post",
@@ -132,8 +133,48 @@ function msgEditFinish(index){
 		}
 	})
 }
+//이예나 (미구현)
+function msgInsert(index,rindex){ 
+	//var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+$("#urmsg"+index+rindex).val();
 
-
+	$.ajax({
+		type:"post",
+		url:"insertComment.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(){
+			$('#prmsg'+index+rindex).css('display','');
+			$('#rOption'+index+rindex).css('visibility','');
+			$('#urmsg'+index+rindex).addClass('dnone');
+			$('#urButton'+index+rindex).addClass('dnone');
+			$('#uRCButton'+index+rindex).addClass('dnone');
+			$("#prmsg"+index+rindex).text(args[0].rment);
+			$("#rdate"+index+rindex).text(args[0].cdate);
+		}
+	})
+			
+}
+// 이예나 (구현 완)
+function msgDelete(index, cnum, replyCnt, c_post){ 
+	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
+	console.log(index, cnum, replyCnt, c_post);
+	$.ajax({
+		type:"post",
+		url:"deleteComment.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(data){ // commentSet${index}
+			
+			var commentSet = document.querySelectorAll(".commentSet"+index);
+			console.log("이예나"+commentSet);
+			for(var i = 0; i < commentSet.length; i++){
+				commentSet[i].remove(); // 데이터 삭제
+				
+			}
+		}
+	});
+			
+}
 
 
 function rmsgInsert(index){ // 수정버튼 클릭시 바로 수정가능하게 해주는 기능		
@@ -188,7 +229,48 @@ function rmsgEditFinish(index,rindex){
 	})
 			
 }
-
+//이예나 (구현 미완성)
+function rmsgInsert(index, cnum, replyCnt, c_post){ 
+	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
+	console.log(index, cnum, replyCnt, c_post);
+	$.ajax({
+		type:"post",
+		url:"deleteComment.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(data){ // commentSet${index}
+			
+			var commentSet = document.querySelectorAll(".commentSet"+index);
+			console.log("이예나"+commentSet);
+			for(var i = 0; i < commentSet.length; i++){
+				commentSet[i].remove(); // 데이터 삭제
+				
+			}
+		}
+	});
+			
+}
+//이예나 (구현 미완성)
+function rmsgDelete(index, rindex, rnum, r_post){ 
+	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
+	console.log(index, cnum, replyCnt, c_post);
+	$.ajax({
+		type:"post",
+		url:"deleteComment.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(data){ // commentSet${index}
+			
+			var commentSet = document.querySelectorAll(".commentSet"+index);
+			console.log("이예나"+commentSet);
+			for(var i = 0; i < commentSet.length; i++){
+				commentSet[i].remove(); // 데이터 삭제
+				
+			}
+		}
+	});
+			
+}
 
 //Byte 수 체크 제한
 function checkByte(obj, maxByte)
