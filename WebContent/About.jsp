@@ -177,7 +177,7 @@
 						<div class="media-body">
 							<h2 class="tm-color-primary tm-post-title mb-2">이태호</h2>
 							<h3 class="tm-h3 mb-3">사원 / View</h3>
-							<p class="mb-0 tm-line-height-short">프로젝트 끝내고 로아 레이드 하세요..!</p>
+							<p class="mb-0 tm-line-height-short">항상 디코와 카톡으로 질문에 친절히 답해주셔서 감사합니다~! 여러분의 도움으로 이제 완벽히 이해했답니다!</p>
 						</div>
 					</div>
 				</div>
