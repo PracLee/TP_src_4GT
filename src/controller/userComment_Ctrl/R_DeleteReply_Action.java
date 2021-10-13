@@ -25,7 +25,7 @@ public class R_DeleteReply_Action implements Action{
 		
 	    // DAO수행 필요데이터 SET
 		replyVO.setRnum(Integer.parseInt(request.getParameter("rnum")));
-		
+		replyVO = replyDAO.SelectOne(replyVO);
 		
 		
 		String path = null; // uri변수 초기화
