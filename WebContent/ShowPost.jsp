@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -271,12 +271,16 @@
 										</div>
 										<!-- 여기 -->
 										<span class="replyInfo">
-											<p class="text-right" style="color: red">
-												<i class='far fa-heart'></i>&nbsp0
+											<p class="text-right" style="color: red" id="rlike">
+												<a href="likeUpReply.ucdo?pnum=${singlePost.pnum}&rnum=${rl.rnum}">
+												<i class='far fa-heart'></i></a>&nbsp${rl.rlikeCnt}
 											</p>
-											<p class="text-right dnone" style="color: red">
+											
+											
+											<!--  <p class="text-right dnone" style="color: red">
 												<i class='fas fa-heart'></i>&nbsp0
-											</p> <!-- 비회원일 경우 날짜만 보임 --> <c:choose>
+											</p> -->
+											<!-- 비회원일 경우 날짜만 보임 --> <c:choose>
 												<c:when test="${userInfoData.id==null}">
 													<div class="text-right">
 														<span class="tm-color-primary rmsgInfo">
@@ -342,14 +346,13 @@
 										name="pcmsg" value="0">
 
 									<!-- 더보기 페이징 -->
-									<c:choose>
-									<c:when test="">
+					
+									
 									<div id="ccnt">
 										<a href="selectOne.pdo?ccnt=${ccnt+3}&pnum=${singlePost.pnum}">더보기</a>
 									</div>
-									</c:when>
-									</c:choose>
-
+									
+								
 									<h2 class="tm-color-primary tm-post-title mb-4">Your
 										comment</h2>
 
