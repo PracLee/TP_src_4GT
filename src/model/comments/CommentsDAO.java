@@ -25,6 +25,8 @@ public class CommentsDAO {
 	// 다른 테이블 접근 쿼리
 	private static String sql_SELECT_ALL_REPLY = "SELECT * FROM reply WHERE r_comments=? ORDER BY rnum";
 	private static String sql_comCntUp = "UPDATE post SET comCnt=comCnt+1 WHERE pnum=?";
+	private static String sql_comCntDown = "UPDATE post SET comCnt=comCnt-? WHERE pnum=?";
+	private static String sql_deleteReply = "DELETE FROM reply WHERE r_comments=?";
 	
 	public ArrayList<CommentsSet> getSetData(CommentsVO vo) {
 		Connection conn = DBCP.connect();
@@ -197,23 +199,31 @@ public class CommentsDAO {
 		return res;
 	}
 
-	// DELETE -> 댓글 삭제
+	// DELETE -> 댓글 삭제 -> 답글도 삭제
 	public boolean DeleteDB(CommentsVO vo) {
 		Connection conn=DBCP.connect();
 		boolean res=false;
 		PreparedStatement pstmt=null;
 		try{
 			conn.setAutoCommit(false);
+			
+			// 댓글삭제
 			pstmt=conn.prepareStatement(sql_DELETE);
 			pstmt.setInt(1, vo.getCnum());
 			pstmt.executeUpdate();
-			String sql_comCntDown = "UPDATE post SET comCnt=comCnt-? WHERE pnum=?";
+			
+			// 후 게시물의 댓글cnt 다운!
 			pstmt=conn.prepareStatement(sql_comCntDown);
-			// pstmt.setInt(1, 1);
-			System.out.println("vo.getReplyCnt() : " + vo.getReplyCnt());
 			pstmt.setInt(1, vo.getReplyCnt() + 1);
 			pstmt.setInt(2, vo.getC_post());
 			pstmt.executeUpdate();
+			
+			// 후 해당 댓글의 답글 삭제
+			pstmt=conn.prepareStatement(sql_deleteReply);
+			pstmt.setInt(1, vo.getCnum());
+			pstmt.executeUpdate();
+			
+			
 			conn.commit();
 			conn.setAutoCommit(true);
 			res=true;
