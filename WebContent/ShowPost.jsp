@@ -250,7 +250,7 @@
 												<div class="tm-comment ">
 													<input type="hidden" name="r_post"
 														value="${singlePost.pnum}"> <input type="hidden"
-														name="rnum" value="${rl.rnum}"> <input
+														name="rnum" id="rnum${index}${rindex}"value="${rl.rnum}"> <input
 														type="hidden" name="index" value="">
 													<!-- ${index} -->
 													<textarea id="urmsg${index}${rindex}"
@@ -258,13 +258,10 @@
 														rows="6" onKeyUp="checkByte(this,200)" required>${rl.rment}</textarea>
 												</div>
 												<div class="text-right marginTop">
-													<a href="javascript:void(0);"
-
-														onclick="rmsgEditCancle(${index},${rindex})"
+													<a href="javascript:void(0);" onclick="rmsgEditCancle(${index},${rindex})"
 														id="uRCButton${index}${rindex}" class="tm-color-primary dnone">취소</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 														
-														<a href="javascript:void(0);"
-														onclick="rmsgEditFinish(${index},${rindex})"
+														<a href="javascript:void(0);" onclick="rmsgEditFinish(${index},${rindex})"
 														id="urButton${index}${rindex}" class="tm-color-primary dnone">답글수정</a>
 
 													<!-- <button type="submit" id="urButton${index}${rindex}"
@@ -279,7 +276,7 @@
 											</p>
 											<p class="text-right dnone" style="color: red">
 												<i class='fas fa-heart'></i>&nbsp0
-											</p> <!-- 비회원일 경우 날자만 보임 --> <c:choose>
+											</p> <!-- 비회원일 경우 날짜만 보임 --> <c:choose>
 												<c:when test="${userInfoData.id==null}">
 													<div class="text-right">
 														<span class="tm-color-primary rmsgInfo">
@@ -295,7 +292,7 @@
 															class="tm-color-primary">수정</a> <a href="#"
 															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
 															class="tm-color-primary">삭제</a> <span
-															class="tm-color-primary"> ${rl.rdate}</span>
+															class="tm-color-primary" id="rdate${index}${rindex}"> ${rl.rdate}</span>
 													</div>
 													<br>
 												</c:when>

@@ -156,12 +156,28 @@ function rmsgEditCancle(index,rindex){
 }
 
 function rmsgEditFinish(index,rindex){ 
-	
-	$('#prmsg'+index+rindex).css('display','');
-	$('#rOption'+index+rindex).css('visibility','');
-	$('#urmsg'+index+rindex).addClass('dnone');
-	$('#urButton'+index+rindex).addClass('dnone');
-	$('#uRCButton'+index+rindex).addClass('dnone');
+	var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+$("#urmsg"+index+rindex).val();
+
+	$.ajax({
+		type:"post",
+		url:"editReply.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(args){
+			$('#prmsg'+index+rindex).css('display','');
+			$('#rOption'+index+rindex).css('visibility','');
+			$('#urmsg'+index+rindex).addClass('dnone');
+			$('#urButton'+index+rindex).addClass('dnone');
+			$('#uRCButton'+index+rindex).addClass('dnone');
+//			console.log("기본: " + args[0].rment);
+//			console.log("인코딩: " + encodeURIComponent(args[0].rment));
+//			console.log(args[0].rdate);
+//			console.log("index: " + index);
+//			console.log("rindex: "+ rindex);
+			$("#prmsg"+index+rindex).text(args[0].rment);
+			$("#rdate"+index+rindex).text(args[0].cdate);
+		}
+	})
 			
 }
 

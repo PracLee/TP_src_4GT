@@ -27,8 +27,6 @@ public class R_UpdateReply_Action implements Action{
 		// DAO수행 필요데이터 SET
 		replyVO.setRnum(Integer.parseInt(request.getParameter("rnum")));
 		replyVO.setRment(request.getParameter("rment"));
-
-		System.out.println("야호1");
 		String path = null; // uri변수 초기화
 
 		//DAO 수행
@@ -48,13 +46,9 @@ public class R_UpdateReply_Action implements Action{
 			}
 		}
 
-
-		String msg = newData.getRment().replace("\n","<br>");
-		  
+		String msg = newData.getRment().replace("\n"," ");
 	    String result = "[{\"rment\":\"" + msg+"\",\"cdate\":\"" + newData.getRdate() + "\"}]";
 	    out.println(result);
-
-	    System.out.println("야호2");
 	    return null;
 	}
 
