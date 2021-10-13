@@ -381,16 +381,15 @@
 						</c:choose>
 
 						<c:choose>
+							<!-- 더보기 페이징 -->
+							<c:choose>
+								<c:when test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
+									<div id="ccnt">
+										<a href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}">더보기</a>
+									</div>
+								</c:when>
+							</c:choose>
 							<c:when test="${userInfoData==null}">
-								<!-- 더보기 페이징 -->
-								<c:choose>
-									<c:when test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
-										<div id="ccnt">
-											<a
-												href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}">더보기</a>
-										</div>
-									</c:when>
-								</c:choose>
 								<button
 									onclick="checkAlert('Login.jsp','댓글을 등록하시려면 로그인을해야합니다.\n로그인창으로 가시겠어요?')"
 									class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
