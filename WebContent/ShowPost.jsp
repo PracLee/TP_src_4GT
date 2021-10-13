@@ -86,12 +86,12 @@
 
 					<!-- Comments -->
 
-					<div>
 						<c:set var="index" value="0" />
 						<h2 class="tm-color-primary tm-post-title">Comments</h2>
 						<hr class="tm-hr-primary tm-mb-45">
 						<c:forEach var="datas" items="${postOne_comments}">
 							<c:set var="cl" value="${datas.comment}" />
+							<div class="commentSet${index}">
 							<!-- 변수설정 > index별 멤버변수 접근가능 -->
 
 							<div class="tm-comment tm-mb-45">
@@ -191,9 +191,12 @@
 											<c:when test="${userInfoData.id==cl.c_user}">
 												<a href="javascript:void(0);" onclick="msgEdit(${index})"
 													class="tm-color-primary">수정</a>
-												<a href="#"
-													onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&replyCnt=${cl.replyCnt}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"
+													<a href="javascript:void(0);"
+													onclick="msgDelete(${index},${cl.cnum},${cl.replyCnt},${singlePost.pnum});"
 													class="tm-color-primary">삭제</a>
+												<%-- <a href="#"
+													onclick="checkAlert('deleteComment.ucdo?cnum=${cl.cnum}&replyCnt=${cl.replyCnt}&c_post=${singlePost.pnum}&index=${index}','댓글을 삭제하시겠어요?')"
+													class="tm-color-primary">삭제</a> --%>
 											</c:when>
 										</c:choose>
 										<span class="tm-color-primary" id="cdate${index}">
@@ -232,7 +235,6 @@
 							<div class="tm-comment-reply tm-mb-45">
 								<div class="rContent">
 									<c:forEach var="rl" items="${datas.rlist}">
-
 										<hr>
 										<div class="tm-comment reply">
 											<figure class="tm-comment-figure">
@@ -289,10 +291,18 @@
 														class="d-flex justify-content-between rmsgOption">
 														<a href="javascript:void(0);"
 															onclick="rmsgEdit(${index},${rindex})"
-															class="tm-color-primary">수정</a> <a href="#"
+															class="tm-color-primary">수정</a> 
+															
+															
+															<a href="javascript:void(0)"
 															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
-															class="tm-color-primary">삭제</a> <span
-															class="tm-color-primary" id="rdate${index}${rindex}"> ${rl.rdate}</span>
+															class="tm-color-primary">삭제</a>
+															
+															<%-- <a href="javascript:void(0)"
+															onclick="checkAlert('deleteReply.ucdo?rnum=${rl.rnum}&r_post=${singlePost.pnum}&rindex=${rindex}','답글을 삭제하시겠어요?')"
+															class="tm-color-primary">삭제</a>  --%>
+															
+															<span class="tm-color-primary" id="rdate${index}${rindex}"> ${rl.rdate}</span>
 													</div>
 													<br>
 												</c:when>
@@ -321,6 +331,7 @@
 								</form>
 							</div>-->
 										<c:set var="rindex" value="${rindex+1}" />
+										
 									</c:forEach>
 								</div>
 							</div>
@@ -328,6 +339,7 @@
 							<c:set var="index" value="${index+1}" />
 							<hr class="cHr">
 							<br>
+							</div>
 						</c:forEach>
 
 						<c:choose>
