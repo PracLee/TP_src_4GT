@@ -252,19 +252,18 @@ function rmsgEditFinish(index,rindex){
 }*/
 //이예나 (구현 미완성)
 function rmsgDelete(index, rindex, rnum, r_post){ 
-	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
-	console.log(index, cnum, replyCnt, c_post);
+	var params = "rnum="+rnum;
 	$.ajax({
 		type:"post",
-		url:"deleteComment.ucdo",
+		url:"deleteReply.ucdo",
 		data:params,
 		dataType:"json",
 		success:function(data){ // commentSet${index}
 			
-			var commentSet = document.querySelectorAll(".commentSet"+index);
-			console.log("이예나"+commentSet);
-			for(var i = 0; i < commentSet.length; i++){
-				commentSet[i].remove(); // 데이터 삭제
+			var replySet = document.querySelectorAll(".replySet"+index+rindex);
+			console.log("이예나"+replySet);
+			for(var i = 0; i < replySet.length; i++){
+				replySet[i].remove(); // 데이터 삭제
 				
 			}
 		}
