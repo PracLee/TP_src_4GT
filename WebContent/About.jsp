@@ -161,7 +161,7 @@
 				<br> <br>
 				<div class="col-lg-6 tm-mb-60 tm-person-col">
 					<div class="media tm-person teamLeader">
-						<img src="img/about-03.jpg" alt="Image" class="img-fluid mr-4 img">
+						<img src="img/about-ht.JPG" alt="Image" class="img-fluid mr-4 img">
 						<div class="media-body">
 							<h2 class="tm-color-primary tm-post-title mb-2">오현택</h2>
 							<h3 class="tm-h3 mb-3">팀장 / Model</h3>
