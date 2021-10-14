@@ -181,6 +181,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="col-lg-6 tm-mb-60 tm-person-col">
 					<div class="media tm-person">
 						<img src="img/about-hj.png" alt="Image" class="img-fluid mr-4 img">
