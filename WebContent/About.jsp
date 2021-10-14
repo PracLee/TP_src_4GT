@@ -97,7 +97,7 @@
 					</div>
 					<h2 class="mb-3 tm-color-primary tm-post-title">Model</h2>
 					<p class="mb-0 tm-line-height-short">
-						Oh Hyean Taik<br>Kim Hyuck Jae
+						Oh Hyun Taek<br>Kim Hyuck Jae
 					</p>
 				</div>
 			</div>
@@ -165,7 +165,8 @@
 						<div class="media-body">
 							<h2 class="tm-color-primary tm-post-title mb-2">오현택</h2>
 							<h3 class="tm-h3 mb-3">팀장 / Model</h3>
-							<p class="mb-0 tm-line-height-short">제가요?</p>
+							<p class="mb-0 tm-line-height-short">코드가 맞는 팀원들 덕분에 즐겁게 작업할 수 있었고, 협업하며 함께 성장하는 경험을 얻어서 좋았습니다!
+							 </p>
 						</div>
 					</div>
 				</div>
