@@ -352,7 +352,7 @@
 
 									<!-- 비밀댓글 선택  -->
 									<p id="comSecret">
-										비밀댓글<input type="checkbox" name="secretNum" value="1">
+										비밀댓글&nbsp;&nbsp;<input type="checkbox" name="secretNum" value="1">
 									</p>
 
 									<div class="mb-4">
