@@ -127,7 +127,7 @@
 		<hr class="tm-hr-primary  tm-mb-55">
 		<!-- 왜 안먹히지.. -->
 		<h3 id="group">4GT 조직도</h3>
-		<div id="4GT" style="border : 3px solid #D25A53; margin-bottom : 300px;">
+		<div id="4GT" style="border : 3px solid #D25A53; margin-bottom : 300px; padding-right:15px;">
 			<!-- 파트장 -->
 			<div class="row tm-row tm-mb-60">
 				<div class="col-12"></div>
