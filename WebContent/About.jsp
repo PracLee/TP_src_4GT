@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <!-- https://fontawesome.com/ -->
-
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 <link rel="shortcut icon" href="img/favicon2.ico">
