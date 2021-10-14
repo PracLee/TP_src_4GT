@@ -97,7 +97,7 @@
 					</div>
 					<h2 class="mb-3 tm-color-primary tm-post-title">Model</h2>
 					<p class="mb-0 tm-line-height-short">
-						Oh Hyean Taik<br>Kim Hyuck Jae
+						Oh Hyun Taek<br>Kim Hyuck Jae
 					</p>
 				</div>
 			</div>
@@ -165,7 +165,7 @@
 						<div class="media-body">
 							<h2 class="tm-color-primary tm-post-title mb-2">오현택</h2>
 							<h3 class="tm-h3 mb-3">팀장 / Model</h3>
-							<p class="mb-0 tm-line-height-short">제가요?</p>
+							<p class="mb-0 tm-line-height-short">코드가 맞는 팀원들 덕분에 즐겁게 작업할 수 있었고, 협업하며 함께 성장하는 경험을 얻어서 좋았습니다!</p>
 						</div>
 					</div>
 				</div>
@@ -173,7 +173,7 @@
 				<!-- 사원 -->
 				<div class="col-lg-6 tm-mb-60 tm-person-col">
 					<div class="media tm-person">
-						<img src="img/about-04.jpg" alt="Image" class="img-fluid mr-4 img">
+						<img src="img/about-th.jpg" alt="Image" class="img-fluid mr-4 img">
 						<div class="media-body">
 							<h2 class="tm-color-primary tm-post-title mb-2">이태호</h2>
 							<h3 class="tm-h3 mb-3">사원 / View</h3>
@@ -183,11 +183,11 @@
 				</div>
 				<div class="col-lg-6 tm-mb-60 tm-person-col">
 					<div class="media tm-person">
-						<img src="img/about-05.jpg" alt="Image" class="img-fluid mr-4 img">
+						<img src="img/about-hj.png" alt="Image" class="img-fluid mr-4 img">
 						<div class="media-body">
 							<h2 class="tm-color-primary tm-post-title mb-2">김혁재</h2>
 							<h3 class="tm-h3 mb-3">사원 / Model</h3>
-							<p class="mb-0 tm-line-height-short">잘자요</p>
+							<p class="mb-0 tm-line-height-short">처음 프로젝트 시작할때는 많이 부족했지만, 팀장님들과 팀원들 덕분에 많이 성장하게 됐고 좋은 경험이였습니다!</p>
 						</div>
 					</div>
 				</div>
