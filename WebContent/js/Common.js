@@ -110,7 +110,7 @@ function msgEditFinish(index){
 	.replaceAll("+","＋").replaceAll("\\", "￦");
 	var params = "c_post="+$("#c_post"+index).val()+"&c_user="+$("#c_user"+index).val()+
 	"&cwriter="+$("#cwriter"+index).val()+"&cnum="+$("#cnum"+index).val()+"&cment="+$("#ucmsg"+index).val();
-  //console.log(params);
+	//console.log(params);
 
 	$.ajax({
 		type:"post",
@@ -129,51 +129,39 @@ function msgEditFinish(index){
 			console.log("index: " + index);
 			$("#pcmsg"+index).text(args[0].cment);
 			$("#cdate"+index).text(args[0].cdate);
-			
-		}
-	})
-}
-//이예나 (미구현)
-function msgInsert(index,rindex){ 
-	//var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+$("#urmsg"+index+rindex).val();
 
-	$.ajax({
-		type:"post",
-		url:"insertComment.ucdo",
-		data:params,
-		dataType:"json",
-		success:function(){
-			$('#prmsg'+index+rindex).css('display','');
-			$('#rOption'+index+rindex).css('visibility','');
-			$('#urmsg'+index+rindex).addClass('dnone');
-			$('#urButton'+index+rindex).addClass('dnone');
-			$('#uRCButton'+index+rindex).addClass('dnone');
-			$("#prmsg"+index+rindex).text(args[0].rment);
-			$("#rdate"+index+rindex).text(args[0].cdate);
 		}
 	})
-			
 }
-// 이예나 (구현 완)
+
+//이예나 (구현 완)
 function msgDelete(index, cnum, replyCnt, c_post){ 
-	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
-	console.log(index, cnum, replyCnt, c_post);
-	$.ajax({
-		type:"post",
-		url:"deleteComment.ucdo",
-		data:params,
-		dataType:"json",
-		success:function(data){ // commentSet${index}
-			
-			var commentSet = document.querySelectorAll(".commentSet"+index);
-			console.log("이예나"+commentSet);
-			for(var i = 0; i < commentSet.length; i++){
-				commentSet[i].remove(); // 데이터 삭제
-				
+	result = confirm("댓글 삭제하시겠습니까?");
+
+	// 삭제 동의시
+	if (result == true) {
+		var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
+		console.log(index, cnum, replyCnt, c_post);
+		$.ajax({
+			type:"post",
+			url:"deleteComment.ucdo",
+			data:params,
+			dataType:"json",
+			success:function(data){ // commentSet${index}
+
+				var commentSet = document.querySelectorAll(".commentSet"+index);
+				console.log("이예나"+commentSet);
+				for(var i = 0; i < commentSet.length; i++){
+					commentSet[i].remove(); // 데이터 삭제
+
+				}
 			}
-		}
-	});
-			
+		});
+	}
+	else {	// 미동의시
+		return;
+	}
+
 }
 
 
@@ -197,14 +185,14 @@ function rmsgEditCancle(index,rindex){
 	$('#urmsg'+index+rindex).addClass('dnone');
 	$('#urButton'+index+rindex).addClass('dnone');
 	$('#uRCButton'+index+rindex).addClass('dnone');
-	
+
 }
 
 function rmsgEditFinish(index,rindex){ 
 	console.log("전달된 메시지: " + $("#urmsg"+index+rindex).val());
 	var msg = $("#urmsg"+index+rindex).val().replaceAll("??", "⁇").replaceAll("&","＆").replaceAll("%","％")
 	.replaceAll("+","＋").replaceAll("\\", "￦");
-	
+
 	var params = "rnum="+$("#rnum"+index+rindex).val()+"&rment="+msg;
 
 	$.ajax({
@@ -227,106 +215,89 @@ function rmsgEditFinish(index,rindex){
 			$("#rdate"+index+rindex).text(args[0].cdate);
 		}
 	})
-			
+
 }
-//이예나 (구현 미완성)
-/*function rmsgInsert(index, cnum, replyCnt, c_post){ 
-	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
-	console.log(index, cnum, replyCnt, c_post);
-	$.ajax({
-		type:"post",
-		url:"deleteComment.ucdo",
-		data:params,
-		dataType:"json",
-		success:function(data){ // commentSet${index}
-			
-			var commentSet = document.querySelectorAll(".commentSet"+index);
-			console.log("이예나"+commentSet);
-			for(var i = 0; i < commentSet.length; i++){
-				commentSet[i].remove(); // 데이터 삭제
-				
+
+//이예나 (구현 완성)
+function rmsgDelete(index, rindex, rnum){ 
+	var params = "rnum="+rnum;
+
+	result = confirm("답글을 삭제하시겠습니까?");
+
+	// 삭제 동의시
+	if (result == true) {
+		$.ajax({
+			type:"post",
+			url:"deleteReply.ucdo",
+			data:params,
+			dataType:"json",
+			success:function(data){ 
+				var replyOne = document.getElementById("replyOne"+index+rindex);
+				replyOne.remove(); // 데이터 삭제
 			}
-		}
-	});
-			
-}*/
-//이예나 (구현 미완성)
-function rmsgDelete(index, rindex, rnum, r_post){ 
-	var params = "cnum="+cnum+"&replyCnt="+replyCnt+"&c_post="+c_post+"&index="+index;
-	console.log(index, cnum, replyCnt, c_post);
-	$.ajax({
-		type:"post",
-		url:"deleteComment.ucdo",
-		data:params,
-		dataType:"json",
-		success:function(data){ // commentSet${index}
-			
-			var commentSet = document.querySelectorAll(".commentSet"+index);
-			console.log("이예나"+commentSet);
-			for(var i = 0; i < commentSet.length; i++){
-				commentSet[i].remove(); // 데이터 삭제
-				
-			}
-		}
-	});
-			
+		});
+	}
+	else{
+		return;
+	}
+
 }
 
 //Byte 수 체크 제한
 function checkByte(obj, maxByte)
 {
-    var str = obj.value;
-    var str_len = str.length;
+	var str = obj.value;
+	var str_len = str.length;
 
 
-    var rbyte = 0;
-    var rlen = 0;
-    var one_char = "";
-    var str2 = "";
+	var rbyte = 0;
+	var rlen = 0;
+	var one_char = "";
+	var str2 = "";
 
 
-    for(var i=0; i<str_len; i++)
-    {
-        one_char = str.charAt(i);
-        if(escape(one_char).length > 4)
-        {
-            rbyte += 2;                                         //한글2Byte
-        }
-        else
-        {
-            rbyte++;                                            //영문 등 나머지 1Byte
-        }
+	for(var i=0; i<str_len; i++)
+	{
+		one_char = str.charAt(i);
+		if(escape(one_char).length > 4)
+		{
+			rbyte += 2;                                         //한글2Byte
+		}
+		else
+		{
+			rbyte++;                                            //영문 등 나머지 1Byte
+		}
 
 
-        if(rbyte <= maxByte)
-        {
-            rlen = i+1;                                          //return할 문자열 갯수
-        }
-     }
+		if(rbyte <= maxByte)
+		{
+			rlen = i+1;                                          //return할 문자열 갯수
+		}
+	}
 
 
-     if(rbyte > maxByte)
-     {
-  // alert("한글 "+(maxByte/2)+"자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
-  alert("글자수는 최대 " + maxByte + "byte를 초과할 수 없어요.!")
-  str2 = str.substr(0,rlen);                                  //문자열 자르기
-  obj.value = str2;
-  checkByte(obj, maxByte);
-     }
+	if(rbyte > maxByte)
+	{
+		// alert("한글 "+(maxByte/2)+"자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
+		alert("글자수는 최대 " + maxByte + "byte를 초과할 수 없어요.!")
+		str2 = str.substr(0,rlen);                                  //문자열 자르기
+		obj.value = str2;
+		checkByte(obj, maxByte);
+	}
 }
 //사진미리보기 js
 $(function() {
-    $("#filename").on('change', function(){
-        readURL(this);
-    });
+	$("#filename").on('change', function(){
+		readURL(this);
+	});
 });
 function readURL(input) {
-    if (input.files && input.files[0]) {
-       var reader = new FileReader();
-       reader.onload = function (e) {
-          $('#preImage').attr('src', e.target.result);
-       }
-       reader.readAsDataURL(input.files[0]);
-    }
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$('#preImage').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
 }
 
