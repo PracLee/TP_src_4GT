@@ -349,7 +349,7 @@
 
 				<!-- 더보기 페이징 -->
 				<c:choose>
-					<c:when test="${singlePost.comCnt!=0&&ccnt!=singlePost.comCnt}">
+					<c:when test="${singlePost.comCnt!=0&&ccnt<singlePost.comCnt}">
 						<div style="text-align: right">
 							<a href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}"
 								id="ccnt">더보기</a>
