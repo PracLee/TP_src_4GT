@@ -164,10 +164,11 @@
 												</div>
 											</div>
 										</form>
-										<p class="text-right" style="color: red" id="clike">
-											<a
-												href="likeUpComment.ucdo?pnum=${singlePost.pnum}&cnum=${cl.cnum}"><i
-												class='far fa-heart'></i></a>&nbsp${cl.clikeCnt}
+										<!-- 댓글 좋아요버튼 -->
+										<p class="text-right" style="color: red" >
+											<a href="javascript:void(0);"
+											onclick="clikeButton(${index},${cl.cnum},${singlePost.pnum})"><i
+												class='far fa-heart'></i></a>&nbsp;<span style="color: red" id="clike${index}">${cl.clikeCnt}</span>
 										</p>
 										<!-- <p class="text-right dnone" style="color: red">
 										<i class='fas fa-heart' id="clikeUp"></i>&nbsp${cl.clikeCnt}
@@ -281,11 +282,12 @@
 												</div>
 												<!-- 여기 -->
 												<span class="replyInfo">
-													<p class="text-right" style="color: red">
-														<i class='far fa-heart'></i>&nbsp0
-													</p>
-													<p class="text-right dnone" style="color: red">
-														<i class='fas fa-heart'></i>&nbsp0
+													<!-- 답글 좋아요버튼 -->
+													<p class="text-right" style="color: red" >
+											<a href="javascript:void(0);"
+											onclick="rlikeButton(${index},${rindex},${rl.rnum},${singlePost.pnum})"><i
+												class='fas fa-heart'></i></a>&nbsp;<span style="color: red" id="rlike${index}${rindex}">${rl.rlikeCnt}</span>
+										</p>
 													</p> <!-- 비회원일 경우 날짜만 보임 --> <c:choose>
 														<c:when test="${userInfoData.id==null}">
 															<div class="text-right">

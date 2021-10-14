@@ -1,6 +1,7 @@
 package controller.userComment_Ctrl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Action;
 import controller.ActionForward;
+import model.comments.CommentsVO;
 import model.reply.ReplyDAO;
 import model.reply.ReplyVO;
 
@@ -30,8 +32,12 @@ public class R_LikeUp_Action implements Action{
 		// DB업데이트, 페이징 처리
 		String path = null;
 		if (RDAO.likeCntUp(RVO)) {
-			path = new Post_Action().paging(pnum);
-			path += "#prmsg"+request.getParameter("prmsg");
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter out=response.getWriter();
+			
+			ReplyVO newData = RDAO.SelectOne(RVO);
+			String result = "[{\"rlikeCnt\":\"" + newData.getRlikeCnt()+"\"}]";
+			out.println(result); // ajax 객체 전달
 
 		}
 		else {
@@ -42,10 +48,9 @@ public class R_LikeUp_Action implements Action{
 				return null;
 			}
 		}
-		action.setPath(path);
-		action.setRedirect(false);
 		
-		return action;
+		
+		return null;
 	}
 
 	

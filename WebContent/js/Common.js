@@ -329,3 +329,40 @@ function readURL(input) {
     }
 }
 
+function clikeButton(index, cnum, c_post){ 
+	console.log("확인!");
+	var params = "cnum="+cnum+"&c_post="+c_post+"&index="+index;
+	console.log(index, cnum, c_post);
+	$.ajax({
+		type:"post",
+		url:"likeUpComment.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(data){ 
+			
+			var clikeCnt = data[0].clikeCnt;
+			$("#clike"+index).text(clikeCnt);
+			
+		}
+	});
+			
+}
+
+function rlikeButton(index,rindex, rnum, r_post){ 
+	console.log("확인rrr");
+	var params = "rnum="+rnum+"&r_post="+r_post;
+	
+	$.ajax({
+		type:"post",
+		url:"likeUpReply.ucdo",
+		data:params,
+		dataType:"json",
+		success:function(data){ 
+			
+			var rlikeCnt = data[0].rlikeCnt;
+			$("#rlike"+index+rindex).text(rlikeCnt);
+			
+		}
+	});
+			
+}
