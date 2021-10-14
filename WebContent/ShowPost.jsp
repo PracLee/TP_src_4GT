@@ -85,7 +85,7 @@
 					</div>
 
 					<!-- Comments -->
-
+				<div>
 					<c:set var="index" value="0" />
 					<h2 class="tm-color-primary tm-post-title">Comments</h2>
 					<hr class="tm-hr-primary tm-mb-45">
@@ -342,10 +342,10 @@
 
 							<c:set var="index" value="${index+1}" />
 							<hr class="cHr">
+							</div>
 							<br>
 					</c:forEach>
-				</div>
-				<br>
+				
 
 				<!-- 더보기 페이징 -->
 				<c:choose>
@@ -394,6 +394,7 @@
 							class="tm-btn tm-btn-primary tm-btn-small">댓글등록</button>
 					</c:when>
 				</c:choose>
+				
 			</div>
 		</div>
 	</div>
