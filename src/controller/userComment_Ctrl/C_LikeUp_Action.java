@@ -1,6 +1,7 @@
 package controller.userComment_Ctrl;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +31,13 @@ public class C_LikeUp_Action implements Action{
 		// DB업데이트, 페이징 처리
 		String path = null;
 		if (CDAO.likeCntUp(CVO)) {
-			path = new Post_Action().paging(pnum);
-			path += "#pcmsg"+request.getParameter("pcmsg");
-
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter out=response.getWriter();
+			
+			CommentsVO newData = CDAO.SelectOne(CVO);
+			String result = "[{\"clikeCnt\":\"" + newData.getClikeCnt()+"\"}]";
+			out.println(result); // ajax 객체 전달
+			
 		}
 		else {
 			try {
@@ -42,10 +47,8 @@ public class C_LikeUp_Action implements Action{
 				return null;
 			}
 		}
-		action.setPath(path);
-		action.setRedirect(false);
-		
-		return action;
+				
+		return null;
 	}
 
 }
