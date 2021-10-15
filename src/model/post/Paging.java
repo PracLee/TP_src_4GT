@@ -3,17 +3,17 @@ package model.post;
 public class Paging {
 
 	// 멤버변수 
-	private int pageSize; // (한 페이지에 보이는)게시글수 
-	private int firstPageNum; // 첫번째 페이지번호 
+	private int pageSize; // (한 페이지에 보이는)게시글수  
+	private int firstPageNum; // 첫번째 페이지번호 - 개발자기준 (전체) 
 	private int prevPageNum; // 이전페이지 번호 
-	private int startPageNum; // 시작페이지 (페이징네비 기준)
-	private int thisPageNum; // 페이지 번호
-	private int endPageNum; //마지막 페이지 (페이징네비 기준)
+	private int startPageNum; // 시작페이지 (페이징네비 기준) - 사용자 기준
+	private int thisPageNum; // 페이지 번호 - 현재페이지(인덱스)
+	private int endPageNum; //마지막 페이지 (페이징네비 기준)  - 사용자 기준
 	private int nextPageNum; // 다음 페이지 번호 
-	private int finalPageNum; //마지막 페이지 번호
+	private int finalPageNum; //마지막 페이지 번호 - 개발자기준 (전체)
 	private int totalPostCnt; // 게시글 전체수 
-	private boolean isFirst;
-	private boolean isLast;
+	private boolean isFirst; // 버튼 생성여부
+	private boolean isLast; // 버튼 생성여부
 	
 	
 	// Getter & Setter 
@@ -104,7 +104,7 @@ public class Paging {
 		this.isLast = isLast;
 	}
 
-	public Paging(int pageSize, int thisPageNum, int totalPostCnt) {
+	public Paging(int pageSize, int thisPageNum, int totalPostCnt) { // 한 페이지에 들어가는 포스트개수, 현재 페이지 넘버, 전체 데이터(datas.size)
 		this.pageSize = pageSize;
 		if(thisPageNum==0) {
 			this.thisPageNum = 1;
@@ -140,7 +140,7 @@ public class Paging {
 		int pagesPerBlock = 5;							// 한블럭에 있는 페이지 수
 		int mod = this.finalPageNum % pagesPerBlock;	// mod == 페이지를 묶고 남은 페이지 수
 		if(this.finalPageNum - mod >= this.thisPageNum) {	// 만약에 지금 페이지가 마지막 페이지 묶음에 속하지 않는다면
-			blockLastPageNum = (int) (Math.ceil((float)this.thisPageNum / pagesPerBlock) * pagesPerBlock);
+			blockLastPageNum = (int) (Math.ceil((float)this.thisPageNum / pagesPerBlock) * pagesPerBlock); // Math.ceil 
 			blockStartPageNum = blockLastPageNum - (pagesPerBlock - 1);
 		} else { 
 			blockStartPageNum = (int) (Math.ceil((float)this.thisPageNum / pagesPerBlock) * pagesPerBlock)

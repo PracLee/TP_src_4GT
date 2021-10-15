@@ -54,7 +54,7 @@ public class MainAction implements Action{
 		Paging paging = new Paging(pagingSize,index,datas.size());
 		paging.makePaging();
 		// 페이징 for문으로 표기 할 수 있도록 하기
-		ArrayList<Integer> pagingIndex = new ArrayList<Integer>();
+		ArrayList<Integer> pagingIndex = new ArrayList<Integer>();// 뷰에서 나타내는 페이징 수와 버튼여부 객체
 		int page = paging.getStartPageNum();
 		//					1							5
 		for(int i = paging.getStartPageNum();i<=paging.getEndPageNum();i++) {
