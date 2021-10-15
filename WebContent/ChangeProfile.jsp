@@ -42,7 +42,7 @@
 					<br>
 					<div class="filebox">
 						<label for="filename">파일찾기</label>
-					    <input class="upload-name" value="첨부파일" placeholder="첨부파일" readonly>					    
+					    <input class="upload-name" id="uploadfilename" value="첨부파일" placeholder="첨부파일" readonly>					    
 						<input type="file" class="CPmarLeft dnone"name="filename1" id="filename" onchange="readImage(event)">
 						</div>					
 					
