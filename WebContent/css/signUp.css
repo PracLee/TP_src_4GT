@@ -35,10 +35,7 @@
 	width: 500px;
 	float : left;
 }
-#sid{
-	display: inline-block; 
-	width: 56%;
-}
+
 #consentError {
 	display: block;
 	color: red;

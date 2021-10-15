@@ -53,8 +53,8 @@
 						<p class="signupt">
 							아이디
 						</p>
-						<input class="form-control" name="id" id="sid" type="text" placeholder="ID" maxlength=15> <span>@</span>
-						<select name="mail" id="smail" class="selectEmail">
+						<input class="form-control" name="id" id="ssid" type="text" placeholder="ID" maxlength=15> <span>@</span>
+						<select name="mail" id="smail signMail" class="selectEmail">
 							<option selected>이메일 선택</option>
 							<option>gmail.com</option>
 							<option>daum.net</option>
