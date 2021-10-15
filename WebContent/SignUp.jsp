@@ -54,7 +54,7 @@
 							아이디
 						</p>
 						<input class="form-control" name="id" id="ssid" type="text" placeholder="ID" maxlength=15> <span>@</span>
-						<select name="mail" id="smail signMail" class="selectEmail">
+						<select name="mail" id="smail" class="selectEmail">
 							<option selected>이메일 선택</option>
 							<option>gmail.com</option>
 							<option>daum.net</option>
