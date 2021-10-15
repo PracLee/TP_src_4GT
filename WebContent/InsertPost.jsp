@@ -78,7 +78,7 @@ window.onload = function(){
 						
 						<div class="filebox">
 						<label for="filename">파일찾기</label>
-					    <input class="upload-name" placeholder="첨부파일" readonly>					    
+					    <input class="upload-name" id= "uploadfilename" placeholder="첨부파일" readonly>					    
 						<input type = "file" name="filename1" id="filename" class="dnone" onchange="readImage(event)">
 						</div>	
 						<div>
