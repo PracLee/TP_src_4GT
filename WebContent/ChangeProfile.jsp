@@ -36,8 +36,8 @@
 
 				<div class="mb-4">					
 					<div class="col-12">
-						<img src="${userInfoData.profile}" alt="${userInfoData.id}_프로필사진" class="img-fluid"
-							width="200px" id="preImage">
+						<img src="${userInfoData.profile}" alt="${userInfoData.id}_프로필사진" 
+						class="mb-2 rounded-circle img-thumbnail" width="200px" height="200px" id="preImage">
 					</div>
 					<br>
 					<div class="filebox">
