@@ -26,7 +26,7 @@ public class ShowMypage implements Action {
 		HttpSession session = request.getSession();
 		UserInfoVO UVO = (UserInfoVO)session.getAttribute("userInfoData");
 		ArrayList<PostVO> datas = PDAO.SelectMyPost(UVO);
-		// ����¡ ó�� ����
+		// 占쏙옙占쏙옙징 처占쏙옙 占쏙옙占쏙옙
 		String url="ShowMyPost.jsp";	
 		String indexx=request.getParameter("index");
 		int index=1;
@@ -35,10 +35,10 @@ public class ShowMypage implements Action {
 		}
 		url= url+ "?index="+index;
 		int pagingSize = 6;
-		// ���� ���� int pageSize(�������� �Խù� ��), int thisPageNum(���� ������ ��ȣ), int totalPostCnt(�� ��Ʈ ����)
+		// 占쏙옙占쏙옙 占쏙옙占쏙옙 int pageSize(占쏙옙占쏙옙占쏙옙占쏙옙 占쌉시뱄옙 占쏙옙), int thisPageNum(占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙호), int totalPostCnt(占쏙옙 占쏙옙트 占쏙옙占쏙옙)
 		Paging paging = new Paging(pagingSize,index,datas.size());
 		paging.makePaging();
-		// ����¡ for����� ǥ�� �� �� �ֵ��� �ϱ�
+		// 占쏙옙占쏙옙징 for占쏙옙占쏙옙占� 표占쏙옙 占쏙옙 占쏙옙 占쌍듸옙占쏙옙 占싹깍옙
 		ArrayList<Integer> pagingIndex = new ArrayList<Integer>();
 		int page = paging.getStartPageNum();
 		//					1							5
@@ -46,17 +46,19 @@ public class ShowMypage implements Action {
 			pagingIndex.add(page);
 			page++;
 		}
-		// ������ 6����
-		Date today = new Date();
-		DateSlice ds = new DateSlice(datas, today, index);
-		ds.excuteSlice();
+		// 占쏙옙占쏙옙占쏙옙 6占쏙옙占쏙옙
+		if(datas.size()!=0) {
+			Date today = new Date();
+			DateSlice ds = new DateSlice(datas, today, index);
+			ds.excuteSlice();
+			request.setAttribute("MyPost", ds.getNewData());
+		}
 		
 
 		request.setAttribute("isLast", paging.isLast());
 		request.setAttribute("isFirst", paging.isFirst());
 		request.setAttribute("pagingIndex", pagingIndex);
 		request.setAttribute("index", index);
-		request.setAttribute("MyPost", ds.getNewData());
 		action.setPath(url);
 
 		action.setRedirect(false);
