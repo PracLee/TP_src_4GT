@@ -30,7 +30,7 @@ public class M_codeSend_Action implements Action{
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		
-		
+		// 네트워크 관련 설정 객체 == prop
 		Properties prop = System.getProperties();
 	      prop.put("mail.smtp.user", "4grouptuna@gamil.com");   // 서버 아이디만 쓰기
 	      prop.put("mail.smtp.host", "smtp.gmail.com");   // 구글 SMTP
@@ -41,7 +41,7 @@ public class M_codeSend_Action implements Action{
 	      prop.put("mail.smtp.soketFactory.class","javax.net.ssl.SSLSoketFactory");
 	      prop.put("mail.smtp.soketFactory.fallback","false");
 
-	      Authenticator auth = new M_Mail();
+	      Authenticator auth = new M_Mail(); // 발신처 
 
 	      //Session 생성 및 MimeMessage 생성
 	      Session session = Session.getDefaultInstance(prop, auth);

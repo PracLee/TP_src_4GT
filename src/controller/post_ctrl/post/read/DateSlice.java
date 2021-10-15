@@ -87,7 +87,7 @@ public class DateSlice {
 			vo.setPdate(pdate);
 			System.out.println("slicedata에 들어가는 data = "+vo);
 			this.newData.add(vo);
-			if(i==this.originData.size()-1) {
+			if(i==this.originData.size()-1) {// 6개 미만일 경우 break처리
 				break;
 			}
 			
