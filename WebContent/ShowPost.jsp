@@ -330,7 +330,7 @@
 						<c:choose>
 							<c:when test="${singlePost.comCnt!=0&&ccnt<singlePost.comCnt}">
 								<div style="text-align: right">
-									<a href="selectOne.pdo?ccnt=${ccnt+2}&pnum=${singlePost.pnum}"
+									<a href="selectOne.pdo?ccnt=${ccnt+5}&pnum=${singlePost.pnum}"
 										id="ccnt">더보기</a>
 								</div>
 							</c:when>
