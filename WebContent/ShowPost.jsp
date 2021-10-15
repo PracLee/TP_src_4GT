@@ -109,7 +109,7 @@
 										<c:if test="${cl.secretNum==1}">
 											<c:choose>
 												<c:when
-													test="${userInfoData.id==cl.c_user||userInfoData.id==cl.cwriter}">
+													test="${userInfoData.id==cl.c_user||userInfoData.id==singlePost.p_user}">
 													<!-- 본인이거나, 작성자인 경우 댓글 내용출력 -->
 													<p id="secretOpen">(비밀댓글)</p>
 													<p id="pcmsg${index}">${cl.cment}</p>
