@@ -188,7 +188,7 @@
 						<div class="media-body">
 							<h2 class="tm-color-primary tm-post-title mb-2">김혁재</h2>
 							<h3 class="tm-h3 mb-3">사원 / Model</h3>
-							<p class="mb-0 tm-line-height-short">처음 프로젝트 시작할때는 많이 부족했지만 팀장님들과 팀원들 덕분에 많이 성장하게 됐고 좋은 경험이였습니다!</p>
+							<p class="mb-0 tm-line-height-short">처음 프로젝트 시작할때는 많이 부족했지만 팀장님들과 팀원들 덕분에 많이 성장하게 됐고 좋은 경험이였습니다! 잘자요^^</p>
 						</div>
 					</div>
 				</div>

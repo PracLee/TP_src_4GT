@@ -21,7 +21,7 @@ https://templatemo.com/tm-553-xtra-blog
 	
 }
 #team{
-	margin-left : 25px;
+	margin-left : 100px;
 }
 .img{
 	width : 170px;
@@ -205,6 +205,9 @@ form div .rset { /*y*/
    
    height: 152px;
 }
+.replSize{
+	width:500px;
+}
 .rwidth{
    width: 587px;
 }
@@ -266,10 +269,7 @@ form div .rset { /*y*/
    margin-bottom : 20px;
    width : 100%;
 }
-#sid{
-   width : 56%;
-   display : inline-block;   
-}
+
 #checkMailCode{
    display: block; 
    text-align: center;
@@ -972,6 +972,9 @@ a:hover figcaption {
    body .postInfo {
       font-size: 12px;
    }
+   .replSize{
+   	width:300px
+   }
    
 }
 
@@ -1234,6 +1237,9 @@ a:hover figcaption {
    #ccnt{
       width : 100%;
    }
+   .replSize{
+   width:450px;
+   }
 }
 
 @media ( max-width : 767px) {
@@ -1357,6 +1363,7 @@ a:hover figcaption {
   	 max-width: 460px;
   
 	}
+	
 }
 
 @media ( max-width : 630px) {
@@ -1383,6 +1390,9 @@ a:hover figcaption {
    	.tm-comment-form {
 	  max-width: 240px;
 	}
+	.replSize{
+   	width:250px; 
+   }
 }
 
 @media ( max-width : 575px) {
@@ -1398,6 +1408,9 @@ a:hover figcaption {
    }
    #ccnt{
       width : 100%;
+   }
+   .replSize{
+   	width:250px;
    }
 }
 
@@ -1432,6 +1445,9 @@ a:hover figcaption {
    }
     #comSecret{
    	  width: 90%;
+   }
+   #sid{
+   width:100%;
    }
 }
 
@@ -1507,6 +1523,9 @@ a:hover figcaption {
 	.comInfo{
 	    font-size : 12px;
 	}
+	#sid{
+   width:100%;
+   }
 }
 
 
@@ -1622,5 +1641,9 @@ hr.tm-hr-mycss {
 }
 body .postInfo{
       color: gray;
+}
+#sid{
+	display: inline-block; 
+	width: 56%;
 }
    
