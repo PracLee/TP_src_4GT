@@ -27,7 +27,7 @@
 				//opener.document.getElementById("idCheck").value = "true";
 
 				// 부모창 id 입력방지(readonly)
-				opener.document.getElementById("sid").setAttribute("readonly",
+				opener.document.getElementById("ssid").setAttribute("readonly",
 						true);
 				// 부모창 mail select 선택방지(disabled) 
 				opener.document.getElementById("smail").setAttribute(

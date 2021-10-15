@@ -8,7 +8,7 @@ function checkID(id, mail, type) { // 회원 가입 시 ID 중복 체크하는 �
 		type: "GET", // 단순 정보 조회 시에는 GET, 정보가 너무 많거나 insert/update를 할때는 POST
 		url: "checkID.ucdo",	 // "checkID.ucdo?id="+id+"&mail="+mail,
 		data:{// 위 컨트롤에 데이터 전송
-			id : $("#sid").val(),
+			id : $("#ssid").val(),
 			mail : $("#smail").val()
 		},
 		success: function(data) { 
@@ -44,7 +44,7 @@ function checkID(id, mail, type) { // 회원 가입 시 ID 중복 체크하는 �
 }
 
 function emptyID(type){
-	var id = document.getElementById("sid")
+	var id = document.getElementById("ssid")
 	var mail = document.getElementById("smail")
 
 	// id를 입력하지 않았거나, 이메일을 선택하지 않았다면 alert창 띄움
