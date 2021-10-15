@@ -222,11 +222,11 @@
 												type="hidden" name="r_post" value="${singlePost.pnum}">
 											<input type="hidden" name="r_comments" value="${cl.cnum}">
 											<input type="hidden" name="prmsg" value="${index}${rindex}">
-											<textarea id="ucmsg${index}" class="rset form-control"
+											<textarea id="ucmsg${index}" class="rset form-control" style="width:500px"
 												name="rment" rows="6" onKeyUp="checkByte(this,200)" required></textarea>
 										</div>
-										<div class="text-right marginTop">
-											<button type="submit"
+										<div class="replSize text-right marginTop">
+											<button type="submit" 
 												class="tm-btn tm-btn-primary tm-btn-small">답글등록</button>
 										</div>
 									</form>

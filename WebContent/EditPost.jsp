@@ -103,9 +103,19 @@ window.onload = function(){
 								<option ${singlePost.category=='일식' ? 'selected':'' }>일식</option>
 							</select>
 						</div>
+						<div class="filebox">
+						<label for="filename">파일찾기</label>
+					    <input class="upload-name" placeholder="첨부파일" readonly>					    
+						<input type = "file" name="filename1" id="filename" class="dnone" onchange="readImage(event)">
+						</div>	
+						<div>
+						
+						<img src="${singlePost.path}" alt="${userInfoData.id}_미리보기 포스트사진" class="img-fluid"
+						onerror="this.src='img/defaultImage.png'" alt="포스트사진" class="img-fluid"
+							width="350px" id="preImage">
+							</div>	
 						<div class="text-right">
 
-							<input type="file" name="filename1">
 							<button type="submit" class="tm-btn tm-btn-primary tm-btn-small">글
 								수정하기</button>
 						</div>
