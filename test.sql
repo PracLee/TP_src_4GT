@@ -1,6 +1,6 @@
 CREATE TABLE userInfo(
 	id varchar(200) primary key,
-	pw varchar(30),
+	pw varchar(30) not null,
 	name varchar(30),
 	profile varchar(300) default 'userProfile/defaultImage.jpg'
 );
@@ -14,7 +14,7 @@ CREATE TABLE post(
 	content varchar(4000),
 	writer varchar(30),
 	pdate date default sysdate,
-	p_user varchar(30),
+	p_user varchar(200),
 	path varchar(1000),
 	comCnt int default 0,
 	foreign key (p_user) references userInfo(id) on delete cascade
