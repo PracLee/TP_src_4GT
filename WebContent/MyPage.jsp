@@ -81,7 +81,7 @@
 						<div class="col-12">
 
 							<img src="${userInfoData.profile}" alt="${userInfoData.id} 프로필사진"
-								class="mb-2 rounded-circle img-thumbnail" width="200px">
+								class="mb-2 rounded-circle img-thumbnail" width="200px" height="200px">
 
 						</div>
 						<br>
