@@ -46,7 +46,7 @@ public class C_SelectOne_Action implements Action{
 
 		// DAO¼öÇà
 		ArrayList<CommentsSet> postOne_comments = commentDAO.getSetData(commentVO);
-		int commentCnt = 2;			
+		int commentCnt = 5;			
 		String commentCntt = request.getParameter("ccnt");
 		if (commentCntt!=null) {
 			commentCnt = Integer.parseInt(commentCntt);
