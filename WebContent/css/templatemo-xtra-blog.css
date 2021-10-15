@@ -942,7 +942,7 @@ a:hover figcaption {
 	width: 35%;
 }
 .selectEmail {
-/*    width: 35%; */
+   width: 35%; 
    padding: .2em;
    border: 1px solid #D25A53;
    font-family: 'Nanumgothic';
