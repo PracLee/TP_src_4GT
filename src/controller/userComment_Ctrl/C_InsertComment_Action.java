@@ -47,7 +47,8 @@ public class C_InsertComment_Action implements Action{
 	    // 댓글 추가 완료
 	    if (commentDAO.InsertDB(commentVO)) {
 			// [페이징처리 메서드] 호출 (uri 반환)
-	    	path = new Post_Action().paging(request.getParameter("c_post"));
+	    	String postnum = request.getParameter("c_post");
+	    	path = "selectOne.pdo?pnum="+postnum;
 			path += "#pcmsg"+request.getParameter("pcmsg");
 	    }
 	    // 반영 실패 -> 오류 수행
