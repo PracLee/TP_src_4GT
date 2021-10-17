@@ -30,7 +30,7 @@ CREATE TABLE comments(
 	c_user varchar(30),
 	c_post int,
 	secretNum int constraint test_secretNum_CK check(secretNum = 0 or secretNum = 1),
-	foreign key (c_user) references userInfo(id) on delete cascade,
+	foreign key (c_user) references userInfo(id),
 	foreign key (c_post) references post(pnum) on delete cascade
 );
 
@@ -51,10 +51,12 @@ CREATE TABLE reply(
 	r_user varchar(30),
 	r_post int,
 	r_comments int,
-	foreign key (r_user) references userInfo(id) on delete cascade,
+	foreign key (r_user) references userInfo(id),
 	foreign key (r_post) references post(pnum) on delete cascade,
 	foreign key (r_comments) references comments(cnum) on delete cascade
 );
+
+UPDATE POST SET comCnt = 0;
 
 /* SELECT ALL */
 select * from all_tables;
@@ -95,3 +97,4 @@ drop table test;
 
 insert into test (name,secretNum) values ('kim', 0);
 insert into test (name,secretNum) values ('lee', 4);
+
