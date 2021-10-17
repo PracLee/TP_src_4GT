@@ -13,11 +13,13 @@
 				<a href="#"
 					class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20"
 					style="display:none;">Prev</a>			
+
 		</c:when>
 		<c:when test="${!isFirst}">
 			<!-- 첫번째 페이지가 아니면 버튼 활성화 -->			
 				<a href="${url}?index=${index-1}"
 					class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20">Prev</a>			
+
 		</c:when>
 	</c:choose>	
 		

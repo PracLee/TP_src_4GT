@@ -48,7 +48,7 @@ public class C_SelectOne_Action implements Action{
 		ArrayList<CommentsSet> postOne_comments = commentDAO.getSetData(commentVO);
 		int commentCnt = 5;			
 		String commentCntt = request.getParameter("ccnt");
-		if (commentCntt!=null) {
+		if (commentCntt!=null&&commentCntt.length()!=0) {
 			commentCnt = Integer.parseInt(commentCntt);
 		}
 		String url = "ShowPost.jsp?ccnt="+commentCnt;
