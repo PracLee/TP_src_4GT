@@ -11,28 +11,30 @@
 		<c:when test="${isFirst}">
 			<!-- 첫번째 페이지면 버튼 비활성화 -->			
 				<a href="#"
-					class="dsnone mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>			
+					class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20"
+					style="display:none;">Prev</a>			
 		</c:when>
-	</c:choose>	
-		<c:choose>
-			<c:when test="${isLast}">
-				<!-- 마지막페이지면 버튼 비활성화 -->				
-					<a href="#"
-						class="dsnone mb-2 tm-btn tm-btn-primary disabled tm-prev-next">Next</a>				
-			</c:when>
-			<c:when test="${isLast}">
-				<!-- 마지막페이지가 아니면 버튼 활성화 -->				
-					<a href="${url}?index=${index+1}"
-						class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>				
-			</c:when>
-		</c:choose>		
-		<c:choose>
 		<c:when test="${!isFirst}">
 			<!-- 첫번째 페이지가 아니면 버튼 활성화 -->			
 				<a href="${url}?index=${index-1}"
 					class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20">Prev</a>			
 		</c:when>
-		</c:choose>
+	</c:choose>	
+		
+		<c:choose>
+			<c:when test="${isLast}">
+				<!-- 마지막페이지면 버튼 비활성화 -->				
+					<a href="#"
+						class="mb-2 tm-btn tm-btn-primary disabled tm-prev-next"
+						style="display:none;">Next</a>				
+			</c:when>
+			<c:when test="${!isLast}">
+				<!-- 마지막페이지가 아니면 버튼 활성화 -->				
+					<a href="${url}?index=${index+1}"
+						class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>				
+			</c:when>		
+		</c:choose>		
+		
 		</div>
 	<div class="tm-paging-wrapper">
 		<span class="d-inline-block mr-3">Page</span>
