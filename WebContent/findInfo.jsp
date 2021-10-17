@@ -28,7 +28,7 @@
 			<input type="hidden" name="type" value="${param.type}">
 				<div class="mb-4">
 					<p class="signupt">이메일</p>
-					<input class="form-control" name="id" id="sid" type="text"
+					<input class="form-control" name="id" id="ssid" type="text"
 						placeholder="ID" maxlength=15> <span>@</span> <select
 						name="mail" id="smail" class="selectEmail">
 						<option selected>이메일 선택</option>
