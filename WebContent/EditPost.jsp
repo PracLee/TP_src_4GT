@@ -79,7 +79,7 @@ window.onload = function(){
 						<input type="hidden" name="writer" value="${userInfoData.name}">
 						<input type="hidden" name="p_user" value="${userInfoData.id}">
 						<div class="mb-4">
-							<input class="form-control"
+							<input class="form-control" onKeyUp="checkByte(this,60)"
 								style="width: 100%; border-color: white; font-size: 25px;"
 								name="title" type="text" placeholder="제목을 입력하세요"
 								value="${singlePost.title}">
@@ -88,7 +88,7 @@ window.onload = function(){
 						<hr class="tm-hr-mycss">
 						<div class="mb-4">
 							<label class="col-sm-3 col-form-label tm-color-primary">내용</label>
-							<textarea class="form-control mr-0 ml-auto" name="content"
+							<textarea class="form-control mr-0 ml-auto" name="content" onKeyUp="checkByte(this,3000)"
 								id="message" rows="8" required style="height: 800px;">${singlePost.content}</textarea>
 						</div>
 						<div class="mb-4">
