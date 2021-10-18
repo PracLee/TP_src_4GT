@@ -59,8 +59,7 @@
 				<div class="tm-post-full">
 					<div class="mb-4">
 						<h2 class="pt-2 tm-color-primary tm-post-title" id="title">${singlePost.title}</h2>
-						<p class="tm-mb-40">${singlePost.pdate}postedby
-							${singlePost.writer}</p>
+						<p class="tm-mb-40">${singlePost.pdate} posted by ${singlePost.writer}</p>
 						<p>${singlePost.content}</p>
 						<span class="d-block text-right tm-color-primary">Category
 							. ${singlePost.category}</span> <br> <br>
