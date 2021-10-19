@@ -243,6 +243,7 @@ public class PostDAO {
 				vo.setPdate(dateToStr);
 				vo.setP_user(rs.getString("p_user"));
 				vo.setPath(rs.getString("path"));
+				vo.setComCnt(rs.getInt("comCnt"));
 				System.out.println("DAO  : "+vo);
 				datas.add(vo);
 			}
@@ -286,6 +287,7 @@ public class PostDAO {
              data.setPdate(dateToStr);
              data.setP_user(rs.getString("p_user"));
              data.setWriter(rs.getString("writer"));
+             data.setComCnt(rs.getInt("comCnt"));
              data.setPath(rs.getString("path"));
              datas.add(data);
           }
@@ -325,6 +327,7 @@ public class PostDAO {
              vo.setPdate(dateToStr);
              vo.setP_user(rs.getString("p_user"));
              vo.setWriter(rs.getString("writer"));
+             vo.setComCnt(rs.getInt("comCnt"));
              vo.setPath(rs.getString("path"));
              datas.add(vo);
           }
@@ -364,6 +367,7 @@ public class PostDAO {
               data.setPdate(dateToStr);
               data.setP_user(rs.getString("p_user"));
               data.setWriter(rs.getString("writer"));
+              data.setComCnt(rs.getInt("comCnt"));
               data.setPath(rs.getString("path"));
               datas.add(data);
            }

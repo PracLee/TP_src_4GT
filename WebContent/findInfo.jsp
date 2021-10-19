@@ -44,7 +44,7 @@
 					<c:if test="${param.type == 'pw'}">
 						<input type="button" onclick="emptyID('infoHelp')"
 							class="s-btn tm-btn-primary s-btn-small checkID" id="confirm" value="인증하기">	
-						<input type="hidden" class="s-btn tm-btn-primary s-btn-small checkID" id="submit" value="완료" onClick="disabledRemove()" id="submit">
+						<input type="hidden" class="s-btn tm-btn-primary s-btn-small checkID" id="submit1" value="완료" onClick="disabledRemove()" id="submit">
 					</c:if>
 
 				</div>

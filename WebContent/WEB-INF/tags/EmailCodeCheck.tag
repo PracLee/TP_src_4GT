@@ -17,10 +17,10 @@
 				document.getElementById('checkMailCode').innerHTML = "잘못된 인증번호";
 			} else {// 일치하다면 이와 같이 처리
 				//console.log('13123');
-
+				console.log("ㅇㅁㄴㅇㅁㅇㄴ "+ type);
 				//id/pw찾기인경우
 				if (type == "infoHelp") {
-					opener.document.getElementById("submit").type = "submit";
+					opener.document.getElementById("submit1").type = "submit"; //confirm
 				}
 
 				// 부모창에게 데이터 전달 - 부모의 태그 id에 접근하여 value 작성
@@ -35,7 +35,8 @@
 
 				// 부모창 인증체크 버튼 remove
 				opener.document.getElementById("confirm").remove();
-
+				
+				
 				alert('인증이 완료되었습니다.');
 				window.close();
 

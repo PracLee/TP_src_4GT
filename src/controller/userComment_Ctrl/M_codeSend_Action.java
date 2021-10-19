@@ -70,6 +70,7 @@ public class M_codeSend_Action implements Action{
 			 request.setAttribute("id", id);
 			 request.setAttribute("mail", mail);
 			 request.setAttribute("type", request.getParameter("type"));
+			 System.out.println("asdasdasd "+request.getParameter("type"));
 			 
 	         // 메일 제목
 	         msg.setSubject("[4GT Blog] 이메일 인증", "UTF-8");

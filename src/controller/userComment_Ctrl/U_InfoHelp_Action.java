@@ -17,7 +17,7 @@ public class U_InfoHelp_Action implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+System.out.println("예나 : " + request.getParameter("type"));
 		ActionForward forward = new ActionForward();
 
 		// VO DAO 인스턴스화
