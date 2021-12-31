@@ -43,7 +43,7 @@
 		<nav class="tm-paging-nav d-inline-block">
 			<ul>
 				<c:forEach var="pa" items="${pagingIndex}">
-					<li class="tm-paging-item active"><a href="${url}?index=${pa}"
+					<li class="tm-paging-item"><a href="${url}?index=${pa}"
 						class="mb-2 tm-btn tm-paging-link">${pa}</a></li>
 				</c:forEach>
 			</ul>
