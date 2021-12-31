@@ -33,7 +33,7 @@
 		<div class="inner">
 			<form method="post" enctype="multipart/form-data"
 			action="userProfileEdit.ucdo" class="fset textCenter mb-5 tm-comment-form">
-
+				
 				<div class="mb-4">					
 					<div class="col-12">
 						<img src="${userInfoData.profile}" alt="${userInfoData.id}_프로필사진" 

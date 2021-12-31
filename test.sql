@@ -4,7 +4,7 @@ CREATE TABLE userInfo(
 	name varchar(30),
 	profile varchar(300) default 'userProfile/defaultImage.jpg'
 );
-
+insert into userInfo (id,pw,name) values('1','1','Â¯±¸');
 CREATE TABLE post(
 	pnum int primary key,
 	views int default 0,
